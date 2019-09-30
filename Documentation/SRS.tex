@@ -142,10 +142,6 @@ The purpose of this document is to define requirements for the web application 3
 
 \section{Project description}
 
-\subsection{Problem Introduction}
-Write some inspiring shit here.
-\ref{actors}.
-
 \subsection{System Context}
 
 Our system will mainly involve the user interacting with a web application interface. The user shall create an account to be able to buy or sell products, however user does not require to have an account for browsing the website. The user information will be stored in a remote database server. Users will not be able to create an account or login by using any social media platforms. It will discussed in more details in future version of this documentation. 
@@ -159,23 +155,17 @@ Our system will mainly involve the user interacting with a web application inter
 \end{figure}
 
 \subsection{Project Scope}
-Write about how huge this project is and how it is going to impact so many people.
-\clearpage
+354TheStars is planning to provide a worldwide platform, where various size of companies as well as individuals can sell or buy products. All of the available products shall be eligible for trading.
 
 \subsection{Business Goals}
 
 \begin{itemize}
     \item \textbf{Compete with existing solutions}
 
-        We are not the sole developers of budgeting applications by far. Not just that, but users already have a procedure for accessing their bank accounts directly through interfaces provided by banks. As such, if we want to attract users to our product, we must be able to compete on the same playing field as these current applications/procedures. We must, at the very least, meet their level of performance, ease of use, security, and other qualities described in \ref{nonfunc req} for our system.
+        We are not the sole developers of e-commerce applications by far. As such, if we want to attract users to our platform, we must be able to compete on the same playing field as these current platforms. It is because of that reason, we must, at the very least, provide a secure, easy to use, and performant platform.
 
-    \item \textbf{Target market: wide user-base composed mainly of millennials, students, new professionals}
-
-        Our customer group user group and development team happen to involve the same people: young professionals and students with little to no expected background in financing. As customers, this group has no interest in complex budgeting functions (if they do, they are not the target audience aimed by this system), but instead seeks some way of organising tracking their total assets. This group favours lightning-fast applications for frequent yet momentary usage. They want to monitor their cash spending and make long-term financial decisions based on clear, understandable data that they can access and modify rapidly.
-
-    \item \textbf{Reduce total cost of ownership}
-
-        For the above business goal, it is imperative for our application to be relatively cheap to maintain and support after development, as it would lengthen the lifetime of our system.
+    \item \textbf{Reduce service fee}
+        We are aiming to empower businesses, in order to do so it is necessary to provide a great service and competitive service fee. 
 
 \end{itemize}
 
@@ -206,42 +196,74 @@ This section will cover the functional requirements associated with the 354TheSt
     \item \textbf{Purchase process:} The system permits the categorisation of transactions, a property by which the transactions may be sorted.
 \end{itemize}
 
-\section{User-Stories}
-
-\textbf{User-Story 1}
-
-As a user, I should be able to create, manage and delete my user account. I should have the options to view and update personal information to facilitate more efficient use of the application and personalise my experience.
-
-\textit{Acceptance criteria:}
-\begin{itemize}
-    \item It should possible to sign up with a username and a password.
-    \item It should be possible to update personal information, including the name, email address, phone number and password.
-    \item The application should provide quality user experience when accessing and updating account information
-\end{itemize}
-
 \clearpage
 
-\textbf{User-Story 2}
+\section{User-Stories}
 
-As a user, I should have ability to manage my bank account information. The application should allow me to connect my bank accounts, remove bank accounts and view all the information associated with the bank account.
+\textbf{User-Story 1 (Admin)} \\
+As an admin:
+\begin{itemize}
+    \item I should be able to create, manage and delete users account
+    \item I should have the options to view personal information of the users including:
+        \begin{itemize}
+            \item Username
+            \item Email
+            \item Address
+            \item Phone Number
+        \end{itemize}
+    \item I should be able to view and manage every single product that is posted in the website.
+    \item The application should provide quality user experience when accessing and viewing account information of a user
+\end{itemize}
+
+\textbf{User-Story 2 (Buyer)} \\
+As a buyer:
+\begin{itemize}
+    \item I should be able to sign up using:
+        \begin{itemize}
+            \item Username
+            \item Email
+            \item Address
+            \item Phone Number
+            \item Password
+        \end{itemize}
+    \item I should be to edit my personal information.
+    \item I should be able to see a product's detail including:
+        \begin{itemize}
+            \item Image
+            \item Description
+            \item Price
+            \item Reviews
+        \end{itemize}
+    \item I should have the ability to search for a product by:
+        \begin{itemize}
+            \item Name
+            \item Category
+        \end{itemize}
+    \item I should be able to filter and sort the search results based on:
+        \begin{itemize}
+            \item Price
+            \item Location
+            \item Reviews
+        \end{itemize}
+    \item I should be able to pay with my Paypal account.
+    \item I should get a confirmation email showing a successful purchase.
+    \item I should be able to add up to three shipping address.
+    \item I should be able to add a review to a product after fifteen days of purchasing the product.
+    \item I should be able to see my orders history.
+    
+\end{itemize}
+
+\textbf{User-Story 3 (Seller)}
+
+As a user, I should have the ability to group my bank account transactions into categories, to be able to manage my finances more efficiently.
 
 \textit{Acceptance criteria:}
 \begin{itemize}
-    \item It should be possible to connect a bank account to the application.
-    \item It should be possible to remove a bank account from the application.
-    \item The application should display bank account information including:
-        \begin{itemize}
-            \item Bank account ID
-            \item  Bank name
-            \item Account type
-            \item Account balance
-            \item History of transactions
-        \end{itemize}
-    \item The application should provide a way to see bank account statements for a specific period.
-    \item It should be possible to sort the list of all bank account transactions by any of its attributes, such as the type of the transaction and the amount.
+    \item The application should allow to assign a transaction to a category, such as monthly payments, groceries, leisure, etc.
+    \item I should be able to view transactions of a particular category.
 \end{itemize}
 
-\textbf{User-Story 3}
+\textbf{User-Story 4 (Guest User)}
 
 As a user, I should have the ability to group my bank account transactions into categories, to be able to manage my finances more efficiently.
 
