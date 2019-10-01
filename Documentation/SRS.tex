@@ -377,371 +377,162 @@ As a guest user:
 
 
 \section{Use Cases}
-\subsection{Overview}
-Use cases 1 through 4 deal with the user manipulating his user  and bank accounts. Use cases 5 through 8 deal with the user viewing the data in different formats. Use case 9 deals with the user manipulating the transactions categories.
+\subsection{Selling}
 
-\textbf{NB:} Note that the alternate flows are described in the same order as the exception. That is, for example, alternate flow 2 specifies the flow of the application if exception 2 is met.
-
-
-Below is figure \ref{fig:use-case-diagram} which represents our use case diagram. Following this diagram, we list our uses cases
+The use case diagram below represents the Selling functionality of the Online Shopping Website. A detailed description of each use case follows. 
 
 \begin{figure}[htbp]
-    % \includegraphics{UseCaseDiagram.png}
-    \caption{Use Case Diagram}
-    \label{fig:use-case-diagram}
+    \centering
+    \includegraphics[width=0.5\textwidth]{ucd1.png}
+    \caption{Use Case Diagram 1: Online Shopping Website - Selling }
+    \label{fig:ucd1}
 \end{figure}
 
-\begin{usecase}{Create User Account}
-    \addrow{Case ID}{01}
-    \addrow{Summary}{User gives information about a new user account to the system, which validates it then creates the account.}
-    \addrow{Scope}{money and budget management application}
-    \addrow{Level}{user-goal}
-    \addrow{Actors}{\textbf{User}}
-    \addmulrow{Stakeholders and Interests}{
-    \item User: Wants fast and easy account creation and a comprehensible display of the account requirements.
-    \item Company: Wants user interests to be fulfilled, validation of input, communication with the local account database as well as failure tolerance when dealing with database manipulation. }
-    \addrow{Pre-Conditions}{User has launched the application.}
-    \addrow{Success Guarantee}{Account successfully saved in local account database, with account details as specified by the user.}
-    \addmulrow{Main Success Flow}{
-    \item User clicks on the sign-up menu, enters a username, first name, last name, email, phone number, and address and password.
-    \item System validates user account details, then creates new account.
-    \item System moves to login screen.}
+\begin{usecase}{List items}
+    \addrow{Case ID}{UC01}
+    \addrow{Actors}{\textbf{Seller, Administrator, Customer Support}}
+    \addrow{Summary}{Seller completes all the information necessary to list an item and has the option to edit or delete it. The Administrator can manage all the listings information. In case of any issues, the Customer Support can be contacted.}
+    \addrow{Pre-Conditions}{The user is registered as a legitimate seller.}
+    \addrow{Data}{Product photo, product description, price, stock count.}
+    \addrow{Stimulus}{Seller pressed on Add Listing/Edit Listing/Delete Listing Button}
+    \addmulrow{Response}{
+        \begin{itemize}
+            \item Add Listing/Edit Listing/Delete Listing dialogue appears.
+            \item Seller fills out all the information.
+            \item Listing added/edited/deleted successfully.
+        \end {itemize}}
     \addmulrow{Exceptions}{
-    \item Another account with the same username already exists.
-    \item User specified is not created if the business rules for account creation are not met.}
-    \addmulrow{Alternate Flows}{
-    \item The System will notify the user the his username is already used by an existing user account, and return to the account creation menu.
-    \item The System will notify the user of unmet account requirement, then return to the account creation menu. }
+        \begin{enumerate}{
+            \item The required information is not filled out.
+            \item The description is over the character limit (100 characters). 
+            } 
+        \end{enumerate}}
     \addrow{Priority}{High}
-    \addrow{Traces to Test Cases}{Functional test case 1}
+    \addmulrow{Open Issues}{
+        \begin{enumerate}{
+            \item Should the Seller be able to preview the listing? 
+            \item What happens if the item is illegal?
+            \item How do we check the quality of the photo? 
+            \item How do we check the quality of the image?
+            \item How do we check if the seller is legitimate?
+            } 
+        \end{enumerate}}
 \end{usecase}
 
-\begin{usecase}{Delete User Account}
-    \addrow{Case ID}{02}
-    \addrow{Summary}{User deletes his user account, removing all bank accounts and information associated with that account.}
-     \addrow{Scope}{money and budget management application}
-     \addrow{Level}{user-goal}
-     \addrow{Actors}{\textbf{User}}
-     \addmulrow{Stakeholders and Interests}{
-     \item User: Wants easy navigation and secure account deletion, no risk of accidental deletion.
-     \item Company: Wants user interests to be fulfilled and clean deletion of account and associated data in the database. }
-     \addrow{Pre-Conditions}{User has logged in the user account he wants to delete.}
-     \addrow{Success Guarantee}{user account is successfully deleted, all associated bank information is deleted, and user is returned to the home menu.}
-     \addmulrow{Main Success Flow}{
-     \item User enters the user account details view, then selects 'delete account'.
-     \item System brings up a confirmation menu to ensure that this selection was not accidentally entered.
-     \item User confirms his choice.
-     \item System successfully deletes the user account as well as all associated bank account and transactions in the local database, then brings the user back to the login/create user menu.}
-     \addmulrow{Exceptions}{
-     \item User enters incorrect password and is denied ability to delete user account.
-     }
-     \addmulrow{Alternate Flows}{
-     \item Incorrect password error message will be displayed, the user account will not be deleted, and the user will be returned to the user account details view.}
-     \addrow{Priority}{Medium}
-     \addrow{Traces to Test Cases}{Functional test case 2}
-\end{usecase}
-
-
-\begin{usecase}{Add Bank Account to a User Account}
-    \addrow{Case ID}{03}
-    \addrow{Summary}{User gives information about a new bank account, system sends it to the bank for verification then creates necessary entries in the local database once the bank approves the information.}
-    \addrow{Scope}{money and budget management application}
-    \addrow{Level}{user-goal}
-    \addrow{Actors}{\textbf{User}, Bank}
-    \addmulrow{Stakeholders and Interests}{
-    \item User: Wants fast and easy account creation, clear and comprehensible display of bank account requirements.
-    \item Company: Wants user and bank interests to be fulfilled, wants to prevent erroneous input, wants fast communication with the local account database as well as the bank, wants fault tolerance in case of database conflicts, issues with the bank, or other possible remote database problems.
-    \item Bank: Wants to satisfy its own customer base, wants correctly formatted account information given to its API, inexpensive and non-redundant communication of bank account data to third-party applications.}
-    \addrow{Pre-Conditions}{User has logged in a user account and is in the account list menu.}
-    \addrow{Success Guarantee}{Bank account successfully saved in local account database, with information corresponding the data validated by the bank.}
-    \addmulrow{Main Success Flow}{
-    \item User enters his/her bank account ID in the text field for bank account addition.
-    \item System validates input, and sends it to the bank for verification and connection.
-    \item Bank validates bank account number, and then responds with the bank account information.
-    \item System records the valid bank account details securely in its database, and the account list is updated with this new account.}
+\begin{usecase}{Sell items}
+    \addrow{Case ID}{UC02}
+    \addrow{Actors}{\textbf{Seller, Buyer, Paypal, Bob TheRich, Customer Support}}
+    \addrow{Summary}{Seller accepts payment for the item from Buyer and pays Bob TheRich the 8\% of the sale fee. The Seller can allow or disallow returns and set the time limit for returns. The Seller and Bob TheRich can access the sales history. In case of any issues, the Customer Support can be contacted.}
+    \addrow{Pre-Conditions}{Seller, Buyer, and Bob TheRich must have a valid Paypal account. }
+    \addrow{Data}{Paypal account information, sales data, returns option, time limit for returns, 8\% fee, shipped items}
+    \addrow{Stimulus}{Buyer paid for item(s)}
+    \addmulrow{Response}{
+        \begin{itemize}{
+            \item Paypal transfers money from the Buyer account to the Seller Account and sends a confirmation.
+            \item Seller receives a sale notification by email.
+            \item The sale appears in the Seller’s sales history.
+            \item Bob TheRich invoices the Seller for 8% of the sale. 
+            \item Seller pays Bob TheRich through Paypal. 
+            \item Seller marks item as shipped. }
+        \end {itemize}}
     \addmulrow{Exceptions}{
-        \item An invalid account ID was provided.
-        \item Account has already been added to the user account.
-        \item Account was not validated by the bank (could not find account, invalid ID on their side of the validation, etc.) }
-    \addmulrow{Alternate Flows}{
-        \item The account ID is not sent to the bank servers for validation, instead an error will be displayed requesting a valid bank account ID then the system returns to the account list menu.
-        \item the account ID is validated but found to have been already associated with this user account; this error is displayed by the system, which then returns to the account list menu.
-        \item the accound ID is validated and queried to the bank, which replies with an error. The system displays this error to the user then returns to the account list menu.}
+        \begin{enumerate}{
+            \item Confirmation from Paypal not received.
+            } 
+        \end{enumerate}}
     \addrow{Priority}{High}
-    \addrow{Traces to Test Cases}{Functional test case 3}
+    \addmulrow{Open Issues}{
+        \begin{enumerate}{
+                \item Should refunds be allowed? If yes, how should they be handled?
+                \item What happens if the sale appears in the sales history but not in the shipped items history after a predetermined amount of time?
+                } 
+            \end{enumerate}}
 \end{usecase}
+\clearpage
 
-\begin{usecase}{Remove Bank Account from a User Account}
-    \addrow{Case ID}{04}
-    \addrow{Summary}{User removes a bank account associated with his user account.}
-     \addrow{Scope}{money and budget management application}
-     \addrow{Level}{user-goal}
-     \addrow{Actors}{\textbf{User}}
-     \addmulrow{Stakeholders and Interests}{
-     \item User: Wants easy navigation and secure account deletion.
-     \item Company: Wants user interests to be fulfilled, wants to ensure clean deletion from the database. }
-     \addrow{Pre-Conditions}{User has logged in the user account whose active association with a bank account is the one the user wants to delete.}
-     \addrow{Success Guarantee}{Bank account is successfully removed from that user account, all associated bank information is deleted from the local database, and user is returned to the account home menu.}
-     \addmulrow{Main Success Flow}{
-     \item User selects the account he wants to remove, then selects \textit{remove selected account}.
-     \item System successfully deletes the bank account and its associated transactions in the local database, then updates the account list to display this change.}
-     \addmulrow{Exceptions}{
-     \item The user clicks \textit{remove selected account} without having selected an account.
-     }
-     \addmulrow{Alternate Flows}{
-     \item No account is deleted and the system ignores the call, staying in the accounts list menu.
-     }
-     \addrow{Priority}{High}
-     \addrow{Traces to Test Cases}{Functional test case 4}
-\end{usecase}
+\subsection{Buying}
 
-\begin{usecase}{View Transactions for Specific Bank Account}
-    \addrow{Case ID}{05}
-    \addrow{Summary}{User selects specific bank account and views transactions associated with selected bank account}
-    \addrow{Scope}{money and budget management application}
-    \addrow{Level}{user-goal}
-    \addrow{Actors}{\textbf{User}}
-    \addmulrow{Stakeholders and Interests}{
-    \item User: Wants quick and convenient viewing of transactions associated with a specific bank account.
-    \item Company: Wants user interests to be fulfilled.}
-    \addrow{Pre-Conditions}{User has created and logged into a user account, and has added at least one bank account to his/her myMoney account. }
-    \addrow{Success Guarantee}{User can view transactions of specific bank account.}
-    \addmulrow{Main Success Flow}{
-    \item User selects specific bank account from list of all accounts.
-    \item System enters the detailed view for that bank account, displaying all transactions for that account.}
+The use case diagram below represents the Buying functionality of the Online Shopping Website. A detailed description of each use case follows. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{ucd2.png}
+    \caption{Use Case Diagram 1: Online Shopping Website - Buying }
+    \label{fig:ucd2}
+\end{figure}
+
+\begin{usecase}{Purchase}
+    \addrow{Case ID}{UC03}
+    \addrow{Actors}{\textbf{Buyer, Seller, Paypal, Bob TheRich, Customer Support}}
+    \addrow{Summary}{The Buyer views the shopping cart, has the option to modify it, and pays for it. In case of any issues, the Customer Support can be contacted.}
+    \addrow{Pre-Conditions}{
+        \begin{itemize}{
+            \item Buyer is a registered user.
+            \item Buyer has a valid Paypal account. 
+            \item Seller contact is hidden.
+        }\end{itemize}}
+    \addrow{Data}{Purchase photo, purchase description, purchase quantity, purchase price per item, total purchase price, taxes, shipping fee, shipping address, Paypal account, receipt (Seller information, Buyer information, purchase date, purchase details, purchase price, taxes)}
+    \addrow{Stimulus}{Buyer presses the Checkout Button.}
+    \addmulrow{Response}{
+        \begin{itemize}{
+            \item Buyer views the shopping cart information and can modify it.
+            \item Buyer chooses the shipping option (standard or express).
+            \item Buyer chooses the shipping address.
+            \item Buyer pays the Seller for the purchase through Paypal.
+            \item Buyer views the confirmation screen.  
+            \item Buyer receives a confirmation and receipt by email.
+            \item Order added to the purchase history.}
+            \end{itemize}}
     \addmulrow{Exceptions}{
-    \item User has no transactions for selected bank account.
-    }
-    \addrow{Alternate Flows}{
-    System displays the detailed view of the bank account nonetheless, but the list of transaction is empty.
-    }
+        \begin{enumerate}{
+        \item Any of the required information is missing or incorrect
+        \item Buyer exceeded the time limit to complete purchase
+        \item Buyer abandons the cart
+        \item Buyer didn’t receive a confirmation screen} \end{enumerate}}
     \addrow{Priority}{High}
-    \addrow{Traces to Test Cases}{Functional test case 5}
+    \addmulrow{Open Issues}{
+        \begin{enumerate}{
+            \item What happens if the Buyer isn’t allowed to purchase the product legally?} 
+        \end{enumerate}}
 \end{usecase}
 
-\begin{usecase}{View All Transactions from all Bank Accounts}
-    \addrow{Case ID}{06}
-    \addrow{Summary}{User can view all transactions that have been made from all bank accounts}
-    \addrow{Scope}{money and budget management application}
-    \addrow{Level}{user-goal}
-    \addrow{Actors}{\textbf{User}}
-    \addmulrow{Stakeholders and Interests}{
-    \item User: Wants easy and convenient viewing of all transactions among all bank accounts.
-    \item Company: Wants user interests to be fulfilled.}
-    \addrow{Pre-Conditions}{User has created and logged into a user account.}
-    \addrow{Success Guarantee}{User is able to conveniently view all transactions from all institutions in one display.}
-    \addmulrow{Main Success Flow}{
-    \item User selects View All Transactions option.
-    \item System shows all transactions across all accounts in one unified list.}
+\begin{usecase}{Review}
+    \addrow{Case ID}{UC04}
+    \addrow{Actors}{\textbf{Buyer, Guest User}}
+    \addrow{Summary}{Buyer leaves a review for a product previously purchased. In case of any issues, the Customer Support can be contacted.}
+    \addrow{Pre-Conditions}{
+        15 days must have passed since the Buyer’s purchase of the product being reviewed.
+        }
+    \addrow{Data}{
+Review text, review photo, days since purchase, Buyer’s username, rating (out of 5 stars)
+}
+    \addrow{Stimulus}{Buyer clicks on the Add Review button}
+    \addmulrow{Response}{
+        \begin{itemize}{
+            \item Buyer rates the product
+            \item Buyer adds review text
+            \item Buyer adds review photos (optional)
+            \item Buyer posts the review
+            \item Review appears on the product page for any Guest User to view
+        }\end{itemize}}
     \addmulrow{Exceptions}{
-    \item User has not added any account.
-    \item User has no transactions to record.}
-    \addmulrow{Alternate Flows}{
-    \item System displays an empty list of transactions.
-    \item System displays an empty list of transactions.
-    }
-    \addrow{Priority}{High}
-    \addrow{Traces to Test Cases}{Functional test case 6}
-\end{usecase}
-
-\begin{usecase}{Update User Account}
-    \addrow{Case ID}{07}
-    \addrow{Summary}{User can make changes and update personal information}
-    \addrow{Scope}{money and budget management application}
-    \addrow{Level}{user-goal}
-    \addrow{Actors}{\textbf{User}}
-    \addmulrow{Stakeholders and Interests}{
-    \item User:  Wants to user account attributes to keep up-to-date records on information such as address and email as well as changing user account password.
-    \item Company: Wants user interests to be fulfilled and ensure validation of changed user account attributes. }
-    \addrow{Pre-Conditions}{User has created and logged in a user account.}
-    \addrow{Success Guarantee}{User can easily update changes in personal information to guarantee accurate personal records }
-    \addmulrow{Main Success Flow}{
-    \item User selects \textit{Your profile}.
-    \item System shows current user account information.
-    \item User selects the piece of information that requires updating.
-    \item User enters new information.
-    \item System updates and saves the new information.
-    }
-    \addmulrow{Exceptions}{
-    \item Passwords do not match, user information is not updated
-    \item First name, last name, or password is left empty, user information is not updated.
-    \item email is an invalid email address.
-    }
-    \addmulrow{Alternate Flows}{
-    \item Error message is displayed prompting user that his passwords do not match and user account is not updated.
-    \item Error message is displayed prompting user that he is missing required information and user account is not updated.
-    \item Error message is displayed prompting user that his email address is invalid nd user account is not updated.
-    }
+        \begin{enumerate}{
+        \item 15 days haven’t passed since the purchase
+            \item Buyer posted more than 5 photos per review
+            \item Review over the character limit (400 characters)
+            \item Any of the required information is missing
+        } \end{enumerate}}
     \addrow{Priority}{Medium}
-    \addrow{Traces to Test Cases}{Functional test case 7}
-\end{usecase}
-
-
-\begin{usecase}{Sort Transactions by Any Attribute}
-    \addrow{Case ID}{08}
-    \addrow{Summary}{User can sort transactions by any attribute (date, transaction amount, category, and transaction type.)}
-    \addrow{Scope}{money and budget management application}
-    \addrow{Level}{user-goal}
-    \addrow{Actors}{\textbf{User}}
-    \addmulrow{Stakeholders and Interests}{
-    \item User: Wants to view transactions sorted by any one attribute.
-    \item Company: Wants user interests to be fulfilled.}
-    \addrow{Pre-Conditions}{User has created and logged in a user account.}
-    \addrow{Success Guarantee}{User can sort transactions by selecting one attribute. The default sorting is ascending order by alphabet or value of number. Double-clicking will sort in descending order.}
-    \addmulrow{Main Success Flow}{
-    \item User enters a transaction list view by choosing to view all bank account transactions or a detailed bank account view.
-    \item System shows a transaction list.
-    \item User selects to view sorted transaction by clicking any one attribute.
-    \item System sorts transactions by the selected attribute in ascending order.}
-    \addmulrow{Exceptions}{
-    \item User has no transactions in his account.}
-    \addmulrow{Alternate Flows}{
-      \item The system will display an empty transaction list.}
-    \addrow{Priority}{High}
-    \addrow{Traces to Test Cases}{Functional test case 8}
-\end{usecase}
-
-\begin{usecase}{Categorize Transaction}
-    \addrow{Case ID}{09}
-    \addrow{Summary}{User can select a category to represent a transaction.}
-    \addrow{Description} {This use case describes how a user can categorize their transactions with specific labels in order to sort their spending and better manage where most of their money is being spent }
-     \addrow{Scope}{money and budget management application}
-     \addrow{Level}{user-goal}
-     \addrow{Actors}{\textbf{User}}
-     \addmulrow{Stakeholders and Interests}{
-     \item User: Wants to label each transaction as a specific type of spending, such as rent, bills, leisure, etc., to better manage and track spending habits.
-     \item Company: Wants user interests to be fulfilled. Wants to facilitate user's ability to budget and manage money through simple categorization of spending.}
-     \addrow{Pre-Conditions}{User has created and logged in a user account, added at least one bank account, and has made at least one type of transaction.}
-     \addrow{Success Guarantee}{User can quickly and efficiently categorize each transaction.}
-     \addmulrow{Main Success Flow}{
-     \item User enters a transaction list view by choosing to view all bank account transactions or a detailed bank account view.
-     \item User selects the desired transaction to categorize.
-     \item User selects the categorize option.
-     \item System displays the categories in a drop down menu.
-     \item User selects preferred category to represent the current transaction, or types in his own category.
-     \item System changes the category attribute on the chosen transaction to the category that the user selected or wrote in.}
-     \addmulrow{Exceptions} {
-        \item the user writes in a category name of exceeding length (exceeding as defined by the business rules.)
-     }
-     \addmulrow{Alternate Flows}{
-        \item The system rejects the call and leaves the category unchanged.
-     }
-     \addrow{Priority}{Medium}
-     \addrow{Traces to Test Cases}{Functional test case 9}
-
-\end{usecase}
-
-\begin{usecase}{Filter Transactions by Date Range}
-    \addrow{Case ID}{10}
-    \addrow{Summary}{User can view all transactions between two selected dates.}
-    \addrow{Scope}{money and budget management application}
-    \addrow{Level}{user-goal}
-    \addrow{Actors}{\textbf{User}}
-    \addmulrow{Stakeholders and Interests}{
-    \item User: Wants to view transactions between two selected dates, to optimize spending habits for select durations.
-    \item Company: Wants user interests to be fulfilled.}
-    \addrow{Pre-Conditions}{User has created and logged in a user account.}
-    \addrow{Success Guarantee}{User can view all transactions from select bank accounts, or all bank accounts between two specified dates.}
-    \addmulrow{Main Success Flow}{
-    \item User decides to view all bank accounts or selects a specific bank account.
-    \item System shows transactions.
-    \item User selects desired dates to view transactions between the two dates.
-    \item System shows all transactions between the two specified dates.}
-    \addmulrow{Exceptions}{
-    \item User selects impossible range of dates.
-    }
-    \addmulrow{Alternate Flows}{
-    \item no transactions are displayed.
-    }
-    \addrow{Priority}{Low}
-    \addrow{Traces to Test Cases}{10}
-\end{usecase}
-
-\begin{usecase}{Filter Transactions by Category}
-    \addrow{Case ID}{11}
-    \addrow{Summary}{User can choose a category to filter by, which will result in all transactions which are not in that category to be removed from the view}
-    \addrow{Scope}{money and budget management application}
-    \addrow{Level}{user-goal}
-    \addrow{Actors}{\textbf{User}}
-    \addmulrow{Stakeholders and Interests}{
-     \item User: Wants to view only the transactions in a specific category.
-     \item Company: Wants user interests to be fulfilled.}
-    \addrow{Pre-Conditions}{User has created and logged in an account.}
-    \addrow{Success Guarantee}{Only the transactions in the specified category will be displayed.}
-    \addmulrow{Main Success Flow}{
-      \item User decides to view all bank accounts or selects a specific bank account.
-      \item System shows transactions.
-      \item User clicks in the text field for searching by category, and writes in the category he wishes to filer by.
-      \item System updates the view to show only the transactions with the specified category.
-    }
-    \addmulrow{Exceptions}{
-    \item User enters a non-existent category (a category by which no transaction is categorised).
-    }
-    \addmulrow{Alternate Flows}{
-    \item No transactions are displayed.}
-    \addrow{Priority}{High}
-    \addrow{Traces to Test Cases}{Functional test case 11}
-\end{usecase}
-
-\begin{usecase}{Export Statement as a CSV file}
-    \addrow{Case ID}{12}
-    \addrow{Summary}{Export of a CSV statement consisting of all the transactions currently displayed in the application window. }
-    \addrow{Scope}{money and budget management application}
-    \addrow{Level}{user-goal}
-    \addrow{Actors}{\textbf{User}}
-    \addmulrow{Stakeholders and Interests}{
-    \item User: Wants to save a CSV file of his transactions somewhere on his machine, for easy external use of his transaction history.
-    \item Company: Wants user interests to be fulfilled.}
-    \addrow{Pre-Conditions}{The user has created a user account, logged in, connected at least one bank account and has reached a transactions view either through \textit{view all transactions} view, either through \textit{account details} view.}
-    \addrow{Success Guarantee}{A CSV file has been successfully generated from the transactions currently displayed, and was saved where the user asked for it to be saved.}
-    \addmulrow{Main Success Flow}{
-      \item User chooses to view all bank account transactions or a detailed bank account view.
-      \item System shows transactions.
-      \item User clicks on the button to export to CSV.
-      \item System displays a menu asking where the user wants this statement to be saved.
-      \item User selects the directory wherein he wishes to export the statement.
-      \item System generates the statement and saves it in the desired folder of the user's choosing. It may be blank if the user has no transaction displayed in his view.
-    }
-    \addmulrow{Exceptions}{
-    \item User enters a non-existent path.
-    \item User enters an unauthorised path.
-    \item User enters a valid path, but a file with the same name as the statement to be generated already exists.
-    }
-    \addmulrow{Alternate Flows}{
-    \item The save button is greyed out, preventing the user from selecting that path and thus requiring a valid path to be entered to move on.
-    \item The save button is greyed out, preventing the user from selecting that path and thus requiring a valid path to be entered to move on.
-    \item A confirmation box should ask the user if he wants to overwrite a file if a file already exists in the specified location.}
-    \addrow{Priority}{Low}
-    \addrow{Traces to Test Cases}{Functional test case 12}
-\end{usecase}
-
-\begin{usecase}{Email Statement}
-    \addrow{Case ID}{13}
-    \addrow{Summary}{User wants to have a CSV statement consisting of all the transactions currently in the application window sent to his email.}
-    \addrow{Scope}{money and budget management application}
-    \addrow{Level}{user-goal}
-    \addrow{Actors}{\textbf{User}}
-    \addmulrow{Stakeholders and Interests}{
-    \item User: Wants to receive a CSV statement of all his transactions, for easy exportation of his transaction history.
-    \item Company: Wants user interests to be fulfilled.}
-    \addrow{Pre-Conditions}{A user created a user accountl, logged in, connected at least one bank account and has reached a transactions view either through \textit{view all transactions} view, either through \textit{account details} view.}
-    \addrow{Success Guarantee}{A CSV file has been successfully generated from the transactions currently displayed, and was saved where the user asked for it to be saved.}
-    \addmulrow{Main Success Flow}{
-      \item User chooses to view all bank account transactions or a detailed bank account view.
-      \item System shows transactions.
-      \item User clicks on the button to email CSV.
-      \item System generates the statement and sends it to the user's email.
-    }
-    \addmulrow{Exceptions}{
-    \item User hasn't set his email in his user account details.}
-    \addmulrow{Alternate Flows}{
-    \item the System notifies the user that his email address is empty and doesn't send the CSV file.
-    }
-    \addrow{Priority}{Low}
-    \addrow{Traces to Test Cases}{Functional test case 13}
+    \addmulrow{Open Issues}{
+        \begin{enumerate}{
+            \item Should the Buyer be able to preview the review?
+            \item How do we handle offensive reviews?
+            } 
+        \end{enumerate}}
 \end{usecase}
 
 \clearpage
+
 \section{Reference}
 
 
