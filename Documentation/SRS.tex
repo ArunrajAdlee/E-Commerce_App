@@ -188,12 +188,11 @@ Our sole other actor is the bank(s) system. Each bank system provides an API for
 This section will cover the functional requirements associated with the 354TheStars web application. These are the software capabilities that must be present in order for the user to carry out the services provided by the app or to execute the use cases.
 
 \begin{itemize}
-    \item  \textbf{User account creation:} The system allows the creation of user accounts, with information (user-name, email, password, first name, and last name) provided by the user.
-    \item \textbf{Sell:} The system shall grant a user access only to a properly authenticated user. If a user does not enter credentials, the system shall notify the user of the failure to authenticate.
-    \item \textbf{Buy:} The system shall require proper authentication to modify and/or delete a user account.
-    \item  \textbf{Search:} The system permits a logged-in user to add, manipulate, or remove bank accounts that are connected to the user account.
-    \item  \textbf{Admin panel:} The system permits a logged-in user to access the details of transactions associated with all bank accounts that were added to the user account. The system obtains these transactions through the banking system's API. The system allows different display formats, such as 'sorted by date' or 'sorted by type' or 'sorted by bank account.
-    \item \textbf{Purchase process:} The system permits the categorisation of transactions, a property by which the transactions may be sorted.
+    \item \textbf{Sell:} The system allows a registered user to add product and its details (price, description, image) to be able to sell the product.
+    \item \textbf{Buy:} The system allows a registered user to buy a product. Also the buyer can review the purchased product after fifteen days.
+    \item  \textbf{Search:} The system allows both a registered user and guest user to browse and search through all the products.
+    \item  \textbf{Admin panel:} The admin panel allows the admin to manage, view, and edit user accounts and their information such as (username, email, address, phone number). The panel also allows the admin to manage, view and edit all the products in the website.
+    \item \textbf{Purchase process:} The system provides a secure and safe online payment system for buyers. They can use their Paypal account to buy products from the website.
 \end{itemize}
 
 \clearpage
