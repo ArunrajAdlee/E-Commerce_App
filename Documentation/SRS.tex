@@ -144,7 +144,7 @@ The purpose of this document is to define requirements for the web application 3
 
 \subsection{System Context}
 
-Our system will mainly involve the user interacting with a web application interface. The user shall create an account to be able to buy or sell products, however user does not require to have an account for browsing the website. The user information will be stored in a remote database server. Users will not be able to create an account or login by using any social media platforms. It will discussed in more details in future version of this documentation. 
+Our system will mainly involve the user interacting with a web application interface. The user shall create an account to be able to buy or sell products, however user does not require to have an account for browsing the website. The user information will be stored in a remote database server. Users will not be able to create an account or login by using any social media platforms. It will discussed in more details in future version of this documentation.
 
 \clearpage
 
@@ -165,21 +165,44 @@ Our system will mainly involve the user interacting with a web application inter
         We are not the sole developers of e-commerce applications by far. As such, if we want to attract users to our platform, we must be able to compete on the same playing field as these current platforms. It is because of that reason, we must, at the very least, provide a secure, easy to use, and performant platform.
 
     \item \textbf{Reduce service fee}
-        We are aiming to empower businesses, and in order to do so, it is necessary to provide a great service and a competitive service fee. 
+        We are aiming to empower businesses, and in order to do so, it is necessary to provide a great service and a competitive service fee.
 
 \end{itemize}
 
 \subsection{Personas} \label{actors}
 \subsubsection{Admin}
-Our main actor is the user. All use cases are triggered by the user, as their requests that directly cause the bank system or our system to take action. All identification needed to access the bank system will be provided by the user. Using this information, the system will be able to answer queries made by the user as described in the use cases.
+The website administrator maintains the site and has access to manage all the
+products and users on 354TheStars. As a representative of the site, their duties include
+work with the programming that operates the platform, as well as making sure
+everything is running smoothly and according to the rules and code of conduct.
+This is the only role not operated or embodied by customers.
 \subsubsection{Buyer}
-Our sole other actor is the bank(s) system. Each bank system provides an API for accessing its bank account data. Our system will pull this data directly from the bank systems (who act as secondary actors), using identification as given by the user for the bank's authentication system. In other words, our system will merely act as a middleman between the user demanding information in a specific format, and the banks holding that information in an inconvenient format.
-\subsubsection{Seller}
-Our sole other actor is the bank(s) system. Each bank system provides an API for accessing its bank account data. Our system will pull this data directly from the bank systems (who act as secondary actors), using identification as given by the user for the bank's authentication system. In other words, our system will merely act as a middleman between the user demanding information in a specific format, and the banks holding that information in an inconvenient format.
-\subsubsection{Paypal}
-Our sole other actor is the bank(s) system. Each bank system provides an API for accessing its bank account data. Our system will pull this data directly from the bank systems (who act as secondary actors), using identification as given by the user for the bank's authentication system. In other words, our system will merely act as a middleman between the user demanding information in a specific format, and the banks holding that information in an inconvenient format.
+Buyers represent one role of 354TheStars' registered users. Whether they are
+an individual or a business, they can search, filter and purchase items from sellers,
+which will be delivered to their preferred address. Moreover, they can also review
+the products they have acquired from the site and even provide pictures to depict
+their feelings and the state of the product received. Finally, buyers will be providing
+354TheStars with revenue through a commision acquired from each purchase.
 \subsubsection{Guest User}
-Our sole other actor is the bank(s) system. Each bank system provides an API for accessing its bank account data. Our system will pull this data directly from the bank systems (who act as secondary actors), using identification as given by the user for the bank's authentication system. In other words, our system will merely act as a middleman between the user demanding information in a specific format, and the banks holding that information in an inconvenient format.
+Guest users are individuals or businesses that are casually visiting 354TheStars,
+or future buyers or sellers that have not yet registered themselves on the site.
+They have the same privileges as registered users (buyers and sellers) but making
+purchases or sales; therefore, for a guest user to complete an order or
+to start listing products, they must create an account.
+\subsubsection{Seller}
+Sellers represent the other possible role of our registered users. Whether they are
+an individual or a business, they can list products and provide a description,
+images, price and modify their available stock for sale. Lastly, sellers can also
+reply to reviews from buyers to better address their customers.
+\subsubsection{PayPal}
+PayPal is the only actor that is not embodied by a human. PayPal Holdings Inc. is
+an American company that operates a worldwide online payment platform. 354TheStars
+will be using PayPal's services to process money transactions needed for the purchase
+and sale of items on the site. They have no say in the activities or the
+decision-making process to mantain and manage 354TheStars, meaning the only
+relationship with the site will be of processing payments. Finally, this takes
+place by redirecting buyers to PayPal's website for them to input their payment
+and billing information to be processed.
 
 
 
@@ -250,7 +273,7 @@ As a buyer:
     \item I should be able to add up to three shipping addresses.
     \item I should be able to add a review to a product after fifteen days of purchasing the product.
     \item I should be able to see my orders history.
-    
+
 \end{itemize}
 
 \textbf{User-Story 3 (Seller)} \\
