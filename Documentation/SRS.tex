@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+```\documentclass[11pt]{article}
 \usepackage{color}
 \usepackage{nth}
 \usepackage{enumitem}
@@ -6,6 +6,7 @@
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage[pdftex]{graphicx}
+\usepackage{adjustbox}
 \pagestyle{empty}
 \setcounter{secnumdepth}{2}
 \usepackage{float}
@@ -170,123 +171,122 @@ Our system will mainly involve the user interacting with a web application inter
 \end{itemize}
 
 \subsection{Product Functions}
-\begin{table}[htbp]
-                    \caption{Traceability Matrix}
-                    \begin{center}
-                        \begin{tabular}{|r | c| c | c| c|}
-                            \hline
-                            ReqID & Category & Requirement & Use Case & User Story \\
-                            \hline
-                            R01 & \ Account & A registered user should be able to edit account information & & US02, US03 \\
-                             \hline
-                            R02 & \ Account & A registered should be able to have up to 3 shipping addresses &  & US02, US03 \\ 
-                             \hline
-                            R03 & \ Account & A registered user should be able to view order history &  & US02, US03 \\ 
-                            \hline
-                            R04 & \ Account & A registered user should be able to recover user information & &  \\
-                            \hline
-                            R05 & \ Account & A new user should be able to sign up & & US02, US03  \\
-                            \hline
-                            R06 & \ Account & A new user should receive account creation confirmation email & &  \\
-                            \hline
-                            R07 & \ Admin & The administrator should be able to manage user accounts & & US01  \\
-                            \hline
-                            R08 & \ Admin & The administrator should be able to manage seller listings &  & US01 \\ 
-                             \hline
-                            R09 & \ Buying & A user should be able to add product to shopping cart & UC03 &  \\
-                            \hline
-                            R10 & \ Buying & A user should be able to modify shopping cart & UC03 &  \\
-                            \hline
-                            R11 & \ Buying & The website should calculate tax & UC03 &  \\
-                            \hline
-                            R12 & \ Buying & The buyer should be able to choose shipping method & UC03 &  \\
-                            \hline
-                            R13 & \ Buying & A user should be able to pay for product with PayPal & UC2, UC03 & US02, US03 \\
-                            \hline
-                            R14 & \ Buying & The website should send purchase confirmation emails with receipt & & US02 \\ 
-                            \hline
-                            R15 & \ Buying & A buyer should be able to review a product & UC04 & US02, US03 \\ 
-                            \hline
-                            R16 & \ Listing & A user should be able to view product description & & US02, US03, US04 \\ 
-                            \hline
-                            R17 & \ Listing & A user should be able to view product photo & & US02, US03, US04 \\ 
-                            \hline
-                            R18 & \ Listing & A user should be able to view product rating and review (if any) & & US02, US03, US04 \\
-                            \hline
-                            R19 & \ Listing & A user should be able to view product stock count & & US02, US03, US04 \\ 
-                            \hline
-                            R20 & \ Listing & A user should be able to view product price & & US02, US03, US04 \\ 
-                             \hline
-                            R21 & \ Interface & The website should contain a search bar & & US02, US04 \\
-                            \hline
-                            R22 & \ Interface & A user should be able to sort search results by price  & & US02, US03, US04 \\ 
-                            \hline
-                            R23 & \ Interface & A user should be able to sort search results by location  & & US02, US03, US04 \\ 
-                            \hline
-                            R24 & \ Interface & A user should be able to sort search results by rating  & & US02, US03, US04 \\ 
-                            \hline
-                            R25 & \ Interface & The website should provide a quality UI for the administrator & & US01 \\ 
-                            \hline
-                            R26 & \ Interface & A registered user should be able to log in using email or username and password & & US02, US03 \\
-                             \hline
-                            R27 & \ Interface & A user should be able to contact customer support & UC01, UC02, UC03 &  \\
-                            \hline
-                            R28 & \ Interface & The website should contain contact information & &  \\
-                            \hline
-                            R29 & \ Interface & The website should contain a logo & &  \\
-                            \hline
-                            R30 & \ Interface & Homepage should display promotions & &  \\
-                            \hline
-                            R31 & \ Interface & Homepage should display products with the most positive reviews & &  \\
-                            \hline
-                            R32 & \ Interface & Homepage should highlight the sellers who sell the most & &  \\
-                            \hline
-                            R33 & \ Restriction & The system should limit item description characters & UC01 &  \\
-                             \hline
-                            R34 & \ Restriction & The website should contain only legal products & &  \\
-                            \hline
-                            R35 & \ Restriction & The website should contain only quality descriptions and photos & UC01 &  \\
-                            \hline
-                            R36 & \ Restriction & Seller contact information should be hidden & UC03 &  \\
-                            \hline
-                            R37 & \ Restriction & Enforce 15 days since purchase period before posting review & UC04 &  \\
-                            \hline
-                            R38 & \ Restriction & Enforce the 5 photo per review rule & UC04 &  \\
-                            \hline
-                            R39 & \ Restriction & Enforce the 400 character limit for review & UC04 &  \\
-                            \hline
-                            R40 & \ Restriction & Ensure that all the required information is correctly filled out & UC01, UC03, UC04 &  \\
-                            \hline
-                            R41 & \ Restriction & The homepage shouldn't look too cluttered and busy & &  \\
-                            \hline
-                            R42 & \ Restriction & Homepage should not display more than 20 items before pagination begins & &  \\
-                            \hline
-                            R43 & \ Restriction & The system should allow only registered user to make a purchase & &  \\
-                            \hline
-                            R44 & \ Search & A user should be able to search by name & & US02, US04 \\ 
-                            \hline
-                            R45 & \ Search & A user should be able to search by category & & US02, US04 \\ 
-                             \hline
-                            R46 & \ Selling & A seller should be able to add products to sell & UC01 & US03 \\
-                            \hline
-                            R47 & \ Selling & A seller should be able to edit products information & UC01 & US03 \\ 
-                            \hline
-                            R48 & \ Selling & A seller should be able to delete products & UC01 &  \\ 
-                            \hline
-                            R49 & \ Selling & The system should allow Bob TheRich to collect 8\% of the sale price & UC02 &  \\
-                            \hline
-                            R50 & \ Selling & The seller should be able to allow & disallow returns & UC02 &  \\
-                            \hline
-                            R51 & \ Selling & The seller should be able to set time limit for returns & UC02 &  \\
-                            \hline
-                            R52 & \ Selling & The seller should receive sale notification & UC02 &  \\
-                            \hline
-                            R53 & \ Selling & The seller should be able to mark item as shipped & UC02 &  \\
-
-                            \hline
-                        \end{tabular}
-                    \end{center}
-                \end{table}
+\begin{table}[H]
+        \caption{Traceability Matrix}
+        \begin{adjustbox}{width=\columnwidth,center}
+            \begin{tabular}{|r | c| c | c| c|}
+                \hline
+                ReqID & Category & Requirement & Use Case & User Story \\
+                \hline
+                R01 & \ Account & A registered user should be able to edit account information & & US02, US03 \\
+                    \hline
+                R02 & \ Account & A registered should be able to have up to 3 shipping addresses &  & US02, US03 \\ 
+                    \hline
+                R03 & \ Account & A registered user should be able to view order history &  & US02, US03 \\ 
+                \hline
+                R04 & \ Account & A registered user should be able to recover user information & &  \\
+                \hline
+                R05 & \ Account & A new user should be able to sign up & & US02, US03  \\
+                \hline
+                R06 & \ Account & A new user should receive account creation confirmation email & &  \\
+                \hline
+                R07 & \ Admin & The administrator should be able to manage user accounts & & US01  \\
+                \hline
+                R08 & \ Admin & The administrator should be able to manage seller listings &  & US01 \\ 
+                \hline
+                R09 & \ Buying & A user should be able to add product to shopping cart & UC03 &  \\
+                \hline
+                R10 & \ Buying & A user should be able to modify shopping cart & UC03 &  \\
+                \hline
+                R11 & \ Buying & The website should calculate tax & UC03 &  \\
+                \hline
+                R12 & \ Buying & The buyer should be able to choose shipping method & UC03 &  \\
+                \hline
+                R13 & \ Buying & A user should be able to pay for product with PayPal & UC2, UC03 & US02, US03 \\
+                \hline
+                R14 & \ Buying & The website should send purchase confirmation emails with receipt & & US02 \\ 
+                \hline
+                R15 & \ Buying & A buyer should be able to review a product & UC04 & US02, US03 \\ 
+                \hline
+                R16 & \ Listing & A user should be able to view product description & & US02, US03, US04 \\ 
+                \hline
+                R17 & \ Listing & A user should be able to view product photo & & US02, US03, US04 \\ 
+                \hline
+                R18 & \ Listing & A user should be able to view product rating and review (if any) & & US02, US03, US04 \\
+                \hline
+                R19 & \ Listing & A user should be able to view product stock count & & US02, US03, US04 \\ 
+                \hline
+                R20 & \ Listing & A user should be able to view product price & & US02, US03, US04 \\ 
+                    \hline
+                R21 & \ Interface & The website should contain a search bar & & US02, US04 \\
+                \hline
+                R22 & \ Interface & A user should be able to sort search results by price  & & US02, US03, US04 \\ 
+                \hline
+                R23 & \ Interface & A user should be able to sort search results by location  & & US02, US03, US04 \\ 
+                \hline
+                R24 & \ Interface & A user should be able to sort search results by rating  & & US02, US03, US04 \\ 
+                \hline
+                R25 & \ Interface & The website should provide a quality UI for the administrator & & US01 \\ 
+                \hline
+                R26 & \ Interface & A registered user should be able to log in using email or username and password & & US02, US03 \\
+                    \hline
+                R27 & \ Interface & A user should be able to contact customer support & UC01, UC02, UC03 &  \\
+                \hline
+                R28 & \ Interface & The website should contain contact information & &  \\
+                \hline
+                R29 & \ Interface & The website should contain a logo & &  \\
+                \hline
+                R30 & \ Interface & Homepage should display promotions & &  \\
+                \hline
+                R31 & \ Interface & Homepage should display products with the most positive reviews & &  \\
+                \hline
+                R32 & \ Interface & Homepage should highlight the sellers who sell the most & &  \\
+                \hline
+                R33 & \ Restriction & The system should limit item description characters & UC01 &  \\
+                \hline
+                R34 & \ Restriction & The website should contain only legal products & &  \\
+                \hline
+                R35 & \ Restriction & The website should contain only quality descriptions and photos & UC01 &  \\
+                \hline
+                R36 & \ Restriction & Seller contact information should be hidden & UC03 &  \\
+                \hline
+                R37 & \ Restriction & Enforce 15 days since purchase period before posting review & UC04 &  \\
+                \hline
+                R38 & \ Restriction & Enforce the 5 photo per review rule & UC04 &  \\
+                \hline
+                R39 & \ Restriction & Enforce the 400 character limit for review & UC04 &  \\
+                \hline
+                R40 & \ Restriction & Ensure that all the required information is correctly filled out & UC01, UC03, UC04 &  \\
+                \hline
+                R41 & \ Restriction & The homepage shouldn't look too cluttered and busy & &  \\
+                \hline
+                R42 & \ Restriction & Homepage should not display more than 20 items before pagination begins & &  \\
+                \hline
+                R43 & \ Restriction & The system should allow only registered user to make a purchase & &  \\
+                \hline
+                R44 & \ Search & A user should be able to search by name & & US02, US04 \\ 
+                \hline
+                R45 & \ Search & A user should be able to search by category & & US02, US04 \\ 
+                \hline
+                R46 & \ Selling & A seller should be able to add products to sell & UC01 & US03 \\
+                \hline
+                R47 & \ Selling & A seller should be able to edit products information & UC01 & US03 \\ 
+                \hline
+                R48 & \ Selling & A seller should be able to delete products & UC01 &  \\ 
+                \hline
+                R49 & \ Selling & The system should allow Bob TheRich to collect 8\% of the sale price & UC02 &  \\
+                \hline
+                R50 & \ Selling & The seller should be able to allow and disallow returns & UC02 &  \\
+                \hline
+                R51 & \ Selling & The seller should be able to set time limit for returns & UC02 &  \\
+                \hline
+                R52 & \ Selling & The seller should receive sale notification & UC02 &  \\
+                \hline
+                R53 & \ Selling & The seller should be able to mark item as shipped & UC02 &  \\
+                \hline
+        \end{tabular}
+    \end{adjustbox}
+\end{table}
 \clearpage
 
 \subsection{Personas} \label{actors}
@@ -337,8 +337,6 @@ This section will cover the functional requirements associated with the 354TheSt
     \item  \textbf{Admin panel:} The admin panel allows the admin to manage, view, and edit user accounts and their information such as (username, email, address, phone number). The panel also allows the admin to manage, view and edit all the products in the website.
     \item \textbf{Purchase process:} The system provides a secure and safe online payment system for buyers. They can use their Paypal account to buy products from the website.
 \end{itemize}
-
-\clearpage
 
 \section{User-Stories}
 
@@ -423,8 +421,6 @@ As a seller:
         \end{itemize}
     \item I should have the same ability as a buyer.
 \end{itemize}
-
-\clearpage
 
 \textbf{User-Story 4 (Guest User)} \\
 As a guest user:
@@ -667,3 +663,4 @@ Review text, review photo, days since purchase, Buyer’s username, rating (out 
 
 \end{itemize}
 \end{document}
+```
