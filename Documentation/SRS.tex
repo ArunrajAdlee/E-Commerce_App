@@ -1,4 +1,4 @@
-```\documentclass[11pt]{article}
+\documentclass[11pt]{article}
 \usepackage{color}
 \usepackage{nth}
 \usepackage{enumitem}
@@ -517,26 +517,21 @@ The use case diagram below represents the Selling functionality of the Online Sh
     \addrow{Data}{Product photo, product description, price, stock count.}
     \addrow{Stimulus}{Seller pressed on Add Listing/Edit Listing/Delete Listing Button}
     \addmulrow{Response}{
-        \begin{itemize}
             \item Add Listing/Edit Listing/Delete Listing dialogue appears.
             \item Seller fills out all the information.
             \item Listing added/edited/deleted successfully.
-        \end {itemize}}
+    }
     \addmulrow{Exceptions}{
-        \begin{enumerate}{
             \item The required information is not filled out.
             \item The description is over the character limit (100 characters). 
-            } 
-        \end{enumerate}}
+    }
     \addrow{Priority}{High}
     \addmulrow{Open Issues}{
-        \begin{enumerate}{
-            \item Should the Seller be able to preview the listing? 
+            \item Should the Seller be able to preview the listing?
             \item What happens if the item is illegal? 
             \item How do we check the quality of the image?
             \item How do we check if the seller is legitimate?
-            } 
-        \end{enumerate}}
+    }
 \end{usecase}
 
 \begin{usecase}{Sell items}
@@ -547,26 +542,22 @@ The use case diagram below represents the Selling functionality of the Online Sh
     \addrow{Data}{Paypal account information, sales data, returns option, time limit for returns, 8\% fee, shipped items}
     \addrow{Stimulus}{Buyer paid for item(s)}
     \addmulrow{Response}{
-        \begin{itemize}{
             \item Paypal transfers money from the Buyer account to the Seller Account and sends a confirmation.
             \item Seller receives a sale notification by email.
             \item The sale appears in the Seller’s sales history.
             \item Bob TheRich invoices the Seller for 8\% of the sale. 
             \item Seller pays Bob TheRich through Paypal. 
-            \item Seller marks item as shipped. }
-        \end {itemize}}
+            \item Seller marks item as shipped. 
+    }
+        
     \addmulrow{Exceptions}{
-        \begin{enumerate}{
             \item Confirmation from Paypal not received.
-            } 
-        \end{enumerate}}
+    }
     \addrow{Priority}{High}
     \addmulrow{Open Issues}{
-        \begin{enumerate}{
-                \item Should refunds be allowed? If yes, how should they be handled?
-                \item What happens if the sale appears in the sales history but not in the shipped items history after a predetermined amount of time?
-                } 
-            \end{enumerate}}
+            \item Should refunds be allowed? If yes, how should they be handled?
+            \item What happens if the sale appears in the sales history but not in the shipped items history after a predetermined amount of time?
+    }
 \end{usecase}
 \clearpage
 
@@ -585,35 +576,33 @@ The use case diagram below represents the Buying functionality of the Online Sho
     \addrow{Case ID}{UC03}
     \addrow{Actors}{\textbf{Buyer, Seller, Paypal, Bob TheRich, Customer Support}}
     \addrow{Summary}{The Buyer views the shopping cart, has the option to modify it, and pays for it. In case of any issues, the Customer Support can be contacted.}
-    \addrow{Pre-Conditions}{
-        \begin{itemize}{
-            \item Buyer is a registered user.
-            \item Buyer has a valid Paypal account. 
-            \item Seller contact is hidden.
-        }\end{itemize}}
+    \addmulrow{Pre-Conditions}{
+        \item Buyer is a registered user.
+        \item Buyer has a valid Paypal account. 
+        \item Seller contact is hidden.
+    }
     \addrow{Data}{Purchase photo, purchase description, purchase quantity, purchase price per item, total purchase price, taxes, shipping fee, shipping address, Paypal account, receipt (Seller information, Buyer information, purchase date, purchase details, purchase price, taxes)}
     \addrow{Stimulus}{Buyer presses the Checkout Button.}
     \addmulrow{Response}{
-        \begin{itemize}{
             \item Buyer views the shopping cart information and can modify it.
             \item Buyer chooses the shipping option (standard or express).
             \item Buyer chooses the shipping address.
             \item Buyer pays the Seller for the purchase through Paypal.
             \item Buyer views the confirmation screen.  
             \item Buyer receives a confirmation and receipt by email.
-            \item Order added to the purchase history.}
-            \end{itemize}}
+            \item Order added to the purchase history.
+    }
     \addmulrow{Exceptions}{
-        \begin{enumerate}{
         \item Any of the required information is missing or incorrect
         \item Buyer exceeded the time limit to complete purchase
         \item Buyer abandons the cart
-        \item Buyer didn’t receive a confirmation screen} \end{enumerate}}
+        \item Buyer did not receive a confirmation screen
+    }
     \addrow{Priority}{High}
     \addmulrow{Open Issues}{
-        \begin{enumerate}{
-            \item What happens if the Buyer isn’t allowed to purchase the product legally?} 
-        \end{enumerate}}
+        \item What happens if the Buyer is not allowed to purchase the product legally?
+    } 
+    
 \end{usecase}
 
 \begin{usecase}{Review}
@@ -628,27 +617,23 @@ Review text, review photo, days since purchase, Buyer’s username, rating (out 
 }
     \addrow{Stimulus}{Buyer clicks on the Add Review button}
     \addmulrow{Response}{
-        \begin{itemize}{
-            \item Buyer rates the product
-            \item Buyer adds review text
-            \item Buyer adds review photos (optional)
-            \item Buyer posts the review
-            \item Review appears on the product page for any Guest User to view
-        }\end{itemize}}
+        \item Buyer rates the product
+        \item Buyer adds review text
+        \item Buyer adds review photos (optional)
+        \item Buyer posts the review
+        \item Review appears on the product page for any Guest User to view
+    }
     \addmulrow{Exceptions}{
-        \begin{enumerate}{
         \item 15 days haven’t passed since the purchase
-            \item Buyer posted more than 5 photos per review
-            \item Review over the character limit (400 characters)
-            \item Any of the required information is missing
-        } \end{enumerate}}
+        \item Buyer posted more than 5 photos per review
+        \item Review over the character limit (400 characters)
+        \item Any of the required information is missing
+    }
     \addrow{Priority}{Medium}
     \addmulrow{Open Issues}{
-        \begin{enumerate}{
-            \item Should the Buyer be able to preview the review?
-            \item How do we handle offensive reviews?
-            } 
-        \end{enumerate}}
+        \item Should the Buyer be able to preview the review?
+        \item How do we handle offensive reviews?
+    }
 \end{usecase}
 
 \clearpage
