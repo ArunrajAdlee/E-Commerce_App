@@ -6,6 +6,7 @@
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage[pdftex]{graphicx}
+\usepackage{adjustbox}
 \pagestyle{empty}
 \setcounter{secnumdepth}{2}
 \usepackage{float}
@@ -168,6 +169,126 @@ Our system will mainly involve the user interacting with a web application inter
         We are aiming to empower businesses, and in order to do so, it is necessary to provide a great service and a competitive service fee.
 
 \end{itemize}
+
+\subsection{Product Functions}
+\begin{table}[H]
+        \caption{Traceability Matrix}
+        \begin{adjustbox}{width=\columnwidth,center}
+            \begin{tabular}{|r | c| c | c| c|}
+                \hline
+                ReqID & Category & Requirement & Use Case & User Story \\
+                \hline
+                R01 & \ Account & A registered user should be able to edit account information & & US02, US03 \\
+                    \hline
+                R02 & \ Account & A registered should be able to have up to 3 shipping addresses &  & US02, US03 \\ 
+                    \hline
+                R03 & \ Account & A registered user should be able to view order history &  & US02, US03 \\ 
+                \hline
+                R04 & \ Account & A registered user should be able to recover user information & &  \\
+                \hline
+                R05 & \ Account & A new user should be able to sign up & & US02, US03  \\
+                \hline
+                R06 & \ Account & A new user should receive account creation confirmation email & &  \\
+                \hline
+                R07 & \ Admin & The administrator should be able to manage user accounts & & US01  \\
+                \hline
+                R08 & \ Admin & The administrator should be able to manage seller listings &  & US01 \\ 
+                \hline
+                R09 & \ Buying & A user should be able to add product to shopping cart & UC03 &  \\
+                \hline
+                R10 & \ Buying & A user should be able to modify shopping cart & UC03 &  \\
+                \hline
+                R11 & \ Buying & The website should calculate tax & UC03 &  \\
+                \hline
+                R12 & \ Buying & The buyer should be able to choose shipping method & UC03 &  \\
+                \hline
+                R13 & \ Buying & A user should be able to pay for product with PayPal & UC2, UC03 & US02, US03 \\
+                \hline
+                R14 & \ Buying & The website should send purchase confirmation emails with receipt & & US02 \\ 
+                \hline
+                R15 & \ Buying & A buyer should be able to review a product & UC04 & US02, US03 \\ 
+                \hline
+                R16 & \ Listing & A user should be able to view product description & & US02, US03, US04 \\ 
+                \hline
+                R17 & \ Listing & A user should be able to view product photo & & US02, US03, US04 \\ 
+                \hline
+                R18 & \ Listing & A user should be able to view product rating and review (if any) & & US02, US03, US04 \\
+                \hline
+                R19 & \ Listing & A user should be able to view product stock count & & US02, US03, US04 \\ 
+                \hline
+                R20 & \ Listing & A user should be able to view product price & & US02, US03, US04 \\ 
+                    \hline
+                R21 & \ Interface & The website should contain a search bar & & US02, US04 \\
+                \hline
+                R22 & \ Interface & A user should be able to sort search results by price  & & US02, US03, US04 \\ 
+                \hline
+                R23 & \ Interface & A user should be able to sort search results by location  & & US02, US03, US04 \\ 
+                \hline
+                R24 & \ Interface & A user should be able to sort search results by rating  & & US02, US03, US04 \\ 
+                \hline
+                R25 & \ Interface & The website should provide a quality UI for the administrator & & US01 \\ 
+                \hline
+                R26 & \ Interface & A registered user should be able to log in using email or username and password & & US02, US03 \\
+                    \hline
+                R27 & \ Interface & A user should be able to contact customer support & UC01, UC02, UC03 &  \\
+                \hline
+                R28 & \ Interface & The website should contain contact information & &  \\
+                \hline
+                R29 & \ Interface & The website should contain a logo & &  \\
+                \hline
+                R30 & \ Interface & Homepage should display promotions & &  \\
+                \hline
+                R31 & \ Interface & Homepage should display products with the most positive reviews & &  \\
+                \hline
+                R32 & \ Interface & Homepage should highlight the sellers who sell the most & &  \\
+                \hline
+                R33 & \ Restriction & The system should limit item description characters & UC01 &  \\
+                \hline
+                R34 & \ Restriction & The website should contain only legal products & &  \\
+                \hline
+                R35 & \ Restriction & The website should contain only quality descriptions and photos & UC01 &  \\
+                \hline
+                R36 & \ Restriction & Seller contact information should be hidden & UC03 &  \\
+                \hline
+                R37 & \ Restriction & Enforce 15 days since purchase period before posting review & UC04 &  \\
+                \hline
+                R38 & \ Restriction & Enforce the 5 photo per review rule & UC04 &  \\
+                \hline
+                R39 & \ Restriction & Enforce the 400 character limit for review & UC04 &  \\
+                \hline
+                R40 & \ Restriction & Ensure that all the required information is correctly filled out & UC01, UC03, UC04 &  \\
+                \hline
+                R41 & \ Restriction & The homepage shouldn't look too cluttered and busy & &  \\
+                \hline
+                R42 & \ Restriction & Homepage should not display more than 20 items before pagination begins & &  \\
+                \hline
+                R43 & \ Restriction & The system should allow only registered user to make a purchase & &  \\
+                \hline
+                R44 & \ Search & A user should be able to search by name & & US02, US04 \\ 
+                \hline
+                R45 & \ Search & A user should be able to search by category & & US02, US04 \\ 
+                \hline
+                R46 & \ Selling & A seller should be able to add products to sell & UC01 & US03 \\
+                \hline
+                R47 & \ Selling & A seller should be able to edit products information & UC01 & US03 \\ 
+                \hline
+                R48 & \ Selling & A seller should be able to delete products & UC01 &  \\ 
+                \hline
+                R49 & \ Selling & The system should allow Bob TheRich to collect 8\% of the sale price & UC02 &  \\
+                \hline
+                R50 & \ Selling & The seller should be able to allow and disallow returns & UC02 &  \\
+                \hline
+                R51 & \ Selling & The seller should be able to set time limit for returns & UC02 &  \\
+                \hline
+                R52 & \ Selling & The seller should receive sale notification & UC02 &  \\
+                \hline
+                R53 & \ Selling & The seller should be able to mark item as shipped & UC02 &  \\
+                \hline
+        \end{tabular}
+    \end{adjustbox}
+\end{table}
+\clearpage
+
 
 \subsection{Personas} \label{actors}
 \subsubsection{Admin}
@@ -396,26 +517,21 @@ The use case diagram below represents the Selling functionality of the Online Sh
     \addrow{Data}{Product photo, product description, price, stock count.}
     \addrow{Stimulus}{Seller pressed on Add Listing/Edit Listing/Delete Listing Button}
     \addmulrow{Response}{
-        \begin{itemize}
             \item Add Listing/Edit Listing/Delete Listing dialogue appears.
             \item Seller fills out all the information.
             \item Listing added/edited/deleted successfully.
-        \end {itemize}}
+    }
     \addmulrow{Exceptions}{
-        \begin{enumerate}{
             \item The required information is not filled out.
             \item The description is over the character limit (100 characters). 
-            } 
-        \end{enumerate}}
+    }
     \addrow{Priority}{High}
     \addmulrow{Open Issues}{
-        \begin{enumerate}{
-            \item Should the Seller be able to preview the listing? 
+            \item Should the Seller be able to preview the listing?
             \item What happens if the item is illegal? 
             \item How do we check the quality of the image?
             \item How do we check if the seller is legitimate?
-            } 
-        \end{enumerate}}
+    }
 \end{usecase}
 
 \begin{usecase}{Sell items}
@@ -426,26 +542,22 @@ The use case diagram below represents the Selling functionality of the Online Sh
     \addrow{Data}{Paypal account information, sales data, returns option, time limit for returns, 8\% fee, shipped items}
     \addrow{Stimulus}{Buyer paid for item(s)}
     \addmulrow{Response}{
-        \begin{itemize}{
             \item Paypal transfers money from the Buyer account to the Seller Account and sends a confirmation.
             \item Seller receives a sale notification by email.
             \item The sale appears in the Seller’s sales history.
             \item Bob TheRich invoices the Seller for 8\% of the sale. 
             \item Seller pays Bob TheRich through Paypal. 
-            \item Seller marks item as shipped. }
-        \end {itemize}}
+            \item Seller marks item as shipped. 
+    }
+        
     \addmulrow{Exceptions}{
-        \begin{enumerate}{
             \item Confirmation from Paypal not received.
-            } 
-        \end{enumerate}}
+    }
     \addrow{Priority}{High}
     \addmulrow{Open Issues}{
-        \begin{enumerate}{
-                \item Should refunds be allowed? If yes, how should they be handled?
-                \item What happens if the sale appears in the sales history but not in the shipped items history after a predetermined amount of time?
-                } 
-            \end{enumerate}}
+            \item Should refunds be allowed? If yes, how should they be handled?
+            \item What happens if the sale appears in the sales history but not in the shipped items history after a predetermined amount of time?
+    }
 \end{usecase}
 \clearpage
 
@@ -464,35 +576,33 @@ The use case diagram below represents the Buying functionality of the Online Sho
     \addrow{Case ID}{UC03}
     \addrow{Actors}{\textbf{Buyer, Seller, Paypal, Bob TheRich, Customer Support}}
     \addrow{Summary}{The Buyer views the shopping cart, has the option to modify it, and pays for it. In case of any issues, the Customer Support can be contacted.}
-    \addrow{Pre-Conditions}{
-        \begin{itemize}{
-            \item Buyer is a registered user.
-            \item Buyer has a valid Paypal account. 
-            \item Seller contact is hidden.
-        }\end{itemize}}
+    \addmulrow{Pre-Conditions}{
+        \item Buyer is a registered user.
+        \item Buyer has a valid Paypal account. 
+        \item Seller contact is hidden.
+    }
     \addrow{Data}{Purchase photo, purchase description, purchase quantity, purchase price per item, total purchase price, taxes, shipping fee, shipping address, Paypal account, receipt (Seller information, Buyer information, purchase date, purchase details, purchase price, taxes)}
     \addrow{Stimulus}{Buyer presses the Checkout Button.}
     \addmulrow{Response}{
-        \begin{itemize}{
             \item Buyer views the shopping cart information and can modify it.
             \item Buyer chooses the shipping option (standard or express).
             \item Buyer chooses the shipping address.
             \item Buyer pays the Seller for the purchase through Paypal.
             \item Buyer views the confirmation screen.  
             \item Buyer receives a confirmation and receipt by email.
-            \item Order added to the purchase history.}
-            \end{itemize}}
+            \item Order added to the purchase history.
+    }
     \addmulrow{Exceptions}{
-        \begin{enumerate}{
         \item Any of the required information is missing or incorrect
         \item Buyer exceeded the time limit to complete purchase
         \item Buyer abandons the cart
-        \item Buyer didn’t receive a confirmation screen} \end{enumerate}}
+        \item Buyer did not receive a confirmation screen
+    }
     \addrow{Priority}{High}
     \addmulrow{Open Issues}{
-        \begin{enumerate}{
-            \item What happens if the Buyer isn’t allowed to purchase the product legally?} 
-        \end{enumerate}}
+        \item What happens if the Buyer is not allowed to purchase the product legally?
+    } 
+    
 \end{usecase}
 
 \begin{usecase}{Review}
@@ -507,27 +617,23 @@ Review text, review photo, days since purchase, Buyer’s username, rating (out 
 }
     \addrow{Stimulus}{Buyer clicks on the Add Review button}
     \addmulrow{Response}{
-        \begin{itemize}{
-            \item Buyer rates the product
-            \item Buyer adds review text
-            \item Buyer adds review photos (optional)
-            \item Buyer posts the review
-            \item Review appears on the product page for any Guest User to view
-        }\end{itemize}}
+        \item Buyer rates the product
+        \item Buyer adds review text
+        \item Buyer adds review photos (optional)
+        \item Buyer posts the review
+        \item Review appears on the product page for any Guest User to view
+    }
     \addmulrow{Exceptions}{
-        \begin{enumerate}{
         \item 15 days haven’t passed since the purchase
-            \item Buyer posted more than 5 photos per review
-            \item Review over the character limit (400 characters)
-            \item Any of the required information is missing
-        } \end{enumerate}}
+        \item Buyer posted more than 5 photos per review
+        \item Review over the character limit (400 characters)
+        \item Any of the required information is missing
+    }
     \addrow{Priority}{Medium}
     \addmulrow{Open Issues}{
-        \begin{enumerate}{
-            \item Should the Buyer be able to preview the review?
-            \item How do we handle offensive reviews?
-            } 
-        \end{enumerate}}
+        \item Should the Buyer be able to preview the review?
+        \item How do we handle offensive reviews?
+    }
 \end{usecase}
 
 \clearpage
