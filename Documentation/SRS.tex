@@ -461,35 +461,30 @@ As a guest user:
                 \hline
                 Expression &  Definition \\
                 \hline
-                User & The person that is using the application and the main provider of requests to the system. \\
+                Admin & The person who manages the website as well as users and products.  \\
                 \hline
-                User Account & A data object containing user information. It also contains the various bank accounts that a user may have linked to the system. \\
+                User Account & A data object containing user information including username, email, address(es), phone number. \\
                 \hline
-                Bank Account & A data object containing transactions linked with a specific bank account in a bank institution. One user account may have more than one bank accounts.\\
+                Registered User & The person who has successfully made a user account. \\
                 \hline
-                Transaction & Any kind of money exchange associated with a bank account.\\
+                Guest User & The person who is not a registered user, however has the ability to browse the website. \\
                 \hline
-                Transfer & A type of transaction that occurs between two parties.\\
+                Product & A legal object that is posted by a seller.\\
                 \hline
-                Deposit & A type of transaction where the owner puts money in his own bank account.\\
+                Seller & The person who is a registered user and is able to add legal products to sell on the website.\\
                 \hline
-                Withdrawal & A type of transaction where the owner of the bank account removes money from his balance.\\
+                Buyer & The person who is a registered user and is able to purchase products on the website.\\
+                \hline
+                Purchase & A type of transaction where the buyer use to buy a product on the website.\\
+                \hline
+                Shipping Address & An address that the product will be shipped to after a buyer has successfully purchased a product.\\
+                \hline
+                PayPal & PayPal Holdings Inc. is an American company that operates a worldwide online payment platform. \\
                 \hline
                 Database & A local or online container which holds data in an organised, efficient manner. \\
                 \hline
-                Server & a computer that is accessible on a network, on which a database and/or system may be hosted. The bank institutions' databases will be hosted on here. \\
+                Server & A computer that is accessible on a network, on which a database and/or system may be hosted. The bank institutions' databases will be hosted on here. \\
                 \hline
-                Object-Oriented Programming & A programming paradigm which separates entities into objects, and uses the concept of inheritance of properties, polymorphism of objects, encapsulation of objects. We use this paradigm for its maintainability and structural benefits.\\
-                \hline
-                MVC - Model-View-Controller Architecture & An architectural pattern which strictly separates components into the model (manages the data and logic), the view (output of the model), and the controller (handling input and passing it to the model or view).\\
-                \hline
-                Interface & A component of a system by which other entities (be it humans or other systems) may engage in an exchange of data with the system in question. \\
-                \hline
-                API - Application Programming Interface & A protocol or set of functions which serve as a method of communication to a software system. It is a type of interface, and the one by which our system will communicate with the banking institutions' databases. \\
-                \hline
-                DAO - Data access object & An object that provides an abstract interface to some type of database or other persistence mechanism.\\
-                \hline
-
             \end{tabular}}
     \end{center}
 \end{table}
