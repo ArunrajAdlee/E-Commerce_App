@@ -617,7 +617,7 @@ The use case diagram below represents the Buying functionality of the Online Sho
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.5\textwidth]{ucd2.png}
-    \caption{Use Case Diagram 1: Online Shopping Website - Buying }
+    \caption{Use Case Diagram 2: Online Shopping Website - Buying }
     \label{fig:ucd2}
 \end{figure}
 
@@ -685,11 +685,126 @@ Review text, review photo, days since purchase, Buyer’s username, rating (out 
     }
 \end{usecase}
 
+
+\clearpage
+\subsection{Login}
+
+The use case diagram below represents the login functionality of the Online Shopping Website. A detailed description of each use case follows. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{ucd3.png}
+    \caption{Use Case Diagram 3: Online Shopping Website - Login }
+    \label{fig:ucd2}
+\end{figure}
+
+\begin{usecase}{Login}
+    \addrow{Case ID}{UC05}
+    \addrow{Actors}{\textbf{Guest user , Administrator}}
+    \addrow{Summary}{Any guest user can sign in to their account. Same goes for the administrator.}
+    \addmulrow{Pre-Conditions}{
+        \item Must have an existing account
+    }
+    \addrow{Data}{Username and password}
+    \addrow{Stimulus}{Guest user presses the login button.}
+    \addmulrow{Response}{
+            \item User will have the option to sell products.
+            \item User will have the option to buy products.
+            \item User can browse and put items in his cart.
+            \item Administrator will have access to private information. 
+            \item Administrator will be able to manege the website.
+    }
+    \addmulrow{Exceptions}{
+        \item Username and/or password incorrect.
+    }
+    \addrow{Priority}{High}
+    \addmulrow{Open Issues}{
+        \item What if the guest user forgets his/her password or username?
+        \item Is there a limit of attempt for safety reason ?
+    } 
+    
+\end{usecase}
+
+\begin{usecase}{Signup}
+    \addrow{Case ID}{UC06}
+    \addrow{Actors}{\textbf{Guest user, Administrator}}
+    \addrow{Summary}{The administrator and the guest user should be able to create an account at any time.}
+    \addrow{Pre-Conditions}{
+       User has an email address.
+        }
+    \addrow{Data}{
+username,password,address,email,phone number
+}
+    \addrow{Stimulus}{Guest user presses the sign up button}
+    \addmulrow{Response}{
+        \item user will have to fill out a formula.
+        \item user will enter his/her personal information.
+        \item user will have access to more features.
+    }
+    \addmulrow{Exceptions}{
+        \item User doesn't enter correct information.
+        \item Username taken/password weak.
+    }
+    \addrow{Priority}{High}
+    \addmulrow{Open Issues}{
+        \item What if the user already have an account and creates another one?
+        \item How are we verifying that no two user have the same username?
+        \item For security reasons,how are we handling weak passwords?
+    }
+\end{usecase}
+
+\begin{usecase}{Browse item}
+    \addrow{Case ID}{UC07}
+    \addrow{Actors}{\textbf{Guest user, Administrator}}
+    \addrow{Summary}{Both user can browse the items through the website and/or search for a specific item.}
+    \addrow{Pre-Conditions}{
+       None , anyone can browse.
+        }
+    \addrow{Data}{
+    item name, item description,item price}
+    \addrow{Stimulus}{User write on the search bar}
+    \addmulrow{Response}{
+        \item the page will load all the items related.
+        \item The page will display the pictures and prices of each item.
+    }
+    \addmulrow{Exceptions}{
+        \item item not found (does not exist) 
+    }
+    \addrow{Priority}{High}
+    \addmulrow{Open Issues}{
+        \item How are we handling spelling errors (ex;show suggestions) ?
+    }
+\end{usecase}
+
+
+
+\begin{usecase}{Add to cart}
+    \addrow{Case ID}{UC08}
+    \addrow{Actors}{\textbf{Guest user, Administrator}}
+    \addrow{Summary}{Whenever a user sees something that they like, they can put that item in their cart to eventually buy.}
+    \addrow{Pre-Conditions}{
+       Must be a registered user.
+        }
+    \addrow{Data}{
+item picture, price of item, name of the seller,total price of all items chosen,quantity of each item chosen.}
+    \addrow{Stimulus}{User click a button to add an item to his/her cart.}
+    \addmulrow{Response}{
+        \item The item will appear in the user's cart.
+        \item The user will be able to go look at the cart.
+        \item The user will be able to remove an item or continue adding.
+    }
+    \addmulrow{Exceptions}{
+        \item Item is out of stock.
+    }
+    \addrow{Priority}{High}
+    \addmulrow{Open Issues}{
+        \item What happens to the cart if it contains items and the user exit the website?
+    }
+\end{usecase}
 \clearpage
 
+
 \section{Reference}
-
-
 
 \begin{itemize}
     \item User information: As our user and use-cases was based on feedback provided by our developers, our references lie mainly within our own team.
