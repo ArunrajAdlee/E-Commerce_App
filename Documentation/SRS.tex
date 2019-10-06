@@ -341,6 +341,59 @@ This section will cover the functional requirements associated with the 354TheSt
 
 \clearpage
 
+% type: quality, quality goals, quality of service, constraint
+\subsection{Non-Functional Requirements}\label{nonfunc req}
+
+\begin{requirement}{Interface}
+    \addrow{Requirement ID:}{01}
+    \addrow{Type:}{Quality of Service}
+    \addrow{Description:}{The website should be intuitive, easy to navigate and provide the administrator with a quality experience when accessing and viewing the account information of a user.}
+    \addrow{Reasoning:}{If the website is not user-friendly and intuitive to use, the user will feel overwhelmed and have the desire to exit. It should be easy for the administrator to navigate the website, otherwise it would be a challenge to keep the organization up.}
+    \addrow{Quality attribute scenario:}{Users should be able to familiarize themselves with the website within seconds of visiting it.}
+\end{requirement}
+
+\begin{requirement}{Security}
+    \addrow{Requirement ID:}{02}
+    \addrow{Type:}{Quality of Service}
+    \addrow{Description:}{The application should provide the user with the utmost security. All transactions should be made if and only if valid credentials were provided, if not the service should be denied.}
+    \addrow{Reasoning:}{A user should be able to navigate through the application without being concerned about an intruder obtaining access to the user's personal information. The trust built through the level of security provided to the users is what will lead to the success of the application. The user is trusting our service by providing sensitive information such as personal email address, payment information etc. and mishandling this data would greatly damage the business's reputation.  }
+    \addrow{Quality attribute scenario:}{All sensitive information should be hidden. The database storing all the personal information needs to be encrypted.}
+\end{requirement}
+
+\begin{requirement}{Performance}
+    \addrow{Requirement ID:}{03}
+    \addrow{Type:}{Quality of Service}
+    \addrow{Description:}{The website should run in a smooth fashion. Searching for an item should be quick and efficient.}
+    \addrow{Reasoning:}{If the user experiences any problem with searching or posting an item they will not be satisfied.}
+    \addrow{Quality attribute scenario:}{No matter how full the database gets the performance should always remain optimal. This will provide a quality experience for the user.}
+\end{requirement}
+
+\begin{requirement}{Reliability}
+    \addrow{Requirement ID:}{04}
+    \addrow{Type:}{Quality of Service}
+    \addrow{Description:}{The service should be reliable and functional to the users at all time. If updates need to be made, users will be informed and given enough time to finish any transactions that need to be completed. }
+    \addrow{Reasoning:}{Reliability is what will provide users access to the application at all time. If the application is riddled with issues and bugs, users will consider moving to one of the competitors. The business will not and cannot be successful if the users are not provided a fully functional service at all time. }
+    \addrow{Quality attribute scenario:}{The system will be online at all times providing services all around the clock. Back up of the system data will provide a continuous run time of the application even if parts of the application were to fail.}
+\end{requirement}
+
+\begin{requirement}{Maintainability}
+    \addrow{Requirement ID:}{05}
+    \addrow{Type:}{Development Constraint}
+    \addrow{Description:}{The application should be able to adapt to newer features and innovations that may occur. To maintain the current application, the testing should be divided into multiple instances, before releasing it to production.}
+    \addrow{Reasoning:}{Due to the growth in technology, the application should be able to adapt to future changes. The application should also be easy to maintain and make changes to. If a complete tear up is required to apply updates, it becomes an issue. To make it cost effective and future proof, maintainability needs to be easily applied.}
+    \addrow{Quality attribute scenario:}{Any changes to the application need to go through the developer server and test server before making out to production. In this manner, we make multiple verifications and avoid downtime due to new updates.}
+\end{requirement}
+
+\begin{requirement}{Distribution}
+    \addrow{Requirement ID:}{06}
+    \addrow{Type:}{Architectural Constraint}
+    \addrow{Description:}{The website should work well in both desktop and mobile browsers.}
+    \addrow{Reasoning:}{Mobile phones are extremely common. The user should not have a problem navigating it through their phone.}
+    \addrow{Quality attribute scenario:}{We are taking advantage of the portability of mobile phones, making sure users can experience the website wherever they have their mobile devices.}
+\end{requirement}
+
+\clearpage
+
 \section{User-Stories}
 
 \textbf{User-Story 1 (Admin)} \\
@@ -461,30 +514,35 @@ As a guest user:
                 \hline
                 Expression &  Definition \\
                 \hline
-                Admin & The person who manages the website as well as users and products.  \\
+                User & The person that is using the application and the main provider of requests to the system. \\
                 \hline
-                User Account & A data object containing user information including username, email, address(es), phone number. \\
+                User Account & A data object containing user information. It also contains the various bank accounts that a user may have linked to the system. \\
                 \hline
-                Registered User & The person who has successfully made a user account. \\
+                Bank Account & A data object containing transactions linked with a specific bank account in a bank institution. One user account may have more than one bank accounts.\\
                 \hline
-                Guest User & The person who is not a registered user, however has the ability to browse the website. \\
+                Transaction & Any kind of money exchange associated with a bank account.\\
                 \hline
-                Product & A legal object that is posted by a seller.\\
+                Transfer & A type of transaction that occurs between two parties.\\
                 \hline
-                Seller & The person who is a registered user and is able to add legal products to sell on the website.\\
+                Deposit & A type of transaction where the owner puts money in his own bank account.\\
                 \hline
-                Buyer & The person who is a registered user and is able to purchase products on the website.\\
-                \hline
-                Purchase & A type of transaction where the buyer use to buy a product on the website.\\
-                \hline
-                Shipping Address & An address that the product will be shipped to after a buyer has successfully purchased a product.\\
-                \hline
-                PayPal & PayPal Holdings Inc. is an American company that operates a worldwide online payment platform. \\
+                Withdrawal & A type of transaction where the owner of the bank account removes money from his balance.\\
                 \hline
                 Database & A local or online container which holds data in an organised, efficient manner. \\
                 \hline
-                Server & A computer that is accessible on a network, on which a database and/or system may be hosted. The bank institutions' databases will be hosted on here. \\
+                Server & a computer that is accessible on a network, on which a database and/or system may be hosted. The bank institutions' databases will be hosted on here. \\
                 \hline
+                Object-Oriented Programming & A programming paradigm which separates entities into objects, and uses the concept of inheritance of properties, polymorphism of objects, encapsulation of objects. We use this paradigm for its maintainability and structural benefits.\\
+                \hline
+                MVC - Model-View-Controller Architecture & An architectural pattern which strictly separates components into the model (manages the data and logic), the view (output of the model), and the controller (handling input and passing it to the model or view).\\
+                \hline
+                Interface & A component of a system by which other entities (be it humans or other systems) may engage in an exchange of data with the system in question. \\
+                \hline
+                API - Application Programming Interface & A protocol or set of functions which serve as a method of communication to a software system. It is a type of interface, and the one by which our system will communicate with the banking institutions' databases. \\
+                \hline
+                DAO - Data access object & An object that provides an abstract interface to some type of database or other persistence mechanism.\\
+                \hline
+
             \end{tabular}}
     \end{center}
 \end{table}
