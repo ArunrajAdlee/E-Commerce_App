@@ -10,6 +10,9 @@
 \pagestyle{empty}
 \setcounter{secnumdepth}{2}
 \usepackage{float}
+\usepackage{makeidx}
+\makeindex
+\usepackage{idxlayout}
 
 \topmargin=0cm
 \oddsidemargin=0cm
@@ -139,13 +142,13 @@
 
 \section{Document Purpose}
 
-The purpose of this document is to define requirements for the web application 354TheStars. This document may thus be used to orient the development of the application. It seeks to understand the requirements of the problem, formulate the necessary functions and properties needed to answer this problem and its requirements, and then test these functions against the requirements. Hence, it may be used by our users to specify the problem and its requirements, by the developers to understand what functions their system must implement, and what to test their system against. The primary audience for this document are the stakeholders of the project and the development team of the system, as well the project testers for fine-tuning their testing strategy.
+The purpose of this document is to define requirements for the web application \index{354TheStars}354TheStars. This document may thus be used to orient the development of the application. It seeks to understand the requirements of the problem, formulate the necessary functions and properties needed to answer this problem and its requirements, and then test these functions against the requirements. Hence, it may be used by our users to specify the problem and its requirements, by the developers to understand what functions their system must implement, and what to test their system against. The primary audience for this document are the stakeholders of the project and the development team of the system, as well the project testers for fine-tuning their testing strategy.
 
 \section{Project description}
 
 \subsection{System Context}
 
-Our system will mainly involve the user interacting with a web application interface. The user shall create an account to be able to buy or sell products, however user does not require to have an account for browsing the website. The user information will be stored in a remote database server. Users will not be able to create an account or login by using any social media platforms. It will discussed in more details in future version of this documentation.
+Our system will mainly involve the user interacting with a web application interface. The user shall create an account to be able to buy or sell \index{product}products, however user does not require to have an account for browsing the website. The user \index{information}information will be stored in a remote database server. Users will not be able to create an account or login by using any social media platforms. It will discussed in more details in future version of this documentation.
 
 \clearpage
 
@@ -156,7 +159,7 @@ Our system will mainly involve the user interacting with a web application inter
 \end{figure}
 
 \subsection{Project Scope}
-354TheStars is planning to provide a worldwide platform, where various size of companies as well as individuals can sell or buy products. All of the available products shall be eligible for sale.
+\index{354TheStars}354TheStars is planning to provide a worldwide platform, where various size of companies as well as individuals can sell or buy \index{product}products. All of the available products shall be eligible for sale.
 
 \subsection{Business Goals}
 
@@ -178,101 +181,101 @@ Our system will mainly involve the user interacting with a web application inter
                 \hline
                 ReqID & Category & Requirement & Use Case & User Story \\
                 \hline
-                R01 & \ Account & A registered user should be able to edit account information & & US02, US03 \\
+                R01 & \ Account & A \index{registered user}registered user should be able to edit account \index{information}information & & US02, US03 \\
                     \hline
-                R02 & \ Account & A registered should be able to have up to 3 shipping addresses &  & US02, US03 \\ 
+                R02 & \ Account & A registered should be able to have up to 3 shipping addresses &  & US02, US03 \\
                     \hline
-                R03 & \ Account & A registered user should be able to view order history &  & US02, US03 \\ 
+                R03 & \ Account & A registered user should be able to view order history &  & US02, US03 \\
                 \hline
-                R04 & \ Account & A registered user should be able to recover user information & &  \\
+                R04 & \ Account & A registered user should be able to recover user \index{information}information & &  \\
                 \hline
                 R05 & \ Account & A new user should be able to sign up & & US02, US03  \\
                 \hline
                 R06 & \ Account & A new user should receive account creation confirmation email & &  \\
                 \hline
-                R07 & \ Admin & The administrator should be able to manage user accounts & & US01  \\
+                R07 & \ Admin & The \index{administrator}administrator should be able to manage user accounts & & US01  \\
                 \hline
-                R08 & \ Admin & The administrator should be able to manage seller listings &  & US01 \\ 
+                R08 & \ Admin & The \index{administrator}administrator should be able to manage \index{seller}seller listings &  & US01 \\
                 \hline
-                R09 & \ Buying & A user should be able to add product to shopping cart & UC03 &  \\
+                R09 & \ Buying & A user should be able to add \index{product}product to shopping cart & UC03 &  \\
                 \hline
                 R10 & \ Buying & A user should be able to modify shopping cart & UC03 &  \\
                 \hline
                 R11 & \ Buying & The website should calculate tax & UC03 &  \\
                 \hline
-                R12 & \ Buying & The buyer should be able to choose shipping method & UC03 &  \\
+                R12 & \ Buying & The \index{buyer}buyer should be able to choose shipping method & UC03 &  \\
                 \hline
-                R13 & \ Buying & A user should be able to pay for product with PayPal & UC2, UC03 & US02, US03 \\
+                R13 & \ Buying & A user should be able to pay for \index{product}product with \index{PayPal}PayPal & UC2, UC03 & US02, US03 \\
                 \hline
-                R14 & \ Buying & The website should send purchase confirmation emails with receipt & & US02 \\ 
+                R14 & \ Buying & The website should send purchase confirmation emails with \index{receipt}receipt & & US02 \\
                 \hline
-                R15 & \ Buying & A buyer should be able to review a product & UC04 & US02, US03 \\ 
+                R15 & \ Buying & A \index{buyer}buyer should be able to \index{review}review a product & UC04 & US02, US03 \\
                 \hline
-                R16 & \ Listing & A user should be able to view product description & & US02, US03, US04 \\ 
+                R16 & \ Listing & A user should be able to view \index{product}product description & & US02, US03, US04 \\
                 \hline
-                R17 & \ Listing & A user should be able to view product photo & & US02, US03, US04 \\ 
+                R17 & \ Listing & A user should be able to view product photo & & US02, US03, US04 \\
                 \hline
                 R18 & \ Listing & A user should be able to view product rating and review (if any) & & US02, US03, US04 \\
                 \hline
-                R19 & \ Listing & A user should be able to view product stock count & & US02, US03, US04 \\ 
+                R19 & \ Listing & A user should be able to view product stock count & & US02, US03, US04 \\
                 \hline
-                R20 & \ Listing & A user should be able to view product price & & US02, US03, US04 \\ 
+                R20 & \ Listing & A user should be able to view \index{product}product price & & US02, US03, US04 \\
                     \hline
                 R21 & \ Interface & The website should contain a search bar & & US02, US04 \\
                 \hline
-                R22 & \ Interface & A user should be able to sort search results by price  & & US02, US03, US04 \\ 
+                R22 & \ Interface & A user should be able to sort search results by price  & & US02, US03, US04 \\
                 \hline
-                R23 & \ Interface & A user should be able to sort search results by location  & & US02, US03, US04 \\ 
+                R23 & \ Interface & A user should be able to sort search results by location  & & US02, US03, US04 \\
                 \hline
-                R24 & \ Interface & A user should be able to sort search results by rating  & & US02, US03, US04 \\ 
+                R24 & \ Interface & A user should be able to sort search results by rating  & & US02, US03, US04 \\
                 \hline
-                R25 & \ Interface & The website should provide a quality UI for the administrator & & US01 \\ 
+                R25 & \ Interface & The website should provide a quality UI for the \index{administrator}administrator & & US01 \\
                 \hline
-                R26 & \ Interface & A registered user should be able to log in using email or username and password & & US02, US03 \\
-                    \hline
+                R26 & \ Interface & A \index{registered user}registered user should be able to log in using email or username and password & & US02, US03 \\
+                \hline
                 R27 & \ Interface & A user should be able to contact customer support & UC01, UC02, UC03 &  \\
                 \hline
-                R28 & \ Interface & The website should contain contact information & &  \\
+                R28 & \ Interface & The website should contain contact \index{information}information & &  \\
                 \hline
                 R29 & \ Interface & The website should contain a logo & &  \\
                 \hline
                 R30 & \ Interface & Homepage should display promotions & &  \\
                 \hline
-                R31 & \ Interface & Homepage should display products with the most positive reviews & &  \\
+                R31 & \ Interface & Homepage should display \index{product}products with the most positive \index{review}reviews & &  \\
                 \hline
-                R32 & \ Interface & Homepage should highlight the sellers who sell the most & &  \\
+                R32 & \ Interface & Homepage should highlight the \index{seller}sellers who sell the most & &  \\
                 \hline
                 R33 & \ Restriction & The system should limit item description characters & UC01 &  \\
                 \hline
-                R34 & \ Restriction & The website should contain only legal products & &  \\
+                R34 & \ Restriction & The website should contain only legal \index{product}products & &  \\
                 \hline
                 R35 & \ Restriction & The website should contain only quality descriptions and photos & UC01 &  \\
                 \hline
-                R36 & \ Restriction & Seller contact information should be hidden & UC03 &  \\
+                R36 & \ Restriction & \index{seller}Seller contact \index{information}information should be hidden & UC03 &  \\
                 \hline
                 R37 & \ Restriction & Enforce 15 days since purchase period before posting review & UC04 &  \\
                 \hline
-                R38 & \ Restriction & Enforce the 5 photo per review rule & UC04 &  \\
+                R38 & \ Restriction & Enforce the 5 photo per \index{review}review rule & UC04 &  \\
                 \hline
                 R39 & \ Restriction & Enforce the 400 character limit for review & UC04 &  \\
                 \hline
-                R40 & \ Restriction & Ensure that all the required information is correctly filled out & UC01, UC03, UC04 &  \\
+                R40 & \ Restriction & Ensure that all the required \index{information}information is correctly filled out & UC01, UC03, UC04 &  \\
                 \hline
                 R41 & \ Restriction & The homepage shouldn't look too cluttered and busy & &  \\
                 \hline
                 R42 & \ Restriction & Homepage should not display more than 20 items before pagination begins & &  \\
                 \hline
-                R43 & \ Restriction & The system should allow only registered user to make a purchase & &  \\
+                R43 & \ Restriction & The system should allow only \index{registered user}registered user to make a purchase & &  \\
                 \hline
-                R44 & \ Search & A user should be able to search by name & & US02, US04 \\ 
+                R44 & \ Search & A user should be able to search by name & & US02, US04 \\
                 \hline
-                R45 & \ Search & A user should be able to search by category & & US02, US04 \\ 
+                R45 & \ Search & A user should be able to search by category & & US02, US04 \\
                 \hline
-                R46 & \ Selling & A seller should be able to add products to sell & UC01 & US03 \\
+                R46 & \ Selling & A \index{seller}seller should be able to add products to sell & UC01 & US03 \\
                 \hline
-                R47 & \ Selling & A seller should be able to edit products information & UC01 & US03 \\ 
+                R47 & \ Selling & A seller should be able to edit products \index{information}information & UC01 & US03 \\
                 \hline
-                R48 & \ Selling & A seller should be able to delete products & UC01 &  \\ 
+                R48 & \ Selling & A seller should be able to delete \index{product}products & UC01 &  \\
                 \hline
                 R49 & \ Selling & The system should allow Bob TheRich to collect 8\% of the sale price & UC02 &  \\
                 \hline
@@ -292,51 +295,51 @@ Our system will mainly involve the user interacting with a web application inter
 
 \subsection{Personas} \label{actors}
 \subsubsection{Admin}
-The website administrator maintains the site and has access to manage all the
-products and users on 354TheStars. As a representative of the site, their duties include
+The website \index{administrator}administrator maintains the site and has access to manage all the
+\index{product}products and users on \index{354TheStars}354TheStars. As a representative of the site, their duties include
 work with the programming that operates the platform, as well as making sure
 everything is running smoothly and according to the rules and code of conduct.
 This is the only role not operated or embodied by customers.
 \subsubsection{Buyer}
-Buyers represent one role of 354TheStars' registered users. Whether they are
-an individual or a business, they can search, filter and purchase items from sellers,
-which will be delivered to their preferred address. Moreover, they can also review
-the products they have acquired from the site and even provide pictures to depict
-their feelings and the state of the product received. Finally, buyers will be providing
+\index{buyer}Buyers represent one role of \index{354TheStars}354TheStars' \index{registered user}registered users. Whether they are
+an individual or a business, they can search, filter and purchase items from \index{seller}sellers,
+which will be delivered to their preferred address. Moreover, they can also \index{review}review
+the \index{product}products they have acquired from the site and even provide pictures to depict
+their feelings and the state of the \index{product}product received. Finally, buyers will be providing
 354TheStars with revenue through a commision acquired from each purchase.
 \subsubsection{Guest User}
-Guest users are individuals or businesses that are casually visiting 354TheStars,
-or future buyers or sellers that have not yet registered themselves on the site.
-They have the same privileges as registered users (buyers and sellers) but making
+\index{guest user}Guest users are individuals or businesses that are casually visiting \index{354TheStars}354TheStars,
+or future \index{buyer}buyers or \index{seller}sellers that have not yet registered themselves on the site.
+They have the same privileges as \index{registered user}registered users (buyers and sellers) but making
 purchases or sales; therefore, for a guest user to complete an order or
-to start listing products, they must create an account.
+to start listing \index{product}products, they must create an account.
 \subsubsection{Seller}
-Sellers represent the other possible role of our registered users. Whether they are
+\index{seller}Sellers represent the other possible role of our \index{registered user}registered users. Whether they are
 an individual or a business, they can list products and provide a description,
-images, price and modify their available stock for sale. Lastly, sellers can also
-reply to reviews from buyers to better address their customers.
+images, price and modify their available stock for sale. Lastly, \index{seller}sellers can also
+reply to \index{review}reviews from \index{buyer}buyers to better address their customers.
 \subsubsection{PayPal}
-PayPal is the only actor that is not embodied by a human. PayPal Holdings Inc. is
-an American company that operates a worldwide online payment platform. 354TheStars
-will be using PayPal's services to process money transactions needed for the purchase
+\index{PayPal}PayPal is the only actor that is not embodied by a human. PayPal Holdings Inc. is
+an American company that operates a worldwide online \index{payment}payment platform. \index{354TheStars}354TheStars
+will be using \index{PayPal}PayPal's services to process money transactions needed for the purchase
 and sale of items on the site. They have no say in the activities or the
-decision-making process to mantain and manage 354TheStars, meaning the only
+decision-making process to mantain and manage \index{354TheStars}354TheStars, meaning the only
 relationship with the site will be of processing payments. Finally, this takes
-place by redirecting buyers to PayPal's website for them to input their payment
-and billing information to be processed.
+place by redirecting \index{buyer}buyers to PayPal's website for them to input their \index{payment}payment
+and billing \index{information}information to be processed.
 
 
 
 \subsection{Functional Requirements} \label{func req}
 
-This section will cover the functional requirements associated with the 354TheStars web application. These are the software capabilities that must be present in order for the user to carry out the services provided by the app or to execute the use cases.
+This section will cover the functional requirements associated with the \index{354TheStars}354TheStars web application. These are the software capabilities that must be present in order for the user to carry out the services provided by the app or to execute the use cases.
 
 \begin{itemize}
-    \item \textbf{Sell:} The system allows a registered user to add product and its details (price, description, image) to be able to sell the product.
-    \item \textbf{Buy:} The system allows a registered user to buy a product. Also the buyer can review the purchased product after fifteen days.
-    \item  \textbf{Search:} The system allows both a registered user and guest user to browse and search through all the products.
-    \item  \textbf{Admin panel:} The admin panel allows the admin to manage, view, and edit user accounts and their information such as (username, email, address, phone number). The panel also allows the admin to manage, view and edit all the products in the website.
-    \item \textbf{Purchase process:} The system provides a secure and safe online payment system for buyers. They can use their Paypal account to buy products from the website.
+    \item \textbf{Sell:} The system allows a registered user to add \index{product}product and its details (price, description, image) to be able to sell the product.
+    \item \textbf{Buy:} The system allows a \index{registered user}registered user to buy a product. Also the \index{buyer}buyer can \index{review}review the purchased product after fifteen days.
+    \item  \textbf{Search:} The system allows both a registered user and \index{guest user}guest user to browse and search through all the \index{product}products.
+    \item  \textbf{Admin panel:} The \index{administrator}admin panel allows the admin to manage, view, and edit user accounts and their \index{information}information such as (username, email, address, phone number). The panel also allows the admin to manage, view and edit all the products in the website.
+    \item \textbf{Purchase process:} The system provides a secure and safe online \index{payment}payment system for \index{buyer}buyers. They can use their \index{PayPal}PayPal account to buy \index{product}products from the website.
 \end{itemize}
 
 \clearpage
@@ -347,8 +350,8 @@ This section will cover the functional requirements associated with the 354TheSt
 \begin{requirement}{Interface}
     \addrow{Requirement ID:}{01}
     \addrow{Type:}{Quality of Service}
-    \addrow{Description:}{The website should be intuitive, easy to navigate and provide the administrator with a quality experience when accessing and viewing the account information of a user.}
-    \addrow{Reasoning:}{If the website is not user-friendly and intuitive to use, the user will feel overwhelmed and have the desire to exit. It should be easy for the administrator to navigate the website, otherwise it would be a challenge to keep the organization up.}
+    \addrow{Description:}{The website should be intuitive, easy to navigate and provide the \index{administrator}administrator with a quality experience when accessing and viewing the account \index{information}information of a user.}
+    \addrow{Reasoning:}{If the website is not user-friendly and intuitive to use, the user will feel overwhelmed and have the desire to exit. It should be easy for the \index{administrator}administrator to navigate the website, otherwise it would be a challenge to keep the organization up.}
     \addrow{Quality attribute scenario:}{Users should be able to familiarize themselves with the website within seconds of visiting it.}
 \end{requirement}
 
@@ -356,7 +359,7 @@ This section will cover the functional requirements associated with the 354TheSt
     \addrow{Requirement ID:}{02}
     \addrow{Type:}{Quality of Service}
     \addrow{Description:}{The application should provide the user with the utmost security. All transactions should be made if and only if valid credentials were provided, if not the service should be denied.}
-    \addrow{Reasoning:}{A user should be able to navigate through the application without being concerned about an intruder obtaining access to the user's personal information. The trust built through the level of security provided to the users is what will lead to the success of the application. The user is trusting our service by providing sensitive information such as personal email address, payment information etc. and mishandling this data would greatly damage the business's reputation.  }
+    \addrow{Reasoning:}{A user should be able to navigate through the application without being concerned about an intruder obtaining access to the user's personal \index{information}information. The trust built through the level of security provided to the users is what will lead to the success of the application. The user is trusting our service by providing sensitive information such as personal email address, \index{payment}payment information etc. and mishandling this \index{data}data would greatly damage the business's reputation.  }
     \addrow{Quality attribute scenario:}{All sensitive information should be hidden. The database storing all the personal information needs to be encrypted.}
 \end{requirement}
 
@@ -373,7 +376,7 @@ This section will cover the functional requirements associated with the 354TheSt
     \addrow{Type:}{Quality of Service}
     \addrow{Description:}{The service should be reliable and functional to the users at all time. If updates need to be made, users will be informed and given enough time to finish any transactions that need to be completed. }
     \addrow{Reasoning:}{Reliability is what will provide users access to the application at all time. If the application is riddled with issues and bugs, users will consider moving to one of the competitors. The business will not and cannot be successful if the users are not provided a fully functional service at all time. }
-    \addrow{Quality attribute scenario:}{The system will be online at all times providing services all around the clock. Back up of the system data will provide a continuous run time of the application even if parts of the application were to fail.}
+    \addrow{Quality attribute scenario:}{The system will be online at all times providing services all around the clock. Back up of the system \index{data}data will provide a continuous run time of the application even if parts of the application were to fail.}
 \end{requirement}
 
 \begin{requirement}{Maintainability}
@@ -397,22 +400,22 @@ This section will cover the functional requirements associated with the 354TheSt
 \section{User-Stories}
 
 \textbf{User-Story 1 (Admin)} \\
-As an admin:
+As an \index{administrator}admin:
 \begin{itemize}
    \item I should be able to create, manage and delete user accounts.
-    \item I should have the options to view personal information of the users including:
+    \item I should have the options to view personal \index{information}information of the users including:
         \begin{itemize}
             \item Username
             \item Email
             \item Address
             \item Phone Number
         \end{itemize}
-    \item I should be able to view and manage every single product that is posted in the website.
+    \item I should be able to view and manage every single \index{product}product that is posted in the website.
     \item The application should provide quality user experience when accessing and viewing account information of a user.
 \end{itemize}
 
 \textbf{User-Story 2 (Buyer)} \\
-As a buyer:
+As a \index{buyer}buyer:
 \begin{itemize}
     \item I should be able to sign up using:
         \begin{itemize}
@@ -422,15 +425,15 @@ As a buyer:
             \item Phone Number
             \item Password
         \end{itemize}
-    \item I should be to edit my personal information.
+    \item I should be to edit my personal \index{information}information.
     \item I should be able to see a product's detail including:
         \begin{itemize}
             \item Image
             \item Description
             \item Price
-            \item Reviews
+            \item \index{review}Reviews
         \end{itemize}
-    \item I should have the ability to search for a product by:
+    \item I should have the ability to search for a \index{product}product by:
         \begin{itemize}
             \item Name
             \item Category
@@ -439,18 +442,18 @@ As a buyer:
         \begin{itemize}
             \item Price
             \item Location
-            \item Reviews
+            \item \index{review}Reviews
         \end{itemize}
-    \item I should be able to pay with my PayPal account.
+    \item I should be able to pay with my \index{PayPal}PayPal account.
     \item I should get a confirmation email showing a successful purchase.
     \item I should be able to add up to three shipping addresses.
-    \item I should be able to add a review to a product after fifteen days of purchasing the product.
+    \item I should be able to add a \index{review}review to a \index{product}product after fifteen days of purchasing the product.
     \item I should be able to see my orders history.
 
 \end{itemize}
 
 \textbf{User-Story 3 (Seller)} \\
-As a seller:
+As a \index{seller}seller:
 \begin{itemize}
     \item I should be able to sign up using:
         \begin{itemize}
@@ -460,30 +463,30 @@ As a seller:
             \item Phone number
             \item Password
         \end{itemize}
-    \item I should be able to edit my personal info including:
+    \item I should be able to edit my personal \index{information}information including:
         \begin{itemize}
             \item Email
             \item Address
             \item Phone number
             \item Password
         \end{itemize}
-    \item I should be able to add a product to sell.
-    \item I should be able to edit a product's info including:
+    \item I should be able to add a \index{product}product to sell.
+    \item I should be able to edit a product's \index{information}information including:
         \begin{itemize}
             \item Price
             \item Image
             \item Description
             \item Stock's count
         \end{itemize}
-    \item I should have the same ability as a buyer.
+    \item I should have the same ability as a \index{buyer}buyer.
 \end{itemize}
 
 \clearpage
 
 \textbf{User-Story 4 (Guest User)} \\
-As a guest user:
+As a \index{guest user}guest user:
 \begin{itemize}
-    \item I should be able to browse through products.
+    \item I should be able to browse through \index{product}products.
     \item I should be able to search for a product by using:
     \begin{itemize}
         \item Name
@@ -493,14 +496,14 @@ As a guest user:
         \begin{itemize}
             \item Price
             \item Location
-            \item Reviews
+            \item \index{review}Reviews
         \end{itemize}
-    \item I should be able to see a product's detail including:
+    \item I should be able to see a \index{product}product's detail including:
         \begin{itemize}
             \item Image
             \item Description
             \item Price
-            \item Reviews
+            \item \index{review}Reviews
         \end{itemize}
 \end{itemize}
 
@@ -514,27 +517,27 @@ As a guest user:
                 \hline
                 Expression &  Definition \\
                 \hline
-                Admin & The person who manages the website as well as users and products.  \\
+                \index{administrator}Admin & The person who manages the website as well as users and \index{product}products.  \\
                 \hline
-                User Account & A data object containing user information including username, email, address(es), phone number. \\
+                User Account & A \index{data}data object containing user \index{information}information including username, email, address(es), phone number. \\
                 \hline
                 Registered User & The person who has successfully made a user account. \\
                 \hline
-                Guest User & The person who is not a registered user, however has the ability to browse the website. \\
+                \index{guest user}Guest User & The person who is not a \index{registered user}registered user, however has the ability to browse the website. \\
                 \hline
-                Product & A legal object that is posted by a seller.\\
+                Product & A legal object that is posted by a \index{seller}seller.\\
                 \hline
-                Seller & The person who is a registered user and is able to add legal products to sell on the website.\\
+                Seller & The person who is a registered user and is able to add legal \index{product}products to sell on the website.\\
                 \hline
-                Buyer & The person who is a registered user and is able to purchase products on the website.\\
+                \index{buyer}Buyer & The person who is a \index{registered user}registered user and is able to purchase products on the website.\\
                 \hline
-                Purchase & A type of transaction where the buyer use to buy a product on the website.\\
+                Purchase & A type of transaction where the \index{buyer}buyer use to buy a \index{product}product on the website.\\
                 \hline
-                Shipping Address & An address that the product will be shipped to after a buyer has successfully purchased a product.\\
+                Shipping Address & An address that the product will be shipped to after a \index{buyer}buyer has successfully purchased a \index{product}product.\\
                 \hline
-                PayPal & PayPal Holdings Inc. is an American company that operates a worldwide online payment platform. \\
+                \index{PayPal}PayPal & PayPal Holdings Inc. is an American company that operates a worldwide online \index{payment}payment platform. \\
                 \hline
-                Database & A local or online container which holds data in an organised, efficient manner. \\
+                Database & A local or online container which holds \index{data}data in an organised, efficient manner. \\
                 \hline
                 Server & A computer that is accessible on a network, on which a database and/or system may be hosted. The bank institutions' databases will be hosted on here. \\
                 \hline
@@ -549,7 +552,7 @@ As a guest user:
 \section{Use Cases}
 \subsection{Selling}
 
-The use case diagram below represents the Selling functionality of the Online Shopping Website. A detailed description of each use case follows. 
+The use case diagram below represents the Selling functionality of the Online Shopping Website. A detailed description of each use case follows.
 
 \begin{figure}[htbp]
     \centering
@@ -561,23 +564,23 @@ The use case diagram below represents the Selling functionality of the Online Sh
 \begin{usecase}{List items}
     \addrow{Case ID}{UC01}
     \addrow{Actors}{\textbf{Seller, Administrator, Customer Support}}
-    \addrow{Summary}{Seller completes all the information necessary to list an item and has the option to edit or delete it. The Administrator can manage all the listings information. In case of any issues, the Customer Support can be contacted.}
+    \addrow{Summary}{\index{seller}Seller completes all the \index{information}information necessary to list an item and has the option to edit or delete it. The \index{administrator}Administrator can manage all the listings information. In case of any issues, the Customer Support can be contacted.}
     \addrow{Pre-Conditions}{The user is registered as a legitimate seller.}
-    \addrow{Data}{Product photo, product description, price, stock count.}
+    \addrow{\index{data}Data}{Product photo, \index{product}product description, price, stock count.}
     \addrow{Stimulus}{Seller pressed on Add Listing/Edit Listing/Delete Listing Button}
     \addmulrow{Response}{
             \item Add Listing/Edit Listing/Delete Listing dialogue appears.
-            \item Seller fills out all the information.
+            \item \index{seller}Seller fills out all the information.
             \item Listing added/edited/deleted successfully.
     }
     \addmulrow{Exceptions}{
             \item The required information is not filled out.
-            \item The description is over the character limit (100 characters). 
+            \item The description is over the character limit (100 characters).
     }
     \addrow{Priority}{High}
     \addmulrow{Open Issues}{
-            \item Should the Seller be able to preview the listing?
-            \item What happens if the item is illegal? 
+            \item Should the \index{seller}Seller be able to preview the listing?
+            \item What happens if the item is illegal?
             \item How do we check the quality of the image?
             \item How do we check if the seller is legitimate?
     }
@@ -585,22 +588,22 @@ The use case diagram below represents the Selling functionality of the Online Sh
 
 \begin{usecase}{Sell items}
     \addrow{Case ID}{UC02}
-    \addrow{Actors}{\textbf{Seller, Buyer, Paypal, Bob TheRich, Customer Support}}
-    \addrow{Summary}{Seller accepts payment for the item from Buyer and pays Bob TheRich the 8\% of the sale fee. The Seller can allow or disallow returns and set the time limit for returns. The Seller and Bob TheRich can access the sales history. In case of any issues, the Customer Support can be contacted.}
-    \addrow{Pre-Conditions}{Seller, Buyer, and Bob TheRich must have a valid Paypal account. }
-    \addrow{Data}{Paypal account information, sales data, returns option, time limit for returns, 8\% fee, shipped items}
+    \addrow{Actors}{\textbf{Seller, Buyer, PayPal, Bob TheRich, Customer Support}}
+    \addrow{Summary}{Seller accepts \index{payment}payment for the item from \index{buyer}Buyer and pays Bob TheRich the 8\% of the sale fee. The \index{seller}Seller can allow or disallow returns and set the time limit for returns. The Seller and Bob TheRich can access the sales history. In case of any issues, the Customer Support can be contacted.}
+    \addrow{Pre-Conditions}{Seller, \index{buyer}Buyer, and Bob TheRich must have a valid \index{PayPal}PayPal account. }
+    \addrow{\index{data}Data}{PayPal account \index{information}information, sales \index{data}data, returns option, time limit for returns, 8\% fee, shipped items}
     \addrow{Stimulus}{Buyer paid for item(s)}
     \addmulrow{Response}{
-            \item Paypal transfers money from the Buyer account to the Seller Account and sends a confirmation.
-            \item Seller receives a sale notification by email.
+            \item \index{PayPal}PayPal transfers money from the \index{buyer}Buyer account to the Seller Account and sends a confirmation.
+            \item \index{seller}Seller receives a sale notification by email.
             \item The sale appears in the Seller’s sales history.
-            \item Bob TheRich invoices the Seller for 8\% of the sale. 
-            \item Seller pays Bob TheRich through Paypal. 
-            \item Seller marks item as shipped. 
+            \item Bob TheRich invoices the Seller for 8\% of the sale.
+            \item Seller pays Bob TheRich through PayPal.
+            \item Seller marks item as shipped.
     }
-        
+
     \addmulrow{Exceptions}{
-            \item Confirmation from Paypal not received.
+            \item Confirmation from \index{PayPal}PayPal not received.
     }
     \addrow{Priority}{High}
     \addmulrow{Open Issues}{
@@ -612,7 +615,7 @@ The use case diagram below represents the Selling functionality of the Online Sh
 
 \subsection{Buying}
 
-The use case diagram below represents the Buying functionality of the Online Shopping Website. A detailed description of each use case follows. 
+The use case diagram below represents the Buying functionality of the Online Shopping Website. A detailed description of each use case follows.
 
 \begin{figure}[htbp]
     \centering
@@ -623,65 +626,65 @@ The use case diagram below represents the Buying functionality of the Online Sho
 
 \begin{usecase}{Purchase}
     \addrow{Case ID}{UC03}
-    \addrow{Actors}{\textbf{Buyer, Seller, Paypal, Bob TheRich, Customer Support}}
+    \addrow{Actors}{\textbf{Buyer, Seller, PayPal, Bob TheRich, Customer Support}}
     \addrow{Summary}{The Buyer views the shopping cart, has the option to modify it, and pays for it. In case of any issues, the Customer Support can be contacted.}
     \addmulrow{Pre-Conditions}{
-        \item Buyer is a registered user.
-        \item Buyer has a valid Paypal account. 
-        \item Seller contact is hidden.
+        \item \index{buyer}Buyer is a \index{registered user}registered user.
+        \item Buyer has a valid \index{PayPal}PayPal account.
+        \item \index{seller}Seller contact is hidden.
     }
-    \addrow{Data}{Purchase photo, purchase description, purchase quantity, purchase price per item, total purchase price, taxes, shipping fee, shipping address, Paypal account, receipt (Seller information, Buyer information, purchase date, purchase details, purchase price, taxes)}
+    \addrow{\index{data}Data}{Purchase photo, purchase description, purchase quantity, purchase price per item, total purchase price, taxes, shipping fee, shipping address, PayPal account, \index{receipt}receipt (Seller \index{information}information, Buyer information, purchase date, purchase details, purchase price, taxes)}
     \addrow{Stimulus}{Buyer presses the Checkout Button.}
     \addmulrow{Response}{
-            \item Buyer views the shopping cart information and can modify it.
+            \item \index{buyer}Buyer views the shopping cart information and can modify it.
             \item Buyer chooses the shipping option (standard or express).
             \item Buyer chooses the shipping address.
-            \item Buyer pays the Seller for the purchase through Paypal.
-            \item Buyer views the confirmation screen.  
-            \item Buyer receives a confirmation and receipt by email.
+            \item Buyer pays the \index{seller}Seller for the purchase through \index{PayPal}PayPal.
+            \item Buyer views the confirmation screen.
+            \item Buyer receives a confirmation and \index{receipt}receipt by email.
             \item Order added to the purchase history.
     }
     \addmulrow{Exceptions}{
-        \item Any of the required information is missing or incorrect
-        \item Buyer exceeded the time limit to complete purchase
+        \item Any of the required \index{information}information is missing or incorrect
+        \item \index{buyer}Buyer exceeded the time limit to complete purchase
         \item Buyer abandons the cart
         \item Buyer did not receive a confirmation screen
     }
     \addrow{Priority}{High}
     \addmulrow{Open Issues}{
-        \item What happens if the Buyer is not allowed to purchase the product legally?
-    } 
-    
+        \item What happens if the \index{buyer}Buyer is not allowed to purchase the \index{product}product legally?
+    }
+
 \end{usecase}
 
 \begin{usecase}{Review}
     \addrow{Case ID}{UC04}
     \addrow{Actors}{\textbf{Buyer, Guest User, Customer Support}}
-    \addrow{Summary}{Buyer leaves a review for a product previously purchased. In case of any issues, the Customer Support can be contacted.}
+    \addrow{Summary}{\index{buyer}Buyer leaves a \index{review}review for a product previously purchased. In case of any issues, the Customer Support can be contacted.}
     \addrow{Pre-Conditions}{
-        15 days must have passed since the Buyer’s purchase of the product being reviewed.
+        15 days must have passed since the \index{buyer}Buyer’s purchase of the \index{product}product being reviewed.
         }
-    \addrow{Data}{
-Review text, review photo, days since purchase, Buyer’s username, rating (out of 5 stars)
+    \addrow{\index{data}Data}{
+Review text, \index{review}review photo, days since purchase, Buyer’s username, rating (out of 5 stars)
 }
     \addrow{Stimulus}{Buyer clicks on the Add Review button}
     \addmulrow{Response}{
-        \item Buyer rates the product
-        \item Buyer adds review text
+        \item \index{buyer}Buyer rates the \index{product}product
+        \item Buyer adds \index{review}review text
         \item Buyer adds review photos (optional)
         \item Buyer posts the review
-        \item Review appears on the product page for any Guest User to view
+        \item Review appears on the product page for any \index{guest user}Guest User to view
     }
     \addmulrow{Exceptions}{
         \item 15 days haven’t passed since the purchase
-        \item Buyer posted more than 5 photos per review
+        \item Buyer posted more than 5 photos per \index{review}review
         \item Review over the character limit (400 characters)
-        \item Any of the required information is missing
+        \item Any of the required \index{information}information is missing
     }
     \addrow{Priority}{Medium}
     \addmulrow{Open Issues}{
-        \item Should the Buyer be able to preview the review?
-        \item How do we handle offensive reviews?
+        \item Should the \index{buyer}Buyer be able to preview the review?
+        \item How do we handle offensive \index{review}reviews?
     }
 \end{usecase}
 
@@ -689,7 +692,7 @@ Review text, review photo, days since purchase, Buyer’s username, rating (out 
 \clearpage
 \subsection{Login}
 
-The use case diagram below represents the login functionality of the Online Shopping Website. A detailed description of each use case follows. 
+The use case diagram below represents the login functionality of the Online Shopping Website. A detailed description of each use case follows.
 
 \begin{figure}[htbp]
     \centering
@@ -700,18 +703,18 @@ The use case diagram below represents the login functionality of the Online Shop
 
 \begin{usecase}{Login}
     \addrow{Case ID}{UC05}
-    \addrow{Actors}{\textbf{Guest user , Administrator}}
-    \addrow{Summary}{Any guest user can sign in to their account. Same goes for the administrator.}
+    \addrow{Actors}{\textbf{Guest user, Administrator}}
+    \addrow{Summary}{Any \index{guest user}guest user can sign in to their account. Same goes for the \index{administrator}administrator.}
     \addmulrow{Pre-Conditions}{
         \item Must have an existing account
     }
-    \addrow{Data}{Username and password}
-    \addrow{Stimulus}{Guest user presses the login button.}
+    \addrow{\index{data}Data}{Username and password}
+    \addrow{Stimulus}{\index{guest user}Guest user presses the login button.}
     \addmulrow{Response}{
-            \item User will have the option to sell products.
+            \item User will have the option to sell \index{product}products.
             \item User will have the option to buy products.
             \item User can browse and put items in his cart.
-            \item Administrator will have access to private information. 
+            \item \index{administrator}Administrator will have access to private \index{information}information.
             \item Administrator will be able to manege the website.
     }
     \addmulrow{Exceptions}{
@@ -719,30 +722,30 @@ The use case diagram below represents the login functionality of the Online Shop
     }
     \addrow{Priority}{High}
     \addmulrow{Open Issues}{
-        \item What if the guest user forgets his/her password or username?
+        \item What if the \index{guest user}guest user forgets his/her password or username?
         \item Is there a limit of attempt for safety reason ?
-    } 
-    
+    }
+
 \end{usecase}
 
 \begin{usecase}{Signup}
     \addrow{Case ID}{UC06}
     \addrow{Actors}{\textbf{Guest user, Administrator}}
-    \addrow{Summary}{The administrator and the guest user should be able to create an account at any time.}
+    \addrow{Summary}{The \index{administrator}administrator and the \index{guest user}guest user should be able to create an account at any time.}
     \addrow{Pre-Conditions}{
        User has an email address.
         }
-    \addrow{Data}{
-username,password,address,email,phone number
+    \addrow{\index{data}Data}{
+username, password, address, email, phone number
 }
-    \addrow{Stimulus}{Guest user presses the sign up button}
+    \addrow{Stimulus}{\index{guest user}Guest user presses the sign up button}
     \addmulrow{Response}{
         \item user will have to fill out a formula.
-        \item user will enter his/her personal information.
+        \item user will enter his/her personal \index{information}information.
         \item user will have access to more features.
     }
     \addmulrow{Exceptions}{
-        \item User doesn't enter correct information.
+        \item User doesn't enter correct \index{information}information.
         \item Username taken/password weak.
     }
     \addrow{Priority}{High}
@@ -760,7 +763,7 @@ username,password,address,email,phone number
     \addrow{Pre-Conditions}{
        None , anyone can browse.
         }
-    \addrow{Data}{
+    \addrow{\index{data}Data}{
     item name, item description,item price}
     \addrow{Stimulus}{User write on the search bar}
     \addmulrow{Response}{
@@ -768,7 +771,7 @@ username,password,address,email,phone number
         \item The page will display the pictures and prices of each item.
     }
     \addmulrow{Exceptions}{
-        \item item not found (does not exist) 
+        \item item not found (does not exist)
     }
     \addrow{Priority}{High}
     \addmulrow{Open Issues}{
@@ -783,10 +786,10 @@ username,password,address,email,phone number
     \addrow{Actors}{\textbf{Guest user, Administrator}}
     \addrow{Summary}{Whenever a user sees something that they like, they can put that item in their cart to eventually buy.}
     \addrow{Pre-Conditions}{
-       Must be a registered user.
+       Must be a \index{registered user}registered user.
         }
-    \addrow{Data}{
-item picture, price of item, name of the seller,total price of all items chosen,quantity of each item chosen.}
+    \addrow{\index{data}Data}{
+item picture, price of item, name of the \index{seller}seller,total price of all items chosen,quantity of each item chosen.}
     \addrow{Stimulus}{User click a button to add an item to his/her cart.}
     \addmulrow{Response}{
         \item The item will appear in the user's cart.
@@ -802,6 +805,11 @@ item picture, price of item, name of the seller,total price of all items chosen,
     }
 \end{usecase}
 \clearpage
+
+
+\section{Index}
+
+\printindex
 
 
 \section{Reference}
