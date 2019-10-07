@@ -108,7 +108,7 @@
                             \hline
                             Timothy Rodriguez & 40075447 & timmy\_258@hotmail.com \\
                             \hline
-                            Lyonel Zamora & 27385986 & yonelz516@gmail.com \\
+                            Lyonel Zamora & 27385986 & lyonelz516@gmail.com \\
                             \hline
                             Radhep Sabapathipillai & 40033092 & Radhep.Saba@gmail.com \\
                             \hline
@@ -185,21 +185,21 @@ Our system will mainly involve the user interacting with a web application inter
                     \hline
                 R02 & \ Account & A registered should be able to have up to 3 shipping addresses &  & US02, US03 \\
                     \hline
-                R03 & \ Account & A registered user should be able to view order history &  & US02, US03 \\
+                R03 & \ Account & A registered user should be able to view order history & UC08 & US02, US03 \\
                 \hline
                 R04 & \ Account & A registered user should be able to recover user \index{information}information & &  \\
                 \hline
-                R05 & \ Account & A new user should be able to sign up & & US02, US03  \\
+                R05 & \ Account & A new user should be able to sign up & UC06 & US02, US03  \\
                 \hline
                 R06 & \ Account & A new user should receive account creation confirmation email & &  \\
                 \hline
-                R07 & \ Admin & The \index{administrator}administrator should be able to manage user accounts & & US01  \\
+                R07 & \ Admin & The \index{administrator}administrator should be able to manage user accounts & UC05 & US01  \\
                 \hline
-                R08 & \ Admin & The \index{administrator}administrator should be able to manage \index{seller}seller listings &  & US01 \\
+                R08 & \ Admin & The \index{administrator}administrator should be able to manage \index{seller}seller listings & UC05  & US01 \\
                 \hline
-                R09 & \ Buying & A user should be able to add \index{product}product to shopping cart & UC03 &  \\
+                R09 & \ Buying & A user should be able to add \index{product}product to shopping cart & UC03, UC08 &  \\
                 \hline
-                R10 & \ Buying & A user should be able to modify shopping cart & UC03 &  \\
+                R10 & \ Buying & A user should be able to modify shopping cart & UC03, UC08 &  \\
                 \hline
                 R11 & \ Buying & The website should calculate tax & UC03 &  \\
                 \hline
@@ -209,19 +209,19 @@ Our system will mainly involve the user interacting with a web application inter
                 \hline
                 R14 & \ Buying & The website should send purchase confirmation emails with \index{receipt}receipt & & US02 \\
                 \hline
-                R15 & \ Buying & A \index{buyer}buyer should be able to \index{review}review a product & UC04 & US02, US03 \\
+                R15 & \ Buying & A \index{buyer}buyer should be able to \index{review}review a product & UC04, UC08 & US02, US03 \\
                 \hline
                 R16 & \ Listing & A user should be able to view \index{product}product description & & US02, US03, US04 \\
                 \hline
-                R17 & \ Listing & A user should be able to view product photo & & US02, US03, US04 \\
+                R17 & \ Listing & A user should be able to view product photo & UC07 & US02, US03, US04 \\
                 \hline
                 R18 & \ Listing & A user should be able to view product rating and review (if any) & & US02, US03, US04 \\
                 \hline
                 R19 & \ Listing & A user should be able to view product stock count & & US02, US03, US04 \\
                 \hline
-                R20 & \ Listing & A user should be able to view \index{product}product price & & US02, US03, US04 \\
+                R20 & \ Listing & A user should be able to view \index{product}product price & UC07 & US02, US03, US04 \\
                     \hline
-                R21 & \ Interface & The website should contain a search bar & & US02, US04 \\
+                R21 & \ Interface & The website should contain a search bar & UC07 & US02, US04 \\
                 \hline
                 R22 & \ Interface & A user should be able to sort search results by price  & & US02, US03, US04 \\
                 \hline
@@ -231,7 +231,7 @@ Our system will mainly involve the user interacting with a web application inter
                 \hline
                 R25 & \ Interface & The website should provide a quality UI for the \index{administrator}administrator & & US01 \\
                 \hline
-                R26 & \ Interface & A \index{registered user}registered user should be able to log in using email or username and password & & US02, US03 \\
+                R26 & \ Interface & A \index{registered user}registered user should be able to log in using email or username and password & UC05 & US02, US03 \\
                 \hline
                 R27 & \ Interface & A user should be able to contact customer support & UC01, UC02, UC03 &  \\
                 \hline
@@ -259,19 +259,19 @@ Our system will mainly involve the user interacting with a web application inter
                 \hline
                 R39 & \ Restriction & Enforce the 400 character limit for review & UC04 &  \\
                 \hline
-                R40 & \ Restriction & Ensure that all the required \index{information}information is correctly filled out & UC01, UC03, UC04 &  \\
+                R40 & \ Restriction & Ensure that all the required \index{information}information is correctly filled out & UC01, UC03, UC04, UC05, UC06 &  \\
                 \hline
                 R41 & \ Restriction & The homepage shouldn't look too cluttered and busy & &  \\
                 \hline
                 R42 & \ Restriction & Homepage should not display more than 20 items before pagination begins & &  \\
                 \hline
-                R43 & \ Restriction & The system should allow only \index{registered user}registered user to make a purchase & &  \\
+                R43 & \ Restriction & The system should allow only \index{registered user}registered user to make a purchase & UC05 &  \\
                 \hline
-                R44 & \ Search & A user should be able to search by name & & US02, US04 \\
+                R44 & \ Search & A user should be able to search by name & UC07 & US02, US04 \\
                 \hline
-                R45 & \ Search & A user should be able to search by category & & US02, US04 \\
+                R45 & \ Search & A user should be able to search by category & UC07 & US02, US04 \\
                 \hline
-                R46 & \ Selling & A \index{seller}seller should be able to add products to sell & UC01 & US03 \\
+                R46 & \ Selling & A \index{seller}seller should be able to add products to sell & UC01, UC05 & US03 \\
                 \hline
                 R47 & \ Selling & A seller should be able to edit products \index{information}information & UC01 & US03 \\
                 \hline
