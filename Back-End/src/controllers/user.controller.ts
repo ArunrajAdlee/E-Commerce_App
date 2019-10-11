@@ -1,7 +1,7 @@
 import {getRepository} from "typeorm";
 import {NextFunction, Request, Response} from "express";
 import {User} from "../entity/user.entity";
-import {UserModel} from "../model/user.model"
+import {UserModel} from "../models/user.model"
 
 export class UserController {
 
