@@ -5,6 +5,7 @@ import * as bodyParser from "body-parser";
 import {Request, Response} from "express";
 import {Routes} from "./routes";
 import {User} from "./entity/user.entity";
+import { Listings } from "./entity/listings.entity";
 
 createConnection().then(async connection => {
 
