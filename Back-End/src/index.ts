@@ -9,6 +9,7 @@ import {User} from "./entity/user.entity";
 createConnection().then(async connection => {
 
     // create express app
+    require('express-async-errors');
     const app = express();
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
