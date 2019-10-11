@@ -1,6 +1,7 @@
 import {getRepository} from "typeorm";
 import {NextFunction, Request, Response} from "express";
 import {User} from "../entity/user.entity";
+import {UserModel} from "../model/user.model"
 
 export class UserController {
 
@@ -15,7 +16,13 @@ export class UserController {
     }
 
     async save(request: Request, response: Response, next: NextFunction) {
-        return this.userRepository.save(request.body);
+        console.log(request.body);
+        const newUser: UserModel = {
+            firstName: request.body.firstName,
+            lastName: request.body.lastName,
+            age: request.body.age
+        }
+        return this.userRepository.save(newUser);
     }
 
     async remove(request: Request, response: Response, next: NextFunction) {
