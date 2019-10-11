@@ -25,7 +25,7 @@ module.exports = {
   ],
   rules: {
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
-    "react/state-in-constructor": [0, 0]
-
+    "react/state-in-constructor": [0, 0],
+    "linebreak-style": 0
   },
 };
