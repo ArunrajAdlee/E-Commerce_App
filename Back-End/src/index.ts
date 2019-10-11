@@ -12,7 +12,7 @@ createConnection().then(async connection => {
     const app = express();
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
-        extended: true
+        extended: false
       }));
 
     // register express routes from defined application routes

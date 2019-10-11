@@ -16,7 +16,6 @@ export class UserController {
     }
 
     async save(request: Request, response: Response, next: NextFunction) {
-        console.log(request.body);
         const newUser: UserModel = {
             firstName: request.body.firstName,
             lastName: request.body.lastName,
@@ -26,8 +25,10 @@ export class UserController {
     }
 
     async remove(request: Request, response: Response, next: NextFunction) {
-        let userToRemove = await this.userRepository.findOne(request.params.id);
-        await this.userRepository.remove(userToRemove);
+        const userToRemove = await this.userRepository.findOne(request.params.id);
+        if (!userToRemove) {
+            return response.json('error');
+        }
     }
 
 }
