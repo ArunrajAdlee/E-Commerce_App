@@ -6,17 +6,20 @@ interface IStates {
   productNames : string[],
 }
 
+const BACKEND_URL = 'http://localhost:4000/listings';
+
 class App extends React.Component<{}, IStates> {
   public readonly state: Readonly<IStates> = {
     productNames: [],
   }
 
+
   public async componentDidMount() {
     // replace this with api that returns array
-    const result = await axios.get('https://jsonplaceholder.typicode.com/users');
-    console.log(result);
+    const result = await axios.get(BACKEND_URL);
+    const names = result.data.map((product: any) => product.productName);
     if (result) {
-      this.setState({ productNames: result.data });
+      this.setState({ productNames: names });
     }
   }
 

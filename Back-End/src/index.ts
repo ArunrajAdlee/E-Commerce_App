@@ -2,16 +2,19 @@ import "reflect-metadata";
 import {createConnection} from "typeorm";
 import * as express from "express";
 import * as bodyParser from "body-parser";
+import * as helmet from "helmet";
+import * as cors from "cors";
 import {Request, Response} from "express";
 import {Routes} from "./routes";
 import {User} from "./entity/user.entity";
-import { Listings } from "./entity/listings.entity";
 
 createConnection().then(async connection => {
 
     // create express app
     require('express-async-errors');
     const app = express();
+    app.use(cors());
+    app.use(helmet());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: false
@@ -34,7 +37,7 @@ createConnection().then(async connection => {
     // ...
 
     // start express server
-    app.listen(3000);
+    app.listen(4000);
 
     // insert new users for test
     await connection.manager.save(connection.manager.create(User, {
@@ -48,6 +51,6 @@ createConnection().then(async connection => {
         age: 24
     }));
 
-    console.log("Express server has started on port 3000. Open http://localhost:3000/users to see results");
+    console.log("Express server has started on port 4000. Open http://localhost:4000/users to see results");
 
 }).catch(error => console.log(error));
