@@ -1,10 +1,10 @@
 {
    "type": "mysql",
-   "host": "team-awesome.cap9jchqzzjp.us-east-2.rds.amazonaws.com",
+   "host": "35.199.24.50",
    "port": 3306,
-   "username": "ForbiddenCity",
-   "password": "xicdih-sybfAk-8kanpy",
-   "database": "node",
+   "username": "root",
+   "password": "fovzat-xudtEh-wamcy8",
+   "database": "Test",
    "synchronize": true,
    "logging": false,
    "entities": [
