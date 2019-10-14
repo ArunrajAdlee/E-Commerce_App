@@ -28,6 +28,8 @@
       "typeorm": "0.2.19"
    },
    "scripts": {
-      "start": "nodemon src/index.ts"
+      "start": "nodemon src/index.ts",
+      "client": "cd ../Front-End && npm run dev",
+      "both": "concurrently --kill-others \"npm run start\" \"npm run client\""
    }
 }
