@@ -1,10 +1,42 @@
+What is needed for front end
+
+- To start the react App, cd Comp354_Project/Front-End
+- type "npm run dev" in terminal, the browser should launch
+
+My IDE settings, not totally necessary 
+
+- VSCODE
+	Extensions:
+	- Eslint 
+	- Auto Import 
+	- Auto Rename Tag
+	- Debugger for Chrome 
+	- Reactjs code snippets
+	
+	For ESlint configuration, Go to extensions
+	  -> right click ESLint and lick Configure Extension settings 
+	       Enable "Eslint: Auto Fix on Save" 
+		 ->  Under "Eslint -> Code Action: Disable Rule Comment, Click "Edit in settings.json" 
+                   -> paste following: 
+				
+			{
+   			   "window.zoomLevel": 0,
+   		           "eslint.autoFixOnSave": true,
+   		           "eslint.validate": [
+       			      "javascript",
+       			      "javascriptreact",
+       		               { "language": "typescript", "autoFix": true },
+      			       { "language": "typescriptreact", "autoFix": true }
+   			   ],
+			}
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run dev`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
