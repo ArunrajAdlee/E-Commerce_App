@@ -1,4 +1,3 @@
-import './App.css';
 import React from 'react';
 import axios from 'axios';
 
@@ -15,7 +14,6 @@ class App extends React.Component<{}, IStates> {
 
 
   public async componentDidMount() {
-    // replace this with api that returns array
     const result = await axios.get(BACKEND_URL);
     const names = result.data.map((product: any) => product.productName);
     if (result) {
