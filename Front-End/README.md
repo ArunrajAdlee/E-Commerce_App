@@ -1,6 +1,7 @@
 What is needed for front end
 
 - To start the react App, cd Comp354_Project/Front-End
+- type "npm install" to download the node modules
 - type "npm run dev" in terminal, the browser should launch
 
 My IDE settings, not totally necessary 
