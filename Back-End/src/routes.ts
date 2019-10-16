@@ -1,5 +1,6 @@
 import {UserController} from "./controllers/user.controller";
 import {ListingsController} from "./controllers/listings.controller";
+import { AuthController } from "./controllers/auth.controller";
 
 export const Routes = [{
     method: "get",
@@ -11,17 +12,7 @@ export const Routes = [{
     route: "/users/:id",
     controller: UserController,
     action: "one"
-}, {
-    method: "post",
-    route: "/users",
-    controller: UserController,
-    action: "save"
-}, {
-    method: "delete",
-    route: "/users/:id",
-    controller: UserController,
-    action: "remove"
-}, 
+},
 
 //Listings
 {
@@ -34,4 +25,12 @@ export const Routes = [{
     route: "/listings",
     controller: ListingsController,
     action: "save"
+},
+
+//Auth
+{
+    method: "post",
+    route: "/auth",
+    controller: AuthController,
+    action: "createUser"
 }];

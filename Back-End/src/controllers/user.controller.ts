@@ -14,32 +14,4 @@ export class UserController {
     async one(request: Request, response: Response, next: NextFunction) {
         return this.userRepository.findOne(request.params.id);
     }
-
-    async save(request: Request, response: Response, next: NextFunction) {
-        const newUser: UserModel = {
-            firstName: request.body.firstName,
-            lastName: request.body.lastName,
-            age: request.body.age
-        }
-        return this.userRepository.save(newUser);
-    }
-
-    async remove(request: Request, response: Response, next: NextFunction) {
-        //Find user to delete
-        const userToRemove = await this.userRepository.findOne(request.params.id);
-        if (!userToRemove) { 
-             response.status(404).send('error');
-             return;
-        } 
-
-        //Find user to delete
-        const removedUser = await this.userRepository.remove(userToRemove);
-        if (!removedUser) {
-            response.status(404).send('error');
-        } else {
-            response.status(200).send('successfully deleted');
-        }
-
-    }
-
 }
