@@ -30,7 +30,13 @@ export const Routes = [{
 //Auth
 {
     method: "post",
-    route: "/auth",
+    route: "/auth/create",
     controller: AuthController,
     action: "createUser"
+},
+{
+    method: "post",
+    route: "/auth/login",
+    controller: AuthController,
+    action: "login"
 }];
