@@ -4,55 +4,52 @@ import {User} from "../entity/user.entity";
 import {UserModel} from "../models/user.model"
 import bcrypt = require('bcryptjs');
 import jwt = require('jsonwebtoken');
-import e = require("express");
 
 export class AuthController {
 
     private userRepository = getRepository(User);
 
-    async createUser(request: Request, response: Response, next: NextFunction) {
+    async createUser(req: Request, res: Response, next: NextFunction) {
 
         //Validate info in the future *****
-        const userExists = await this.userRepository.find({username: request.body.username});
+        const userExists = await this.userRepository.findOne({username: req.body.username});
         if (userExists) {
-            response.status(404).send('user already exists');
+            res.status(404).send('user already exists');
             return;
         }
 
         //Hash password
         const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(request.body.password, salt);
+        const hashedPassword = await bcrypt.hash(req.body.password, salt);
         const newUser: UserModel = {
-            username: request.body.username,
+            username: req.body.username,
             password: hashedPassword
         }
 
-
-        //Add try/catch *****
+        //Save new user to the database
+       try {
         const savedUser = await this.userRepository.save(newUser);
-        if (!savedUser) {
-            response.status(404).send('could not create account');
-            return;
-        } else {
-            response.status(200).send({
-                message: 'sucessfully created the user',
-                savedUser
-            });
-        }
+        res.status(200).send({
+            message: 'sucessfully created the user',
+            savedUser
+        });
+       } catch (error) {
+           res.status(404).send('could not create account');
+       }
     }
 
-    async login(request: Request, response: Response, next: NextFunction) {
+    async login(req: Request, res: Response, next: NextFunction) {
         //Check if user exists
-        const user = await this.userRepository.findOne({username: request.body.username});
+        const user = await this.userRepository.findOne({username: req.body.username});
         if (!user) {
-            response.status(404).send('user does not exist');
+            res.status(404).send('user does not exist');
             return;
         }
 
         //Validate password
-        const validPassword = await bcrypt.compare(request.body.password, user.password);
+        const validPassword = await bcrypt.compare(req.body.password, user.password);
         if (!validPassword) {
-            response.status(404).send('invalid password');
+            res.status(404).send('invalid password');
             return;
         }
 
@@ -64,23 +61,23 @@ export class AuthController {
         'secretKey'
         );
         //May need more information like expiration time (ask front-end peeps) ****
-        response.header('auth-token', token).send('sucessfully logged in'); 
+        res.header('auth-token', token).send('sucessfully logged in'); 
     }
 
-    async remove(request: Request, response: Response, next: NextFunction) {
+    async remove(req: Request, res: Response, next: NextFunction) {
         //Find user to delete
-        const userToRemove = await this.userRepository.findOne(request.params.id);
+        const userToRemove = await this.userRepository.findOne(req.params.id);
         if (!userToRemove) { 
-             response.status(404).send('error');
+             res.status(404).send('error');
              return;
         } 
 
         //Find user to delete
         const removedUser = await this.userRepository.remove(userToRemove);
         if (!removedUser) {
-            response.status(404).send('error');
+            res.status(404).send('error');
         } else {
-            response.status(200).send('successfully deleted');
+            res.status(200).send('successfully deleted');
         }
 
     }

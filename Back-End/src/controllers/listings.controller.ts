@@ -2,19 +2,27 @@ import {getRepository} from "typeorm";
 import {NextFunction, Request, Response} from "express";
 import {Listings} from "../entity/listings.entity";
 import {ListingsModel} from "../models/listings.model"
+import {AuthModel} from "../models/auth.model";
+const {checkAuth} = require("../helpers/check-auth");
 
 export class ListingsController {
 
     private listingsRepository = getRepository(Listings);
 
-    async all(request: Request, response: Response, next: NextFunction) {
+    async all(req: Request, res: Response, next: NextFunction) {
         return this.listingsRepository.find();
     }
 
-    async save(request: Request, response: Response, next: NextFunction) {
+    async save(req: Request, res: Response, next: NextFunction) {
+        const authenticatedUser: AuthModel = checkAuth(req);
+        if (!authenticatedUser) {
+            res.status(404).send('user is not authenticated');
+            return;
+        }
+
         const newProduct: ListingsModel = {
-            productName: request.body.productName,
-            quantity: request.body.quantity,
+            productName: req.body.productName,
+            quantity: req.body.quantity,
         }
         return this.listingsRepository.save(newProduct);
     }
