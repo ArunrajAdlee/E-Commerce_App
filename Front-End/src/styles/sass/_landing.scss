@@ -1,0 +1,16 @@
+.landing-banner {
+    background: url(../assets/img/banner/banner-bg.jpg) center no-repeat; 
+    height: 900px;
+
+    & .carousel {
+        padding-top: 290px;
+        width: 75%;
+        margin: auto;
+        height:900px;
+
+        & img {
+            max-width:50%;
+            margin: auto;
+        }
+    }
+}

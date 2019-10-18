@@ -1,0 +1,19 @@
+
+.header {
+    margin-top: 25px;
+    width: 65% !important;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    min-height: 80px;
+    width:100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    background: #fff;
+
+    & .navbar-nav{
+        & svg {
+            font-size: 25px;
+        }
+    }
+}
+

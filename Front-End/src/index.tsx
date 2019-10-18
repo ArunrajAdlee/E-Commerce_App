@@ -4,21 +4,31 @@ import { Router, Switch, Route } from 'react-router';
 import './styles/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserHistory } from 'history';
-import App from './App';
 import Login from './components/Login';
+import Layout from './layouts/Layout';
+import LandingPage from './components/LandingPage';
 
 const history = createBrowserHistory();
 
 
 ReactDOM.render(
   <Router history={history}>
-    <Switch>
-      <Route exact path="/">
-        <App />
-      </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
-    </Switch>
-  </Router>, document.getElementById('root'),
+    <Route path="/login">
+      <Login />
+    </Route>
+    <Layout>
+      <Switch>
+        <Route path="/listings">
+          <LandingPage />
+        </Route>
+        <Route path="/cart">
+          <LandingPage />
+        </Route>
+        <Route path="/">
+          <LandingPage />
+        </Route>
+      </Switch>
+    </Layout>
+  </Router>,
+  document.getElementById('root'),
 );
