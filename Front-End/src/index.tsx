@@ -15,9 +15,9 @@ const history = createBrowserHistory();
 ReactDOM.render(
   <Router history={history}>
     <Switch>
-      <DefaultLayout path="/listings" component={LandingPage} />
-      <DefaultLayout path="/cart" component={LandingPage} />
-      <DefaultLayout path="/login" component={Login} pageTitle="Login" />
+      <DefaultLayout path="/listings" component={LandingPage} pageTitle="Listings" />
+      <DefaultLayout path="/cart" component={LandingPage} pageTitle="Your Shoppping Cart" />
+      <DefaultLayout path="/login" component={Login} pageTitle="Login/Register" />
       <LandingLayout component={LandingPage} />
     </Switch>
   </Router>,

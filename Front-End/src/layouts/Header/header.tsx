@@ -11,8 +11,9 @@ const Header = (props : IProps) => {
     <>
       <NavigationBar />
       <div className="common-header">
-        {pageTitle}
+        <h1 className="page-title">{pageTitle}</h1>
       </div>
+
     </>
   );
 };

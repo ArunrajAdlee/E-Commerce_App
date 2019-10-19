@@ -52,5 +52,26 @@
     background: url(../assets/img/banner/common-banner.jpg) center no-repeat; 
     height: 400px;
     margin-top: -40px;
-  }
+
+    & .page-title{
+        color: white;
+        font-weight: bold;
+        top: 220px;
+        position: absolute;
+        left: 55%;
+    }
+
+    @media screen and (max-width: $sm-size) {
+        background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+        height: 300px;
+
+
+        & .page-title{
+            top: 150px;
+            left: 7%;
+        }
+
+    }
+
+}
 
