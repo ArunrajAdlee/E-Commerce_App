@@ -1,19 +1,56 @@
+.sticky-top {
+    height:0; 
+    overflow:visible;
+    box-sizing:border-box;
+    
+     & .main-navbar {
+        margin-top: 40px;
+        width: 65% !important;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 5px;
+        min-height: 80px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.1);
+        background: #fff;
+        -webkit-transition: width 0.5s; 
+        transition: width 0.5s;
 
-.header {
-    margin-top: 25px;
-    width: 65% !important;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
-    min-height: 80px;
-    width:100%;
-    box-shadow: 0 10px 30px rgba(0,0,0,.1);
-    background: #fff;
+        & .navbar-nav{
+            & svg {
+                font-size: 25px;
+            }
 
-    & .navbar-nav{
-        & svg {
-            font-size: 25px;
+            & .nav-link {
+                font-size: 13px;
+                line-height: 2;
+                font-weight: bold;
+                color: black;
+                letter-spacing: 0.8px;
+                margin: 0 5px 0 5px;
+            }
+        }
+
+        @media screen and (max-width: $sm-size) {
+            margin-top: 0;
+            width: 100% !important;
+            border-radius: 0;
+        }
+
+    }
+
+    @media screen and (max-width: $sm-size) {
+        height: auto;
+        & .main-navbar {
+            margin-top: 0;
+            width: 100% !important;
+            border-radius: 0;
         }
     }
 }
+
+.common-header{
+    background: url(../assets/img/banner/common-banner.jpg) center no-repeat; 
+    height: 400px;
+    margin-top: -40px;
+  }
 

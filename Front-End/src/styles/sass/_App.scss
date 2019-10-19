@@ -1,10 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Poppins', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: $title-font !important;
 }
 
 code {
@@ -12,9 +16,17 @@ code {
     monospace;
 }
 
-.marginAuto { 
-  margin: auto;
+.default-layout-content-container{
+  margin: 100px auto 100px auto;
+  width: 55%;
+
+  @media screen and (max-width: $sm-size) {
+    width: 90%;
+  }
 }
 
-
+.styled-button {
+  background: linear-gradient(90deg,#ffba00 0%,#ff6c00 100%);
+  border: none;
+}
 

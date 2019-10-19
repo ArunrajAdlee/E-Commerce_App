@@ -25,10 +25,9 @@ const Footer = () => (
             <FormControl
               id="newsletter-email"
               placeholder="Enter Email"
-              aria-label="Username"
             />
             <InputGroup.Append>
-              <Button className="submit-newsletter">
+              <Button variant="warning" className="styled-button">
                 <FontAwesomeIcon icon={faArrowRight} />
               </Button>
             </InputGroup.Append>
@@ -46,7 +45,7 @@ const Footer = () => (
         </Col>
       </Row>
       <Row className="mt-5">
-        <span className="marginAuto">Copyright ©2019 All rights reserved</span>
+        <span className="m-auto">Copyright ©2019 All rights reserved</span>
       </Row>
     </div>
   </div>
