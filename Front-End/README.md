@@ -7,11 +7,11 @@ Current process when adding new front-end feature:
 - In order to add new routes, edit the 'index.tsx' in src/. 
 	You can a new route like the following:    
 	
-	      <Route path="/login">
-		<Login />
-	      </Route>
+	     <DefaultLayout path="/login" component={Login} pageTitle="Login" />
 	      
-	Where Login is be the component which is rendered when the /login path is loaded.
+	Where 'Login' is be the component which is rendered when the /login path is loaded.
+	pageTitle is the title for the page.
+	
 	The router uses a switch which matches with the first URL is sees, so place the longer paths near the top
 	
 	For example, a route for /listings/id should be placed above /listings or else the switch will always match the /listings path 		right away.
