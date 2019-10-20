@@ -1,8 +1,43 @@
-What is needed for front end
+Current process when adding new front-end feature:
 
+- Add component folders into src/components directory. 
+	For example, if you want to add components for the listings page, add a folder called 'Listings'.
+	Then, inside listings you can add multiple other folders for any children components you need to create for the Listings 		component.
+
+- In order to add new routes, edit the 'index.tsx' in src/. 
+	You can a new route like the following:    
+	
+	     <DefaultLayout path="/login" component={Login} pageTitle="Login" />
+	      
+	Where 'Login' is be the component which is rendered when the /login path is loaded.
+	pageTitle is the title for the page.
+	
+	The router uses a switch which matches with the first URL is sees, so place the longer paths near the top
+	
+	For example, a route for /listings/id should be placed above /listings or else the switch will always match the /listings path 		right away.
+	
+- For SASS styling, you can add/edit .scss files in the src/styles/sass directory.
+	When adding a new sass file, make sure that it is a partial file (it has underscore prefix in its name e.g. _header)
+	
+	If you add a new .scss file, you must add an import in the main index.scss file.
+	For example, if you add the file _header.scss, add 
+	
+		@import 'header'; 
+	
+	in index.scss
+	
+	*Note: You may have to re-run the project after you add a new .scss file in order for the file to be watched by the node-sass 		compiler
+
+If the process can be improved in anyway, feel free to bring it up.
+
+////////////////////////////////////////////////////////////////
+
+
+Running the project:
 - To start the react App, cd Comp354_Project/Front-End
 - type "npm install" to download the node modules
-- type "npm run dev" in terminal, the browser should launch
+- cd Comp354_Project/Back-End 
+- type "npm run both" 
 
 My IDE settings, not totally necessary 
 
