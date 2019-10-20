@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Switch, Route } from 'react-router';
+import { Router, Switch } from 'react-router';
 import './styles/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserHistory } from 'history';
-import App from './App';
-import Login from './components/Login';
+import Login from './components/Login/login';
+import LandingPage from './components/LandingPage/landingPage';
+import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
+import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
 
 const history = createBrowserHistory();
 
@@ -13,12 +15,11 @@ const history = createBrowserHistory();
 ReactDOM.render(
   <Router history={history}>
     <Switch>
-      <Route exact path="/">
-        <App />
-      </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
+      <DefaultLayout path="/listings" component={LandingPage} pageTitle="Listings" />
+      <DefaultLayout path="/cart" component={LandingPage} pageTitle="Your Shoppping Cart" />
+      <DefaultLayout path="/login" component={Login} pageTitle="Login/Register" />
+      <LandingLayout component={LandingPage} />
     </Switch>
-  </Router>, document.getElementById('root'),
+  </Router>,
+  document.getElementById('root'),
 );
