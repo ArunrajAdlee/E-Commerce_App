@@ -30,6 +30,11 @@ export const Routes = [{
     controller: ListingsController,
     action: "all"
 }, {
+    method: "get",
+    route: "/listings/active",
+    controller: ListingsController,
+    action: "getActive"
+}, {
     method: "post",
     route: "/listings",
     controller: ListingsController,
