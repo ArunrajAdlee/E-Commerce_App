@@ -11,6 +11,21 @@ export class ListingsController {
 
     async all(req: Request, res: Response, next: NextFunction) {
         return this.listingsRepository.find();
+
+        const listings = await this.listingsRepository.find();
+
+        res.status(200).send({
+            listings: listings
+        });
+    }
+
+    //Gets all active listings
+    async getActive(req: Request, res: Response, next: NextFunction) {
+        const activeListings = await this.listingsRepository.find({ "status": true });
+
+        res.status(200).send({
+            listings: activeListings
+        });
     }
 
     async save(req: Request, res: Response, next: NextFunction) {
