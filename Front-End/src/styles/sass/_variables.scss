@@ -10,9 +10,13 @@ $generic-boxshadow: 0 10px 30px rgba(0,0,0,.1);
 //Grid Sizes
 $xs-size: 576px;
 $sm-size: 768px;
-$lg-size: 992px;
-$xl-size: 1200px;
+$md-size: 992px;
+$lg-size: 1200px;
+$xl-size: 1920px;
+
+$img-path: "../assets/img";
 
 /*--------------------------- Fonts ----------------------*/
+
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:500,700|Roboto:400,500');

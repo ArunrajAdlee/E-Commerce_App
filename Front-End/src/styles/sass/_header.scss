@@ -49,7 +49,7 @@
 }
 
 .common-header{
-    background: url(../assets/img/banner/common-banner.jpg) center no-repeat; 
+    background: url(#{$img-path}/banner/common-banner.jpg) center no-repeat; 
     height: 400px;
     margin-top: -40px;
 

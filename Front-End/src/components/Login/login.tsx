@@ -1,12 +1,24 @@
 import React from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { Row, Col, Button } from 'react-bootstrap';
+import {
+  Formik, Field, Form, ErrorMessage,
+} from 'formik';
+import * as Yup from 'yup';
+
 
 interface IStates {
   user: string,
   pass: string,
 }
+
+const LoginSchema = Yup.object().shape({
+  username: Yup.string()
+    .required('Username is required'),
+  password: Yup.string()
+    .min(3, 'Password must be 3 characters at minimum')
+    .required('Password is required'),
+});
 
 
 class Login extends React.Component<{}, IStates> {
@@ -18,34 +30,76 @@ class Login extends React.Component<{}, IStates> {
   public componentDidMount() {
   }
 
-  private handleSubmit = () => {
-    //
+  private handleSubmit = (username: string, password:string) => {
+    console.log(username);
+    console.log(password);
   }
 
   public render() {
-    const { user, pass } = this.state;
-    // Testing bootstrap...
     return (
-      <Form>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+      <Row className="login-register-container">
+        <Col className="create-account" md={12} lg={6}>
+          <div>
+            <h4>New to our website?</h4>
+            <p>Sign-up today to gain the ability to sell, buy and share your reviews!</p>
+            <Button variant="warning" className="styled-button mt-3">CREATE AN ACCOUNT</Button>
+          </div>
+        </Col>
+        <Col className="login-container" md={12} lg={6}>
+          <div className="login-content">
+            <h5>LOG IN</h5>
+            <Formik
+              initialValues={{ username: '', password: '' }}
+              validationSchema={LoginSchema}
+              onSubmit={({ username, password }) => {
+                this.handleSubmit(username, password);
+              }}
+            >
+              {({ touched, errors, isSubmitting }) => (
+                <Form>
+                  <div>
+                    <Field
+                      name="username"
+                      placeholder="Username"
+                      className={`form-control styled-input login-input ${
+                        touched.username && errors.username ? 'is-invalid' : ''
+                      }`}
+                    />
+                    <ErrorMessage
+                      component="div"
+                      name="username"
+                      className="invalid-feedback"
+                    />
+                  </div>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+                  <div>
+                    <Field
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                      className={`form-control styled-input login-input  ${
+                        touched.password && errors.password ? 'is-invalid' : ''
+                      }`}
+                    />
+                    <ErrorMessage
+                      component="div"
+                      name="password"
+                      className="invalid-feedback"
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    className="btn-block styled-button"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Please wait...' : 'Sign in'}
+                  </Button>
+                </Form>
+              )}
+            </Formik>
+          </div>
+        </Col>
+      </Row>
     );
   }
 }
