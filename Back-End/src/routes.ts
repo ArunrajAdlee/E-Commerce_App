@@ -1,6 +1,7 @@
-import {UserController} from "./controllers/user.controller";
-import {ListingsController} from "./controllers/listings.controller";
+import { UserController } from "./controllers/user.controller";
+import { ListingsController } from "./controllers/listings.controller";
 import { AuthController } from "./controllers/auth.controller";
+import { CategoriesController } from "./controllers/categories.controller";
 
 export const Routes = [{
     method: "get",
@@ -20,7 +21,14 @@ export const Routes = [{
     route: "/listings",
     controller: ListingsController,
     action: "all"
-}, {
+},
+{
+    method: "get",
+    route: "/listings/category/:category",
+    controller: ListingsController,
+    action: "allWithCategory"
+},
+{
     method: "post",
     route: "/listings",
     controller: ListingsController,
@@ -39,4 +47,12 @@ export const Routes = [{
     route: "/auth/login",
     controller: AuthController,
     action: "login"
+},
+
+//Categories
+{
+    method: "get",
+    route: "/categories",
+    controller: CategoriesController,
+    action: "all"
 }];

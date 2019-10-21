@@ -28,4 +28,9 @@ export class ListingsController {
         return this.listingsRepository.save(newProduct);
     }
 
+    async allWithCategory(req: Request, res: Response, next: NextFunction) {
+        const requestedCategory: number = parseInt(req.params.category);
+        return this.listingsRepository.find({category: requestedCategory});
+    }
+
 }
