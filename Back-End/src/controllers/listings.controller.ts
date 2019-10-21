@@ -21,8 +21,9 @@ export class ListingsController {
         }
 
         const newProduct: ListingsModel = {
-            productName: req.body.productName,
-            quantity: req.body.quantity,
+            title: req.body.title,
+            stock_count: req.body.stock_count,
+            category: req.body.category
         }
         return this.listingsRepository.save(newProduct);
     }
