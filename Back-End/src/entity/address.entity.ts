@@ -6,7 +6,7 @@ export class Address {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({nullable: true})
+    @Column()
     street_name: string;
 
     @Column({nullable: true})
