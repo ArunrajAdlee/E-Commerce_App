@@ -9,6 +9,7 @@ interface IDefaultProps {
   component: any
   path?: string;
   exact?: boolean;
+  authenticated?: boolean;
 }
 
 const LandingLayout: React.SFC<IDefaultProps> = (props) => {
