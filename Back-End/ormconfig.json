@@ -4,7 +4,7 @@
    "port": 3306,
    "username": "root",
    "password": "fovzat-xudtEh-wamcy8",
-   "database": "Test",
+   "database": "Prototype",
    "synchronize": true,
    "logging": false,
    "entities": [

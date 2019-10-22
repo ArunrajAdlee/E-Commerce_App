@@ -1,5 +1,11 @@
 
 export class ListingsModel {
-    productName: string;
-    quantity: number;
+    title: string;
+    stock_count: number;
+    description?: string;
+    price?: number;
+    quantity_sold?: number;
+    status?: boolean;
+    user_id?: number;
+    category?: number;
 }
