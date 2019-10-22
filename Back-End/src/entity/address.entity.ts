@@ -1,33 +1,29 @@
 import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 @Entity()
-export class Listings {
+export class Address {
 
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    title: string;
-
-    @Column()
-    stock_count: number;
+    street_name: string;
 
     @Column({nullable: true})
-    description: string;
+    street_number: number;
 
     @Column({nullable: true})
-    price: number;
+    unit_number: number;
 
     @Column({nullable: true})
-    quantity_sold: number;
+    city: string;
 
     @Column({nullable: true})
-    status: boolean;
+    province: string;
 
     @Column({nullable: true})
-    user_id: number;
+    postal_code: string;
 
     @Column({nullable: true})
-    category: number;
-
+    country: string;
 }

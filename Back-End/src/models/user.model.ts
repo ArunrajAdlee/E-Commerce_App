@@ -7,5 +7,5 @@ export class UserModel {
     brand_name?: string;
     date_of_birth?: Date;
     phone_number?: number;
-    age?: number
+    age?: number;
 }

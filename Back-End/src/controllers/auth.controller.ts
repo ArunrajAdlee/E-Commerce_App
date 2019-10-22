@@ -1,9 +1,9 @@
-import {getRepository} from "typeorm";
-import {NextFunction, Request, Response} from "express";
-import {User} from "../entity/user.entity";
-import {UserModel} from "../models/user.model"
 import bcrypt = require('bcryptjs');
+import {NextFunction, Request, Response} from 'express';
 import jwt = require('jsonwebtoken');
+import {getRepository} from 'typeorm';
+import {User} from '../entity/user.entity';
+import {UserModel} from '../models/user.model';
 
 export class AuthController {
 
@@ -11,27 +11,27 @@ export class AuthController {
 
     async createUser(req: Request, res: Response, next: NextFunction) {
 
-        //Validate info in the future *****
+        // Validate info in the future *****
         const userExists = await this.userRepository.findOne({username: req.body.username});
         if (userExists) {
             res.status(404).send('user already exists');
             return;
         }
 
-        //Hash password
+        // Hash password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(req.body.password, salt);
         const newUser: UserModel = {
             username: req.body.username,
-            password: hashedPassword
-        }
+            password: hashedPassword,
+        };
 
-        //Save new user to the database
-       try {
+        // Save new user to the database
+        try {
         const savedUser = await this.userRepository.save(newUser);
         res.status(200).send({
             message: 'sucessfully created the user',
-            savedUser
+            savedUser,
         });
        } catch (error) {
            res.status(404).send('could not create account');
@@ -39,40 +39,40 @@ export class AuthController {
     }
 
     async login(req: Request, res: Response, next: NextFunction) {
-        //Check if user exists
+        // Check if user exists
         const user = await this.userRepository.findOne({username: req.body.username});
         if (!user) {
             res.status(404).send('user does not exist');
             return;
         }
 
-        //Validate password
+        // Validate password
         const validPassword = await bcrypt.compare(req.body.password, user.password);
         if (!validPassword) {
             res.status(404).send('invalid password');
             return;
         }
 
-        //Create and return token
+        // Create and return token
         const token = jwt.sign({
             username: user.username,
-            userId: user.id
+            userId: user.id,
         },
-        'secretKey'
+        'secretKey',
         );
-        //May need more information like expiration time (ask front-end peeps) ****
-        res.header('auth-token', token).send('sucessfully logged in'); 
+        // May need more information like expiration time (ask front-end peeps) ****
+        res.header('auth-token', token).send('sucessfully logged in');
     }
 
     async remove(req: Request, res: Response, next: NextFunction) {
-        //Find user to delete
+        // Find user to delete
         const userToRemove = await this.userRepository.findOne(req.params.id);
-        if (!userToRemove) { 
+        if (!userToRemove) {
              res.status(404).send('error');
              return;
-        } 
+        }
 
-        //Find user to delete
+        // Find user to delete
         const removedUser = await this.userRepository.remove(userToRemove);
         if (!removedUser) {
             res.status(404).send('error');
