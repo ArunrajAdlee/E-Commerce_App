@@ -1,9 +1,10 @@
-import {getRepository} from "typeorm";
-import {NextFunction, Request, Response} from "express";
-import {Listings} from "../entity/listings.entity";
-import {ListingsModel} from "../models/listings.model"
-import {AuthModel} from "../models/auth.model";
-const {checkAuth} = require("../helpers/check-auth");
+import {NextFunction, Request, Response} from 'express';
+import {getRepository} from 'typeorm';
+import {Listings} from '../entity/listings.entity';
+import {AuthModel} from '../models/auth.model';
+import {ListingsModel} from '../models/listings.model';
+// tslint:disable-next-line
+const {checkAuth} = require('../helpers/check-auth');
 
 export class ListingsController {
 
@@ -23,8 +24,8 @@ export class ListingsController {
         const newProduct: ListingsModel = {
             title: req.body.title,
             stock_count: req.body.stock_count,
-            category: req.body.category
-        }
+            category: req.body.category,
+        };
         return this.listingsRepository.save(newProduct);
     }
 
