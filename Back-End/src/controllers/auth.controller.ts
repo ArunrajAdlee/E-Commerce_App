@@ -61,7 +61,7 @@ export class AuthController {
         'secretKey',
         );
         // May need more information like expiration time (ask front-end peeps) ****
-        res.header('auth-token', token).send('sucessfully logged in');
+        res.status(200).send({message: 'sucessfully logged in', token});
     }
 
     async remove(req: Request, res: Response, next: NextFunction) {
