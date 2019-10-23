@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import { Row, Col, Button } from 'react-bootstrap';
 import {
-  Formik, Field, Form, ErrorMessage, FormikValues,
+  Row, Col, Button, Alert,
+} from 'react-bootstrap';
+import {
+  Formik, Field, Form, ErrorMessage, FormikValues, FormikActions,
 } from 'formik';
 import * as Yup from 'yup';
 import { Link, Redirect } from 'react-router-dom';
@@ -10,8 +12,8 @@ import { StoreContext } from '../../store';
 
 
 export interface ILoginFields {
-  user: string,
-  pass: string,
+  username: string,
+  password: string,
 }
 
 interface IStates {
@@ -32,23 +34,23 @@ class Login extends React.Component<{}, IStates> {
     isError: false,
   }
 
-  public componentDidMount() {
-  }
-
-  private handleSubmit = (values: FormikValues) => {
-    console.log(values);
-    const { login } = this.context;
-    login(this, values);
+  private handleSubmit = async (values: FormikValues, actions: any) => {
+    const { login, isAuth } = this.context;
+    await login(values);
+    if (!isAuth) {
+      this.setState({ isError: true });
+      actions.setSubmitting(false);
+    }
   }
 
   public render() {
     const { isAuth } = this.context;
-    console.log(isAuth);
+    const { isError } = this.state;
     return (
       isAuth ? <Redirect to="/" />
         : (
           <Row className="login-register-container">
-            <Col className="create-account" md={12} lg={6}>
+            <Col className="create-account" lg={12} xl={6}>
               <div>
                 <h4>New to our website?</h4>
                 <p>Sign-up today to gain the ability to sell, buy and share your reviews!</p>
@@ -57,14 +59,21 @@ class Login extends React.Component<{}, IStates> {
                 </Link>
               </div>
             </Col>
-            <Col className="login-container" md={12} lg={6}>
+            <Col className="login-container" lg={12} xl={6}>
               <div className="login-content">
                 <h5>LOG IN</h5>
+                { isError
+                  ? (
+                    <Alert variant="danger" onClose={() => this.setState({ isError: !isError })} dismissible>
+                      <p>Username or Password is incorrect!</p>
+                    </Alert>
+                  ) : ''}
                 <Formik
                   initialValues={{ username: '', password: '' }}
                   validationSchema={LoginSchema}
-                  onSubmit={(values: FormikValues) => {
-                    this.handleSubmit(values);
+                  onSubmit={(values: FormikValues, actions: any) => {
+                    actions.setSubmitting(true);
+                    this.handleSubmit(values, actions);
                   }}
                 >
                   {({ touched, errors, isSubmitting }) => (
@@ -102,7 +111,7 @@ class Login extends React.Component<{}, IStates> {
                       </div>
                       <Button
                         type="submit"
-                        className="btn-block styled-button"
+                        className="btn-block styled-button sign-in"
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? 'Please wait...' : 'Sign in'}

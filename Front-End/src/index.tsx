@@ -10,50 +10,54 @@ import LandingPage from './components/LandingPage/landingPage';
 import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
 import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
 import SignUp from './components/SignUp/signUp';
-import { StoreContext, store } from './store';
+import { StoreContext } from './store';
+import ScrollToTop from './components/Misc/scrollToTop';
 
 
 const history = createBrowserHistory();
 
 interface IStates {
-  userToken: any;
+  currentUser: string;
   isAuth: boolean;
-  login: (self:any, userCredentials: ILoginFields) => void;
+  login: (userCredentials: ILoginFields) => void;
   logout: () => void;
 }
 
 class App extends React.Component<{}, IStates> {
   constructor(props: any) {
     super(props);
-
+    console.log(sessionStorage);
     this.state = {
-      userToken: '',
+      currentUser: '',
       isAuth: false,
       login: this.login,
       logout: this.logout,
     };
   }
 
-  public login = (self:any, userCredentials: ILoginFields) => {
-    debugger;
-
-    return axios.post('http://localhost:4000/auth/login', userCredentials)
+  public login = async (userCredentials: ILoginFields) => {
+    await axios.post('http://localhost:4000/auth/login', userCredentials)
       .then((response) => {
         debugger;
-        const { token } = response.data;
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(token.user));
-        self.setState({
+        this.setState({
           isAuth: true,
-          userToken: token,
+          currentUser: userCredentials.username,
         });
         return response;
+      })
+      .catch((error) => {
       });
   }
 
 
   public logout = () => {
-    this.setState({ isAuth: false });
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('currentUser');
+    delete axios.defaults.headers.common.Authorization;
+
+    this.setState({
+      isAuth: false,
+    });
   };
 
 
@@ -61,6 +65,7 @@ class App extends React.Component<{}, IStates> {
     return (
       <StoreContext.Provider value={this.state}>
         <Router history={history}>
+          <ScrollToTop />
           <Switch>
             <DefaultLayout path="/listings" component={LandingPage} pageTitle="Listings" />
             <DefaultLayout path="/cart" component={LandingPage} pageTitle="Your Shoppping Cart" authenticated />

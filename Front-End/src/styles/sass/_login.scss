@@ -27,13 +27,21 @@
 
         & .login-content {
             width: 80%;
-            margin: 20% auto auto auto;
+            margin: 15% auto auto auto;
+
+            & .alert {
+                margin:0;
+
+                & p {
+                    margin: 0;
+                }
+            }
 
             & .login-input {
                 margin-top: 35px;
             }
 
-            & button {
+            & .sign-in {
                 margin-top: 75px;
                 padding-right: 24px;
                 padding-left: 24px;
@@ -43,7 +51,7 @@
 
     }
 
-    @media screen and (max-width: $md-size) {
+    @media screen and (max-width: $lg-size) {
       height: 1020px;
 
       & .create-account , & .login-container {

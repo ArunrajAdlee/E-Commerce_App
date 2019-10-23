@@ -28,6 +28,21 @@
                 letter-spacing: 0.8px;
                 margin: 0 5px 0 5px;
             }
+
+            & .nav-dropdown {
+                & button {
+                    background-color: inherit;
+                    color: black;
+                    border:none;
+                    padding-top: 9px;
+
+                    &:focus, &:active{
+                        outline: none !important;
+                        box-shadow: none;
+                    }
+                
+                }
+            }
         }
 
         @media screen and (max-width: $sm-size) {
@@ -62,7 +77,7 @@
     }
 
     @media screen and (max-width: $sm-size) {
-        background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+        background: $theme-gradient;
         height: 300px;
 
 

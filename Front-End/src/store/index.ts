@@ -2,9 +2,9 @@ import React from 'react';
 import { ILoginFields } from '../components/Login/login';
 
 export const store = {
-  userToken: '',
+  currentUser: '',
   isAuth: false,
-  login: (self:any, userCredentials: ILoginFields) => {},
+  login: (userCredentials: ILoginFields) => {},
   logout: () => {},
 };
 

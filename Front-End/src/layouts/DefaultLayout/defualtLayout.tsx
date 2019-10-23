@@ -6,6 +6,7 @@ import Footer from '../Footer/footer';
 import Header from '../Header/header';
 import { StoreContext } from '../../store';
 import Login from '../../components/Login/login';
+import CheckAuth from '../../components/Authentication/checkAuth';
 
 
 interface IDefaultProps {
@@ -20,10 +21,11 @@ const DefaultLayout: React.SFC<IDefaultProps> = (props) => {
   const {
     pageTitle, authenticated, component: Component, ...rest
   } = props;
+
   return (
-    <StoreContext.Consumer>
-      {(context) => context && (
-        ((authenticated && context.isAuth) || !authenticated)
+    <CheckAuth
+      render={(isAuth: boolean) => (
+        (isAuth && authenticated) || !authenticated
           ? (
             <Route
               {...rest}
@@ -38,10 +40,11 @@ const DefaultLayout: React.SFC<IDefaultProps> = (props) => {
               )}
             />
           )
-          : <Redirect to="/login" push />
+          : <Redirect exact to="/login" />
       )}
-    </StoreContext.Consumer>
+    />
   );
 };
+
 
 export default DefaultLayout;

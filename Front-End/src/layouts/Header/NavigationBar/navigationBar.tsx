@@ -1,10 +1,13 @@
 import React from 'react';
 import {
-  Navbar, Nav, Form, FormControl, Button, InputGroup,
+  Navbar, Nav, Form, FormControl, Button, InputGroup, DropdownButton, Dropdown,
 } from 'react-bootstrap';
-import { faCartArrowDown, faSearch, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCartArrowDown, faSearch, faArrowRight, faUser,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import { StoreContext } from '../../../store';
 
 interface IStates {
     searchOpen: boolean
@@ -15,8 +18,16 @@ class NavigationBar extends React.Component<{}, IStates> {
       searchOpen: false,
     }
 
+    private handleLogout = () => {
+      const { logout } = this.context;
+
+      logout();
+    }
+
     public render() {
       const { searchOpen } = this.state;
+      const { isAuth, currentUser } = this.context;
+
       return (
         <div className="sticky-top">
           <Navbar className="main-navbar" sticky="top" expand="sm">
@@ -41,14 +52,27 @@ class NavigationBar extends React.Component<{}, IStates> {
                 >
                VIEW LISTINGS
                 </Link>
-                <Link
-                  className="nav-link"
-                  to={{
-                    pathname: '/account',
-                  }}
-                >
-               MY ACCOUNT
-                </Link>
+                {isAuth
+                  ? (
+                    <DropdownButton
+                      title={<FontAwesomeIcon icon={faUser} />}
+                      id="accountDropdown"
+                      className="nav-dropdown"
+                    >
+                      <Dropdown.Item onClick={this.handleLogout}>Logout</Dropdown.Item>
+                    </DropdownButton>
+                  )
+                  : (
+                    <Link
+                      className="nav-link"
+                      to={{
+                        pathname: '/login',
+                      }}
+                    >
+               LOGIN
+                    </Link>
+                  )}
+
                 <Link
                   className="nav-link"
                   to={{
@@ -78,4 +102,5 @@ class NavigationBar extends React.Component<{}, IStates> {
     }
 }
 
+NavigationBar.contextType = StoreContext;
 export default NavigationBar;
