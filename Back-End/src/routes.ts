@@ -45,6 +45,12 @@ export const Routes = [
 
 	//Auth
 	{
+		method: 'get',
+		route: '/auth/status',
+		controller: AuthController,
+		action: 'getAuthStatus'
+	},
+	{
 		method: 'post',
 		route: '/auth/create',
 		controller: AuthController,
