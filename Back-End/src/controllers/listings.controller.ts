@@ -10,10 +10,7 @@ export class ListingsController {
 	private listingsRepository = getRepository(Listings);
 
 	async all(req: Request, res: Response, next: NextFunction) {
-		return this.listingsRepository.find();
-
 		const listings = await this.listingsRepository.find();
-
 		res.status(200).send({
 			listings: listings
 		});
