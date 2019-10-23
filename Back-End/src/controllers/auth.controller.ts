@@ -75,7 +75,7 @@ export class AuthController {
 			//uncomment 'secure' when running in production
 			//secure: true
 		});
-		res.status(200).send({ message: 'sucessfully logged in' });
+		res.send(200).end();
 	}
 
 	async remove(req: Request, res: Response, next: NextFunction) {
