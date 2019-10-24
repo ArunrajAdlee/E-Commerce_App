@@ -16,7 +16,22 @@ export class ListingsController {
             productName: request.body.productName,
             quantity: request.body.quantity,
         }
-        return this.listingsRepository.save(newProduct);
+        
+        try {
+            const savedListing = await this.listingsRepository.save(newProduct);
+            if (savedListing) {
+                response.status(200).send({
+                    message: 'successfully saved',
+                    savedListing
+                });
+                return;
+            }
+            response.status(404).send({message: 'failed to save'});
+        } catch (error) {
+            response.status(404).send({message: 'failed to save'});
+        }
+
+        // return this.listingsRepository.save(newProduct);
     }
 
-}
+} 
