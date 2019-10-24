@@ -15,7 +15,8 @@ interface IProps {
 class CheckAuth extends React.Component<IProps, {}> {
   public async componentDidUpdate() {
     const { logout, isAuth } = this.context;
-    const resp = await axios.get('http://localhost:4000/auth/status');
+    const resp = await axios.get('http://localhost:4000/auth/status',
+    {withCredentials: true});
     if (resp) {
       if (!resp.data.isAuthenticated && isAuth) { logout(); }
     }

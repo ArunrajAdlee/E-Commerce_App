@@ -36,9 +36,8 @@ class App extends React.Component<{}, IStates> {
   }
 
   public login = async (userCredentials: ILoginFields) => {
-    await axios.post('http://localhost:4000/auth/login', userCredentials)
+    await axios.post('http://localhost:4000/auth/login', userCredentials, {withCredentials: true})
       .then((response) => {
-        debugger;
         this.setState({
           isAuth: true,
           currentUser: userCredentials.username,

@@ -3,8 +3,8 @@ import { NextFunction, Request, Response } from 'express';
 import jwt = require('jsonwebtoken');
 import { getRepository } from 'typeorm';
 import { User } from '../entity/user.entity';
-import { UserModel } from '../models/user.model';
 import { AuthModel } from '../models/auth.model';
+import { UserModel } from '../models/user.model';
 const { checkAuth } = require('../helpers/check-auth');
 
 export class AuthController {
@@ -13,7 +13,7 @@ export class AuthController {
 	async createUser(req: Request, res: Response, next: NextFunction) {
 		// Validate info in the future *****
 		const userExists = await this.userRepository.findOne({
-			username: req.body.username
+			username: req.body.username,
 		});
 		if (userExists) {
 			res.status(404).send('user already exists');
@@ -25,7 +25,7 @@ export class AuthController {
 		const hashedPassword = await bcrypt.hash(req.body.password, salt);
 		const newUser: UserModel = {
 			username: req.body.username,
-			password: hashedPassword
+			password: hashedPassword,
 		};
 
 		// Save new user to the database
@@ -33,7 +33,7 @@ export class AuthController {
 			const savedUser = await this.userRepository.save(newUser);
 			res.status(200).send({
 				message: 'sucessfully created the user',
-				savedUser
+				savedUser,
 			});
 		} catch (error) {
 			res.status(404).send('could not create account');
@@ -43,7 +43,7 @@ export class AuthController {
 	async login(req: Request, res: Response, next: NextFunction) {
 		// Check if user exists
 		const user = await this.userRepository.findOne({
-			username: req.body.username
+			username: req.body.username,
 		});
 		if (!user) {
 			res.status(404).send('user does not exist');
@@ -53,7 +53,7 @@ export class AuthController {
 		// Validate password
 		const validPassword = await bcrypt.compare(
 			req.body.password,
-			user.password
+			user.password,
 		);
 		if (!validPassword) {
 			res.status(404).send('invalid password');
@@ -64,18 +64,17 @@ export class AuthController {
 		const token = jwt.sign(
 			{
 				username: user.username,
-				userId: user.id
+				userId: user.id,
 			},
-			'secretKey'
+			'secretKey',
 		);
 		// May need more information like expiration time (ask front-end peeps) ****
 		res.cookie('access_token', token, {
-			maxAge: 3600,
-			httpOnly: true
-			//uncomment 'secure' when running in production
-			//secure: true
-		});
-		res.send(200).end();
+			maxAge: 3600000,
+			httpOnly: true,
+			// uncomment 'secure' when running in production
+			// secure: true
+		}).send('cookie set');
 	}
 
 	async remove(req: Request, res: Response, next: NextFunction) {
