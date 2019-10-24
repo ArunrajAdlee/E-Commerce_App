@@ -45,12 +45,6 @@ export const Routes = [
 
 	//Auth
 	{
-		method: 'get',
-		route: '/auth/status',
-		controller: AuthController,
-		action: 'getAuthStatus'
-	},
-	{
 		method: 'post',
 		route: '/auth/create',
 		controller: AuthController,
@@ -61,6 +55,18 @@ export const Routes = [
 		route: '/auth/login',
 		controller: AuthController,
 		action: 'login'
+	},
+	{
+		method: 'get',
+		route: '/auth/status',
+		controller: AuthController,
+		action: 'getAuthStatus'
+	},
+	{
+		method: 'post',
+		route: '/auth/logout',
+		controller: AuthController,
+		action: 'logout'
 	},
 
 	//Categories

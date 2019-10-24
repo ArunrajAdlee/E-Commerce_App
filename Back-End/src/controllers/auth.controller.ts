@@ -9,6 +9,7 @@ const { checkAuth } = require('../helpers/check-auth');
 
 export class AuthController {
 	private userRepository = getRepository(User);
+	private cookieName = 'access_token';
 
 	async createUser(req: Request, res: Response, next: NextFunction) {
 		// Validate info in the future *****
@@ -69,7 +70,7 @@ export class AuthController {
 			'secretKey',
 		);
 		// May need more information like expiration time (ask front-end peeps) ****
-		res.cookie('access_token', token, {
+		res.cookie(this.cookieName, token, {
 			maxAge: 3600000,
 			httpOnly: true,
 			// uncomment 'secure' when running in production
@@ -101,5 +102,13 @@ export class AuthController {
 			isAuthenticated = true;
 		}
 		res.status(200).send({ isAuthenticated });
+	}
+
+	async logout(req: Request, res: Response, next: NextFunction) {
+		const authenticatedUser: AuthModel = checkAuth(req);
+		if (authenticatedUser) {
+			res.clearCookie(this.cookieName);
+		}
+		res.status(200).end();
 	}
 }
