@@ -1,10 +1,10 @@
 import React from 'react';
-import axios from 'axios';
 import { Row, Col, Button } from 'react-bootstrap';
 import {
   Formik, Field, Form, ErrorMessage, FormikValues,
 } from 'formik';
 import * as Yup from 'yup';
+import axios from '../../server';
 
 interface SignUpValues {
   username: string;

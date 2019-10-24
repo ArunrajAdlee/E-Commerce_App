@@ -4,7 +4,7 @@ import { Router, Switch } from 'react-router';
 import './styles/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserHistory } from 'history';
-import axios from 'axios';
+import axios from './server';
 import Login, { ILoginFields } from './components/Login/login';
 import LandingPage from './components/LandingPage/landingPage';
 import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
@@ -13,12 +13,12 @@ import SignUp from './components/SignUp/signUp';
 import { StoreContext } from './store';
 import ScrollToTop from './components/Misc/scrollToTop';
 
-
 const history = createBrowserHistory();
 
 interface IStates {
   currentUser: string;
   isAuth: boolean;
+  setAuthState: (isAuth: boolean, user: string) => void;
   login: (userCredentials: ILoginFields) => void;
   logout: () => void;
 }
@@ -26,37 +26,33 @@ interface IStates {
 class App extends React.Component<{}, IStates> {
   constructor(props: any) {
     super(props);
-    console.log(sessionStorage);
     this.state = {
       currentUser: '',
       isAuth: false,
+      setAuthState: this.setAuthState,
       login: this.login,
       logout: this.logout,
     };
   }
 
-  public login = async (userCredentials: ILoginFields) => {
-    await axios.post('http://localhost:4000/auth/login', userCredentials, {withCredentials: true})
-      .then((response) => {
-        this.setState({
-          isAuth: true,
-          currentUser: userCredentials.username,
-        });
-        return response;
-      })
-      .catch((error) => {
-      });
+  public setAuthState = (isAuth: boolean, user: string) => {
+    this.setState({
+      isAuth,
+      currentUser: user,
+    });
   }
 
+  public login = async (userCredentials: ILoginFields) => {
+    try {
+      const resp = await axios.post('/auth/login', userCredentials);
+      if (resp) {
+        this.setAuthState(true, userCredentials.username);
+      }
+    } catch {}
+  }
 
   public logout = () => {
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('currentUser');
-    delete axios.defaults.headers.common.Authorization;
-
-    this.setState({
-      isAuth: false,
-    });
+    this.setAuthState(true, '');
   };
 
 

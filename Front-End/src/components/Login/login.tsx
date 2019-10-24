@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import {
   Row, Col, Button, Alert,
 } from 'react-bootstrap';
@@ -8,6 +7,7 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 import { Link, Redirect } from 'react-router-dom';
+import axios from '../../server';
 import { StoreContext } from '../../store';
 
 

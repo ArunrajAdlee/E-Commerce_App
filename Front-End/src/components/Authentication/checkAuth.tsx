@@ -1,8 +1,5 @@
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/prop-types */
 import React from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../server';
 import { StoreContext } from '../../store';
 
 interface IStates {}
@@ -13,12 +10,21 @@ interface IProps {
 }
 
 class CheckAuth extends React.Component<IProps, {}> {
+  public async componentDidMount() {
+    await this.checkUserAuth();
+    console.log('running');
+  }
+
   public async componentDidUpdate() {
-    const { logout, isAuth } = this.context;
-    const resp = await axios.get('http://localhost:4000/auth/status',
-    {withCredentials: true});
+    await this.checkUserAuth();
+    console.log('running');
+  }
+
+  public async checkUserAuth() {
+    const { logout, isAuth, setAuthState } = this.context;
+    const resp = await axios.get('/auth/status');
     if (resp) {
-      if (!resp.data.isAuthenticated && isAuth) { logout(); }
+      if (!resp.data.isAuthenticated && isAuth) { logout(); } else if (resp.data.isAuthenticated && !isAuth) { setAuthState(true, ''); }
     }
   }
 
@@ -28,7 +34,6 @@ class CheckAuth extends React.Component<IProps, {}> {
     return (render(isAuth));
   }
 }
-
 
 CheckAuth.contextType = StoreContext;
 export default CheckAuth;
