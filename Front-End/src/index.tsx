@@ -51,8 +51,11 @@ class App extends React.Component<{}, IStates> {
     } catch {}
   }
 
-  public logout = () => {
-    this.setAuthState(true, '');
+  public logout = async () => {
+    try {
+      await axios.post('auth/logout');
+    } catch {}
+    this.setAuthState(false, '');
   };
 
 
