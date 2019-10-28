@@ -4,9 +4,11 @@ import Form from 'react-bootstrap/Form';
 import { FormControl, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Redirect } from 'react-router';
 
 interface IStates {
     description: string,
+    toListings: boolean;
 }
 
 class Search extends React.Component<{}, IStates> {
@@ -15,6 +17,7 @@ class Search extends React.Component<{}, IStates> {
 
     this.state = {
       description: '',
+      toListings: false,
     };
   }
 
@@ -25,13 +28,25 @@ class Search extends React.Component<{}, IStates> {
   }
 
   handleSubmit(event: any) {
+    event.preventDefault();
     this.setState({
-      description: event.target.value,
+      toListings: true,
     });
   }
 
   public render() {
-    const { description } = this.state;
+    const { description, toListings } = this.state;
+    if (toListings) {
+      // Reset state
+      this.setState({
+        toListings: false,
+      });
+
+      // Construct new route
+      const query = description.replace(' ', '+');
+      const route = `/search?search=${query}`;
+      return <Redirect to={route} />;
+    }
     return (
       <Form className="w-50 mr-3" onSubmit={(event: any) => this.handleSubmit(event)}>
         <InputGroup>
