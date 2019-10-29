@@ -44,7 +44,7 @@ class Search extends React.Component<{}, IStates> {
 
       // Construct new route
       const query = description.replace(' ', '+');
-      const route = `/search?search=${query}`;
+      const route = `/listings/search/${query}`;
       return <Redirect to={route} />;
     }
     return (

@@ -4,6 +4,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Search from '../../../components/Search/search';
+import Category from '../../../components/Category/category';
 
 class NavigationBar extends React.Component<{}> {
   public render() {
@@ -20,6 +21,7 @@ class NavigationBar extends React.Component<{}> {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
+          <Category/>
               <Link className="nav-link align-self-center" to={{ pathname: '/account' }}>
                  MY ACCOUNT
               </Link>
