@@ -11,7 +11,7 @@ export class SearchController {
         var requestedListings: Array<Listings>
         for(var listing in allListings) {
             for(var query in queries) {
-                if(allListings[listing].title == query) {
+                if(allListings[listing].title.includes(query)) {
                     requestedListings.push(allListings[listing]);
                 }
             }
