@@ -31,13 +31,14 @@ export class ListingsController {
 			res.status(404).send('user is not authenticated');
 			return;
 		}
-
+		
 		const newProduct: ListingsModel = {
 			title: req.body.title,
 			stock_count: req.body.stock_count,
 			category: req.body.category
 		};
-    
+
+    	//Save new listing to database
     try {
         const savedListing = await this.listingsRepository.save(newProduct);
         if (savedListing) {
