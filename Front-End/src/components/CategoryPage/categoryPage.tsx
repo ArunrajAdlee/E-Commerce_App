@@ -1,58 +1,63 @@
 import React from 'react';
 import axios from 'axios';
 import { RouteComponentProps } from 'react-router-dom';
-import Listings from '../Listings/listings';
+import Listings, { Listing } from '../Listings/listings';
+
 const BACKEND_URL = 'http://localhost:4000';
-interface Listing {
-	id: number;
-	name: string;
-}
+
 interface IStates {
     listings: Listing[];
     categoryId: number;
     categoryName: string;
 }
 
+interface IProps extends RouteComponentProps<any> {}
+
 // Will finish when listings component is completed
+class CategoryPage extends React.Component<IProps, IStates> {
+  public readonly state: Readonly<IStates> = {
+    listings: [],
+    categoryId: -1,
+    categoryName: '',
+  };
 
-class CategoryPage extends React.Component<RouteComponentProps<any>, IStates> {
-	public readonly state: Readonly<IStates> = {
-        listings: [],
-        categoryId: -1,
-        categoryName: ''
-    };
-    
-    componentWillReceiveProps() {
-        this.componentDidMount();
+  public async componentDidMount() {
+    this.updateListing();
+  }
+
+  public async componentDidUpdate(prevProps: IProps) {
+    const { match } = this.props;
+    if (prevProps.match.params.categoryId !== match.params.categoryId) {
+      this.updateListing();
     }
+  }
 
-	public async componentDidMount() {
-        const resListings: Listing[] = await this.retrieveListing();
-        this.setState({ categoryId: this.props.match.params.categoryId, 
-            categoryName: this.props.match.params.categoryName, 
-            listings: resListings });
-	}
+  private updateListing = async () => {
+    const { match } = this.props;
+    const result = await axios.get(`${BACKEND_URL}/listings`);
+    const resListings: Listing[] = result.data.listings.map((product: any) => ({
+      id: product.id,
+      name: product.title,
+    }));
 
-	public render() {
-		const { listings, categoryName } = this.state;
-		return (
-			<>
-				<h2>Category: {categoryName}</h2>
-				<Listings listings={listings}/>
-			</>
-		);
-	}
+    this.setState({
+      categoryId: match.params.categoryId,
+      categoryName: match.params.categoryName,
+      listings: resListings,
+    });
+  }
 
-	private async retrieveListing() {
-		const result = await axios.get(
-			BACKEND_URL + '/listings'
-		);
-		const resListings = result.data.listings.map((product: any) => ({
-			id: product.id,
-			name: product.title
-		}));
-		return resListings;	
-	}
+  public render() {
+    const { categoryName, listings } = this.state;
+    return (
+      <>
+        <h2>
+          {`Category: ${categoryName}`}
+        </h2>
+        <Listings listings={listings} />
+      </>
+    );
+  }
 }
 
 export default CategoryPage;

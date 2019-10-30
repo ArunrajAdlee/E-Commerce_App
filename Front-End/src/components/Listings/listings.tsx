@@ -1,36 +1,40 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Spinner } from 'react-bootstrap';
 
-interface Listing {
+export interface Listing {
  id: number;
  name: string;
 
 }
+
+interface IProps {
+  listings: Listing[];
+}
+
 interface IStates {
-  listings: Listing[]
+
 }
 
 // Will finish when listings component is completed
 
-class Listings extends React.Component<any, IStates> {
+class Listings extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
-    listings: this.props.listings
-  }
-
-  public componentDidMount() {
   }
 
   public render() {
-    const { listings } = this.state;
+    const { listings } = this.props;
     return (
       <>
-        <Row>
-          <Col md={3} sm={12}>
-            {
-                 listings.map((listing) => (<p>{listing.name}</p>))
+        {listings.length ? (
+          <Row>
+            <Col md={3} sm={12}>
+              {
+                 listings.map((listing) => (<p key={listing.id}>{listing.name}</p>))
              }
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        )
+          : <Spinner animation="border" variant="warning" />}
       </>
     );
   }
