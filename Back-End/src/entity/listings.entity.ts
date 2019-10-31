@@ -2,11 +2,9 @@ import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 @Entity()
 export class Listings {
-	@PrimaryGeneratedColumn()
-	id: number;
 
-	@Column()
-	productName: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
     @Column()
     title: string;
