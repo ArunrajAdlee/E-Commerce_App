@@ -28,4 +28,12 @@ module.exports = {
     "react/state-in-constructor": [0, 0],
     "linebreak-style": 0
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        paths: ['./src']
+      }
+    }
+  }
 };
