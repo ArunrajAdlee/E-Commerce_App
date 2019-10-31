@@ -34,7 +34,8 @@ class CategoryPage extends React.Component<IProps, IStates> {
 
   private updateListing = async () => {
     const { match } = this.props;
-    const result = await axios.get(`${BACKEND_URL}/listings`);
+    const categoryId = match.params.categoryId;
+    const result = await axios.get(`${BACKEND_URL}/listings/category/${categoryId}`);
     const resListings: Listing[] = result.data.listings.map((product: any) => ({
       id: product.id,
       name: product.title,
