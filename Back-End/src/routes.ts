@@ -30,7 +30,8 @@ export const Routes = [
 		controller: ListingsController,
 		action: 'getListingDetails'
 	},
-	{   method: 'get',
+	{   	
+		method: 'get',
 		route: '/listings/category/:category',
 		controller: ListingsController,
 		action: 'allWithCategory'
