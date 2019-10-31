@@ -8,6 +8,7 @@ import Login from './components/Login/login';
 import LandingPage from './components/LandingPage/landingPage';
 import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
 import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
+import ListingDetails from './components/ListingDetails/ListingDetails';
 
 const history = createBrowserHistory();
 
@@ -15,6 +16,7 @@ const history = createBrowserHistory();
 ReactDOM.render(
   <Router history={history}>
     <Switch>
+      <DefaultLayout path="/listing/id" component={ListingDetails} pageTitle="Listing Detail" />
       <DefaultLayout path="/listings" component={LandingPage} pageTitle="Listings" />
       <DefaultLayout path="/cart" component={LandingPage} pageTitle="Your Shoppping Cart" />
       <DefaultLayout path="/login" component={Login} pageTitle="Login/Register" />
