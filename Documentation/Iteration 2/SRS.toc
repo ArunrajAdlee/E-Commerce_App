@@ -1,0 +1,37 @@
+\contentsline {section}{\numberline {1}Document Purpose}{5}{section.1}% 
+\contentsline {section}{\numberline {2}Project description}{5}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}System Context}{5}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Project Scope}{5}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Business Goals}{5}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {2.4}Product Functions}{6}{subsection.2.4}% 
+\contentsline {subsection}{\numberline {2.5}Personas}{7}{subsection.2.5}% 
+\contentsline {subsubsection}{Admin}{7}{section*.4}% 
+\contentsline {subsubsection}{Buyer}{7}{section*.5}% 
+\contentsline {subsubsection}{Guest User}{7}{section*.6}% 
+\contentsline {subsubsection}{Seller}{7}{section*.7}% 
+\contentsline {subsubsection}{PayPal}{7}{section*.8}% 
+\contentsline {subsection}{\numberline {2.6}Functional Requirements}{7}{subsection.2.6}% 
+\contentsline {subsection}{\numberline {2.7}Non-Functional Requirements}{9}{subsection.2.7}% 
+\contentsline {section}{\numberline {3}User-Stories}{12}{section.3}% 
+\contentsline {section}{\numberline {4}Glossary of Domain Concepts}{14}{section.4}% 
+\contentsline {section}{\numberline {5}Use Cases}{15}{section.5}% 
+\contentsline {subsection}{\numberline {5.1}Selling}{15}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {5.2}Buying}{18}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.3}Login}{21}{subsection.5.3}% 
+\contentsline {section}{\numberline {6}Entity Relationship Diagram}{25}{section.6}% 
+\contentsline {subsection}{\numberline {6.1}Description Of Each Entity}{26}{subsection.6.1}% 
+\contentsline {subsubsection}{Client}{26}{section*.9}% 
+\contentsline {subsubsection}{Listings}{26}{section*.10}% 
+\contentsline {subsubsection}{Address}{26}{section*.11}% 
+\contentsline {subsubsection}{Order}{26}{section*.12}% 
+\contentsline {subsubsection}{Review}{26}{section*.13}% 
+\contentsline {subsubsection}{Order Details}{26}{section*.14}% 
+\contentsline {subsubsection}{Category}{26}{section*.15}% 
+\contentsline {subsubsection}{Cart}{26}{section*.16}% 
+\contentsline {section}{\numberline {7}Class Diagram}{27}{section.7}% 
+\contentsline {subsection}{\numberline {7.1}Description Of Class Diagram}{27}{subsection.7.1}% 
+\contentsline {section}{\numberline {8}Sequence Diagram}{28}{section.8}% 
+\contentsline {subsection}{\numberline {8.1}Home Page}{29}{subsection.8.1}% 
+\contentsline {section}{\numberline {9}Conclusion}{29}{section.9}% 
+\contentsline {section}{\numberline {10}Index}{29}{section.10}% 
+\contentsline {section}{\numberline {11}Reference}{29}{section.11}% 
