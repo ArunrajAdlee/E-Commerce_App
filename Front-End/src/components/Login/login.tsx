@@ -6,7 +6,7 @@ import {
   Formik, Field, Form, ErrorMessage, FormikValues, FormikActions,
 } from 'formik';
 import * as Yup from 'yup';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, RouteComponentProps } from 'react-router-dom';
 import axios from '../../server';
 import { StoreContext } from '../../store';
 
@@ -28,8 +28,9 @@ const LoginSchema = Yup.object().shape({
     .required('Password is required'),
 });
 
+interface IProps extends RouteComponentProps<any> {}
 
-class Login extends React.Component<{}, IStates> {
+class Login extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
     isError: false,
   }

@@ -39,3 +39,14 @@ code {
     box-shadow: none !important;
 }
 
+.loading-spinner {
+  display: block !important;
+  position: fixed !important;
+  width: 126px !important;
+  height: 126px !important;
+  margin-top: -63px !important; 
+  margin-right: -63px!important;
+  top: 50% !important;
+  right: 50% !important;
+}
+

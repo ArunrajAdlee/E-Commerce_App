@@ -2,22 +2,28 @@ import React from 'react';
 import axios from '../../server';
 import { StoreContext } from '../../store';
 
-interface IStates {}
+interface IStates {
+  isMounted: boolean;
+}
 
 interface IProps {
   render: any;
-  authenticated?: boolean;
 }
 
-class CheckAuth extends React.Component<IProps, {}> {
+class CheckAuth extends React.Component<IProps, IStates> {
+  public readonly state: Readonly<IStates> = {
+    isMounted: false,
+  }
+
   public async componentDidMount() {
     await this.checkUserAuth();
-    console.log('running');
+    this.setState({
+      isMounted: true,
+    });
   }
 
   public async componentDidUpdate() {
     await this.checkUserAuth();
-    console.log('running');
   }
 
   public async checkUserAuth() {
@@ -30,8 +36,9 @@ class CheckAuth extends React.Component<IProps, {}> {
 
   public render() {
     const { render } = this.props;
+    const { isMounted } = this.state;
     const { isAuth } = this.context;
-    return (render(isAuth));
+    return (render(isAuth, isMounted));
   }
 }
 

@@ -26,7 +26,8 @@ module.exports = {
   rules: {
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
     "react/state-in-constructor": [0, 0],
-    "linebreak-style": 0
+    "linebreak-style": 0,
+		"no-nested-ternary": "off",
   },
   settings: {
     'import/resolver': {

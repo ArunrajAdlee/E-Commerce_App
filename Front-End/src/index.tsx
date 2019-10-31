@@ -12,6 +12,7 @@ import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
 import SignUp from './components/SignUp/signUp';
 import { StoreContext } from './store';
 import ScrollToTop from './components/Misc/scrollToTop';
+import SecureRoute from './components/Authentication/secureRoute';
 
 const history = createBrowserHistory();
 
@@ -67,11 +68,11 @@ class App extends React.Component<{}, IStates> {
         <Router history={history}>
           <ScrollToTop />
           <Switch>
-            <DefaultLayout path="/listings" component={LandingPage} pageTitle="Listings" />
-            <DefaultLayout path="/cart" component={LandingPage} pageTitle="Your Shoppping Cart" authenticated />
-            <DefaultLayout path="/login" component={Login} pageTitle="Login/Register" />
-            <DefaultLayout path="/register" component={SignUp} pageTitle="Sign Up" />
-            <LandingLayout component={LandingPage} />
+            <SecureRoute path="/listings" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
+            <SecureRoute authenticated path="/cart" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Your Shoppping Cart" />
+            <SecureRoute path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
+            <SecureRoute path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
+            <SecureRoute pageComponent={LandingPage} layoutComponent={LandingLayout} />
           </Switch>
         </Router>
       </StoreContext.Provider>
