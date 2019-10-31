@@ -46,16 +46,13 @@ export class ListingsController {
 	}
 
 	async allWithSearchQuery(req: Request, res: Response, next: NextFunction) {
-        var queries: Array<string> = req.params.searchQuery.split("+");
-        const allListings = await this.listingsRepository.find();
-        var requestedListings: Array<Listings>
-        for(var listing in allListings) {
-            for(var query in queries) {
-                if(allListings[listing].title.includes(query)) {
-                    requestedListings.push(allListings[listing]);
-                }
-            }
-        }
-        return requestedListings;
+        const query = req.params.searchQuery.replace('+', ' ');
+		const allListings: ListingsModel[] = await this.listingsRepository.find();
+
+		const searchListings = allListings.filter(listing => listing.title.includes(query));
+	
+		res.status(200).send({
+			listings: searchListings
+		});
     }
 }
