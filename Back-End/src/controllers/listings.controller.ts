@@ -53,6 +53,7 @@ export class ListingsController {
 		const listing = await this.listingsRepository.findOne(request.params.id);
 		if (!listing) {
 			response.status(404).send('listing not found');
+			return;
 		}
 
 		response.status(200).send({
