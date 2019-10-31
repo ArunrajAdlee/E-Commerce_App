@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { RouteComponentProps } from 'react-router-dom';
-import Listings, { Listing } from '../Listings/listings';
+import Listings, { Listing } from '../listings';
 
 const BACKEND_URL = 'http://localhost:4000';
 

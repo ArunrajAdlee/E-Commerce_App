@@ -8,9 +8,8 @@ import Login from './components/Login/login';
 import LandingPage from './components/LandingPage/landingPage';
 import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
 import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
-import SearchPage from './components/SearchPage/searchPage';
-import CategoryPage from './components/CategoryPage/categoryPage';
-
+import SearchPage from './components/Listings/SearchPage/searchPage';
+import CategoryPage from './components/Listings/CategoryPage/categoryPage';
 const history = createBrowserHistory();
 
 
