@@ -31,8 +31,9 @@
 \contentsline {section}{\numberline {7}Class Diagram}{27}{section.7}% 
 \contentsline {subsection}{\numberline {7.1}Description Of Class Diagram}{27}{subsection.7.1}% 
 \contentsline {section}{\numberline {8}Sequence Diagram}{28}{section.8}% 
-\contentsline {section}{\numberline {9}External Interface}{29}{section.9}% 
-\contentsline {subsection}{\numberline {9.1}Home Page}{29}{subsection.9.1}% 
-\contentsline {section}{\numberline {10}Conclusion}{29}{section.10}% 
-\contentsline {section}{\numberline {11}Index}{29}{section.11}% 
-\contentsline {section}{\numberline {12}Reference}{30}{section.12}% 
+\contentsline {section}{\numberline {9}Architectural Diagram}{29}{section.9}% 
+\contentsline {section}{\numberline {10}External Interface}{30}{section.10}% 
+\contentsline {subsection}{\numberline {10.1}Home Page}{30}{subsection.10.1}% 
+\contentsline {section}{\numberline {11}Conclusion}{30}{section.11}% 
+\contentsline {section}{\numberline {12}Index}{30}{section.12}% 
+\contentsline {section}{\numberline {13}Reference}{31}{section.13}% 
