@@ -38,7 +38,7 @@ export class ListingsController {
       const reqImage = req.files.image;
       const cloudImage = await cloudinary.uploader.upload(
         reqImage.tempFilePath,
-        { unique_filename: true, width: 500, height: 500 }
+        { unique_filename: true, width: 540, height: 580 }
       );
       const imageURL = cloudImage.url;
       //Crop the size of the image for the thumbnail (225 x 225)
@@ -48,7 +48,7 @@ export class ListingsController {
       );
       const thumbnailURL =
         imageURL.substr(0, sizeInputLocation) +
-        '/w_225' +
+        '/w_255,h_270' +
         imageURL.substr(sizeInputLocation, imageURL.length - 1);
 
       const newProduct: ListingsModel = {
