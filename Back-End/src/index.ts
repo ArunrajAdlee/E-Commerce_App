@@ -7,6 +7,8 @@ import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import { Routes } from './routes';
 var cookieParser = require('cookie-parser');
+var cloudinary = require('cloudinary').v2;
+var fileUpload = require('express-fileupload');
 
 createConnection()
 	.then(async connection => {
@@ -22,6 +24,15 @@ createConnection()
 				extended: false
 			})
 		);
+		app.use(fileUpload({
+			useTempFiles: true
+		}));
+
+		cloudinary.config({
+			cloud_name: 'ddubs1',
+			api_key: '632465439759219',
+			api_secret: 'DO7gLeBgRRZNO1iLGP-J4EBocN4'
+		});
 
 		// register express routes from defined application routes
 		Routes.forEach(route => {
