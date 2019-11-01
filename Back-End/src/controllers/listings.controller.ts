@@ -54,5 +54,22 @@ export class ListingsController {
 		res.status(200).send({
 			listings: searchListings
 		});
-    }
+	}
+	
+	async getListingDetails(
+		request: Request,
+		response: Response,
+		next: NextFunction
+	) {
+		const listing = await this.listingsRepository.findOne(request.params.id);
+		if (!listing) {
+			response.status(404).send('listing not found');
+			return;
+		}
+
+		response.status(200).send({
+			message: 'success',
+			listing
+		});
+	}
 }
