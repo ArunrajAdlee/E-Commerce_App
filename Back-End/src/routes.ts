@@ -26,6 +26,12 @@ export const Routes = [
 	},
 	{
 		method: 'get',
+		route: '/listings/:id',
+		controller: ListingsController,
+		action: 'getListingDetails'
+	},
+	{   	
+		method: 'get',
 		route: '/listings/category/:category',
 		controller: ListingsController,
 		action: 'allWithCategory'
