@@ -1,9 +1,14 @@
 import axios from 'axios';
 
-const instance = axios.create({
+export const server = axios.create({
   baseURL: 'http://localhost:4000',
   timeout: 1000,
   withCredentials: true,
 });
 
-export default instance;
+export const api = {
+  auth_create: '/auth/create',
+  auth_status: '/auth/status',
+  auth_login: '/auth/login',
+  auth_logout: '/auth/logout',
+};

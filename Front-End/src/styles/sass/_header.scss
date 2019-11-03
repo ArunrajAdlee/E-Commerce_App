@@ -3,17 +3,19 @@
     overflow:visible;
     box-sizing:border-box;
     
-     & .main-navbar {
-        margin-top: 40px;
-        width: 65% !important;
+      .main-navbar {
+        width: 65%;
         margin-left: auto;
         margin-right: auto;
         border-radius: 5px;
         min-height: 80px;
         box-shadow: 0 10px 30px rgba(0,0,0,.1);
         background: #fff;
-        -webkit-transition: width 0.5s; 
-        transition: width 0.5s;
+        -webkit-transition: width 0.1s; 
+        transition: width 0.1s;
+        position: absolute;
+        left: 20%;
+        right: 20%;
 
         & .navbar-nav{
             & svg {
@@ -46,6 +48,8 @@
         }
 
         @media screen and (max-width: $sm-size) {
+            position: fixed !important;
+            left: 0;
             margin-top: 0;
             width: 100% !important;
             border-radius: 0;
@@ -63,10 +67,20 @@
     }
 }
 
+.sticky-nav {
+    width: 65%;
+    left: 20%;
+
+    @media screen and (max-width: $lg-size) {
+        left: 0;
+        width: 100%;
+    }
+
+}
+
 .common-header{
     background: url(#{$img-path}/banner/common-banner.jpg) center no-repeat; 
     height: 400px;
-    margin-top: -40px;
 
     & .page-title{
         color: white;

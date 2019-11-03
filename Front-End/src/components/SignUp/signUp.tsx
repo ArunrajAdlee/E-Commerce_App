@@ -7,7 +7,7 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 import { Redirect } from 'react-router-dom';
-import axios from '../../server';
+import { server, api } from '../../server';
 import { StoreContext } from '../../store';
 
 interface SignUpValues {
@@ -67,7 +67,7 @@ class SignUp extends React.Component<{}, IStates> {
   private handleSubmit = async (values: FormikValues, actions: any) => {
     const { login } = this.context;
     try {
-      const resp = await axios.post('/auth/create', values);
+      const resp = await server.post(api.auth_create, values);
       if (resp) {
         const userCredentials = { username: values.username, password: values.password };
         await login(userCredentials);

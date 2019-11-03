@@ -1,6 +1,7 @@
 import React from 'react';
-import axios from '../../server';
+import { server, api } from '../../server';
 import { StoreContext } from '../../store';
+
 
 interface IStates {
   isMounted: boolean;
@@ -28,7 +29,7 @@ class CheckAuth extends React.Component<IProps, IStates> {
 
   public async checkUserAuth() {
     const { logout, isAuth, setAuthState } = this.context;
-    const resp = await axios.get('/auth/status');
+    const resp = await server.get(api.auth_status);
     if (resp) {
       if (!resp.data.isAuthenticated && isAuth) { logout(); } else if (resp.data.isAuthenticated && !isAuth) { setAuthState(true, ''); }
     }

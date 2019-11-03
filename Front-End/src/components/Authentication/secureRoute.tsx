@@ -3,6 +3,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
+import { StickyContainer } from 'react-sticky';
 import CheckAuth from './checkAuth';
 
 
@@ -28,7 +29,9 @@ const SecureRoute: React.SFC<IProps> = (props) => {
               <Route
                 {...rest}
                 render={(matchProps) => (
-                  <LayoutComponent matchProps={matchProps} pageComponent={PageComponent} pageTitle={pageTitle} />
+                  <StickyContainer>
+                    <LayoutComponent matchProps={matchProps} pageComponent={PageComponent} pageTitle={pageTitle} />
+                  </StickyContainer>
                 )}
               />
             )

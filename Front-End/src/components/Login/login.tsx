@@ -7,7 +7,6 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 import { Link, Redirect, RouteComponentProps } from 'react-router-dom';
-import axios from '../../server';
 import { StoreContext } from '../../store';
 
 

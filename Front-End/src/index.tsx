@@ -1,10 +1,11 @@
+/* eslint-disable react/no-unused-state */
 import React, { PureComponent, Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Switch } from 'react-router';
 import './styles/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserHistory } from 'history';
-import axios from './server';
+import { server, api } from './server';
 import Login, { ILoginFields } from './components/Login/login';
 import LandingPage from './components/LandingPage/landingPage';
 import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
@@ -45,7 +46,7 @@ class App extends React.Component<{}, IStates> {
 
   public login = async (userCredentials: ILoginFields) => {
     try {
-      const resp = await axios.post('/auth/login', userCredentials);
+      const resp = await server.post(api.auth_login, userCredentials);
       if (resp) {
         this.setAuthState(true, userCredentials.username);
       }
@@ -54,7 +55,7 @@ class App extends React.Component<{}, IStates> {
 
   public logout = async () => {
     try {
-      const resp = await axios.post('auth/logout');
+      const resp = await server.post(api.auth_logout);
       if (resp) {
         this.setAuthState(false, '');
       }
