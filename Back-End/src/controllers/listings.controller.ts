@@ -45,6 +45,17 @@ export class ListingsController {
 		return this.listingsRepository.find({ category: requestedCategory });
 	}
 
+	async allWithSearchQuery(req: Request, res: Response, next: NextFunction) {
+        const query = req.params.searchQuery.replace('+', ' ');
+		const allListings: ListingsModel[] = await this.listingsRepository.find();
+
+		const searchListings = allListings.filter(listing => listing.title.includes(query));
+	
+		res.status(200).send({
+			listings: searchListings
+		});
+	}
+	
 	async getListingDetails(
 		request: Request,
 		response: Response,

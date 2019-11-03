@@ -2,7 +2,6 @@ import { UserController } from './controllers/user.controller';
 import { ListingsController } from './controllers/listings.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
-
 export const Routes = [
 	{
 		method: 'get',
@@ -47,6 +46,14 @@ export const Routes = [
 		route: '/listings',
 		controller: ListingsController,
 		action: 'save'
+	},
+
+	//Search
+	{
+		method: 'get',
+		route: '/listings/search/:searchQuery',
+		controller: ListingsController,
+		action: 'allWithSearchQuery'
 	},
 
 	//Auth
