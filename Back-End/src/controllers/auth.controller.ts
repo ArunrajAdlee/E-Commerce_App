@@ -12,7 +12,6 @@ export class AuthController {
   private cookieName = 'access_token';
 
   async createUser(req: Request, res: Response, next: NextFunction) {
-    // Validate info in the future *****
     const userExists = await this.userRepository.findOne({
       username: req.body.username
     });
@@ -79,7 +78,6 @@ export class AuthController {
       brand_name: userData.brand_name
     };
 
-    // May need more information like expiration time (ask front-end peeps) ****
     res
       .cookie(this.cookieName, token, {
         maxAge: 3600000,
