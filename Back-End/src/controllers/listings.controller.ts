@@ -36,6 +36,7 @@ export class ListingsController {
     try {
       //Take the request image and store it on the cloud
       const reqImage = req.files.image;
+
       const cloudImage = await cloudinary.uploader.upload(
         reqImage.tempFilePath,
         { unique_filename: true, width: 540, height: 580 }
@@ -72,6 +73,19 @@ export class ListingsController {
   async allWithCategory(req: Request, res: Response, next: NextFunction) {
     const requestedCategory: number = parseInt(req.params.category);
     return this.listingsRepository.find({ category: requestedCategory });
+  }
+
+  async allWithSearchQuery(req: Request, res: Response, next: NextFunction) {
+    const query = req.params.searchQuery.replace('+', ' ');
+    const allListings: ListingsModel[] = await this.listingsRepository.find();
+
+    const searchListings = allListings.filter(listing =>
+      listing.title.includes(query)
+    );
+
+    res.status(200).send({
+      listings: searchListings
+    });
   }
 
   async getListingDetails(req: Request, res: Response, next: NextFunction) {

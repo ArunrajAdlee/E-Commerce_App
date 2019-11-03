@@ -1,0 +1,23 @@
+\contentsline {section}{\numberline {1}Document Purpose}{4}{section.1}% 
+\contentsline {section}{\numberline {2}Project description}{4}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}System Context}{4}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Project Scope}{4}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Business Goals}{4}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {2.4}Product Functions}{5}{subsection.2.4}% 
+\contentsline {subsection}{\numberline {2.5}Personas}{6}{subsection.2.5}% 
+\contentsline {subsubsection}{Admin}{6}{section*.4}% 
+\contentsline {subsubsection}{Buyer}{6}{section*.5}% 
+\contentsline {subsubsection}{Guest User}{6}{section*.6}% 
+\contentsline {subsubsection}{Seller}{6}{section*.7}% 
+\contentsline {subsubsection}{PayPal}{6}{section*.8}% 
+\contentsline {subsection}{\numberline {2.6}Functional Requirements}{6}{subsection.2.6}% 
+\contentsline {subsection}{\numberline {2.7}Non-Functional Requirements}{8}{subsection.2.7}% 
+\contentsline {section}{\numberline {3}User-Stories}{11}{section.3}% 
+\contentsline {section}{\numberline {4}Glossary of Domain Concepts}{13}{section.4}% 
+\contentsline {section}{\numberline {5}Use Cases}{14}{section.5}% 
+\contentsline {subsection}{\numberline {5.1}Selling}{14}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {5.2}Buying}{17}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.3}Login}{20}{subsection.5.3}% 
+\contentsline {section}{\numberline {6}Conclusion}{24}{section.6}% 
+\contentsline {section}{\numberline {7}Index}{24}{section.7}% 
+\contentsline {section}{\numberline {8}Reference}{24}{section.8}% 
