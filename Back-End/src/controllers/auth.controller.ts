@@ -43,10 +43,10 @@ export class AuthController {
 
   async login(req: Request, res: Response, next: NextFunction) {
     // Check if user exists
-    const user = await this.userRepository.findOne({
+    const userData = await this.userRepository.findOne({
       username: req.body.username
     });
-    if (!user) {
+    if (!userData) {
       res.status(404).send('user does not exist');
       return;
     }
@@ -54,7 +54,7 @@ export class AuthController {
     // Validate password
     const validPassword = await bcrypt.compare(
       req.body.password,
-      user.password
+      userData.password
     );
     if (!validPassword) {
       res.status(404).send('invalid password');
@@ -64,11 +64,21 @@ export class AuthController {
     // Create and return token
     const token = jwt.sign(
       {
-        username: user.username,
-        id: user.id
+        username: userData.username,
+        id: userData.id
       },
       'secretKey'
     );
+
+    //Create and return essential user data
+    const user = {
+      username: userData.username,
+      email: userData.email,
+      first_name: userData.first_name,
+      last_name: userData.last_name,
+      brand_name: userData.brand_name
+    };
+
     // May need more information like expiration time (ask front-end peeps) ****
     res
       .cookie(this.cookieName, token, {
@@ -77,7 +87,7 @@ export class AuthController {
         // uncomment 'secure' when running in production
         // secure: true
       })
-      .send('cookie set');
+      .send({ message: 'cookie-set', user });
   }
 
   async remove(req: Request, res: Response, next: NextFunction) {
