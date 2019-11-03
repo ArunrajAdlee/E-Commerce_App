@@ -1,10 +1,11 @@
+/* eslint-disable react/no-unused-state */
 import React, { PureComponent, Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Switch } from 'react-router';
 import './styles/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserHistory } from 'history';
-import axios from './server';
+import { server, api } from './server';
 import Login, { ILoginFields } from './components/Login/login';
 import LandingPage from './components/LandingPage/landingPage';
 import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
@@ -12,6 +13,7 @@ import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
 import SignUp from './components/SignUp/signUp';
 import { StoreContext } from './store';
 import ScrollToTop from './components/Misc/scrollToTop';
+import SecureRoute from './components/Authentication/secureRoute';
 
 const history = createBrowserHistory();
 
@@ -44,7 +46,7 @@ class App extends React.Component<{}, IStates> {
 
   public login = async (userCredentials: ILoginFields) => {
     try {
-      const resp = await axios.post('/auth/login', userCredentials);
+      const resp = await server.post(api.auth_login, userCredentials);
       if (resp) {
         this.setAuthState(true, userCredentials.username);
       }
@@ -53,7 +55,7 @@ class App extends React.Component<{}, IStates> {
 
   public logout = async () => {
     try {
-      const resp = await axios.post('auth/logout');
+      const resp = await server.post(api.auth_logout);
       if (resp) {
         this.setAuthState(false, '');
       }
@@ -67,11 +69,11 @@ class App extends React.Component<{}, IStates> {
         <Router history={history}>
           <ScrollToTop />
           <Switch>
-            <DefaultLayout path="/listings" component={LandingPage} pageTitle="Listings" />
-            <DefaultLayout path="/cart" component={LandingPage} pageTitle="Your Shoppping Cart" authenticated />
-            <DefaultLayout path="/login" component={Login} pageTitle="Login/Register" />
-            <DefaultLayout path="/register" component={SignUp} pageTitle="Sign Up" />
-            <LandingLayout component={LandingPage} />
+            <SecureRoute path="/listings" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
+            <SecureRoute authenticated path="/cart" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Your Shoppping Cart" />
+            <SecureRoute path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
+            <SecureRoute path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
+            <SecureRoute pageComponent={LandingPage} layoutComponent={LandingLayout} />
           </Switch>
         </Router>
       </StoreContext.Provider>

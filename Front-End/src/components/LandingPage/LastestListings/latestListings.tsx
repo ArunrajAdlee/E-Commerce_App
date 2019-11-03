@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import axios from '../../../server';
+import { server } from '../../../server';
 
 interface Listing {
  id: number;

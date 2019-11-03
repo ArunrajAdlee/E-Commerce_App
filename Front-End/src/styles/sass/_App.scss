@@ -11,6 +11,10 @@ h1, h2, h3, h4 {
   font-family: $title-font !important;
 }
 
+.mt-40p{
+  margin-top: 40px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -37,5 +41,16 @@ code {
     border-radius: 0 !important;
     outline: none !important;
     box-shadow: none !important;
+}
+
+.loading-spinner {
+  display: block !important;
+  position: fixed !important;
+  width: 126px !important;
+  height: 126px !important;
+  margin-top: -63px !important; 
+  margin-right: -63px!important;
+  top: 50% !important;
+  right: 50% !important;
 }
 

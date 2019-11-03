@@ -24,7 +24,7 @@ class LandingPage extends React.Component<{}, IStates> {
             <Row className="banner-content">
               <Col className="banner-text" md={12} lg={5}>
                 <h1>Check out all our amazing products</h1>
-                <h3>Great products from great vendors, all in one location</h3>
+                <h3>Great products from trusted sellers, all in one location</h3>
 
                 <Link to="/listings">
                   <Button variant="warning" className="styled-button mt-4">
