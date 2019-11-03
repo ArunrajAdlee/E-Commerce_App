@@ -5,10 +5,13 @@ import { getRepository } from 'typeorm';
 import { User } from '../entity/user.entity';
 import { AuthModel } from '../models/auth.model';
 import { UserModel } from '../models/user.model';
+import { Address } from '../entity/address.entity';
+import { AddressModel } from '../models/address.model';
 const { checkAuth } = require('../helpers/check-auth');
 
 export class AuthController {
   private userRepository = getRepository(User);
+  private adressRepository = getRepository(Address);
   private cookieName = 'access_token';
 
   async createUser(req: Request, res: Response, next: NextFunction) {
@@ -20,12 +23,36 @@ export class AuthController {
       return;
     }
 
+    //Create and store address
+
+    let address: AddressModel;
+    try {
+      const reqAddress: AddressModel = {
+        street_number: req.body.streetNumber,
+        street_name: req.body.streetName,
+        unit_number: req.body.unitNumber,
+        city: req.body.city,
+        province: req.body.province,
+        postal_code: req.body.postalCode,
+        country: req.body.country
+      };
+      address = await this.adressRepository.save(reqAddress);
+    } catch (err) {
+      res.status(404).send('Invalid address');
+    }
+
     // Hash password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     const newUser: UserModel = {
       username: req.body.username,
-      password: hashedPassword
+      password: hashedPassword,
+      email: req.body.email,
+      first_name: req.body.firstName,
+      last_name: req.body.lastName,
+      brand_name: req.body.brandName,
+      phone_number: req.body.phoneNumber,
+      address: address.id
     };
 
     // Save new user to the database
@@ -36,7 +63,7 @@ export class AuthController {
         savedUser
       });
     } catch (error) {
-      res.status(404).send('could not create account');
+      res.status(404).send(error);
     }
   }
 
