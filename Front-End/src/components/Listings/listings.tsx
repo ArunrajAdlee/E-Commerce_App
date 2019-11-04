@@ -9,6 +9,7 @@ export interface Listing {
  name: string;
  image: string;
  price: number;
+ isAvailable: boolean;
 }
 
 interface IProps {
@@ -20,6 +21,21 @@ interface IStates {
   listingsPerPage: number,
 }
 
+// Displays if listing is available or unavailable
+function listingStatus(listing: Listing) {
+  let listingPrice: any = listing.price;
+  let textColor = 'text-dark';
+
+  if (!listing.isAvailable) {
+    listingPrice = 'Unavailable';
+    textColor = 'text-danger';
+  }
+
+  return (
+    <h6 className={textColor}>{listingPrice}</h6>
+  );
+}
+
 // Returns the thumbnail of each listing in index
 function listingThumbnail(listing: Listing) {
   // Placeholder until there is a database with an error image to point to
@@ -28,16 +44,11 @@ function listingThumbnail(listing: Listing) {
     listingImage = listing.image;
   }
 
-  let listingPrice = 'Price is unavailable';
-  if (listing.price) {
-    listingPrice = `${listing.price}`;
-  }
-
   return (
     <Col lg={4} md={6} className="pb-5">
       <div>
         {/* Link to listing view */}
-        <Link to={`/listing/${listing.name}`} className="text-decoration-none text-dark">
+        <Link to={`/listing/${listing.id}`} className="text-decoration-none text-dark">
           <Image
             src={listingImage}
             alt={listing.name}
@@ -46,7 +57,7 @@ function listingThumbnail(listing: Listing) {
           <div>
             <h5 className="pt-2">{listing.name}</h5>
             <div>
-              <h6>{listingPrice}</h6>
+              {listingStatus(listing)}
             </div>
           </div>
         </Link>
