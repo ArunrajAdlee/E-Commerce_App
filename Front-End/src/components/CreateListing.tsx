@@ -42,9 +42,11 @@ class CreateListing extends React.Component<{}, IStates> {
   }
 
   getCategories(){
+    /*
     let temp = {}
     temp = axios.get('localhost:4000/categories');
     this.setState({categories: this.state.categories.concat("Cars")})
+*/
   }
 
   public componentDidMount() {
@@ -53,7 +55,7 @@ class CreateListing extends React.Component<{}, IStates> {
 
   private handleSubmit = async (values: FormikValues, actions: any) => {
 
-    await axios.post('localhost:4000/listings', values);
+    await axios.post('http://localhost:4000/listings', values);
 
   }
 
@@ -143,7 +145,7 @@ class CreateListing extends React.Component<{}, IStates> {
             <br/>
             <div>
             <Row>
-            <Col lg = {2}> <label htmlFor="price">Price*</label> </Col>
+            <Col lg = {2}> <label htmlFor="price">Product Price*</label> </Col>
             <Col lg = {5}>
             <Field
             name = "price"
@@ -168,7 +170,7 @@ class CreateListing extends React.Component<{}, IStates> {
 
             <div>
             <Row>
-            <Col lg = {2}> <label htmlFor="stock_count">stock_count*</label> </Col>
+            <Col lg = {2}> <label htmlFor="stock_count">Quantity*</label> </Col>
             <Col lg = {5}>
             <Field
             name = "stock_count"
