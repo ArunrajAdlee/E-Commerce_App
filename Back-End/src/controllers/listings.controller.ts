@@ -31,15 +31,29 @@ export class ListingsController {
 			res.status(404).send('user is not authenticated');
 			return;
 		}
-
+		
 		const newProduct: ListingsModel = {
 			title: req.body.title,
 			stock_count: req.body.stock_count,
 			category: req.body.category
 		};
-		return this.listingsRepository.save(newProduct);
-	}
 
+    	//Save new listing to database
+    try {
+        const savedListing = await this.listingsRepository.save(newProduct);
+        if (savedListing) {
+            res.status(200).send({
+                message: 'successfully saved',
+                savedListing
+            });
+            return;
+        }
+        res.status(404).send({message: 'failed to save'});
+    } catch (error) {
+        res.status(404).send({message: 'failed to save'});
+        }
+    }
+    
 	async allWithCategory(req: Request, res: Response, next: NextFunction) {
 		const requestedCategory: number = parseInt(req.params.category);
 		return this.listingsRepository.find({ category: requestedCategory });
