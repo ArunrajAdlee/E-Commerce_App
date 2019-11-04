@@ -23,9 +23,13 @@ class NavigationBar extends React.Component<{}> {
               <Link className="nav-link align-self-center" to={{ pathname: '/account' }}>
                  MY ACCOUNT
               </Link>
+              <Link className="nav-link align-self-center" to={{ pathname: '/createlisting' }}>
+                 CREATE LISTING
+              </Link>
               <Link className="nav-link align-self-center mt-1" to={{ pathname: '/cart' }}>
                 <FontAwesomeIcon icon={faCartArrowDown} />
               </Link>
+
             </Nav>
           </Navbar.Collapse>
         </Navbar>
