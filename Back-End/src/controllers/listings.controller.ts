@@ -26,16 +26,21 @@ export class ListingsController {
 	}
 
 	async save(req: Request, res: Response, next: NextFunction) {
+
+		console.log ("Here");
+		/*
 		const authenticatedUser: AuthModel = checkAuth(req);
 		if (!authenticatedUser) {
 			res.status(404).send('user is not authenticated');
 			return;
 		}
-		
+		*/
+
 		const newProduct: ListingsModel = {
 			title: req.body.title,
+			price: req.body.price
 			stock_count: req.body.stock_count,
-			category: req.body.category
+			//category: req.body.category
 		};
 
     	//Save new listing to database
@@ -53,7 +58,7 @@ export class ListingsController {
         res.status(404).send({message: 'failed to save'});
         }
     }
-    
+
 	async allWithCategory(req: Request, res: Response, next: NextFunction) {
 		const requestedCategory: number = parseInt(req.params.category);
 		return this.listingsRepository.find({ category: requestedCategory });

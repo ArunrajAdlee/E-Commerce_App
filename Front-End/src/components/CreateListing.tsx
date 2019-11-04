@@ -6,10 +6,10 @@ import {Formik, Field, Form, ErrorMessage, FormikValues, FormikActions} from 'fo
 import * as Yup from 'yup';
 
 export interface FormFields {
-  productName: string,
+  title: string,
   description: string,
   price: number,
-  quantity: number,
+  stock_count: number,
 }
 
 interface IStates {
@@ -18,7 +18,7 @@ interface IStates {
 }
 
 const ListingSchema = Yup.object().shape({
-  productName: Yup.string()
+  title: Yup.string()
     .max(50, 'Please pick a shorter title')
     .required('Title is required'),
   description: Yup.string()
@@ -28,10 +28,10 @@ const ListingSchema = Yup.object().shape({
     .typeError('Price must be a number')
     .required('Please enter a price')
     .positive ('Price should be positive and greater than 0'),
-  quantity: Yup.number()
-    .typeError('Quantity must be a number')
-    .required('Please enter a quantity')
-    .moreThan(0.99, 'The minimum quantity is 1')
+  stock_count: Yup.number()
+    .typeError('stock_count must be a number')
+    .required('Please enter a stock_count')
+    .moreThan(0.99, 'The minimum stock_count is 1')
 });
 
 class CreateListing extends React.Component<{}, IStates> {
@@ -52,7 +52,9 @@ class CreateListing extends React.Component<{}, IStates> {
   }
 
   private handleSubmit = async (values: FormikValues, actions: any) => {
-    
+
+    await axios.post('localhost:4000/listings', values);
+
   }
 
   public render() {
@@ -62,10 +64,10 @@ class CreateListing extends React.Component<{}, IStates> {
 
       initialValues={
         {
-          productName: '',
+          title: '',
           description: '',
           price: undefined,
-          quantity: undefined,
+          stock_count: undefined,
         }}
 
         validationSchema={ListingSchema}
@@ -85,17 +87,17 @@ class CreateListing extends React.Component<{}, IStates> {
             <br/>
             <div>
             <Row>
-            <Col lg = {2}> <label htmlFor="productName">Title*</label> </Col>
+            <Col lg = {2}> <label htmlFor="title">Title*</label> </Col>
             <Col lg = {5}>
             <Field
-            name = "productName"
+            name = "title"
             className={`form-control styled-input listing-input ${
-              touched.productName && errors.productName ? "is-invalid" : ""
+              touched.title && errors.title ? "is-invalid" : ""
             }`}
             />
             <ErrorMessage
             component = "div"
-            name = "productName"
+            name = "title"
             className = "invalid-feedback"
             />
             </Col>
@@ -166,17 +168,17 @@ class CreateListing extends React.Component<{}, IStates> {
 
             <div>
             <Row>
-            <Col lg = {2}> <label htmlFor="quantity">Quantity*</label> </Col>
+            <Col lg = {2}> <label htmlFor="stock_count">stock_count*</label> </Col>
             <Col lg = {5}>
             <Field
-            name = "quantity"
+            name = "stock_count"
             className={`form-control styled-input listing-input ${
-              touched.quantity && errors.quantity ? "is-invalid" : ""
+              touched.stock_count && errors.stock_count ? "is-invalid" : ""
             }`}
             />
             <ErrorMessage
             component = "div"
-            name = "quantity"
+            name = "stock_count"
             className = "invalid-feedback"
             />
             </Col>
