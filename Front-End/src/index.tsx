@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unused-state */
-import React, { PureComponent, Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Switch } from 'react-router';
 import './styles/index.css';
@@ -11,16 +11,16 @@ import LandingPage from './components/LandingPage/landingPage';
 import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
 import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
 import SignUp from './components/SignUp/signUp';
-import { StoreContext } from './store';
+import { StoreContext, IUserInfo } from './store';
 import ScrollToTop from './components/Misc/scrollToTop';
 import SecureRoute from './components/Authentication/secureRoute';
 
 const history = createBrowserHistory();
 
 interface IStates {
-  currentUser: string;
+  userInfo: IUserInfo;
   isAuth: boolean;
-  setAuthState: (isAuth: boolean, user: string) => void;
+  setAuthState: (isAuth: boolean, userInfo: IUserInfo) => void;
   login: (userCredentials: ILoginFields) => void;
   logout: () => void;
 }
@@ -29,7 +29,13 @@ class App extends React.Component<{}, IStates> {
   constructor(props: any) {
     super(props);
     this.state = {
-      currentUser: '',
+      userInfo: {
+        username: '',
+        email: '',
+        first_name: '',
+        last_name: '',
+        brand_name: '',
+      },
       isAuth: false,
       setAuthState: this.setAuthState,
       login: this.login,
@@ -37,10 +43,10 @@ class App extends React.Component<{}, IStates> {
     };
   }
 
-  public setAuthState = (isAuth: boolean, user: string) => {
+  public setAuthState = (isAuth: boolean, userInfo: IUserInfo) => {
     this.setState({
       isAuth,
-      currentUser: user,
+      userInfo,
     });
   }
 
@@ -48,7 +54,7 @@ class App extends React.Component<{}, IStates> {
     try {
       const resp = await server.post(api.auth_login, userCredentials);
       if (resp) {
-        this.setAuthState(true, userCredentials.username);
+        this.setAuthState(true, resp.data.user);
       }
     } catch {}
   }
@@ -57,7 +63,13 @@ class App extends React.Component<{}, IStates> {
     try {
       const resp = await server.post(api.auth_logout);
       if (resp) {
-        this.setAuthState(false, '');
+        this.setAuthState(false, {
+          username: '',
+          email: '',
+          first_name: '',
+          last_name: '',
+          brand_name: '',
+        });
       }
     } catch {}
   };

@@ -22,9 +22,9 @@ code {
 
 .default-layout-content-container{
   margin: 100px auto 100px auto;
-  width: 55%;
+  width: 65%;
 
-  @media screen and (max-width: $sm-size) {
+  @media screen and (max-width: $md-size) {
     width: 90%;
   }
 }

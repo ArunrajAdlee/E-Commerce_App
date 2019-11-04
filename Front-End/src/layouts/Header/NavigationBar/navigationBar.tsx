@@ -18,13 +18,13 @@ class NavigationBar extends React.Component<{}> {
     }
 
     public render() {
-      const { isAuth, currentUser } = this.context;
+      const { isAuth, userInfo } = this.context;
       return (
         <Sticky topOffset={40}>
           {({ style, isSticky }) => (
             <div className="sticky-top">
               <div className={`main-navbar ${!isSticky ? 'mt-40p' : ''} `} style={style}>
-                <Navbar className={isSticky ? 'sticky-nav' : ''} expand="sm">
+                <Navbar className={isSticky ? 'sticky-nav' : ''} expand="lg">
                   <Navbar.Brand>
                     <Link className="nav-link align-self-center mt-1" to={{ pathname: '/' }}>
                       <h4>354TheStars</h4>
@@ -41,7 +41,7 @@ class NavigationBar extends React.Component<{}> {
                           pathname: '/listings',
                         }}
                       >
-               VIEW LISTINGS
+                    VIEW LISTINGS
                       </Link>
                       {isAuth
                         ? (
@@ -53,7 +53,7 @@ class NavigationBar extends React.Component<{}> {
                             <Dropdown.Item onClick={this.handleLogout}>Logout</Dropdown.Item>
                             <Dropdown.Divider />
                             {/* OnClick, go to account settings page */}
-                            <Dropdown.Item>{`Hi ${currentUser} !`}</Dropdown.Item>
+                            <Dropdown.Item>{`Hi ${userInfo.first_name} !`}</Dropdown.Item>
                           </DropdownButton>
                         )
                         : (

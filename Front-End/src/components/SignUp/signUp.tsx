@@ -10,17 +10,21 @@ import { Redirect } from 'react-router-dom';
 import { server, api } from '../../server';
 import { StoreContext } from '../../store';
 
-interface SignUpValues {
+interface ISignUpValues {
   username: string;
   password: string;
   confirmPassword: string;
   email: string;
-  address: string;
+  firstName: string;
+  lastName: string;
+  brandName: string
+  streetNumber: number;
+  streetName: string;
+  unitNumber: number;
   country: string;
   city: string;
   postalCode: string;
   phoneNumber: string;
-
 }
 
 interface IStates {
@@ -44,24 +48,17 @@ const SignUpSchema = Yup.object().shape({
   email: Yup.string()
     .email()
     .required('Password is required'),
-  address: Yup.string()
-    .required('Address is required'),
-  city: Yup.string()
-    .required('City is required'),
-  country: Yup.string()
-    .required('Country is required'),
-  postalCode: Yup.string()
-    .required('Postal Code is required'),
-  phoneNumber: Yup.string()
-    .required('Phone Number is required'),
+  firstName: Yup.string()
+    .required('First Name is required'),
+  lastName: Yup.string()
+    .required('Last Name is required'),
+  streetName: Yup.string()
+    .required('Street Name is required'),
 });
 
 class SignUp extends React.Component<{}, IStates> {
   public readonly state: Readonly<IStates> = {
     isError: false,
-  }
-
-  public componentDidMount() {
   }
 
   private handleSubmit = async (values: FormikValues, actions: any) => {
@@ -95,7 +92,7 @@ class SignUp extends React.Component<{}, IStates> {
               ) : ''}
             <Formik
               initialValues={{
-                username: '', email: '', password: '', confirmPassword: '', address: '', city: '', country: '', postalCode: '', phoneNumber: '',
+                username: '', email: '', password: '', confirmPassword: '', firstName: '', lastName: '', brandName: '', streetNumber: undefined, streetName: '', unitNumber: undefined, city: '', country: '', postalCode: '', phoneNumber: '',
               }}
               validationSchema={SignUpSchema}
               onSubmit={(values: FormikValues, actions: any) => {
@@ -175,20 +172,76 @@ class SignUp extends React.Component<{}, IStates> {
                       </div>
                     </Col>
 
-
                     <Col sm={12} lg={6}>
                       <div className="form-group">
                         <Field
-                          name="address"
-                          placeholder="Address"
+                          name="firstName"
+                          placeholder="First Name"
                           className={`form-control styled-input ${
-                            touched.address && errors.address ? 'is-invalid' : ''
+                            touched.firstName && errors.firstName ? 'is-invalid' : ''
                           }`}
                         />
                         <ErrorMessage
                           component="div"
-                          name="address"
+                          name="firstName"
                           className="invalid-feedback"
+                        />
+                      </div>
+                    </Col>
+
+                    <Col sm={12} lg={6}>
+                      <div className="form-group">
+                        <Field
+                          name="lastName"
+                          placeholder="Last Name"
+                          className={`form-control styled-input ${
+                            touched.lastName && errors.lastName ? 'is-invalid' : ''
+                          }`}
+                        />
+                        <ErrorMessage
+                          component="div"
+                          name="lastName"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                    </Col>
+
+
+                    <Col sm={12} lg={3}>
+                      <div className="form-group">
+                        <Field
+                          type="number"
+                          name="streetNumber"
+                          placeholder="Street Number"
+                          className="form-control styled-input"
+                        />
+                      </div>
+                    </Col>
+
+                    <Col sm={12} lg={7}>
+                      <div className="form-group">
+                        <Field
+                          name="streetName"
+                          placeholder="Street Name"
+                          className={`form-control styled-input ${
+                            touched.streetName && errors.streetName ? 'is-invalid' : ''
+                          }`}
+                        />
+                        <ErrorMessage
+                          component="div"
+                          name="streetName"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                    </Col>
+
+                    <Col sm={12} lg={2}>
+                      <div className="form-group">
+                        <Field
+                          type="number"
+                          name="unitNumber"
+                          placeholder="Unit/APT"
+                          className="form-control styled-input"
                         />
                       </div>
                     </Col>
@@ -260,6 +313,17 @@ class SignUp extends React.Component<{}, IStates> {
                         />
                       </div>
                     </Col>
+
+                    <Col sm={12} lg={6}>
+                      <div className="form-group">
+                        <Field
+                          name="brandName"
+                          placeholder="Brand Name"
+                          className="form-control styled-input"
+                        />
+                      </div>
+                    </Col>
+
                     <Button
                       type="submit"
                       className="btn-block styled-button mt-4"

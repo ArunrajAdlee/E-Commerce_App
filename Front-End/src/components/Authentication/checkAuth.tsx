@@ -31,7 +31,7 @@ class CheckAuth extends React.Component<IProps, IStates> {
     const { logout, isAuth, setAuthState } = this.context;
     const resp = await server.get(api.auth_status);
     if (resp) {
-      if (!resp.data.isAuthenticated && isAuth) { logout(); } else if (resp.data.isAuthenticated && !isAuth) { setAuthState(true, ''); }
+      if (!resp.data.isAuthenticated && isAuth) { logout(); } else if (resp.data.isAuthenticated && !isAuth) { setAuthState(true, resp.data.user); }
     }
   }
 
