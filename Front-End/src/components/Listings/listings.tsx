@@ -72,9 +72,11 @@ class Listings extends React.Component<IProps, IStates> {
   }
 
   handlePagination = (event: any) => {
-    this.setState({
-      currentPage: Number(event.target.text)
-    });
+    if (event.target.text !== undefined) {
+      this.setState({
+        currentPage: Number(event.target.text)
+      });
+    }
   };
 
   public render() {
