@@ -1,15 +1,14 @@
 import React from 'react';
-import {
-  Row, Col, Spinner, Image, Pagination,
-} from 'react-bootstrap';
+import { Row, Col, Spinner, Image, Pagination } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export interface Listing {
- id: number;
- name: string;
- image: string;
- price: number;
- isAvailable: boolean;
+  id: number;
+  name: string;
+  thumbnail: string;
+  image: string;
+  price: number;
+  isAvailable: boolean;
 }
 
 interface IProps {
@@ -17,8 +16,8 @@ interface IProps {
 }
 
 interface IStates {
-  currentPage: number,
-  listingsPerPage: number,
+  currentPage: number;
+  listingsPerPage: number;
 }
 
 // Displays if listing is available or unavailable
@@ -31,34 +30,30 @@ function listingStatus(listing: Listing) {
     textColor = 'text-danger';
   }
 
-  return (
-    <h6 className={textColor}>{listingPrice}</h6>
-  );
+  return <h6 className={textColor}>{listingPrice}</h6>;
 }
 
 // Returns the thumbnail of each listing in index
 function listingThumbnail(listing: Listing) {
   // Placeholder until there is a database with an error image to point to
-  let listingImage = 'https://3.bp.blogspot.com/-XB85UD145qE/V5buf22iv2I/AAAAAAAAA1I/8LBmpwNX-rU7ZjzrHOS2b0F_Pj0xqpHIQCLcB/s1600/nia.png';
-  if (listing.image) {
-    listingImage = listing.image;
+  let listingImage =
+    'https://3.bp.blogspot.com/-XB85UD145qE/V5buf22iv2I/AAAAAAAAA1I/8LBmpwNX-rU7ZjzrHOS2b0F_Pj0xqpHIQCLcB/s1600/nia.png';
+  if (listing.thumbnail) {
+    listingImage = listing.thumbnail;
   }
 
   return (
     <Col lg={4} md={6} className="pb-5">
       <div>
         {/* Link to listing view */}
-        <Link to={`/listing/${listing.id}`} className="text-decoration-none text-dark">
-          <Image
-            src={listingImage}
-            alt={listing.name}
-            fluid
-          />
+        <Link
+          to={`/listing/${listing.id}`}
+          className="text-decoration-none text-dark"
+        >
+          <Image src={listingImage} alt={listing.name} fluid />
           <div>
             <h5 className="pt-2">{listing.name}</h5>
-            <div>
-              {listingStatus(listing)}
-            </div>
+            <div>{listingStatus(listing)}</div>
           </div>
         </Link>
       </div>
@@ -72,13 +67,13 @@ class Listings extends React.Component<IProps, IStates> {
 
     this.state = {
       currentPage: 1,
-      listingsPerPage: 12,
+      listingsPerPage: 12
     };
   }
 
   handlePagination = (event: any) => {
     this.setState({
-      currentPage: Number(event.target.text),
+      currentPage: Number(event.target.text)
     });
   };
 
@@ -89,15 +84,22 @@ class Listings extends React.Component<IProps, IStates> {
     // Logic for displaying current listings
     const indexOfLastListing = currentPage * listingsPerPage;
     const indexOfFirstListing = indexOfLastListing - listingsPerPage;
-    const currentListings = listings.slice(indexOfFirstListing, indexOfLastListing);
+    const currentListings = listings.slice(
+      indexOfFirstListing,
+      indexOfLastListing
+    );
 
     // Initialize page numbers
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(listings.length / listingsPerPage); i++) {
       pageNumbers.push(
-        <Pagination.Item key={i} active={i === currentPage} onClick={this.handlePagination}>
+        <Pagination.Item
+          key={i}
+          active={i === currentPage}
+          onClick={this.handlePagination}
+        >
           {i}
-        </Pagination.Item>,
+        </Pagination.Item>
       );
     }
 
@@ -105,10 +107,11 @@ class Listings extends React.Component<IProps, IStates> {
       <>
         {listings.length ? (
           <Row className="pt-5">
-            { currentListings.map((listing) => (listingThumbnail(listing))) }
+            {currentListings.map(listing => listingThumbnail(listing))}
           </Row>
-        )
-          : <Spinner animation="border" variant="warning" />}
+        ) : (
+          <Spinner animation="border" variant="warning" />
+        )}
         <div>
           <Pagination className="float-right">{pageNumbers}</Pagination>
         </div>

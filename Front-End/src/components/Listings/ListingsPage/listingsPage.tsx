@@ -6,7 +6,7 @@ import Listings, { Listing } from '../listings';
 const BACKEND_URL = 'http://localhost:4000';
 
 interface IStates {
-    listings: Listing[];
+  listings: Listing[];
 }
 
 interface IProps extends RouteComponentProps<any> {}
@@ -14,7 +14,7 @@ interface IProps extends RouteComponentProps<any> {}
 // Will finish when listings component is completed
 class ListingsPage extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
-    listings: [],
+    listings: []
   };
 
   public async componentDidMount() {
@@ -22,20 +22,20 @@ class ListingsPage extends React.Component<IProps, IStates> {
     const resListings: Listing[] = result.data.listings.map((product: any) => ({
       id: product.id,
       name: product.title,
+      image: product.image,
+      thumbnail: product.thumbnail
     }));
 
     this.setState({
-      listings: resListings,
+      listings: resListings
     });
   }
-  
+
   public render() {
     const { listings } = this.state;
     return (
       <>
-        <h2>
-          {'All Listings'}
-        </h2>
+        <h2>{'All Listings'}</h2>
         <Listings listings={listings} />
       </>
     );
