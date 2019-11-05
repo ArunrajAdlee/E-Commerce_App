@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { DropdownButton, Dropdown } from 'react-bootstrap';
-import { Redirect } from 'react-router-dom';
+import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 
 const BACKEND_URL = 'http://localhost:4000';
 
@@ -12,15 +12,13 @@ interface Category {
 
 interface IStates {
     categories: Category[],
-    selectedCategory: number,
-    selectedCategoryName: string;
 }
 
-class Category extends React.Component<{}, IStates> {
+interface IProps extends RouteComponentProps<any> {}
+
+class Category extends React.Component<IProps, IStates> {
     public readonly state: Readonly<IStates> = {
       categories: [],
-      selectedCategory: -1,
-      selectedCategoryName: '',
     }
 
     public async componentDidMount() {
@@ -31,19 +29,14 @@ class Category extends React.Component<{}, IStates> {
     }
 
     public async handleSelect(eventKey: any) {
+      const { history } = this.props;
       const categoryValues = eventKey.split(',');
-      this.setState({ selectedCategory: parseInt(categoryValues[0]), selectedCategoryName: categoryValues[1] });
+      const route = `/listings/category/${categoryValues[0]}/${categoryValues[1]}`;
+      history.push(route);
     }
 
     public render() {
-      const { categories, selectedCategory, selectedCategoryName } = this.state;
-
-      // If there is a selection made, reroute
-      if (selectedCategory >= 0) {
-        const route = `/listings/category/${selectedCategory}/${selectedCategoryName}`;
-        this.setState({ selectedCategory: -1 }); // reset selection
-        return <Redirect to={route} />;
-      }
+      const { categories } = this.state;
       return (
         <DropdownButton id="dropdown-basic-button" title="CATEGORIES" className="nav-link align-self-center" onSelect={(event: any) => this.handleSelect(event)}>
           {categories.map((category) => (<Dropdown.Item key={category.id} eventKey={`${category.id.toString()},${category.name}`}>{category.name}</Dropdown.Item>))}
@@ -52,4 +45,4 @@ class Category extends React.Component<{}, IStates> {
     }
 }
 
-export default Category;
+export default withRouter(Category);

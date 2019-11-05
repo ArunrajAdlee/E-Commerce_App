@@ -4,56 +4,47 @@ import Form from 'react-bootstrap/Form';
 import { FormControl, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Redirect } from 'react-router';
+import { Redirect, RouteComponentProps } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
 interface IStates {
-    description: string,
-    toListings: boolean;
+  searchText: string,
 }
 
-class Search extends React.Component<{}, IStates> {
-  constructor(props: {}) {
-    super(props);
+interface IProps extends RouteComponentProps<any> {}
 
+class Search extends React.Component<IProps, IStates> {
+  constructor(props: IProps) {
+    super(props);
     this.state = {
-      description: '',
-      toListings: false,
+      searchText: '',
     };
   }
 
   handleDescription(event: any) {
     this.setState({
-      description: event.target.value,
+      searchText: event.target.value,
     });
   }
 
   handleSubmit(event: any) {
     event.preventDefault();
-    this.setState({
-      toListings: true,
-    });
+    const { history } = this.props;
+    const { searchText } = this.state;
+    const query = searchText.replace(' ', '+');
+    const route = `/listings/search/${query}`;
+    history.push(route);
   }
 
   public render() {
-    const { description, toListings } = this.state;
-    if (toListings) {
-      // Reset state
-      this.setState({
-        toListings: false,
-      });
-
-      // Construct new route
-      const query = description.replace(' ', '+');
-      const route = `/listings/search/${query}`;
-      return <Redirect to={route} />;
-    }
+    const { searchText } = this.state;
     return (
       <Form className="w-50 mr-3" onSubmit={(event: any) => this.handleSubmit(event)}>
         <InputGroup>
           <FormControl
             type="text"
             placeholder="Search"
-            value={description}
+            value={searchText}
             onChange={(event: any) => this.handleDescription(event)}
           />
           <InputGroup.Append>
@@ -65,4 +56,4 @@ class Search extends React.Component<{}, IStates> {
   }
 }
 
-export default Search;
+export default withRouter(Search);
