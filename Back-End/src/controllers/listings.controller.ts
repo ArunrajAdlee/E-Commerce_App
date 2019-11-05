@@ -72,7 +72,13 @@ export class ListingsController {
 
 	async allWithCategory(req: Request, res: Response, next: NextFunction) {
 		const requestedCategory: number = parseInt(req.params.category);
-		return this.listingsRepository.find({ category: requestedCategory });
+		const listingsWithCategory = await this.listingsRepository.find({
+			category: requestedCategory
+		});
+
+		res.status(200).send({
+			listings: listingsWithCategory
+		});
 	}
 
 	async allWithSearchQuery(req: Request, res: Response, next: NextFunction) {
