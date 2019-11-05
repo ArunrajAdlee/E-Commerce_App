@@ -141,8 +141,6 @@ INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Ite
 OUTPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/SRS.lot
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
-INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd1.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd1.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd1.png
@@ -178,6 +176,8 @@ INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Ite
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Home_Page.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/SRS.ind
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/SRS.ind
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/SRS.aux
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/SRS.out
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/SRS.out
