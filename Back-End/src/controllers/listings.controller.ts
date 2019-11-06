@@ -39,7 +39,7 @@ export class ListingsController {
 
       const cloudImage = await cloudinary.uploader.upload(
         reqImage.tempFilePath,
-        { unique_filename: true, width: 540, height: 580 }
+        { unique_filename: true, width: 540, height: 580, crop: 'fit' }
       );
       const imageURL = cloudImage.url;
       //Crop the size of the image for the thumbnail (225 x 225)
@@ -49,7 +49,7 @@ export class ListingsController {
       );
       const thumbnailURL =
         imageURL.substr(0, sizeInputLocation) +
-        '/w_255,h_270' +
+        '/w_255,h_270,c_fit' +
         imageURL.substr(sizeInputLocation, imageURL.length - 1);
 
       const newProduct: ListingsModel = {
@@ -103,7 +103,7 @@ export class ListingsController {
 
     res.status(200).send({
       message: 'success',
-      listing
+      listing: listing
     });
   }
 }
