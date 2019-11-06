@@ -27,13 +27,17 @@ export class ListingsController {
   }
 
   async save(req: Request & { files: any }, res: Response, next: NextFunction) {
+    console.log("Here");
+    /*
     const authenticatedUser: AuthModel = checkAuth(req);
     if (!authenticatedUser) {
       res.status(404).send('user is not authenticated');
       return;
     }
+    */
 
     try {
+
       //Take the request image and store it on the cloud
       const reqImage = req.files.image;
 
@@ -54,8 +58,12 @@ export class ListingsController {
 
       const newProduct: ListingsModel = {
         title: req.body.title,
+        description: req.body.description,
+        price: req.body.price,
         stock_count: req.body.stock_count,
         category: req.body.category,
+        quantity_sold: 0,
+        status: true,
         image: imageURL,
         thumbnail: thumbnailURL
       };

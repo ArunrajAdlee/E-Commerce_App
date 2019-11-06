@@ -6,6 +6,7 @@ import {Formik, Field, Form, ErrorMessage, FormikValues} from 'formik';
 import * as Yup from 'yup';
 
 export interface FormFields {
+  image: File,
   title: string,
   description: string,
   category: number,
@@ -24,6 +25,8 @@ interface IStates {
 }
 
 const ListingSchema = Yup.object().shape({
+  image: Yup.mixed()
+  .required('Please choose a file'),
   title: Yup.string()
     .max(50, 'Please pick a shorter title')
     .required('Title is required'),
@@ -56,7 +59,7 @@ class CreateListing extends React.Component<{}, IStates> {
 
   private handleSubmit = async (values: FormikValues, actions: any) => {
 
-    await axios.post('http://localhost:4000/listings', values);
+     await axios.post('http://localhost:4000/listings', values);
 
   }
 
@@ -67,7 +70,7 @@ class CreateListing extends React.Component<{}, IStates> {
 
       initialValues={
         {
-          image: '',
+          image: undefined,
           title: '',
           description: '',
           category: undefined,
@@ -86,30 +89,26 @@ class CreateListing extends React.Component<{}, IStates> {
           <Form>
 
             <h5> Photos </h5>
-            <br/>
+            <p> Please choose a good quality photo to showcase your product. </p>
             <div>
             <Row>
+            <Col lg = {"auto"}>
             <Field
-            name = "title"
+            type = "file"
+            name = "image"
             className={`form-control styled-input listing-input ${
-              touched.title && errors.title ? "is-invalid" : ""
+              touched.image && errors.image ? "is-invalid" : ""
             }`}
             />
             <ErrorMessage
             component = "div"
-            name = "title"
+            name = "image"
             className = "invalid-feedback"
             />
             </Col>
             </Row>
-            <Row>
-            <Col className="text-muted" lg = {{offset: 2}}>
-            Add a short title for your listing.
-            </Col>
-            </Row>
             </div>
             <br/>
-
             <br/>
 
             <h5> Listing Details </h5>
@@ -176,6 +175,7 @@ class CreateListing extends React.Component<{}, IStates> {
             className={`form-control styled-input listing-input ${
               touched.category && errors.category ? "is-invalid" : ""
             }`}>
+            <option disabled value = "" selected> -- select a category -- </option>
             {categories.map(e => <option value={e.id}>{e.name}</option>)};
             </Field>
             <ErrorMessage
