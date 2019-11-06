@@ -55,9 +55,10 @@ export class ListingsController {
       const newProduct: ListingsModel = {
         title: req.body.title,
         stock_count: req.body.stock_count,
-        category: req.body.category,
+        category: req.body.category ? req.body.category : null,
         image: imageURL,
-        thumbnail: thumbnailURL
+        thumbnail: thumbnailURL,
+        price: req.body.price
       };
       const listing = await this.listingsRepository.save(newProduct);
       res.status(200).send({
@@ -72,15 +73,21 @@ export class ListingsController {
 
   async allWithCategory(req: Request, res: Response, next: NextFunction) {
     const requestedCategory: number = parseInt(req.params.category);
-    return this.listingsRepository.find({ category: requestedCategory });
+    const listingsWithCategory = await this.listingsRepository.find({
+      category: requestedCategory
+    });
+
+    res.status(200).send({
+      listings: listingsWithCategory
+    });
   }
 
   async allWithSearchQuery(req: Request, res: Response, next: NextFunction) {
-    const query = req.params.searchQuery.replace('+', ' ');
+    const query = req.params.searchQuery.replace('+', ' ').toLowerCase();
     const allListings: ListingsModel[] = await this.listingsRepository.find();
 
     const searchListings = allListings.filter(listing =>
-      listing.title.includes(query)
+      listing.title.toLowerCase().includes(query)
     );
 
     res.status(200).send({
@@ -97,7 +104,7 @@ export class ListingsController {
 
     res.status(200).send({
       message: 'success',
-      listing
+      listing: listing
     });
   }
 }

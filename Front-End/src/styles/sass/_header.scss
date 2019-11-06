@@ -15,18 +15,50 @@
         -webkit-transition: width 0.5s; 
         transition: width 0.5s;
 
+        & .navbar-brand a {
+            color:black;
+        }
+
         & .navbar-nav{
             & svg {
                 font-size: 25px;
             }
 
             & .nav-link {
-                font-size: 13px;
-                line-height: 2;
-                font-weight: bold;
-                color: black;
-                letter-spacing: 0.8px;
-                margin: 0 5px 0 5px;
+                &, & .dropdown-toggle {
+                    font-size: 13px;
+                    line-height: 2;
+                    font-weight: bold;
+                    color: black;
+                    letter-spacing: 0.8px;
+                    margin: 0 5px 0 5px;
+                }
+
+                & .dropdown-toggle {
+                    background: inherit;
+                    border:none;
+
+                    &:focus {
+                        box-shadow: none;
+                    }
+
+                }
+                
+                & .dropdown-item { 
+
+                    &:hover {
+                        color: white;
+                        background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+                    }
+                }
+
+                
+                & .active { 
+                    background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+                    color: white;
+                }
+
+                }
             }
         }
 
@@ -36,7 +68,7 @@
             border-radius: 0;
         }
 
-    }
+    
 
     @media screen and (max-width: $sm-size) {
         height: auto;
@@ -72,6 +104,4 @@
         }
 
     }
-
 }
-
