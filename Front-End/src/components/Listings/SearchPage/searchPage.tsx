@@ -33,7 +33,10 @@ class SearchPage extends React.Component<IProps, IStates> {
 
   private updateListing = async () => {
     const { match } = this.props;
-    const result = await axios.get(`${BACKEND_URL}/listings`);
+    const searchQuery = match.params.searchQuery;
+    const result = await axios.get(
+      `${BACKEND_URL}/listings/search/${searchQuery}`
+    );
     const resListings: Listing[] = result.data.listings.map((product: any) => ({
       id: product.id,
       name: product.title,
@@ -41,7 +44,7 @@ class SearchPage extends React.Component<IProps, IStates> {
       thumbnail: product.thumbnail
     }));
     this.setState({
-      searchQuery: match.params.searchQuery,
+      searchQuery: searchQuery.replace('+', ' '),
       listings: resListings
     });
   };
