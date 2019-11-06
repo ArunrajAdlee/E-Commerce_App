@@ -6,19 +6,18 @@ import Listings, { Listing } from '../listings';
 const BACKEND_URL = 'http://localhost:4000';
 
 interface IStates {
- listings: Listing[];
- searchQuery: string;
+  listings: Listing[];
+  searchQuery: string;
 }
 
-interface IProps extends RouteComponentProps<any> {
-}
+interface IProps extends RouteComponentProps<any> {}
 
 // Will finish when listings component is completed
 class SearchPage extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
     listings: [],
-    searchQuery: '',
-  }
+    searchQuery: ''
+  };
 
   public async componentDidMount() {
     this.updateListing();
@@ -34,21 +33,27 @@ class SearchPage extends React.Component<IProps, IStates> {
 
   private updateListing = async () => {
     const { match } = this.props;
-    const result = await axios.get(`${BACKEND_URL}/listings`);
+    const searchQuery = match.params.searchQuery;
+    const result = await axios.get(
+      `${BACKEND_URL}/listings/search/${searchQuery}`
+    );
     const resListings: Listing[] = result.data.listings.map((product: any) => ({
       id: product.id,
       name: product.title,
+      image: product.image,
+      thumbnail: product.thumbnail
     }));
-    this.setState({ searchQuery: match.params.searchQuery, listings: resListings });
-  }
+    this.setState({
+      searchQuery: searchQuery.replace('+', ' '),
+      listings: resListings
+    });
+  };
 
   public render() {
     const { searchQuery, listings } = this.state;
     return (
       <>
-        <h2>
-          {`Search: ${searchQuery}`}
-        </h2>
+        <h2>{`Search: ${searchQuery}`}</h2>
         <Listings listings={listings} />
       </>
     );
