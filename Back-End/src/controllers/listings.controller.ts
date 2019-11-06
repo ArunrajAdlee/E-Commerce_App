@@ -82,11 +82,11 @@ export class ListingsController {
   }
 
   async allWithSearchQuery(req: Request, res: Response, next: NextFunction) {
-    const query = req.params.searchQuery.replace('+', ' ');
+    const query = req.params.searchQuery.replace('+', ' ').toLowerCase();
     const allListings: ListingsModel[] = await this.listingsRepository.find();
 
     const searchListings = allListings.filter(listing =>
-      listing.title.includes(query)
+      listing.title.toLowerCase().includes(query)
     );
 
     res.status(200).send({
