@@ -12,6 +12,12 @@ export class Listings {
     @Column()
     stock_count: number;
 
+    @Column()
+    image: string;
+
+    @Column()
+    thumbnail: string;
+
     @Column({nullable: true})
     description: string;
 
@@ -29,5 +35,4 @@ export class Listings {
 
     @Column({nullable: true})
     category: number;
-
 }
