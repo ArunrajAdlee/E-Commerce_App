@@ -32,24 +32,3 @@ code {
 
 
 
-.dropdown-item{
-
-  background-color: aqua;;
-}
-
-.dropdown-menu.show{
-
-  a.dropdown-item{
-
-    color: #FE6D00;
-
-    &:hover{
-
-      background-color: #FE6D00;
-      color: white;
-    }
-    
-  } 
- 
-}
-

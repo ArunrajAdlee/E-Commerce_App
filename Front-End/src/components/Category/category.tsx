@@ -39,7 +39,7 @@ class Category extends React.Component<IProps, IStates> {
       const { categories } = this.state;
       return (
         <DropdownButton id="dropdown-basic-button" title="CATEGORIES" className="nav-link align-self-center" onSelect={(event: any) => this.handleSelect(event)}>
-          {categories.map((category) => (<Dropdown.Item key={category.id} eventKey={`${category.id.toString()},${category.name}`}>{category.name}</Dropdown.Item>))}
+          {categories.map((category) => (<Dropdown.Item key={category.id} eventKey={`${category.id.toString()},${category.name}`}>{category.name.toUpperCase()}</Dropdown.Item>))}
         </DropdownButton>
       );
     }
