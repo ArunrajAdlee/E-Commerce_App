@@ -38,9 +38,10 @@ export class ListingsController {
 
 		const newProduct: ListingsModel = {
 			title: req.body.title,
-			price: req.body.price
+			price: req.body.price,
+			description: req.body.description,
+			category: req.body.category,
 			stock_count: req.body.stock_count,
-			//category: req.body.category
 		};
 
     	//Save new listing to database

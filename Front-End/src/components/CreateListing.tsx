@@ -2,18 +2,24 @@ import React from 'react';
 import axios from 'axios';
 import {Link, Redirect} from 'react-router-dom';
 import {Row, Col, Button, Alert} from 'react-bootstrap';
-import {Formik, Field, Form, ErrorMessage, FormikValues, FormikActions} from 'formik';
+import {Formik, Field, Form, ErrorMessage, FormikValues} from 'formik';
 import * as Yup from 'yup';
 
 export interface FormFields {
   title: string,
   description: string,
+  category: number,
   price: number,
   stock_count: number,
 }
 
+interface Category {
+    id: number;
+    name: string;
+}
+
 interface IStates {
-  categories: string[],
+  categories: Category[],
   isError: boolean;
 }
 
@@ -24,6 +30,8 @@ const ListingSchema = Yup.object().shape({
   description: Yup.string()
     .max(100, 'The description is over the character limit (100)')
     .required('Description is required'),
+  category: Yup.number()
+    .required('Please pick a category'),
   price: Yup.number()
     .typeError('Price must be a number')
     .required('Please enter a price')
@@ -41,16 +49,9 @@ class CreateListing extends React.Component<{}, IStates> {
     isError: false,
   }
 
-  getCategories(){
-    /*
-    let temp = {}
-    temp = axios.get('localhost:4000/categories');
-    this.setState({categories: this.state.categories.concat("Cars")})
-*/
-  }
-
-  public componentDidMount() {
-    this.getCategories();
+  public async componentDidMount() {
+    const result = await axios.get('http://localhost:4000/categories',);
+    this.setState({categories: result.data});
   }
 
   private handleSubmit = async (values: FormikValues, actions: any) => {
@@ -66,8 +67,10 @@ class CreateListing extends React.Component<{}, IStates> {
 
       initialValues={
         {
+          image: '',
           title: '',
           description: '',
+          category: undefined,
           price: undefined,
           stock_count: undefined,
         }}
@@ -83,6 +86,30 @@ class CreateListing extends React.Component<{}, IStates> {
           <Form>
 
             <h5> Photos </h5>
+            <br/>
+            <div>
+            <Row>
+            <Field
+            name = "title"
+            className={`form-control styled-input listing-input ${
+              touched.title && errors.title ? "is-invalid" : ""
+            }`}
+            />
+            <ErrorMessage
+            component = "div"
+            name = "title"
+            className = "invalid-feedback"
+            />
+            </Col>
+            </Row>
+            <Row>
+            <Col className="text-muted" lg = {{offset: 2}}>
+            Add a short title for your listing.
+            </Col>
+            </Row>
+            </div>
+            <br/>
+
             <br/>
 
             <h5> Listing Details </h5>
@@ -139,6 +166,32 @@ class CreateListing extends React.Component<{}, IStates> {
             </div>
             <br/>
 
+            <div>
+            <Row>
+            <Col lg = {2} > <label htmlFor="category">Category*</label> </Col>
+            <Col lg = {5}>
+            <Field
+            component = "select"
+            name = "category"
+            className={`form-control styled-input listing-input ${
+              touched.category && errors.category ? "is-invalid" : ""
+            }`}>
+            {categories.map(e => <option value={e.id}>{e.name}</option>)};
+            </Field>
+            <ErrorMessage
+            component = "div"
+            name = "category"
+            className = "invalid-feedback"
+            />
+            </Col>
+            </Row>
+            <Row>
+            <Col className="text-muted" lg = {{offset: 2}}>
+            Please pick 1 category that matches your product.
+            </Col>
+            </Row>
+            </div>
+            <br/>
 
 
             <h5> Inventory and Pricing </h5>
