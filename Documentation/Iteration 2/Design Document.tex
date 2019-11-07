@@ -457,14 +457,30 @@ The use case diagram below represents the Admin Panel functionality of the 354Th
 
 
 \subsection{Description Of Each Entity}
+
 \subsubsection{Client}
+\textit{Client} is any user. They have the power to purchase and sell \textit{Listings}. A \textit{Client} can leave many \textit{Reviews}, create many \textit{Listings}, have many \textit{Carts}, and up to three \textit{Addresses}. Moreover, a \textit{Client} is associated with one \textit{OrderDetails} where the information related to their \textit{Orders} will be saved. Through referential integrity, \textit{Client}'s primary key consisting of its attribute \textit{id} is part of the primary key of \textit{Review} and \textit{Listing}. Finally, other attributes of \textit{Client} are \textit{email}, \textit{password}, \textit{first name}, \textit{last name}, \textit{brand name}, \textit{date of birth} and \textit{phone number}.
+
 \subsubsection{Listings}
+\textit{Listings} are the products sold and purchased on 354TheStars. Many \textit{Listings} are part of one \textit{Cart}, can have many \textit{Reviews}, and can be part of many \textit{OrderDetails}; however, a \textit{Listing} can only be listed by one \textit{Client} and can only have one \textit{Category}. Because of its relationship of referential integrity with \textit{Client}, \textit{Client}'s primary key will be part of that of \textit{Listing} in addition to \textit{Listing id}. Finally, the attributes belonging to \textit{Listing} are \textit{title}, \textit{image name}, \textit{description}, \textit{price}, \textit{stock count}, \textit{low on stock}, \textit{quantity sold}, and \textit{is active}.
+
 \subsubsection{Address}
+\textit{Address} contains information related to the shipping and/or billing place of preference of a \textit{Client}. Only one to three \textit{Addresses} are allowed per \textit{Client}, making the relationship between \textit{Address} and \textit{Client} many-to-one, respectively. Additionally, since an \textit{Order} is shipped to an address, \textit{Order} has referential integrity with \textit{Address}, making \textit{Address}'s primary key part of that of \textit{Order}.
+
 \subsubsection{Order}
+An \textit{Order} is shipped to an \textit{Address}, and the details of the order are stored in \textit{OrderDetails}. An \textit{Order} cannot exist without an \textit{Address} due to referential integrity; therefore \textit{Address}'s primary key will be part of that of \textit{Order}. Similarly, because of referential integrity \textit{Order}'s primary key will also be part of \textit{OrderDetails}. This means the primary key of \textit{Order} is composed by \textit{Address id} and \textit{Order id}. \textit{Order} also counts with the attributes \textit{date}, \textit{shipping type}, \textit{shipping status}, \textit{total price before tax}, \textit{total tax}, \textit{total price} and \textit{total fee}.
+
 \subsubsection{Review}
+A \textit{Review} is an assessment a \textit{Client} leaves on a \textit{Listing} following a sale. Only those \textit{Buyers} who purchased said \textit{Listing} are allowed to write reviews for that specific \textit{Listing}. Given this, a \textit{Review} can not exist neither without a \textit{Client} acting as the author, nor without a \textit{Listing} to receive said \textit{Review}, leading to referential integrity of type many-to-many with both the \textit{Client} and the \textit{Listing}. Moreover, with referential integrity, a \textit{Review} has an \textit{id}, and two foreign keys: the \textit{id} of the \textit{Client} who creates a \textit{Review}, and the primary key of the \textit{Listing} who receives the \textit{Review}. These three keys act as the primary key of \textit{Review}. Aside from this, \textit{Review} has a title and a description. Finally, an \textit{Address} has an \textit{id} as primary key, and other attributes such as \textit{street name}, \textit{street number}, \textit{unit number}, \textit{city}, \textit{province}, \textit{postal code} and \textit{country}.
+
 \subsubsection{Order Details}
+\textit{OrderDetails} contains information related to an \textit{Order} and what \textit{Listings} were bought with it. Its attributes are \textit{id}, which is the primary key, and \textit{purchase date}, \textit{quantity}, \textit{price before tax}, \textit{tax}, \textit{price price after tax} and \textit{listing fee}. Many \textit{Listings} can be in many \textit{OrderDetails}, yet there can only be one \textit{OrderDetails} per \textit{Order}; therefore, because of referential integrity, the \textit{OrderDetails} has \textit{Order id} as a foreign key, and part of its primary key. Finally, \textit{OrderDetails} is associated with the \textit{Client} who placed the \textit{Order}.
+
 \subsubsection{Category}
+\textit{Category} offers a classification system for \textit{Listing}. It has an \textit{id} as primary key, and an attribute \textit{name} that describes what the \textit{Category} represents. All categories can belong to many \textit{Listings}.
+
 \subsubsection{Cart}
+\textit{Cart} is related to \textit{Listing} and \textit{Client}. Many \textit{Listings} belong to one \textit{Cart} in which the \textit{quantity} ordered of that \textit{Listing} is stored. Likewise, many \textit{Carts} can belong to one \textit{Client}. The primary key of \textit{Cart} is its \textit{id}.
 \clearpage
 
 \section{Class Diagram}
