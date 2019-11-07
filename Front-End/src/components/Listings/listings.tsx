@@ -1,8 +1,9 @@
 import React from 'react';
 import {
-  Row, Col, Spinner, Image, Pagination,
+  Row, Col, Spinner, Image, Pagination, Jumbotron,
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Filters, { IFilters } from './Filters/filters';
 
 export interface Listing {
   id: number;
@@ -10,14 +11,17 @@ export interface Listing {
   thumbnail: string;
   image: string;
   price: number;
+  quantity: number;
   isAvailable: boolean;
 }
 
 interface IProps {
   listings: Listing[];
+  isLoading: boolean;
 }
 
 interface IStates {
+  filteredListings: Listing[] | null;
   currentPage: number;
   listingsPerPage: number;
 }
@@ -27,12 +31,19 @@ class Listings extends React.Component<IProps, IStates> {
     super(props);
 
     this.state = {
+      filteredListings: null,
       currentPage: 1,
       listingsPerPage: 12,
     };
   }
 
-  handlePagination = (event: any) => {
+  public componentDidUpdate = (prevProps: IProps) => {
+    if (prevProps.listings !== this.props.listings) {
+      this.setState({ filteredListings: null });
+    }
+  };
+
+  private handlePagination = (event: any) => {
     if (event.target.text !== undefined) {
       this.setState({
         currentPage: Number(event.target.text),
@@ -41,8 +52,8 @@ class Listings extends React.Component<IProps, IStates> {
   };
 
   // Displays if listing is available or unavailable
-  listingStatus = (listing: Listing) => {
-    let listingPrice: any = listing.price;
+  private listingStatus = (listing: Listing) => {
+    let listingPrice: any = `$${listing.price}`;
     let textColor = 'text-dark';
 
     if (!listing.isAvailable) {
@@ -54,7 +65,7 @@ class Listings extends React.Component<IProps, IStates> {
   };
 
   // Returns the thumbnail of each listing in index
-  listingThumbnail = (listing: Listing) => {
+  private listingThumbnail = (listing: Listing) => {
     // Placeholder until there is a database with an error image to point to
     let listingImage = 'https://3.bp.blogspot.com/-XB85UD145qE/V5buf22iv2I/AAAAAAAAA1I/8LBmpwNX-rU7ZjzrHOS2b0F_Pj0xqpHIQCLcB/s1600/nia.png';
     if (listing.thumbnail) {
@@ -80,9 +91,23 @@ class Listings extends React.Component<IProps, IStates> {
     );
   };
 
-  public render() {
+  private onFilterChanged = (filterObj: IFilters) => {
     const { listings } = this.props;
-    const { currentPage, listingsPerPage } = this.state;
+    const filteredListings: Listing[] = listings.filter((listing) => listing.price >= filterObj.minPrice && listing.price <= filterObj.maxPrice);
+    if (filterObj.sortBy === 'ASC') {
+      filteredListings.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (filterObj.sortBy === 'DESC') {
+      filteredListings.sort((a, b) => b.name.localeCompare(a.name));
+    }
+    this.setState({ filteredListings, currentPage: 1 });
+  }
+
+
+  public render() {
+    let { listings, isLoading } = this.props;
+    const { currentPage, listingsPerPage, filteredListings } = this.state;
+
+    if (filteredListings) { listings = filteredListings; }
 
     // Logic for displaying current listings
     const indexOfLastListing = currentPage * listingsPerPage;
@@ -107,18 +132,35 @@ class Listings extends React.Component<IProps, IStates> {
     }
 
     return (
-      <>
-        {listings.length ? (
-          <Row className="pt-5">
-            {currentListings.map((listing) => this.listingThumbnail(listing))}
-          </Row>
-        ) : (
-          <Spinner animation="border" variant="warning" />
-        )}
-        <div>
-          <Pagination className="float-right">{pageNumbers}</Pagination>
-        </div>
-      </>
+      <div className="mt-5">
+        {
+      !isLoading ? (
+        <Row className="listings-container">
+          <Col md={3}>
+            <Filters filterChanged={this.onFilterChanged} />
+          </Col>
+          <Col md={9}>
+            {listings.length ? (
+              <>
+                <Row>
+                  {currentListings.map((listing) => this.listingThumbnail(listing))}
+                </Row>
+                <div className="pagination-container">
+                  <Pagination className="float-right">{pageNumbers}</Pagination>
+                </div>
+              </>
+            ) : (
+              <Jumbotron>
+                <h1>No products fit the provided criteria!</h1>
+              </Jumbotron>
+            )}
+          </Col>
+        </Row>
+      )
+        : <Spinner animation="border" variant="warning" />
+        }
+      </div>
+
     );
   }
 }

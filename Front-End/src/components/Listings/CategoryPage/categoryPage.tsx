@@ -9,6 +9,7 @@ interface IStates {
   listings: Listing[];
   categoryId: number;
   categoryName: string;
+  isLoading: boolean;
 }
 
 interface IProps extends RouteComponentProps<any> {}
@@ -18,7 +19,8 @@ class CategoryPage extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
     listings: [],
     categoryId: -1,
-    categoryName: ''
+    categoryName: '',
+    isLoading: true,
   };
 
   public async componentDidMount() {
@@ -34,30 +36,35 @@ class CategoryPage extends React.Component<IProps, IStates> {
 
   private updateListing = async () => {
     const { match } = this.props;
-    const categoryId = match.params.categoryId;
+    const { categoryId } = match.params;
     const result = await axios.get(
-      `${BACKEND_URL}/listings/category/${categoryId}`
+      `${BACKEND_URL}/listings/category/${categoryId}`,
     );
+
     const resListings: Listing[] = result.data.listings.map((product: any) => ({
       id: product.id,
       name: product.title,
       image: product.image,
-      thumbnail: product.thumbnail
+      thumbnail: product.thumbnail,
+      price: product.price,
+      quantity: product.stock_count,
+      isAvailable: product.status,
     }));
 
     this.setState({
+      isLoading: false,
       categoryId: match.params.categoryId,
       categoryName: match.params.categoryName,
-      listings: resListings
+      listings: resListings,
     });
   };
 
   public render() {
-    const { categoryName, listings } = this.state;
+    const { categoryName, listings, isLoading } = this.state;
     return (
       <>
         <h2>{`Category: ${categoryName}`}</h2>
-        <Listings listings={listings} />
+        <Listings listings={listings} isLoading={isLoading} />
       </>
     );
   }
