@@ -10,6 +10,9 @@ import Login, { ILoginFields } from './components/Login/login';
 import LandingPage from './components/LandingPage/landingPage';
 import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
 import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
+import SearchPage from './components/Listings/SearchPage/searchPage';
+import CategoryPage from './components/Listings/CategoryPage/categoryPage';
+import ListingsPage from './components/Listings/ListingsPage/listingsPage';
 import SignUp from './components/SignUp/signUp';
 import { StoreContext, IUserInfo } from './store';
 import ScrollToTop from './components/Misc/scrollToTop';
@@ -81,9 +84,11 @@ class App extends React.Component<{}, IStates> {
         <Router history={history}>
           <ScrollToTop />
           <Switch>
-            <SecureRoute path="/listings" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
             <SecureRoute authenticated path="/cart" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Your Shoppping Cart" />
             <SecureRoute path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
+            <SecureRoute path="/listings/category/:categoryId/:categoryName" pageComponent={CategoryPage} layoutComponent={DefaultLayout} pageTitle="Category Listings" />
+            <SecureRoute path="/listings/search/:searchQuery" pageComponent={SearchPage} layoutComponent={DefaultLayout} pageTitle="Search Listings" />
+            <SecureRoute path="/listings" pageComponent={ListingsPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
             <SecureRoute path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
             <SecureRoute pageComponent={LandingPage} layoutComponent={LandingLayout} />
           </Switch>

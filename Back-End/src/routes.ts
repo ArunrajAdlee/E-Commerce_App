@@ -2,65 +2,76 @@ import { UserController } from './controllers/user.controller';
 import { ListingsController } from './controllers/listings.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
-
 export const Routes = [
-	{
-		method: 'get',
-		route: '/users',
-		controller: UserController,
-		action: 'all'
-	},
-	{
-		method: 'get',
-		route: '/users/:id',
-		controller: UserController,
-		action: 'one'
-	},
+  {
+    method: 'get',
+    route: '/users',
+    controller: UserController,
+    action: 'all'
+  },
+  {
+    method: 'get',
+    route: '/users/:id',
+    controller: UserController,
+    action: 'one'
+  },
 
-	//Listings
-	{
-		method: 'get',
-		route: '/listings',
-		controller: ListingsController,
-		action: 'all'
-	},
-	{
-		method: 'get',
-		route: '/listings/:id',
-		controller: ListingsController,
-		action: 'getListingDetails'
-	},
-	{   	
-		method: 'get',
-		route: '/listings/category/:category',
-		controller: ListingsController,
-		action: 'allWithCategory'
-	},
-	{
-		method: 'get',
-		route: '/listings/active',
-		controller: ListingsController,
-		action: 'getActive'
-	},
-	{
-		method: 'post',
-		route: '/listings',
-		controller: ListingsController,
-		action: 'save'
-	},
+  //Listings
+  {
+    method: 'get',
+    route: '/listings',
+    controller: ListingsController,
+    action: 'all'
+  },
+  {
+    method: 'get',
+    route: '/listings/:id',
+    controller: ListingsController,
+    action: 'getListingDetails'
+  },
+  {
+    method: 'get',
+    route: '/listings/category/:category',
+    controller: ListingsController,
+    action: 'allWithCategory'
+  },
+  {
+    method: 'get',
+    route: '/listings/search/:searchQuery',
+    controller: ListingsController,
+    action: 'allWithSearchQuery'
+  },
+  {
+    method: 'get',
+    route: '/listings/active',
+    controller: ListingsController,
+    action: 'getActive'
+  },
+  {
+    method: 'post',
+    route: '/listings',
+    controller: ListingsController,
+    action: 'save'
+  },
 
-	//Auth
-	{
-		method: 'post',
-		route: '/auth/create',
-		controller: AuthController,
-		action: 'createUser'
-	},
-	{
-		method: 'post',
-		route: '/auth/login',
-		controller: AuthController,
-		action: 'login'
+  //Auth
+  {
+    method: 'get',
+    route: '/auth/status',
+    controller: AuthController,
+    action: 'getAuthStatus'
+  },
+  {
+    method: 'post',
+    route: '/auth/create',
+    controller: AuthController,
+    action: 'createUser'
+  },
+  {
+    method: 'post',
+    route: '/auth/login',
+    controller: AuthController,
+    action: 'login'
 	},
 	{
 		method: 'get',
@@ -73,13 +84,13 @@ export const Routes = [
 		route: '/auth/logout',
 		controller: AuthController,
 		action: 'logout'
-	},
+  },
 
-	//Categories
-	{
-		method: 'get',
-		route: '/categories',
-		controller: CategoriesController,
-		action: 'all'
-	}
+  //Categories
+  {
+    method: 'get',
+    route: '/categories',
+    controller: CategoriesController,
+    action: 'all'
+  }
 ];

@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Sticky } from 'react-sticky';
 import { StoreContext } from '../../../store';
 import Search from '../../../components/Search/search';
+import Category from '../../../components/Category/category';
 
 class NavigationBar extends React.Component<{}> {
     private handleLogout = () => {
@@ -34,7 +35,8 @@ class NavigationBar extends React.Component<{}> {
                   <Search />
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ml-auto">
+                    <Nav className="ml-auto align-items-center">
+                      <Category />
                       <Link
                         className="nav-link"
                         to={{

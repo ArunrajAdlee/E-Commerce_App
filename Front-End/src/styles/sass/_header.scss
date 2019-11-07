@@ -17,18 +17,54 @@
         left: 20%;
         right: 20%;
 
+        & .navbar-brand a {
+            color:black;
+        }
+
+        & .search-container {
+            width: 45%;
+        }
+
         & .navbar-nav{
             & svg {
                 font-size: 25px;
             }
 
             & .nav-link {
-                font-size: 13px;
-                line-height: 2;
-                font-weight: bold;
-                color: black;
-                letter-spacing: 0.8px;
-                margin: 0 5px 0 5px;
+                &, & .dropdown-toggle {
+                    font-size: 13px;
+                    line-height: 2;
+                    font-weight: bold;
+                    color: black;
+                    letter-spacing: 0.8px;
+                    margin: 0 5px 0 5px;
+                }
+
+                & .dropdown-toggle {
+                    background: inherit;
+                    border:none;
+
+                    &:focus {
+                        box-shadow: none;
+                    }
+
+                }
+                
+                & .dropdown-item { 
+
+                    &:hover {
+                        color: white;
+                        background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+                    }
+                }
+
+                
+                & .active { 
+                    background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+                    color: white;
+                }
+
+                }
             }
 
             & .nav-dropdown {
@@ -45,17 +81,17 @@
                 
                 }
             }
-        }
+        
 
-        @media screen and (max-width: $md-size) {
+        @media screen and (max-width: $lg-size) {
             position: fixed !important;
             left: 0;
             margin-top: 0;
             width: 100% !important;
             border-radius: 0;
         }
-
     }
+    
 
     @media screen and (max-width: $md-size) {
         height: auto;
@@ -101,6 +137,4 @@
         }
 
     }
-
 }
-
