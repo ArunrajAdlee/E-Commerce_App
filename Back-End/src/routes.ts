@@ -72,7 +72,7 @@ export const Routes = [
     route: '/auth/login',
     controller: AuthController,
     action: 'login'
-	},
+  },
 	{
 		method: 'get',
 		route: '/auth/status',

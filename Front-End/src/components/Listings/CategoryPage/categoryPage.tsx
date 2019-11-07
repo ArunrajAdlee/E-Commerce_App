@@ -52,7 +52,6 @@ class CategoryPage extends React.Component<IProps, IStates> {
 
   public render() {
     const { categoryName, listings } = this.state;
-    console.log('we in ');
     return (
       <>
         <h2>{`Category: ${categoryName}`}</h2>
