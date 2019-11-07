@@ -1,9 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 import { DropdownButton, Dropdown } from 'react-bootstrap';
-import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
-
-const BACKEND_URL = 'http://localhost:4000';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { server, api } from '../../server';
 
 interface Category {
     id: number;
@@ -22,8 +20,8 @@ class Category extends React.Component<IProps, IStates> {
     }
 
     public async componentDidMount() {
-      const result = await axios.get(
-        `${BACKEND_URL}/categories`,
+      const result = await server.get(
+        api.categories,
       );
       this.setState({ categories: result.data });
     }

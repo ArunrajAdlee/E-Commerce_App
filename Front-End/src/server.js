@@ -11,4 +11,8 @@ export const api = {
   auth_status: '/auth/status',
   auth_login: '/auth/login',
   auth_logout: '/auth/logout',
+  categories: '/categories',
+  listings: '/listings',
+  listings_category: '/listings/category/',
+  listings_search: '/listings/search/',
 };

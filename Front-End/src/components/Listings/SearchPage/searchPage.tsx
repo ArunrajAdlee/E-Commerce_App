@@ -1,9 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import { RouteComponentProps } from 'react-router-dom';
+import { server, api } from '../../../server';
 import Listings, { Listing } from '../listings';
 
-const BACKEND_URL = 'http://localhost:4000';
 
 interface IStates {
   listings: Listing[];
@@ -16,7 +15,7 @@ interface IProps extends RouteComponentProps<any> {}
 class SearchPage extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
     listings: [],
-    searchQuery: ''
+    searchQuery: '',
   };
 
   public async componentDidMount() {
@@ -33,19 +32,19 @@ class SearchPage extends React.Component<IProps, IStates> {
 
   private updateListing = async () => {
     const { match } = this.props;
-    const searchQuery = match.params.searchQuery;
-    const result = await axios.get(
-      `${BACKEND_URL}/listings/search/${searchQuery}`
+    const { searchQuery } = match.params;
+    const result = await server.get(
+      `${api.listings_search}${searchQuery}`,
     );
     const resListings: Listing[] = result.data.listings.map((product: any) => ({
       id: product.id,
       name: product.title,
       image: product.image,
-      thumbnail: product.thumbnail
+      thumbnail: product.thumbnail,
     }));
     this.setState({
       searchQuery: searchQuery.replace('+', ' '),
-      listings: resListings
+      listings: resListings,
     });
   };
 
