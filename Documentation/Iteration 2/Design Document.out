@@ -2,23 +2,25 @@
 \BOOKMARK [2][-]{subsection.1.1}{Selling}{section.1}% 2
 \BOOKMARK [2][-]{subsection.1.2}{Buying}{section.1}% 3
 \BOOKMARK [2][-]{subsection.1.3}{Login}{section.1}% 4
-\BOOKMARK [1][-]{section.2}{Entity Relationship Diagram}{}% 5
-\BOOKMARK [2][-]{subsection.2.1}{Description Of Each Entity}{section.2}% 6
-\BOOKMARK [3][-]{section*.4}{Client}{subsection.2.1}% 7
-\BOOKMARK [3][-]{section*.5}{Listings}{subsection.2.1}% 8
-\BOOKMARK [3][-]{section*.6}{Address}{subsection.2.1}% 9
-\BOOKMARK [3][-]{section*.7}{Order}{subsection.2.1}% 10
-\BOOKMARK [3][-]{section*.8}{Review}{subsection.2.1}% 11
-\BOOKMARK [3][-]{section*.9}{Order Details}{subsection.2.1}% 12
-\BOOKMARK [3][-]{section*.10}{Category}{subsection.2.1}% 13
-\BOOKMARK [3][-]{section*.11}{Cart}{subsection.2.1}% 14
-\BOOKMARK [1][-]{section.3}{Class Diagram}{}% 15
-\BOOKMARK [2][-]{subsection.3.1}{Description Of Class Diagram}{section.3}% 16
-\BOOKMARK [1][-]{section.4}{Sequence Diagram}{}% 17
-\BOOKMARK [1][-]{section.5}{Architectural Diagram}{}% 18
-\BOOKMARK [1][-]{section.6}{External Interface}{}% 19
-\BOOKMARK [2][-]{subsection.6.1}{Home Page}{section.6}% 20
-\BOOKMARK [1][-]{section.7}{Conclusion}{}% 21
-\BOOKMARK [1][-]{appendix.A}{Newly Added Requirements}{}% 22
-\BOOKMARK [1][-]{appendix.B}{Index}{}% 23
-\BOOKMARK [1][-]{appendix.C}{Reference}{}% 24
+\BOOKMARK [2][-]{subsection.1.4}{Admin Panel}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.5}{Site Browsing}{section.1}% 6
+\BOOKMARK [1][-]{section.2}{Entity Relationship Diagram}{}% 7
+\BOOKMARK [2][-]{subsection.2.1}{Description Of Each Entity}{section.2}% 8
+\BOOKMARK [3][-]{section*.4}{Client}{subsection.2.1}% 9
+\BOOKMARK [3][-]{section*.5}{Listings}{subsection.2.1}% 10
+\BOOKMARK [3][-]{section*.6}{Address}{subsection.2.1}% 11
+\BOOKMARK [3][-]{section*.7}{Order}{subsection.2.1}% 12
+\BOOKMARK [3][-]{section*.8}{Review}{subsection.2.1}% 13
+\BOOKMARK [3][-]{section*.9}{Order Details}{subsection.2.1}% 14
+\BOOKMARK [3][-]{section*.10}{Category}{subsection.2.1}% 15
+\BOOKMARK [3][-]{section*.11}{Cart}{subsection.2.1}% 16
+\BOOKMARK [1][-]{section.3}{Class Diagram}{}% 17
+\BOOKMARK [2][-]{subsection.3.1}{Description Of Class Diagram}{section.3}% 18
+\BOOKMARK [1][-]{section.4}{Sequence Diagram}{}% 19
+\BOOKMARK [1][-]{section.5}{Architectural Diagram}{}% 20
+\BOOKMARK [1][-]{section.6}{External Interface}{}% 21
+\BOOKMARK [2][-]{subsection.6.1}{Home Page}{section.6}% 22
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 23
+\BOOKMARK [1][-]{appendix.A}{Newly Added Requirements}{}% 24
+\BOOKMARK [1][-]{appendix.B}{Index}{}% 25
+\BOOKMARK [1][-]{appendix.C}{Reference}{}% 26
