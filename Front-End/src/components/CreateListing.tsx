@@ -25,8 +25,7 @@ interface IStates {
 }
 
 const ListingSchema = Yup.object().shape({
-  image: Yup.mixed()
-  .required('Please choose a file'),
+  image: Yup.mixed(),
   title: Yup.string()
     .max(50, 'Please pick a shorter title')
     .required('Title is required'),
@@ -45,6 +44,8 @@ const ListingSchema = Yup.object().shape({
     .moreThan(0.99, 'The minimum stock_count is 1')
 });
 
+let imageFile: any = undefined;
+
 class CreateListing extends React.Component<{}, IStates> {
 
   public readonly state: Readonly<IStates> = {
@@ -58,9 +59,21 @@ class CreateListing extends React.Component<{}, IStates> {
   }
 
   private handleSubmit = async (values: FormikValues, actions: any) => {
+    let formData = new FormData();
+    formData.append('image', imageFile);
+    formData.append('title', values.title);
+    formData.append('category', values.category);
+    formData.append('description', values.description);
+    formData.append('price', values.price);
+    formData.append('stock_count', values.stock_count);
+  
 
-     await axios.post('http://localhost:4000/listings', values);
+     await axios.post('http://localhost:4000/listings', formData);
 
+  }
+
+  private onChangeHandler(event: any) {
+    imageFile = event.target.files[0];
   }
 
   public render() {
@@ -94,6 +107,7 @@ class CreateListing extends React.Component<{}, IStates> {
             <Row>
             <Col lg = {"auto"}>
             <Field
+            onChange = {this.onChangeHandler}
             type = "file"
             name = "image"
             className={`form-control styled-input listing-input ${

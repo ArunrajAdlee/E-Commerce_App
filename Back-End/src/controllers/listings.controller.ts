@@ -27,7 +27,7 @@ export class ListingsController {
   }
 
   async save(req: Request & { files: any }, res: Response, next: NextFunction) {
-    console.log("Here");
+    console.log('Here');
     /*
     const authenticatedUser: AuthModel = checkAuth(req);
     if (!authenticatedUser) {
@@ -37,7 +37,6 @@ export class ListingsController {
     */
 
     try {
-
       //Take the request image and store it on the cloud
       const reqImage = req.files.image;
 
