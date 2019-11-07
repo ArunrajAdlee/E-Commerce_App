@@ -159,7 +159,7 @@ The use case diagram below represents the Selling functionality of the Online Sh
     \addrow{Actors}{\textbf{Seller, Administrator, Customer Support}}
     \addrow{Summary}{\index{seller}Seller completes all the \index{information}information necessary to list an item and has the option to edit or delete it. The \index{administrator}Administrator can manage all the listings information. In case of any issues, the Customer Support can be contacted.}
     \addrow{Pre-Conditions}{The user is registered as a legitimate seller.}
-    \addrow{\index{data}Data}{Product photo, \index{product}product description, price, stock count.}
+    \addrow{\index{data}Data}{Product photo, \index{product}product description, price, stock count,product name,category.}
     \addrow{Stimulus}{Seller pressed on Add Listing/Edit Listing/Delete Listing Button}
     \addmulrow{Response}{
             \item Add Listing/Edit Listing/Delete Listing dialogue appears.
@@ -179,18 +179,20 @@ The use case diagram below represents the Selling functionality of the Online Sh
     }
 \end{usecase}
 
+
 \begin{usecase}{Sell items}
     \addrow{Case ID}{UC02}
     \addrow{Actors}{\textbf{Seller, Buyer, PayPal, Bob TheRich, Customer Support}}
-    \addrow{Summary}{Seller accepts \index{payment}payment for the item from \index{buyer}Buyer and pays Bob TheRich the 8\% of the sale fee. The \index{seller}Seller can allow or disallow returns and set the time limit for returns. The Seller and Bob TheRich can access the sales history. In case of any issues, the Customer Support can be contacted.}
+    \addrow{Summary}{Seller accepts \index{payment}payment for the item from \index{buyer}Buyer and pays Bob TheRich the 8\% of the sale fee.
+    However,for the first 10 items sold by the seller, Bob TheRich gets only 3\% to encourage new sellers. The \index{seller} Seller and Bob TheRich can access the sales history. In case of any issues, the Customer Support can be contacted.}
     \addrow{Pre-Conditions}{Seller, \index{buyer}Buyer, and Bob TheRich must have a valid \index{PayPal}PayPal account. }
-    \addrow{\index{data}Data}{PayPal account \index{information}information, sales \index{data}data, returns option, time limit for returns, 8\% fee, shipped items}
+    \addrow{\index{data}Data}{PayPal account \index{information}information, sales \index{data}data, 3\% fee for first 10 items 8\% afterwards, shipped items}
     \addrow{Stimulus}{Buyer paid for item(s)}
     \addmulrow{Response}{
             \item \index{PayPal}PayPal transfers money from the \index{buyer}Buyer account to the Seller Account and sends a confirmation.
             \item \index{seller}Seller receives a sale notification by email.
             \item The sale appears in the Seller’s sales history.
-            \item Bob TheRich invoices the Seller for 8\% of the sale.
+            \item Bob TheRich invoices the Seller for 3\% if this is the sellers first 10 items,otherwise the invoice is of 8\%.
             \item Seller pays Bob TheRich through PayPal.
             \item Seller marks item as shipped.
     }
@@ -200,10 +202,35 @@ The use case diagram below represents the Selling functionality of the Online Sh
     }
     \addrow{Priority}{High}
     \addmulrow{Open Issues}{
-            \item Should refunds be allowed? If yes, how should they be handled?
             \item What happens if the sale appears in the sales history but not in the shipped items history after a predetermined amount of time?
     }
 \end{usecase}
+
+\begin{usecase}{Reply to reviews}
+    \addrow{Case ID}{UC03}
+    \addrow{Actors}{\textbf{Seller}}
+    \addrow{Summary}{\index{seller}Seller is able to reply to a review left by a buyer.}
+    \addrow{Pre-Conditions}{The user is registered as a legitimate seller. }
+    \addrow{\index{data}Data}{Product photo, seller's username.}
+    \addrow{Stimulus}{Seller hits the reply button to a buyer's review.}
+    \addmulrow{Response}{
+            \item Seller replies to the buyer.
+            \item Seller can add a picture(optional)
+            \item The reply is displayed under the buyers review.
+            \item Reply is visible to everyone.
+    }
+    \addmulrow{Exceptions}{
+            \item The seller already replied to the buyer (Cannot reply more than once)
+            \item The reply is over the character limit (400 characters).
+    }
+    \addrow{Priority}{Medium}
+    \addmulrow{Open Issues}{
+        \item Can the seller preview his message before posting? 
+        \item Should the buyer receive a notification when the seller replies? 
+        \item How are we handling offensive replies?
+    }
+\end{usecase}
+
 \clearpage
 
 \subsection{Buying}
@@ -218,13 +245,13 @@ The use case diagram below represents the Buying functionality of the Online Sho
 \end{figure}
 
 \begin{usecase}{Purchase}
-    \addrow{Case ID}{UC03}
+    \addrow{Case ID}{UC04}
     \addrow{Actors}{\textbf{Buyer, Seller, PayPal, Bob TheRich, Customer Support}}
     \addrow{Summary}{The Buyer views the shopping cart, has the option to modify it, and pays for it. In case of any issues, the Customer Support can be contacted.}
     \addmulrow{Pre-Conditions}{
         \item \index{buyer}Buyer is a \index{registered user}registered user.
         \item Buyer has a valid \index{PayPal}PayPal account.
-        \item \index{seller}Seller contact is hidden.
+        \item \index{seller}Seller contact information is hidden.
     }
     \addrow{\index{data}Data}{Purchase photo, purchase description, purchase quantity, purchase price per item, total purchase price, taxes, shipping fee, shipping address, PayPal account, \index{receipt}receipt (Seller \index{information}information, Buyer information, purchase date, purchase details, purchase price, taxes)}
     \addrow{Stimulus}{Buyer presses the Checkout Button.}
@@ -233,7 +260,7 @@ The use case diagram below represents the Buying functionality of the Online Sho
             \item Buyer chooses the shipping option (standard or express).
             \item Buyer chooses the shipping address.
             \item Buyer pays the \index{seller}Seller for the purchase through \index{PayPal}PayPal.
-            \item Buyer views the confirmation screen.
+            \item A confirmation screen is displayed.
             \item Buyer receives a confirmation and \index{receipt}receipt by email.
             \item Order added to the purchase history.
     }
@@ -241,7 +268,7 @@ The use case diagram below represents the Buying functionality of the Online Sho
         \item Any of the required \index{information}information is missing or incorrect
         \item \index{buyer}Buyer exceeded the time limit to complete purchase
         \item Buyer abandons the cart
-        \item Buyer did not receive a confirmation screen
+        \item The confirmation screen is not displayed
     }
     \addrow{Priority}{High}
     \addmulrow{Open Issues}{
@@ -251,7 +278,7 @@ The use case diagram below represents the Buying functionality of the Online Sho
 \end{usecase}
 
 \begin{usecase}{Review}
-    \addrow{Case ID}{UC04}
+    \addrow{Case ID}{UC05}
     \addrow{Actors}{\textbf{Buyer, Guest User, Customer Support}}
     \addrow{Summary}{\index{buyer}Buyer leaves a \index{review}review for a product previously purchased. In case of any issues, the Customer Support can be contacted.}
     \addrow{Pre-Conditions}{
@@ -295,7 +322,7 @@ The use case diagram below represents the login functionality of the Online Shop
 \end{figure}
 
 \begin{usecase}{Login}
-    \addrow{Case ID}{UC05}
+    \addrow{Case ID}{UC06}
     \addrow{Actors}{\textbf{Guest user, Administrator}}
     \addrow{Summary}{Any \index{guest user}guest user can sign in to their account. Same goes for the \index{administrator}administrator.}
     \addmulrow{Pre-Conditions}{
@@ -322,7 +349,7 @@ The use case diagram below represents the login functionality of the Online Shop
 \end{usecase}
 
 \begin{usecase}{Signup}
-    \addrow{Case ID}{UC06}
+    \addrow{Case ID}{UC07}
     \addrow{Actors}{\textbf{Guest user, Administrator}}
     \addrow{Summary}{The \index{administrator}administrator and the \index{guest user}guest user should be able to create an account at any time.}
     \addrow{Pre-Conditions}{
@@ -350,7 +377,7 @@ username, password, address, email, phone number
 \end{usecase}
 
 \begin{usecase}{Browse item}
-    \addrow{Case ID}{UC07}
+    \addrow{Case ID}{UC08}
     \addrow{Actors}{\textbf{Guest user, Administrator}}
     \addrow{Summary}{Both user can browse the items through the website and/or search for a specific item.}
     \addrow{Pre-Conditions}{
@@ -358,10 +385,10 @@ username, password, address, email, phone number
         }
     \addrow{\index{data}Data}{
     item name, item description,item price}
-    \addrow{Stimulus}{User write on the search bar}
+    \addrow{Stimulus}{User writes on the search bar or use the drop down menu to filter item by category. }
     \addmulrow{Response}{
         \item the page will load all the items related.
-        \item The page will display the pictures and prices of each item.
+        \item The page will display the names and thumbnails of each item.
     }
     \addmulrow{Exceptions}{
         \item item not found (does not exist)
@@ -375,7 +402,7 @@ username, password, address, email, phone number
 
 
 \begin{usecase}{Add to cart}
-    \addrow{Case ID}{UC08}
+    \addrow{Case ID}{UC09}
     \addrow{Actors}{\textbf{Guest user, Administrator}}
     \addrow{Summary}{Whenever a user sees something that they like, they can put that item in their cart to eventually buy.}
     \addrow{Pre-Conditions}{
@@ -389,7 +416,7 @@ item picture, price of item, name of the \index{seller}seller,total price of all
         \item The user will be able to go look at the cart.
         \item The user will be able to remove an item or continue adding.
     }
-    \addmulrow{Exceptions}{
+    \addmulrow{Exceptions}{ 
         \item Item is out of stock.
     }
     \addrow{Priority}{High}
@@ -398,6 +425,20 @@ item picture, price of item, name of the \index{seller}seller,total price of all
     }
 \end{usecase}
 \clearpage
+
+
+\subsection{Admin Panel}
+
+The use case diagram below represents the Admin Panel functionality of the 354TheStars website. A user of the admin type should be able to login to his admin account. From there, the admin should be able to create, delete, modify user accounts. He should be able to view user information. The admin should also be able to view, delete, modify all user listings. Moreover, the admin has the ability to view and delete any reviews, and add or remove product categories. As specified in the new requirements, the Admin Panel allows the admin to generate site activity reports such as a list of sellers ranked by the number of items sold during a specified period of time. The admin is also responsible for the website maintenance. He should be able to keep the website functional at all times, ensure the security of the system, and the quality of the database.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Diagrams/Use_Case/ucdadmin.png}
+    \caption{Use Case Diagram 4: 354TheStars - Admin Panel }
+    \label{fig:ucd3}
+\end{figure}
+
+
 \section{Entity Relationship Diagram}
 \begin{figure}[ht!]
     \centering
@@ -412,6 +453,7 @@ item picture, price of item, name of the \index{seller}seller,total price of all
     \caption{Entity Relationship Diagram}
     \label{fig:ER}
 \end{figure}
+
 
 
 \subsection{Description Of Each Entity}
@@ -438,7 +480,7 @@ Write something about class diagram here!
 \section{Sequence Diagram}
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.6\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Filter_Listings.jpg} 
+    \includegraphics[width=0.6\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Filter_Listings.jpg}
     \caption{Filter Listings Results}
     \label{fig: Filter Listings Results}
 \end{figure}
@@ -450,16 +492,16 @@ Write something about class diagram here!
 \end{figure}
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.6\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Sort_Listings.jpg} 
+    \includegraphics[width=0.6\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Sort_Listings.jpg}
     \caption{Sort Listings results}
     \label{fig: Sort Listings Results}
 \end{figure}
 \clearpage
 
-\section{Architectural Diagram} 
+\section{Architectural Diagram}
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=\textwidth,height=0.6\paperheight]{Diagrams/Class/Architectural_diagram.png} 
+    \includegraphics[width=\textwidth,height=0.6\paperheight]{Diagrams/Class/Architectural_diagram.png}
     \caption{Architectural Diagram}
     \label{fig: Architectural Diagram}
 \end{figure}
