@@ -51,6 +51,8 @@ INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hpdftex.def
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hpdftex.def
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/placeins/placeins.sty
+INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/placeins/placeins.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
@@ -229,6 +231,12 @@ INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Ite
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Search_Listing.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Search_Listing.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Search_Listing.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/List_Of_Listings_1.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/List_Of_Listings_1.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/List_Of_Listings_1.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/List_Of_Listings_2.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/List_Of_Listings_2.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/List_Of_Listings_2.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Latest_Listings.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Latest_Listings.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Latest_Listings.png
