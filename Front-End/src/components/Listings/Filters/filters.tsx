@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import {
   Card, Accordion, Row, Col, Button,
 } from 'react-bootstrap';
@@ -8,7 +7,7 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 
-type SortTypes = 'NONE' | 'ASC' | 'DESC';
+export type SortTypes = 'NONE' | 'ASC' | 'DESC';
 
 export interface IFilters {
   minPrice: number;
@@ -17,14 +16,15 @@ export interface IFilters {
 }
 
 interface IProps {
-    filterChanged: (filterObj: IFilters) => void;
+    onFilterChanged: (filterObj: IFilters, reset? : boolean) => void;
+    onResetFilter: () => void;
 }
 
 interface IStates {}
 
-const emptyFormState = {
+const defaultFilterFormState: IFilters = {
   minPrice: 0,
-  maxPrice: 3000,
+  maxPrice: 10000,
   sortBy: 'NONE',
 };
 
@@ -33,16 +33,17 @@ const PriceFilterSchema = Yup.object().shape({
     .required('Minimum price is required')
     .test('passwords-match', 'Min Price should be less than Max Price',
       function (value: number) {
-        return this.parent.maxPrice > value;
+        return this.parent.maxPrice >= value;
       }),
   maxPrice: Yup.number()
     .required('Maximum price is required')
     .test('passwords-match', 'Max Price should be greater than Min Price',
       function (value: number) {
-        return this.parent.minPrice < value;
+        return this.parent.minPrice <= value;
       }),
 });
 
+// Leaving as stateful component for future changes
 class Filters extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
   };
@@ -51,14 +52,22 @@ class Filters extends React.Component<IProps, IStates> {
   }
 
   private handleSubmit = (values: FormikValues, actions: any) => {
-    const { filterChanged } = this.props;
-    const filterdObj: IFilters = {
-      minPrice: values.minPrice,
-      maxPrice: values.maxPrice,
-      sortBy: values.sortBy,
+    const { onFilterChanged } = this.props;
+
+    const filterdObj: any = {
+      minPrice: { display: 'Min Price', value: values.minPrice },
+      maxPrice: { display: 'Max Price', value: values.maxPrice },
+      sortBy: { display: 'Sort By', value: values.sortBy },
     };
-    filterChanged(filterdObj);
+
+    onFilterChanged(filterdObj);
     actions.setSubmitting(false);
+  }
+
+  private handleReset = (resetForm: any) => {
+    const { onResetFilter } = this.props;
+    resetForm();
+    onResetFilter();
   }
 
   public render() {
@@ -74,7 +83,7 @@ class Filters extends React.Component<IProps, IStates> {
                 <Row className="m-0">
                   <Formik
                     enableReinitialize
-                    initialValues={emptyFormState}
+                    initialValues={defaultFilterFormState}
                     validationSchema={PriceFilterSchema}
                     onSubmit={(values: FormikValues, actions: any) => {
                       actions.setSubmitting(true);
@@ -147,10 +156,9 @@ class Filters extends React.Component<IProps, IStates> {
                             {isSubmitting ? 'Applying...' : 'Apply'}
                           </Button>
                           <Button
-                            type="submit"
                             className="btn-block"
                             variant="dark"
-                            onClick={() => resetForm()}
+                            onClick={() => this.handleReset(resetForm)}
                           >
                             Reset Filters
                           </Button>

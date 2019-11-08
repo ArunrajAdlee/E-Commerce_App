@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import { RouteComponentProps } from 'react-router-dom';
-import Listings, { Listing } from '../listings';
+import Listings from '../listOfListings';
+import { IListing } from '../Listing/listing';
+import ListOfListings from '../listOfListings';
 
 const BACKEND_URL = 'http://localhost:4000';
 
 interface IStates {
-  listings: Listing[];
+  listings: IListing[];
   searchQuery: string;
   isLoading: boolean;
 }
@@ -39,7 +41,7 @@ class SearchPage extends React.Component<IProps, IStates> {
     const result = await axios.get(
       `${BACKEND_URL}/listings/search/${searchQuery}`,
     );
-    const resListings: Listing[] = result.data.listings.map((product: any) => ({
+    const resListings: IListing[] = result.data.listings.map((product: any) => ({
       id: product.id,
       name: product.title,
       image: product.image,
@@ -61,7 +63,7 @@ class SearchPage extends React.Component<IProps, IStates> {
     return (
       <>
         <h2>{`Search: ${searchQuery}`}</h2>
-        <Listings listings={listings} isLoading={isLoading} />
+        <ListOfListings listings={listings} isLoading={isLoading} />
       </>
     );
   }

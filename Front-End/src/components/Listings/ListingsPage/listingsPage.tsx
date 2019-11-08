@@ -1,18 +1,19 @@
 import React from 'react';
 import axios from 'axios';
 import { RouteComponentProps } from 'react-router-dom';
-import Listings, { Listing } from '../listings';
+import Listings from '../listOfListings';
+import { IListing } from '../Listing/listing';
+import ListOfListings from '../listOfListings';
 
 const BACKEND_URL = 'http://localhost:4000';
 
 interface IStates {
-  listings: Listing[];
+  listings: IListing[];
   isLoading: boolean;
 }
 
 interface IProps extends RouteComponentProps<any> {}
 
-// Will finish when listings component is completed
 class ListingsPage extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
     listings: [],
@@ -21,7 +22,7 @@ class ListingsPage extends React.Component<IProps, IStates> {
 
   public async componentDidMount() {
     const result = await axios.get(`${BACKEND_URL}/listings`);
-    const resListings: Listing[] = result.data.listings.map((product: any) => ({
+    const resListings: IListing[] = result.data.listings.map((product: any) => ({
       id: product.id,
       name: product.title,
       image: product.image,
@@ -42,7 +43,7 @@ class ListingsPage extends React.Component<IProps, IStates> {
     return (
       <>
         <h2>All Listings</h2>
-        <Listings listings={listings} isLoading={isLoading} />
+        <ListOfListings listings={listings} isLoading={isLoading} />
       </>
     );
   }

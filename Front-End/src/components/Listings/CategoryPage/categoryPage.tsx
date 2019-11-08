@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import { RouteComponentProps } from 'react-router-dom';
-import Listings, { Listing } from '../listings';
+import { IListing } from '../Listing/listing';
+import ListOfListings from '../listOfListings';
+
 
 const BACKEND_URL = 'http://localhost:4000';
 
 interface IStates {
-  listings: Listing[];
+  listings: IListing[];
   categoryId: number;
   categoryName: string;
   isLoading: boolean;
@@ -41,7 +43,7 @@ class CategoryPage extends React.Component<IProps, IStates> {
       `${BACKEND_URL}/listings/category/${categoryId}`,
     );
 
-    const resListings: Listing[] = result.data.listings.map((product: any) => ({
+    const resListings: IListing[] = result.data.listings.map((product: any) => ({
       id: product.id,
       name: product.title,
       image: product.image,
@@ -64,7 +66,7 @@ class CategoryPage extends React.Component<IProps, IStates> {
     return (
       <>
         <h2>{`Category: ${categoryName}`}</h2>
-        <Listings listings={listings} isLoading={isLoading} />
+        <ListOfListings listings={listings} isLoading={isLoading} />
       </>
     );
   }
