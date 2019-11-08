@@ -1,29 +1,22 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Route } from 'react-router-dom';
 import Footer from '../Footer/footer';
 import NavigationBar from '../Header/NavigationBar/navigationBar';
 
-interface IDefaultProps {
-  component: any
-  path?: string;
-  exact?: boolean;
+interface IProps {
+  pageComponent: any;
+  matchProps: any;
 }
 
-const LandingLayout: React.SFC<IDefaultProps> = (props) => {
-  const { component: Component, ...rest } = props;
+const LandingLayout: React.SFC<IProps> = (props) => {
+  const { pageComponent: Component, matchProps } = props;
   return (
-    <Route
-      {...rest}
-      render={(matchProps) => (
-        <>
-          <NavigationBar />
-          <Component {...matchProps} />
-          <Footer />
-        </>
-      )}
-    />
+    <>
+      <NavigationBar />
+      <Component {...matchProps} />
+      <Footer />
+    </>
   );
 };
 

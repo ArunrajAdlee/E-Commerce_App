@@ -1,9 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 import { RouteComponentProps } from 'react-router-dom';
+import { server, api } from '../../../server';
 import Listings, { Listing } from '../listings';
-
-const BACKEND_URL = 'http://localhost:4000';
 
 interface IStates {
   listings: Listing[];
@@ -18,7 +16,7 @@ class CategoryPage extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
     listings: [],
     categoryId: -1,
-    categoryName: ''
+    categoryName: '',
   };
 
   public async componentDidMount() {
@@ -34,21 +32,21 @@ class CategoryPage extends React.Component<IProps, IStates> {
 
   private updateListing = async () => {
     const { match } = this.props;
-    const categoryId = match.params.categoryId;
-    const result = await axios.get(
-      `${BACKEND_URL}/listings/category/${categoryId}`
+    const { categoryId } = match.params;
+    const result = await server.get(
+      `${api.listings_category}${categoryId}`,
     );
     const resListings: Listing[] = result.data.listings.map((product: any) => ({
       id: product.id,
       name: product.title,
       image: product.image,
-      thumbnail: product.thumbnail
+      thumbnail: product.thumbnail,
     }));
 
     this.setState({
       categoryId: match.params.categoryId,
       categoryName: match.params.categoryName,
-      listings: resListings
+      listings: resListings,
     });
   };
 
