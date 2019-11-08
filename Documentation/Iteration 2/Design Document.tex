@@ -506,24 +506,173 @@ A \textit{Review} is an assessment a \textit{Client} leaves on a \textit{Listing
 
 \subsection{Description Of Class Diagram}
 Write something about class diagram here!
-\section{Sequence Diagram}
+
+\section{Sequence Diagrams}
+
 \begin{figure}[ht!]
+    \subsection{Add Review to Listing}
     \centering
-    \includegraphics[width=0.6\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Filter_Listings.jpg}
-    \caption{Filter Listings Results}
+    \includegraphics[width=0.8\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Add_Review.png} 
+    \caption{Sequence Diagram 1: Add Review to Listing}
+    \label{fig: Add Review to Listing}
+    \begin{flushleft}
+        The add review sequence diagram shows the steps the user
+        needs to take to add a review to an item. The user will access their account, go to the purchased listings section and if the purchased date is greater than 15 days, it will allow the user to add a review, otherwise it will not. Once the item has been selected, user will write the review. If the character count is less than or equal to 400, the review will be submitted, else it will be rejected. 
+    \end{flushleft}
+\end{figure}
+
+\begin{figure}[ht!]
+    \subsection{Cart Operations}
+    \centering
+    \includegraphics[width=0.65\textwidth,height=0.45\paperheight]{Diagrams/Sequence/Cart_Operations.jpg} 
+    \caption{Sequence Diagram 2: Cart Operations}
+    \label{fig: Cart Operations}
+    \begin{flushleft}
+        A product can be added to cart when the client clicks on "Add Product to Cart". A client can also choose to view items in their cart. When the items from their cart are displayed, the client can choose to either remove a product from the cart or edit quantity of an item in the cart. The cart will be updated after those actions are performed. When the client clicks on "Buy Products", if the client is a guest user, they will be redirected into the registration page. Otherwise, if the client is a registererd user, the purchase page will be loaded. 
+    \end{flushleft}
+\end{figure}
+
+\begin{figure}[ht!]
+    \subsection{Checkout}
+    \centering
+    \includegraphics[width=0.6\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Checkout.jpg} 
+    \caption{Sequence Diagram 3: Checkout}
+    \label{fig: Checkout}
+    \begin{flushleft}
+        When the client clicks on checkout, the system will automatically verify the payment with PayPal. As soon as the payment is verified, a confirmation email will be sent to the client.
+    \end{flushleft}
+\end{figure}
+
+\begin{figure}[ht!]
+    \subsection{Edit Client Information}
+    \centering
+    \includegraphics[width=0.65\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Edit_Client_Info.jpg} 
+    \caption{Sequence Diagram 4: Edit Client Information}
+    \label{fig: Edit Client Information}
+    \begin{flushleft}
+        First, the website retrieves the client’s ID through cookies which is then used to query the Clients table in the database. With this, the client’s information is retrieved from the database and displayed to the client through an editable form. Next, the client edits the information in this form and submits it. If this form contains invalid data, the website redisplays the form, indicating the invalid data. The client then corrects the form and resubmits it, which is then validated once again and so, until the data in the form is valid. Finally, the website edits the corresponding client entity in the Client table of the database and the database returns the edited client. This ends with a confirmation displayed to the client indicating that the edit was successful.
+    \end{flushleft}
+\end{figure}
+
+\begin{figure}[ht!]
+    \subsection{Filter Listings Results}
+    \centering
+    \includegraphics[width=0.5\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Filter_Listings.jpg} 
+    \caption{Sequence Diagram 5: Filter Listings Results}
     \label{fig: Filter Listings Results}
+    \begin{flushleft}
+        The client starts by applying filters to the list of listings. The website then takes these filter parameters and uses them to query the Listings table in the database. The filtered listings is then retrieved from the database and displayed to the client.
+    \end{flushleft}
 \end{figure}
+
 \begin{figure}[ht!]
+    \subsection{Get Listings Details}
     \centering
-    \includegraphics[width=0.6\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Lists_of_Listings.jpg}
-    \caption{Get Lists Of Listings}
+    \includegraphics[width=0.7\textwidth,height=0.25\paperheight]{Diagrams/Sequence/Listing_Details.png} 
+    \caption{Sequence Diagram 6: Get Listing Details}
+    \label{fig: Get Listing Details}
+    \begin{flushleft}
+        This diagram represents the process of retrieving the details for each listing. In other words, the process that is going to take place when a customer clicks on a listing. Clicking on the listing will call a method from the backend by passing the listing ID to it. After which, the method retrieves the listing details, and stores them in a variable. That variable is then called by the front end, which in turn, displays the listing details on screen for the customer.
+    \end{flushleft}
+\end{figure}
+
+\begin{figure}[ht!]
+    \subsection{Get Lists of Listings}
+    \centering
+    \includegraphics[width=0.5\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Lists_of_Listings.jpg}
+    \caption{Sequence Diagram 7: Get Lists Of Listings}
     \label{fig: Get Lists Of Listings}
+    \begin{flushleft}
+        The website queries the Listings table in the database for listings which have the status field set to true. The active listings are then retrieved from the database and displayed to the client.
+    \end{flushleft}
 \end{figure}
+
 \begin{figure}[ht!]
+    \subsection{Get Order History}
     \centering
-    \includegraphics[width=0.6\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Sort_Listings.jpg}
-    \caption{Sort Listings results}
+    \includegraphics[width=0.65\textwidth,height=0.2\paperheight]{Diagrams/Sequence/Order_History.png} 
+    \caption{Sequence Diagram 8: Get Order History}
+    \label{fig: Get Order History}
+    \begin{flushleft}
+       The order history sequence diagram shows the steps the user needs to take to view their order history. User has to access their account and if the number of purchased item is 0 then it will display no history. Otherwise it will display the history of all the purchased items from the user. 
+    \end{flushleft}
+\end{figure}
+
+\begin{figure}[ht!]
+    \subsection{Login}
+    \centering
+    \includegraphics[width=0.6\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Login.jpg} 
+    \caption{Sequence Diagram 9: Login}
+    \label{fig: Login}
+    \begin{flushleft}
+        The website displays a login form to the client who fills it and submits it. The form data is used to query the Client table in the database. Of course, since passwords are encrypted before stored, some manipulation to the password form data needs to be performed beforehand. If a client entity is retrieved from the database, then the client’s id and client's name is stored in cookies and the client is notified that the login was successful. Otherwise, an error message is displayed informing the client that the login was unsuccessful.
+    \end{flushleft}
+\end{figure}
+
+\begin{figure}[ht!]
+    \subsection{Logout}
+    \centering
+    \includegraphics[width=0.5\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Logout.jpg} 
+    \caption{Sequence Diagram 10: Logout}
+    \label{fig: Logout}
+    \begin{flushleft}
+        When the client clicks the logout button, the website removes the client’s id and client's name from cookies and indicates to the client that the logout was successful.
+    \end{flushleft}
+\end{figure}
+
+\begin{figure}[ht!]
+    \subsection{Register}
+    \centering
+    \includegraphics[width=0.6\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Register.jpg} 
+    \caption{Sequence Diagram 11: Register}
+    \label{fig: Register}
+    \begin{flushleft}
+        The website displays a registration form to the client who fills it and submits it. While the form has invalid data, the website redisplay this form to the client, indicating the invalid data. The client then proceeds to correct the form and resubmit it for validation. When the form is valid, the website adds a client to the Clients table in the database and returns the newly added client. This process ends with a confirmation displayed to the client indicating that the registration was successful.
+    \end{flushleft}
+\end{figure}
+
+\begin{figure}[ht!]
+    \subsection{Purchase by a Registered User}
+    \centering
+    \includegraphics[width=0.6\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Registered_User_Purchase.jpg} 
+    \caption{Sequence Diagram 12: Purchase by a Registered User}
+    \label{fig: Purchase by a Registered User}
+    \begin{flushleft}
+        When the purchase page is loaded, the client's address will be displayed. The client can edit the address and the database will update and will display the new address. When the user clicks on checkout, the website will redirect the user in the checkout page.
+    \end{flushleft}
+\end{figure}
+
+\begin{figure}[ht!]
+    \subsection{Select Listing Category}
+    \centering
+    \includegraphics[width=0.65\textwidth,height=0.2\paperheight]{Diagrams/Sequence/Categories.png} 
+    \caption{Sequence Diagram 13: Select Listing Category}
+    \label{fig: Select Listing Category}
+    \begin{flushleft}
+        The categories sequence diagram shows the steps the user needs to take to access the different categories on the website. On the page, the user will select the categories tab and select the specific category to display. The requested listing will then be shown to the user. 
+    \end{flushleft}
+\end{figure}
+
+\begin{figure}[ht!]
+    \subsection{Send Confirmation Email}
+    \centering
+    \includegraphics[width=0.6\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Confirmation_Email.png} 
+    \caption{Sequence Diagram 14: Send Confirmation Email}
+    \label{fig: Send Confirmation Email}
+    \begin{flushleft}
+        The confirmation email sequence diagram shows the steps the user needs to take to receive the confirmation email after a purchase has been completed. The user will need to purchase an item, make the payment and then the system will automatically send the confirmation email to the users registered email. The user will receive a visual notification stating the confirmation email has been sent out.
+    \end{flushleft}
+\end{figure}
+
+\begin{figure}[ht!]
+    \subsection{Sort Listings Results}
+    \centering
+    \includegraphics[width=0.6\textwidth,height=0.2\paperheight]{Diagrams/Sequence/Sort_Listings.jpg} 
+    \caption{Sequence Diagram 15: Sort Listings results}
     \label{fig: Sort Listings Results}
+    \begin{flushleft}
+        The client starts by applying a sorting criteria to the list of listings. The website then takes these sorting parameters and uses them to query the Listings table in the database. The sorted listings is then retrieved from the database and displayed to the client.
+    \end{flushleft}
 \end{figure}
 \clearpage
 
