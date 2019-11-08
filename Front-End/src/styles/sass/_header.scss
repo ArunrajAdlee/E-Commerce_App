@@ -30,6 +30,14 @@
                 font-size: 25px;
             }
 
+            & .user-icon {
+                &:active, & button:active {
+                    background: none;
+                    box-shadow: none;
+                }
+            }
+            
+
             & .nav-link {
                 &, & .dropdown-toggle {
                     font-size: 13px;
@@ -54,13 +62,13 @@
 
                     &:hover {
                         color: white;
-                        background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+                        background: $theme-gradient;
                     }
                 }
 
                 
                 & .active { 
-                    background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+                    background: $theme-gradient;
                     color: white;
                 }
 

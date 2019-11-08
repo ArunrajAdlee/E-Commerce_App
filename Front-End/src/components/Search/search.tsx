@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { FormControl, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Redirect, RouteComponentProps } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 import { withRouter } from 'react-router-dom';
 
 interface IStates {
@@ -48,7 +48,7 @@ class Search extends React.Component<IProps, IStates> {
             onChange={(event: any) => this.handleDescription(event)}
           />
           <InputGroup.Append>
-            <Button type="submit" variant="outline-primary"><FontAwesomeIcon icon={faSearch} /></Button>
+            <Button type="submit" variant="outline-warning"><FontAwesomeIcon icon={faSearch} /></Button>
           </InputGroup.Append>
         </InputGroup>
       </Form>

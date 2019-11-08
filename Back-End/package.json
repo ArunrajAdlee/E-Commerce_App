@@ -4,6 +4,7 @@
 	"description": "Awesome project developed with TypeORM.",
 	"devDependencies": {
 		"@types/node": "^8.0.29",
+		"@types/yup": "^0.26.24",
 		"nodemon": "^1.19.3",
 		"ts-node": "3.3.0",
 		"typescript": "3.3.3333"
@@ -23,12 +24,14 @@
 		"express": "^4.15.4",
 		"express-async-errors": "^3.1.1",
 		"express-fileupload": "^1.1.6-alpha.6",
+		"formik": "^2.0.3",
 		"helmet": "^3.21.1",
 		"jsonwebtoken": "^8.5.1",
 		"mysql": "^2.14.1",
 		"reflect-metadata": "^0.1.10",
 		"ts-node-dev": "^1.0.0-pre.43",
-		"typeorm": "0.2.19"
+		"typeorm": "0.2.19",
+		"yup": "^0.27.0"
 	},
 	"scripts": {
 		"start": "nodemon src/index.ts",

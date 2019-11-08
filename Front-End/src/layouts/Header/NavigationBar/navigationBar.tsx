@@ -50,7 +50,7 @@ class NavigationBar extends React.Component<{}> {
                           <DropdownButton
                             title={<FontAwesomeIcon icon={faUser} />}
                             id="accountDropdown"
-                            className="nav-dropdown"
+                            className="nav-dropdown user-icon"
                           >
                             <Dropdown.Item onClick={this.handleLogout}>Logout</Dropdown.Item>
                             <Dropdown.Divider />

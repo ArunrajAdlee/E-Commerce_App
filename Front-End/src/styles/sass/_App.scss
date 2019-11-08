@@ -9,6 +9,7 @@ body {
 
 h1, h2, h3, h4 {
   font-family: $title-font !important;
+  word-break: break-word;
 }
 
 .mt-40p{
@@ -23,6 +24,10 @@ code {
 .default-layout-content-container{
   margin: 100px auto 100px auto;
   width: 65%;
+
+  @media screen and (max-width: $lg-size) {
+    width: 80%;
+  }
 
   @media screen and (max-width: $md-size) {
     width: 90%;
@@ -42,6 +47,13 @@ code {
     outline: none !important;
     box-shadow: none !important;
 }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
 
 .loading-spinner {
   display: block !important;
