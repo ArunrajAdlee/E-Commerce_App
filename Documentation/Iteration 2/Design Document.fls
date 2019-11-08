@@ -141,47 +141,85 @@ INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Ite
 OUTPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.lot
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd1.png
-INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd1.png
-INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd1.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucdselling.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucdselling.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucdselling.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd2.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd2.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd2.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd3.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd3.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd3.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucdadmin.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucdadmin.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucdadmin.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd4.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd4.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd4.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/ER/ER_Diagram_Typed.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/ER/ER_Diagram_Typed.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/ER/ER_Diagram_Typed.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/ER/ER_Diagram.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/ER/ER_Diagram.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/ER/ER_Diagram.png
+INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Class/class_diagram.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Class/class_diagram.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Class/class_diagram.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Add_Review.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Add_Review.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Add_Review.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Cart_Operations.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Cart_Operations.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Cart_Operations.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Checkout.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Checkout.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Checkout.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Edit_Client_Info.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Edit_Client_Info.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Edit_Client_Info.jpg
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Filter_Listings.jpg
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Filter_Listings.jpg
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Filter_Listings.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Listing_Details.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Listing_Details.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Listing_Details.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Lists_of_Listings.jpg
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Lists_of_Listings.jpg
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Lists_of_Listings.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Order_History.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Order_History.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Order_History.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Login.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Login.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Login.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Logout.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Logout.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Logout.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Register.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Register.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Register.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Registered_User_Purchase.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Registered_User_Purchase.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Registered_User_Purchase.jpg
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Categories.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Categories.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Categories.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Confirmation_Email.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Confirmation_Email.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Confirmation_Email.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Sort_Listings.jpg
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Sort_Listings.jpg
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Sort_Listings.jpg
-INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Class/Architectural_diagram.png
-INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Class/Architectural_diagram.png
-INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Class/Architectural_diagram.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Home_Page.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Home_Page.png
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Home_Page.png
-INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
-INPUT /usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
-INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.ind
-INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.ind
-INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.aux
-INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.out
-INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.out
-INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
-INPUT /usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Login.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Login.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Login.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Create_Account.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Create_Account.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Create_Account.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Categories.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Categories.png
+INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Categories.png
