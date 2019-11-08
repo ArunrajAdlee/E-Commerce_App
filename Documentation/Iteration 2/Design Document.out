@@ -16,33 +16,39 @@
 \BOOKMARK [3][-]{section*.11}{Cart}{subsection.2.1}% 16
 \BOOKMARK [1][-]{section.3}{Class Diagram}{}% 17
 \BOOKMARK [2][-]{subsection.3.1}{Description Of Class Diagram}{section.3}% 18
-\BOOKMARK [1][-]{section.4}{Sequence Diagrams}{}% 19
-\BOOKMARK [2][-]{subsection.4.1}{Add Review to Listing}{section.4}% 20
-\BOOKMARK [2][-]{subsection.4.2}{Cart Operations}{section.4}% 21
-\BOOKMARK [2][-]{subsection.4.3}{Checkout}{section.4}% 22
-\BOOKMARK [2][-]{subsection.4.4}{Edit Client Information}{section.4}% 23
-\BOOKMARK [2][-]{subsection.4.5}{Filter Listings Results}{section.4}% 24
-\BOOKMARK [2][-]{subsection.4.6}{Get Listings Details}{section.4}% 25
-\BOOKMARK [2][-]{subsection.4.7}{Get Lists of Listings}{section.4}% 26
-\BOOKMARK [2][-]{subsection.4.8}{Get Order History}{section.4}% 27
-\BOOKMARK [2][-]{subsection.4.9}{Login}{section.4}% 28
-\BOOKMARK [2][-]{subsection.4.10}{Logout}{section.4}% 29
-\BOOKMARK [2][-]{subsection.4.11}{Register}{section.4}% 30
-\BOOKMARK [2][-]{subsection.4.12}{Purchase by a Registered User}{section.4}% 31
-\BOOKMARK [2][-]{subsection.4.13}{Select Listing Category}{section.4}% 32
-\BOOKMARK [2][-]{subsection.4.14}{Send Confirmation Email}{section.4}% 33
-\BOOKMARK [2][-]{subsection.4.15}{Sort Listings Results}{section.4}% 34
-\BOOKMARK [1][-]{section.5}{External Interface}{}% 35
-\BOOKMARK [2][-]{subsection.5.1}{Home Page}{section.5}% 36
-\BOOKMARK [2][-]{subsection.5.2}{Login}{section.5}% 37
-\BOOKMARK [2][-]{subsection.5.3}{Create account}{section.5}% 38
-\BOOKMARK [2][-]{subsection.5.4}{Result of a category}{section.5}% 39
-\BOOKMARK [2][-]{subsection.5.5}{Apply filters}{section.5}% 40
-\BOOKMARK [2][-]{subsection.5.6}{Search for an item}{section.5}% 41
-\BOOKMARK [2][-]{subsection.5.7}{List of listings}{section.5}% 42
-\BOOKMARK [2][-]{subsection.5.8}{Latest listings}{section.5}% 43
-\BOOKMARK [1][-]{section.6}{Architectural Diagram}{}% 44
-\BOOKMARK [1][-]{section.7}{Conclusion}{}% 45
-\BOOKMARK [1][-]{appendix.A}{Newly Added Requirements}{}% 46
-\BOOKMARK [1][-]{appendix.B}{Index}{}% 47
-\BOOKMARK [1][-]{appendix.C}{Reference}{}% 48
+\BOOKMARK [3][-]{section*.12}{Client}{subsection.3.1}% 19
+\BOOKMARK [3][-]{section*.13}{ClientInfo}{subsection.3.1}% 20
+\BOOKMARK [3][-]{section*.14}{Listings}{subsection.3.1}% 21
+\BOOKMARK [3][-]{section*.15}{Address}{subsection.3.1}% 22
+\BOOKMARK [3][-]{section*.16}{Order}{subsection.3.1}% 23
+\BOOKMARK [3][-]{section*.17}{Review}{subsection.3.1}% 24
+\BOOKMARK [1][-]{section.4}{Sequence Diagrams}{}% 25
+\BOOKMARK [2][-]{subsection.4.1}{Add Review to Listing}{section.4}% 26
+\BOOKMARK [2][-]{subsection.4.2}{Cart Operations}{section.4}% 27
+\BOOKMARK [2][-]{subsection.4.3}{Checkout}{section.4}% 28
+\BOOKMARK [2][-]{subsection.4.4}{Edit Client Information}{section.4}% 29
+\BOOKMARK [2][-]{subsection.4.5}{Filter Listings Results}{section.4}% 30
+\BOOKMARK [2][-]{subsection.4.6}{Get Listings Details}{section.4}% 31
+\BOOKMARK [2][-]{subsection.4.7}{Get Lists of Listings}{section.4}% 32
+\BOOKMARK [2][-]{subsection.4.8}{Get Order History}{section.4}% 33
+\BOOKMARK [2][-]{subsection.4.9}{Login}{section.4}% 34
+\BOOKMARK [2][-]{subsection.4.10}{Logout}{section.4}% 35
+\BOOKMARK [2][-]{subsection.4.11}{Register}{section.4}% 36
+\BOOKMARK [2][-]{subsection.4.12}{Purchase by a Registered User}{section.4}% 37
+\BOOKMARK [2][-]{subsection.4.13}{Select Listing Category}{section.4}% 38
+\BOOKMARK [2][-]{subsection.4.14}{Send Confirmation Email}{section.4}% 39
+\BOOKMARK [2][-]{subsection.4.15}{Sort Listings Results}{section.4}% 40
+\BOOKMARK [1][-]{section.5}{External Interface}{}% 41
+\BOOKMARK [2][-]{subsection.5.1}{Home Page}{section.5}% 42
+\BOOKMARK [2][-]{subsection.5.2}{Login}{section.5}% 43
+\BOOKMARK [2][-]{subsection.5.3}{Create account}{section.5}% 44
+\BOOKMARK [2][-]{subsection.5.4}{Result of a category}{section.5}% 45
+\BOOKMARK [2][-]{subsection.5.5}{Apply filters}{section.5}% 46
+\BOOKMARK [2][-]{subsection.5.6}{Search for an item}{section.5}% 47
+\BOOKMARK [2][-]{subsection.5.7}{List of listings}{section.5}% 48
+\BOOKMARK [2][-]{subsection.5.8}{Latest listings}{section.5}% 49
+\BOOKMARK [1][-]{section.6}{Architectural Diagram}{}% 50
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 51
+\BOOKMARK [1][-]{appendix.A}{Newly Added Requirements}{}% 52
+\BOOKMARK [1][-]{appendix.B}{Index}{}% 53
+\BOOKMARK [1][-]{appendix.C}{Reference}{}% 54
