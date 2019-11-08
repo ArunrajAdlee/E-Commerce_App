@@ -1,53 +1,131 @@
 import React from 'react';
-import axios from 'axios';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import {
+  Row, Col, Button, Alert,
+} from 'react-bootstrap';
+import {
+  Formik, Field, Form, ErrorMessage, FormikValues, FormikActions,
+} from 'formik';
+import * as Yup from 'yup';
+import { Link, Redirect, RouteComponentProps } from 'react-router-dom';
+import { StoreContext } from '../../store';
 
-interface IStates {
-  user: string,
-  pass: string,
+
+export interface ILoginFields {
+  username: string,
+  password: string,
 }
 
+interface IStates {
+  isError: boolean;
+}
 
-class Login extends React.Component<{}, IStates> {
+const LoginSchema = Yup.object().shape({
+  username: Yup.string()
+    .required('Username is required'),
+  password: Yup.string()
+    .min(3, 'Password must be 3 characters at minimum')
+    .required('Password is required'),
+});
+
+interface IProps extends RouteComponentProps<any> {}
+
+class Login extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
-    user: '',
-    pass: '',
+    isError: false,
   }
 
-  public componentDidMount() {
-  }
-
-  private handleSubmit = () => {
-    //
+  private handleSubmit = async (values: FormikValues, actions: any) => {
+    const { login, isAuth } = this.context;
+    await login(values);
+    if (!isAuth) {
+      this.setState({ isError: true });
+      actions.setSubmitting(false);
+    }
   }
 
   public render() {
-    const { user, pass } = this.state;
-    // Testing bootstrap...
+    const { isAuth } = this.context;
+    const { isError } = this.state;
     return (
-      <Form>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+      isAuth ? <Redirect to="/" />
+        : (
+          <Row className="login-register-container">
+            <Col className="create-account" lg={12} xl={6}>
+              <div>
+                <h4>New to our website?</h4>
+                <p>Sign-up today to gain the ability to sell, buy and share your reviews!</p>
+                <Link to="/register">
+                  <Button variant="warning" className="styled-button mt-3">CREATE AN ACCOUNT</Button>
+                </Link>
+              </div>
+            </Col>
+            <Col className="login-container" lg={12} xl={6}>
+              <div className="login-content">
+                <h5>LOG IN</h5>
+                { isError
+                  ? (
+                    <Alert variant="danger" onClose={() => this.setState({ isError: !isError })} dismissible>
+                      <p>Username or Password is incorrect!</p>
+                    </Alert>
+                  ) : ''}
+                <Formik
+                  initialValues={{ username: '', password: '' }}
+                  validationSchema={LoginSchema}
+                  onSubmit={(values: FormikValues, actions: any) => {
+                    actions.setSubmitting(true);
+                    this.handleSubmit(values, actions);
+                  }}
+                >
+                  {({ touched, errors, isSubmitting }) => (
+                    <Form>
+                      <div>
+                        <Field
+                          name="username"
+                          placeholder="Username"
+                          className={`form-control styled-input login-input ${
+                            touched.username && errors.username ? 'is-invalid' : ''
+                          }`}
+                        />
+                        <ErrorMessage
+                          component="div"
+                          name="username"
+                          className="invalid-feedback"
+                        />
+                      </div>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+                      <div>
+                        <Field
+                          type="password"
+                          name="password"
+                          placeholder="Password"
+                          className={`form-control styled-input login-input  
+                      ${
+                        touched.password && errors.password ? 'is-invalid' : ''
+                      }`}
+                        />
+                        <ErrorMessage
+                          component="div"
+                          name="password"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                      <Button
+                        type="submit"
+                        className="btn-block styled-button sign-in"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? 'Please wait...' : 'Sign in'}
+                      </Button>
+                    </Form>
+                  )}
+                </Formik>
+              </div>
+            </Col>
+          </Row>
+        )
     );
   }
 }
 
+Login.contextType = StoreContext;
 export default Login;

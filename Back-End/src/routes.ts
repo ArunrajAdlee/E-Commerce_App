@@ -73,6 +73,18 @@ export const Routes = [
     controller: AuthController,
     action: 'login'
   },
+	{
+		method: 'get',
+		route: '/auth/status',
+		controller: AuthController,
+		action: 'getAuthStatus'
+	},
+	{
+		method: 'post',
+		route: '/auth/logout',
+		controller: AuthController,
+		action: 'logout'
+  },
 
   //Categories
   {

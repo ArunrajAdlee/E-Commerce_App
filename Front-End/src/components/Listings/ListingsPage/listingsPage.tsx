@@ -1,11 +1,8 @@
 import React from 'react';
-import axios from 'axios';
 import { RouteComponentProps } from 'react-router-dom';
-import Listings from '../listOfListings';
+import { server, api } from '../../../server';
 import { IListing } from '../Listing/listing';
 import ListOfListings from '../listOfListings';
-
-const BACKEND_URL = 'http://localhost:4000';
 
 interface IStates {
   listings: IListing[];
@@ -21,7 +18,7 @@ class ListingsPage extends React.Component<IProps, IStates> {
   };
 
   public async componentDidMount() {
-    const result = await axios.get(`${BACKEND_URL}/listings`);
+    const result = await server.get(api.listings);
     const resListings: IListing[] = result.data.listings.map((product: any) => ({
       id: product.id,
       name: product.title,

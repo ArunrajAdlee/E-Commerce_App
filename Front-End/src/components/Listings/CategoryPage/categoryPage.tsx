@@ -1,11 +1,9 @@
 import React from 'react';
-import axios from 'axios';
 import { RouteComponentProps } from 'react-router-dom';
 import { IListing } from '../Listing/listing';
+import { server, api } from '../../../server';
 import ListOfListings from '../listOfListings';
 
-
-const BACKEND_URL = 'http://localhost:4000';
 
 interface IStates {
   listings: IListing[];
@@ -39,8 +37,8 @@ class CategoryPage extends React.Component<IProps, IStates> {
   private updateListing = async () => {
     const { match } = this.props;
     const { categoryId } = match.params;
-    const result = await axios.get(
-      `${BACKEND_URL}/listings/category/${categoryId}`,
+    const result = await server.get(
+      `${api.listings_category}${categoryId}`,
     );
 
     const resListings: IListing[] = result.data.listings.map((product: any) => ({

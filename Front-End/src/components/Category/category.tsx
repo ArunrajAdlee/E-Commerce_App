@@ -1,9 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 import { DropdownButton, Dropdown } from 'react-bootstrap';
-import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
-
-const BACKEND_URL = 'http://localhost:4000';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { server, api } from '../../server';
 
 interface Category {
     id: number;
@@ -22,8 +20,8 @@ class Category extends React.Component<IProps, IStates> {
     }
 
     public async componentDidMount() {
-      const result = await axios.get(
-        `${BACKEND_URL}/categories`,
+      const result = await server.get(
+        api.categories,
       );
       this.setState({ categories: result.data });
     }
@@ -38,7 +36,7 @@ class Category extends React.Component<IProps, IStates> {
     public render() {
       const { categories } = this.state;
       return (
-        <DropdownButton id="dropdown-basic-button" title="CATEGORIES" className="nav-link align-self-center" onSelect={(event: any) => this.handleSelect(event)}>
+        <DropdownButton id="dropdown-basic-button" title="CATEGORIES" className="nav-link align-self-center p-0" onSelect={(event: any) => this.handleSelect(event)}>
           {categories.map((category) => (<Dropdown.Item key={category.id} eventKey={`${category.id.toString()},${category.name}`}>{category.name.toUpperCase()}</Dropdown.Item>))}
         </DropdownButton>
       );

@@ -118,7 +118,7 @@ class Filters extends React.Component<IProps, IStates> {
                                 type="number"
                                 name="minPrice"
                                 placeholder="Min"
-                                className={`form-control styled-input ${
+                                className={`form-control ${
                                   touched.minPrice && errors.minPrice ? 'is-invalid' : ''
                                 }`}
                               />
@@ -137,7 +137,7 @@ class Filters extends React.Component<IProps, IStates> {
                               <Field
                                 name="maxPrice"
                                 placeholder="Max"
-                                className={`form-control styled-input ${
+                                className={`form-control ${
                                   touched.maxPrice && errors.maxPrice ? 'is-invalid' : ''
                                 }`}
                               />

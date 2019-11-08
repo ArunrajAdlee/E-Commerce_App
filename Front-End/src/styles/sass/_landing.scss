@@ -1,7 +1,6 @@
 .landing-banner {
-    background: url(../assets/img/banner/banner-bg.jpg) center no-repeat; 
+    background: url(#{$img-path}/banner/banner-bg.jpg) center no-repeat; 
     height: 900px;
-    margin-top: -40px;
 
     & .banner-content{
         width: 85%;

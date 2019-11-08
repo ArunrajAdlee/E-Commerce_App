@@ -13,12 +13,12 @@ const Footer = () => (
   <div className="footer-container">
     <div className="footer-content">
       <Row>
-        <Col md={4} sm={6}>
+        <Col md={4} sm={6} className="mb-4">
           <h4>About Us</h4>
           <br />
             A brand new e-commerce website which allows any user to buy and sell whatever they want.
         </Col>
-        <Col md={4} sm={6}>
+        <Col md={4} sm={6} className="mb-4">
           <h4>Newsletter</h4>
           <label htmlFor="basic-url" className="mt-3">Stay updated with our listings</label>
           <InputGroup className="mb-3">
@@ -33,7 +33,7 @@ const Footer = () => (
             </InputGroup.Append>
           </InputGroup>
         </Col>
-        <Col md={4} sm={6}>
+        <Col md={4} sm={6} className="mb-4">
           <h4>Follow Us</h4>
           <br />
           <div className="footer-social">

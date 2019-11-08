@@ -1,14 +1,12 @@
 import React from 'react';
-import axios from 'axios';
 import { Row, Col, Spinner } from 'react-bootstrap';
+import { server, api } from '../../../server';
 import Listing, { IListing } from '../../Listings/Listing/listing';
 
 interface IStates {
   listings: IListing[];
   isLoading: boolean,
 }
-
-const BACKEND_URL = 'http://localhost:4000';
 
 class LatestListings extends React.Component<{}, IStates> {
   public readonly state: Readonly<IStates> = {
@@ -17,7 +15,7 @@ class LatestListings extends React.Component<{}, IStates> {
   }
 
   public async componentDidMount() {
-    const result = await axios.get(`${BACKEND_URL}/listings`);
+    const result = await server.get(api.listings);
     let resListings: IListing[] = result.data.listings.map((product: any) => ({
       id: product.id,
       name: product.title,
@@ -46,7 +44,7 @@ class LatestListings extends React.Component<{}, IStates> {
           ? (
             <Row>
               {
-                 listings.map((listing) => <Listing listing={listing} />)
+                 listings.map((listing) => <Listing key={listing.id} listing={listing} />)
                 }
             </Row>
           )

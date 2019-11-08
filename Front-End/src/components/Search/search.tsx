@@ -39,7 +39,7 @@ class Search extends React.Component<IProps, IStates> {
   public render() {
     const { searchText } = this.state;
     return (
-      <Form className="w-50 mr-3" onSubmit={(event: any) => this.handleSubmit(event)}>
+      <Form className="search-container mr-3" onSubmit={(event: any) => this.handleSubmit(event)}>
         <InputGroup>
           <FormControl
             type="text"
@@ -48,7 +48,7 @@ class Search extends React.Component<IProps, IStates> {
             onChange={(event: any) => this.handleDescription(event)}
           />
           <InputGroup.Append>
-            <Button type="submit" variant="outline-primary"><FontAwesomeIcon icon={faSearch} /></Button>
+            <Button type="submit" variant="outline-warning"><FontAwesomeIcon icon={faSearch} /></Button>
           </InputGroup.Append>
         </InputGroup>
       </Form>
