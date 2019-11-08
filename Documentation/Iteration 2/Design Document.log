@@ -734,4 +734,150 @@ l.677 \clearpage
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.677 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Confirmation_Email.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Sort_Listings.jpg>]
+<Diagrams/External_Interfaces/Home_Page.png, id=599, 1776.6375pt x 883.3pt>
+File: Diagrams/External_Interfaces/Home_Page.png Graphic file (type png)
+<use Diagrams/External_Interfaces/Home_Page.png>
+Package pdftex.def Info: Diagrams/External_Interfaces/Home_Page.png  used on input line 683.
+(pdftex.def)             Requested size: 239.83571pt x 119.24036pt.
+<Diagrams/External_Interfaces/Login.png, id=600, 1637.11626pt x 996.72375pt>
+File: Diagrams/External_Interfaces/Login.png Graphic file (type png)
+<use Diagrams/External_Interfaces/Login.png>
+Package pdftex.def Info: Diagrams/External_Interfaces/Login.png  used on input line 691.
+(pdftex.def)             Requested size: 195.84595pt x 119.23668pt.
+<Diagrams/External_Interfaces/Create_Account.png, id=601, 1580.90625pt x 779.91376pt>
+File: Diagrams/External_Interfaces/Create_Account.png Graphic file (type png)
+<use Diagrams/External_Interfaces/Create_Account.png>
+Package pdftex.def Info: Diagrams/External_Interfaces/Create_Account.png  used on input line 699.
+(pdftex.def)             Requested size: 241.68489pt x 119.2312pt.
+<Diagrams/External_Interfaces/Categories.png, id=602, 1449.415pt x 887.315pt>
+File: Diagrams/External_Interfaces/Categories.png Graphic file (type png)
+<use Diagrams/External_Interfaces/Categories.png>
+Package pdftex.def Info: Diagrams/External_Interfaces/Categories.png  used on input line 707.
+(pdftex.def)             Requested size: 194.75581pt x 119.22723pt.
+ [35
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.24}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.710 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.710 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (name{figure.26}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.710 \end{figure}
+                   </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Home_Page.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Login.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Create_Account.png>]
+<Diagrams/External_Interfaces/Categories_filtered.png, id=610, 1533.73pt x 539.01375pt>
+File: Diagrams/External_Interfaces/Categories_filtered.png Graphic file (type png)
+<use Diagrams/External_Interfaces/Categories_filtered.png>
+Package pdftex.def Info: Diagrams/External_Interfaces/Categories_filtered.png  used on input line 715.
+(pdftex.def)             Requested size: 339.29387pt x 119.24136pt.
+<Diagrams/External_Interfaces/Search_Listing.png, id=611, 1563.8425pt x 982.67125pt>
+File: Diagrams/External_Interfaces/Search_Listing.png Graphic file (type png)
+<use Diagrams/External_Interfaces/Search_Listing.png>
+Package pdftex.def Info: Diagrams/External_Interfaces/Search_Listing.png  used on input line 723.
+(pdftex.def)             Requested size: 189.75288pt x 119.23495pt.
+<Diagrams/External_Interfaces/Latest_Listings.png, id=612, 1364.09625pt x 924.45375pt>
+File: Diagrams/External_Interfaces/Latest_Listings.png Graphic file (type png)
+<use Diagrams/External_Interfaces/Latest_Listings.png>
+Package pdftex.def Info: Diagrams/External_Interfaces/Latest_Listings.png  used on input line 731.
+(pdftex.def)             Requested size: 175.94417pt x 119.2381pt.
+<Diagrams/Class/Architectural_diagram.png, id=613, 7649.57875pt x 7649.57875pt>
+File: Diagrams/Class/Architectural_diagram.png Graphic file (type png)
+<use Diagrams/Class/Architectural_diagram.png>
+Package pdftex.def Info: Diagrams/Class/Architectural_diagram.png  used on input line 739.
+(pdftex.def)             Requested size: 483.58348pt x 476.93028pt.
+ [36pdfTeX warning (ext4): destination with the same identifier (name{figure.27}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.742 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (name{figure.28}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.742 \end{figure}
+                  pdfTeX warning (ext4): destination with the same identifier (name{figure.29}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.742 \end{figure}
+                   </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Categories.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Categories_filtered.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Search_Listing.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 758--760
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 760.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 760.
+
+Underfull \hbox (badness 10000) in paragraph at lines 771--773
+
+ []
+
+[37pdfTeX warning (ext4): destination with the same identifier (name{figure.30}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.776             \item S
+                         eller can sell items for free </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Latest_Listings.png>] [38pdfTeX warning (ext4): destination with the same identifier (name{figure.31}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.782         \end{itemize}
+                            </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Class/Architectural_diagram.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 784--786
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 795--797
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 806--808
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 817--819
+
+ []
+
+(/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.ind [39])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 842.
+ [40]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 842.
+ (/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 842.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 842.
+Package rerunfilecheck Info: File `"Design Document".out' has not changed.
+(rerunfilecheck)             Checksum: BD885B1D6AAE4FB5AF68CD5A6A782DC8;2883.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 842.
+ ) 
+Here is how much of TeX's memory you used:
+ 7673 strings out of 492616
+ 120270 string characters out of 6129482
+ 228089 words of memory out of 5000000
+ 11239 multiletter control sequences out of 15000+600000
+ 8243 words of font info for 29 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 30i,13n,37p,1235b,504s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on "/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.pdf" (40 pages, 4263010 bytes).
+PDF statistics:
+ 745 PDF objects out of 1000 (max. 8388607)
+ 631 compressed objects within 7 object streams
+ 212 named destinations out of 1000 (max. 500000)
+ 532 words of extra memory for PDF output out of 10000 (max. 10000000)
+
