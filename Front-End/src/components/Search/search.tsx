@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { FormControl, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Redirect, RouteComponentProps } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 import { withRouter } from 'react-router-dom';
 
 interface IStates {

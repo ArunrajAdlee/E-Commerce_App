@@ -33,7 +33,8 @@ interface IStates {
 
 const SignUpSchema = Yup.object().shape({
   username: Yup.string()
-    .required('Username is required'),
+    .required('Username is required')
+    .max(24, 'Maximum 24 characters'),
   password: Yup.string()
     .min(3, 'Password must be 3 characters at minimum')
     .max(30, 'Password must be 30 characters at maximum')
@@ -47,13 +48,17 @@ const SignUpSchema = Yup.object().shape({
       }),
   email: Yup.string()
     .email()
-    .required('Password is required'),
+    .required('Password is required')
+    .max(32, 'Maximum 32 characters'),
   firstName: Yup.string()
-    .required('First Name is required'),
+    .required('First Name is required')
+    .max(32, 'Maximum 32 characters'),
   lastName: Yup.string()
-    .required('Last Name is required'),
+    .required('Last Name is required')
+    .max(32, 'Maximum 32 characters'),
   streetName: Yup.string()
-    .required('Street Name is required'),
+    .required('Street Name is required')
+    .max(64, 'Maximum 64 characters'),
 });
 
 class SignUp extends React.Component<{}, IStates> {

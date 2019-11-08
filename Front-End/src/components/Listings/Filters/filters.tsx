@@ -30,17 +30,24 @@ const defaultFilterFormState: IFilters = {
 
 const PriceFilterSchema = Yup.object().shape({
   minPrice: Yup.number()
+    .typeError('Please enter number values')
     .required('Minimum price is required')
+    .min(0, 'Min value is 0')
+    .max(100000, 'Max value is 100,000')
     .test('passwords-match', 'Min Price should be less than Max Price',
       function (value: number) {
         return this.parent.maxPrice >= value;
       }),
   maxPrice: Yup.number()
+    .typeError('Please enter number values')
     .required('Maximum price is required')
+    .min(0, 'Min value is 0')
+    .max(100000, 'Max value is 100,000')
     .test('passwords-match', 'Max Price should be greater than Min Price',
       function (value: number) {
         return this.parent.minPrice <= value;
       }),
+
 });
 
 // Leaving as stateful component for future changes
@@ -112,7 +119,7 @@ class Filters extends React.Component<IProps, IStates> {
                         </Row>
                         <h5>PRICE</h5>
                         <Row className="price-filter-body ml-0 mr-0 mt-3">
-                          <Col md={12} lg={5} className="p-0">
+                          <Col xl={5} lg={12} className="p-0">
                             <div className="form-group">
                               <Field
                                 type="number"
@@ -129,10 +136,10 @@ class Filters extends React.Component<IProps, IStates> {
                               />
                             </div>
                           </Col>
-                          <Col lg={2} md={0} className="p">
+                          <Col xl={2} lg={0} className="p">
                             <span>-</span>
                           </Col>
-                          <Col md={12} lg={5} className="p-0">
+                          <Col xl={5} lg={12} className="p-0">
                             <div className="form-group">
                               <Field
                                 name="maxPrice"
