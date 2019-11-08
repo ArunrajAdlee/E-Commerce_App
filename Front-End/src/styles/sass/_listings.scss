@@ -24,6 +24,12 @@
         }
     }
 
+    @media screen and (max-width: $sm-size) {
+        & .listings-content {
+            text-align: center;
+        }
+      }
+
 
 }
 

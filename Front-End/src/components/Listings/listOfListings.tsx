@@ -127,7 +127,7 @@ class ListOfListings extends React.Component<IProps, IStates> {
                     )) : null}
                   <Pagination className="float-right">{pageNumbers}</Pagination>
                 </div>
-                <Row>
+                <Row className="listings-content">
                   {currentListings.map((listing) => <Listing key={listing.id} listing={listing} />)}
                 </Row>
                 <div className="pagination-container">
