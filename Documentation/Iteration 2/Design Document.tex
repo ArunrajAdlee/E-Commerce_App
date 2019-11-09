@@ -131,7 +131,7 @@
                         \end{tabular}
                     \end{center}
                 \end{table}
-
+\clearpage
 
                 \tableofcontents
 \listoffigures
@@ -140,13 +140,21 @@
 
 \clearpage
 
+\section{Introduction}
+\subsection{Purpose}
+The software design document describes the architecture and system design of the online shopping website, 354TheStars. It includes use case diagrams and scenarios, an entity relation diagram, a class diagram, sequence diagrams, an architecture diagram, and screenshots of the external interface. It's intended to to communicate the design of the system to software developers and to coordinate its implementation.
 
+\subsection{Scope}
+354TheStars is planning to provide a worldwide platform, where various sized companies as well as individuals can sell or buy products. All of the available products shall be eligible for sale.
 
+\subsection{Context}
+
+Our system will mainly involve the user interacting with a web application interface. The user shall create an account to be able to buy or sell products, however user does not require to have an account for browsing the website. The user information will be stored in a remote database server. Users will not be able to create an account or login by using any social media platforms. It will be discussed in more details in future versions of this documentation.
 
 \section{Use Cases}
 \subsection{Selling}
 
-The use case diagram below represents the Selling functionality of the 354TheStars Website. A detailed description of the "List items" and "Sell items" use cases follows. The diagram reflects the added ability of the Seller to reply to reviews of their products. Only one reply per review is allowed and it doesn't include the ability to delete a review.
+The use case diagram below represents the Selling functionality of the 354TheStars Website. A detailed description of the "List items", "Sell items", and "Reply to reviews" use cases follows. The diagram reflects the added ability of the Seller to reply to reviews of their products. Only one reply per review is allowed and it doesn't include the ability to delete a review.
 
 \begin{figure}[htbp]
     \centering
@@ -457,7 +465,7 @@ The use case diagram below represents the Site Browsing functionality of the 354
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.9\textwidth]{Diagrams/ER/ER_Diagram_Typed.png} 
-    \caption{Entity Relationship Diagram With Their Associated Type}
+    \caption{Database schemas}
     \label{fig:ER_Typed}
 \end{figure}
 
