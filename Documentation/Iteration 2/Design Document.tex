@@ -5,6 +5,7 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{placeins}
 \usepackage[pdftex]{graphicx}
 \usepackage{adjustbox}
 \pagestyle{empty}
@@ -130,7 +131,7 @@
                         \end{tabular}
                     \end{center}
                 \end{table}
-
+\clearpage
 
                 \tableofcontents
 \listoffigures
@@ -139,13 +140,21 @@
 
 \clearpage
 
+\section{Introduction}
+\subsection{Purpose}
+The software design document describes the architecture and system design of the online shopping website, 354TheStars. It includes use case diagrams and scenarios, an entity relation diagram, a class diagram, sequence diagrams, an architecture diagram, and screenshots of the external interface. It's intended to to communicate the design of the system to software developers and to coordinate its implementation.
 
+\subsection{Scope}
+354TheStars is planning to provide a worldwide platform, where various sized companies as well as individuals can sell or buy products. All of the available products shall be eligible for sale.
 
+\subsection{Context}
+
+Our system will mainly involve the user interacting with a web application interface. The user shall create an account to be able to buy or sell products, however user does not require to have an account for browsing the website. The user information will be stored in a remote database server. Users will not be able to create an account or login by using any social media platforms. It will be discussed in more details in future versions of this documentation.
 
 \section{Use Cases}
 \subsection{Selling}
 
-The use case diagram below represents the Selling functionality of the 354TheStars Website. A detailed description of the "List items" and "Sell items" use cases follows. The diagram reflects the added ability of the Seller to reply to reviews of their products. Only one reply per review is allowed and it doesn't include the ability to delete a review.
+The use case diagram below represents the Selling functionality of the 354TheStars Website. A detailed description of the "List items", "Sell items", and "Reply to reviews" use cases follows. The diagram reflects the added ability of the Seller to reply to reviews of their products. Only one reply per review is allowed and it doesn't include the ability to delete a review.
 
 \begin{figure}[htbp]
     \centering
@@ -225,8 +234,8 @@ The use case diagram below represents the Selling functionality of the 354TheSta
     }
     \addrow{Priority}{Medium}
     \addmulrow{Open Issues}{
-        \item Can the seller preview his message before posting? 
-        \item Should the buyer receive a notification when the seller replies? 
+        \item Can the seller preview his message before posting?
+        \item Should the buyer receive a notification when the seller replies?
         \item How are we handling offensive replies?
     }
 \end{usecase}
@@ -416,7 +425,7 @@ item picture, price of item, name of the \index{seller}seller,total price of all
         \item The user will be able to go look at the cart.
         \item The user will be able to remove an item or continue adding.
     }
-    \addmulrow{Exceptions}{ 
+    \addmulrow{Exceptions}{
         \item Item is out of stock.
     }
     \addrow{Priority}{High}
@@ -455,8 +464,8 @@ The use case diagram below represents the Site Browsing functionality of the 354
 \section{Entity Relationship Diagram}
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.9\textwidth]{Diagrams/ER/ER_Diagram_Typed.png} %I am not sure if this is the finalized picture.
-    \caption{Entity Relationship Diagram With Their Associated Type}
+    \includegraphics[width=0.9\textwidth]{Diagrams/ER/ER_Diagram_Typed.png}
+    \caption{Database schemas}
     \label{fig:ER_Typed}
 \end{figure}
 
@@ -499,81 +508,101 @@ A \textit{Review} is an assessment a \textit{Client} leaves on a \textit{Listing
 \section{Class Diagram}
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.8\textwidth]{Diagrams/Class/class_diagram.png} %I am not sure if this is the finalized picture.
+    \includegraphics[width=0.8\textwidth]{Diagrams/Class/class_diagram.png}
     \caption{Class Diagram}
     \label{fig: Class diagram}
 \end{figure}
 
 \subsection{Description Of Class Diagram}
-Write something about class diagram here!
+\subsubsection{Client}
+\textit{Client} is any user. They have the power to purchase and sell \textit{Listings}. A \textit{Client} can leave many \textit{Reviews}, create many \textit{Listings}, and up to three \textit{Addresses}. Moreover, a \textit{Client} is associated with \textit{Orders}. Through referential integrity, \textit{Client}'s primary key consisting of its attribute \textit{id} is part of the primary key of \textit{Review} and \textit{Listing}. Finally, other attributes of \textit{Client} are \textit{email}, \textit{password}, \textit{first name}, \textit{last name}, \textit{brand name}, \textit{date of birth} and \textit{phone number}.
+
+\subsubsection{ClientInfo}
+\textit{ClientInfo} is all the personal infromation about a client. ClientInfo class consists of \textit{email}, \textit{password}, \textit{first name}, \textit{last name}, \textit{brand name}, \textit{date of birth} and \textit{phone number}.
+
+\subsubsection{Listings}
+\textit{Listings} are the products sold and purchased on 354TheStars. Many \textit{Listings} can have many \textit{Reviews}, however, a \textit{Listing} can only be listed by one \textit{Client}. Because of its relationship of referential integrity with \textit{Client}, \textit{Client}'s primary key will be part of that of \textit{Listing} in addition to \textit{Listing id}. Finally, the attributes belonging to \textit{Listing} are \textit{title}, \textit{image name}, \textit{description}, \textit{price}, \textit{stock count}, \textit{low on stock}, \textit{quantity sold}, and \textit{is active}.
+
+\subsubsection{Address}
+\textit{Address} contains information related to the shipping and/or billing place of preference of a \textit{Client}. Only one to three \textit{Addresses} are allowed per \textit{Client}, making the relationship between \textit{Address} and \textit{Client} many-to-one, respectively. Additionally, since an \textit{Order} is shipped to an address, \textit{Order} has referential integrity with \textit{Address}, making \textit{Address}'s primary key part of that of \textit{Order}.
+
+\subsubsection{Order}
+An \textit{Order} is shipped to an \textit{Address}. An \textit{Order} cannot exist without an \textit{Address} due to referential integrity; therefore \textit{Address}'s primary key will be part of that of \textit{Order}. This means the primary key of \textit{Order} is composed by \textit{Address id}. \textit{Order} also counts with the attributes \textit{date}, \textit{shipping type}, \textit{shipping status}, \textit{total price before tax}, \textit{total tax}, \textit{total price} and \textit{total fee}.
+
+\subsubsection{Review}
+A \textit{Review} is an assessment a \textit{Client} leaves on a \textit{Listing} following a sale. Only those \textit{Buyers} who purchased said \textit{Listing} are allowed to write reviews for that specific \textit{Listing}. Given this, a \textit{Review} can not exist neither without a \textit{Client} acting as the author, nor without a \textit{Listing} to receive said \textit{Review}, leading to referential integrity of type many-to-many with both the \textit{Client} and the \textit{Listing}. Moreover, with referential integrity, a \textit{Review} has an \textit{id}, and two foreign keys: the \textit{id} of the \textit{Client} who creates a \textit{Review}, and the primary key of the \textit{Listing} who receives the \textit{Review}. These three keys act as the primary key of \textit{Review}. Aside from this, \textit{Review} has a title and a description. Finally, an \textit{Address} has an \textit{id} as primary key, and other attributes such as \textit{street name}, \textit{street number}, \textit{unit number}, \textit{city}, \textit{province}, \textit{postal code} and \textit{country}.
+
+
+
+
 
 \section{Sequence Diagrams}
 
 \begin{figure}[ht!]
     \subsection{Add Review to Listing}
     \centering
-    \includegraphics[width=0.8\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Add_Review.png} 
+    \includegraphics[width=0.8\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Add_Review.png}
     \caption{Sequence Diagram 1: Add Review to Listing}
     \label{fig: Add Review to Listing}
-    \begin{flushleft}
+    \begin{justify}
         The add review sequence diagram shows the steps the user
-        needs to take to add a review to an item. The user will access their account, go to the purchased listings section and if the purchased date is greater than 15 days, it will allow the user to add a review, otherwise it will not. Once the item has been selected, user will write the review. If the character count is less than or equal to 400, the review will be submitted, else it will be rejected. 
-    \end{flushleft}
+        needs to take to add a review to an item. The user will access their account, go to the purchased listings section and if the purchased date is greater than 15 days, it will allow the user to add a review, otherwise it will not. Once the item has been selected, user will write the review. If the character count is less than or equal to 400, the review will be submitted, else it will be rejected.
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
     \subsection{Cart Operations}
     \centering
-    \includegraphics[width=0.65\textwidth,height=0.45\paperheight]{Diagrams/Sequence/Cart_Operations.jpg} 
+    \includegraphics[width=0.65\textwidth,height=0.45\paperheight]{Diagrams/Sequence/Cart_Operations.jpg}
     \caption{Sequence Diagram 2: Cart Operations}
     \label{fig: Cart Operations}
-    \begin{flushleft}
-        A product can be added to cart when the client clicks on "Add Product to Cart". A client can also choose to view items in their cart. When the items from their cart are displayed, the client can choose to either remove a product from the cart or edit quantity of an item in the cart. The cart will be updated after those actions are performed. When the client clicks on "Buy Products", if the client is a guest user, they will be redirected into the registration page. Otherwise, if the client is a registererd user, the purchase page will be loaded. 
-    \end{flushleft}
+    \begin{justify}
+        A product can be added to cart when the client clicks on "Add Product to Cart". A client can also choose to view items in their cart. When the items from their cart are displayed, the client can choose to either remove a product from the cart or edit quantity of an item in the cart. The cart will be updated after those actions are performed. When the client clicks on "Buy Products", if the client is a guest user, they will be redirected into the registration page. Otherwise, if the client is a registered user, the purchase page will be loaded.
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
     \subsection{Checkout}
     \centering
-    \includegraphics[width=0.6\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Checkout.jpg} 
+    \includegraphics[width=0.6\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Checkout.jpg}
     \caption{Sequence Diagram 3: Checkout}
     \label{fig: Checkout}
-    \begin{flushleft}
+    \begin{justify}
         When the client clicks on checkout, the system will automatically verify the payment with PayPal. As soon as the payment is verified, a confirmation email will be sent to the client.
-    \end{flushleft}
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
     \subsection{Edit Client Information}
     \centering
-    \includegraphics[width=0.65\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Edit_Client_Info.jpg} 
+    \includegraphics[width=0.65\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Edit_Client_Info.jpg}
     \caption{Sequence Diagram 4: Edit Client Information}
     \label{fig: Edit Client Information}
-    \begin{flushleft}
-        First, the website retrieves the client’s ID through cookies which is then used to query the Clients table in the database. With this, the client’s information is retrieved from the database and displayed to the client through an editable form. Next, the client edits the information in this form and submits it. If this form contains invalid data, the website redisplays the form, indicating the invalid data. The client then corrects the form and resubmits it, which is then validated once again and so, until the data in the form is valid. Finally, the website edits the corresponding client entity in the Client table of the database and the database returns the edited client. This ends with a confirmation displayed to the client indicating that the edit was successful.
-    \end{flushleft}
+    \begin{justify}
+        First, the website retrieves the client’s ID through cookies which is then used to query the Clients table in the database. With this, the client’s information is retrieved from the database and displayed to the client through an editable form. Next, the client edits the information in this form and submits it. If this form contains invalid data, the website re-displays the form, indicating the invalid data. The client then corrects the form and resubmits it, which is then validated once again and so, until the data in the form is valid. Finally, the website edits the corresponding client entity in the Client table of the database and the database returns the edited client. This ends with a confirmation displayed to the client indicating that the edit was successful.
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
     \subsection{Filter Listings Results}
     \centering
-    \includegraphics[width=0.5\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Filter_Listings.jpg} 
+    \includegraphics[width=0.5\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Filter_Listings.jpg}
     \caption{Sequence Diagram 5: Filter Listings Results}
     \label{fig: Filter Listings Results}
-    \begin{flushleft}
+    \begin{justify}
         The client starts by applying filters to the list of listings. The website then takes these filter parameters and uses them to query the Listings table in the database. The filtered listings is then retrieved from the database and displayed to the client.
-    \end{flushleft}
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
     \subsection{Get Listings Details}
     \centering
-    \includegraphics[width=0.7\textwidth,height=0.25\paperheight]{Diagrams/Sequence/Listing_Details.png} 
+    \includegraphics[width=0.7\textwidth,height=0.25\paperheight]{Diagrams/Sequence/Listing_Details.png}
     \caption{Sequence Diagram 6: Get Listing Details}
     \label{fig: Get Listing Details}
-    \begin{flushleft}
+    \begin{justify}
         This diagram represents the process of retrieving the details for each listing. In other words, the process that is going to take place when a customer clicks on a listing. Clicking on the listing will call a method from the backend by passing the listing ID to it. After which, the method retrieves the listing details, and stores them in a variable. That variable is then called by the front end, which in turn, displays the listing details on screen for the customer.
-    \end{flushleft}
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
@@ -582,97 +611,178 @@ Write something about class diagram here!
     \includegraphics[width=0.5\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Lists_of_Listings.jpg}
     \caption{Sequence Diagram 7: Get Lists Of Listings}
     \label{fig: Get Lists Of Listings}
-    \begin{flushleft}
+    \begin{justify}
         The website queries the Listings table in the database for listings which have the status field set to true. The active listings are then retrieved from the database and displayed to the client.
-    \end{flushleft}
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
     \subsection{Get Order History}
     \centering
-    \includegraphics[width=0.65\textwidth,height=0.2\paperheight]{Diagrams/Sequence/Order_History.png} 
+    \includegraphics[width=0.65\textwidth,height=0.2\paperheight]{Diagrams/Sequence/Order_History.png}
     \caption{Sequence Diagram 8: Get Order History}
     \label{fig: Get Order History}
-    \begin{flushleft}
-       The order history sequence diagram shows the steps the user needs to take to view their order history. User has to access their account and if the number of purchased item is 0 then it will display no history. Otherwise it will display the history of all the purchased items from the user. 
-    \end{flushleft}
+    \begin{justify}
+       The order history sequence diagram shows the steps the user needs to take to view their order history. User has to access their account and if the number of purchased item is 0 then it will display no history. Otherwise it will display the history of all the purchased items from the user.
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
     \subsection{Login}
     \centering
-    \includegraphics[width=0.6\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Login.jpg} 
+    \includegraphics[width=0.6\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Login.jpg}
     \caption{Sequence Diagram 9: Login}
     \label{fig: Login}
-    \begin{flushleft}
+    \begin{justify}
         The website displays a login form to the client who fills it and submits it. The form data is used to query the Client table in the database. Of course, since passwords are encrypted before stored, some manipulation to the password form data needs to be performed beforehand. If a client entity is retrieved from the database, then the client’s id and client's name is stored in cookies and the client is notified that the login was successful. Otherwise, an error message is displayed informing the client that the login was unsuccessful.
-    \end{flushleft}
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
     \subsection{Logout}
     \centering
-    \includegraphics[width=0.5\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Logout.jpg} 
+    \includegraphics[width=0.5\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Logout.jpg}
     \caption{Sequence Diagram 10: Logout}
     \label{fig: Logout}
-    \begin{flushleft}
+    \begin{justify}
         When the client clicks the logout button, the website removes the client’s id and client's name from cookies and indicates to the client that the logout was successful.
-    \end{flushleft}
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
     \subsection{Register}
     \centering
-    \includegraphics[width=0.6\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Register.jpg} 
+    \includegraphics[width=0.6\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Register.jpg}
     \caption{Sequence Diagram 11: Register}
     \label{fig: Register}
-    \begin{flushleft}
-        The website displays a registration form to the client who fills it and submits it. While the form has invalid data, the website redisplay this form to the client, indicating the invalid data. The client then proceeds to correct the form and resubmit it for validation. When the form is valid, the website adds a client to the Clients table in the database and returns the newly added client. This process ends with a confirmation displayed to the client indicating that the registration was successful.
-    \end{flushleft}
+    \begin{justify}
+        The website displays a registration form to the client who fills it and submits it. While the form has invalid data, the website re-displays this form to the client, indicating the invalid data. The client then proceeds to correct the form and resubmit it for validation. When the form is valid, the website adds a client to the Clients table in the database and returns the newly added client. This process ends with a confirmation displayed to the client indicating that the registration was successful.
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
     \subsection{Purchase by a Registered User}
     \centering
-    \includegraphics[width=0.6\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Registered_User_Purchase.jpg} 
+    \includegraphics[width=0.6\textwidth,height=0.3\paperheight]{Diagrams/Sequence/Registered_User_Purchase.jpg}
     \caption{Sequence Diagram 12: Purchase by a Registered User}
     \label{fig: Purchase by a Registered User}
-    \begin{flushleft}
+    \begin{justify}
         When the purchase page is loaded, the client's address will be displayed. The client can edit the address and the database will update and will display the new address. When the user clicks on checkout, the website will redirect the user in the checkout page.
-    \end{flushleft}
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
     \subsection{Select Listing Category}
     \centering
-    \includegraphics[width=0.65\textwidth,height=0.2\paperheight]{Diagrams/Sequence/Categories.png} 
+    \includegraphics[width=0.65\textwidth,height=0.2\paperheight]{Diagrams/Sequence/Categories.png}
     \caption{Sequence Diagram 13: Select Listing Category}
     \label{fig: Select Listing Category}
-    \begin{flushleft}
-        The categories sequence diagram shows the steps the user needs to take to access the different categories on the website. On the page, the user will select the categories tab and select the specific category to display. The requested listing will then be shown to the user. 
-    \end{flushleft}
+    \begin{justify}
+        The categories sequence diagram shows the steps the user needs to take to access the different categories on the website. On the page, the user will select the categories tab and select the specific category to display. The requested listing will then be shown to the user.
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
     \subsection{Send Confirmation Email}
     \centering
-    \includegraphics[width=0.6\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Confirmation_Email.png} 
+    \includegraphics[width=0.6\textwidth,height=0.15\paperheight]{Diagrams/Sequence/Confirmation_Email.png}
     \caption{Sequence Diagram 14: Send Confirmation Email}
     \label{fig: Send Confirmation Email}
-    \begin{flushleft}
+    \begin{justify}
         The confirmation email sequence diagram shows the steps the user needs to take to receive the confirmation email after a purchase has been completed. The user will need to purchase an item, make the payment and then the system will automatically send the confirmation email to the users registered email. The user will receive a visual notification stating the confirmation email has been sent out.
-    \end{flushleft}
+    \end{justify}
 \end{figure}
 
 \begin{figure}[ht!]
     \subsection{Sort Listings Results}
     \centering
-    \includegraphics[width=0.6\textwidth,height=0.2\paperheight]{Diagrams/Sequence/Sort_Listings.jpg} 
+    \includegraphics[width=0.6\textwidth,height=0.2\paperheight]{Diagrams/Sequence/Sort_Listings.jpg}
     \caption{Sequence Diagram 15: Sort Listings results}
     \label{fig: Sort Listings Results}
-    \begin{flushleft}
+    \begin{justify}
         The client starts by applying a sorting criteria to the list of listings. The website then takes these sorting parameters and uses them to query the Listings table in the database. The sorted listings is then retrieved from the database and displayed to the client.
-    \end{flushleft}
+    \end{justify}
+\end{figure}
+\clearpage
+
+\section{External Interface}
+
+\begin{figure}[ht!]
+    \subsection{Home Page}
+    \centering
+    \includegraphics[width=\textwidth,height=0.3\paperheight,keepaspectratio]{Diagrams/External_Interfaces/Home_Page.png}
+    \caption{Home Page}
+    \label{fig: Home Page}
+\end{figure}
+\FloatBarrier
+
+
+\begin{figure}[ht!]
+    \subsection{Login}
+    \centering
+    \includegraphics[width=\textwidth,height=0.3\paperheight,keepaspectratio]{Diagrams/External_Interfaces/Login.png}
+    \caption{Login page}
+    \label{fig: Login Page}
+\end{figure}
+\FloatBarrier
+
+
+\begin{figure}[ht!]
+    \subsection{Create account}
+    \centering
+    \includegraphics[width=\textwidth,height=0.3\paperheight,keepaspectratio]{Diagrams/External_Interfaces/Create_Account.png}
+    \caption{Create Account Page}
+    \label{fig: Create Account Page}
+\end{figure}
+\FloatBarrier
+
+
+\begin{figure}[ht!]
+    \subsection{Result of a category}
+    \centering
+    \includegraphics[width=\textwidth,height=3\paperheight,keepaspectratio]{Diagrams/External_Interfaces/Categories.png}
+    \caption{Result of shoes category}
+    \label{fig: Result of a category}
+\end{figure}
+\FloatBarrier
+
+
+\begin{figure}[ht!]
+    \subsection{Apply filters}
+    \centering
+    \includegraphics[width=\textwidth,height=0.3\paperheight,keepaspectratio]{Diagrams/External_Interfaces/Categories_filtered.png}
+    \caption{Result of shoes category after applying filters}
+    \label{fig: Apply filters}
+\end{figure}
+\FloatBarrier
+
+
+\begin{figure}[ht!]
+    \subsection{Search for an item}
+    \centering
+    \includegraphics[width=\textwidth,height=0.3\paperheight,keepaspectratio]{Diagrams/External_Interfaces/Search_Listing.png}
+    \caption{Search Results for query of "Jordan"}
+    \label{fig: Search For An Item}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht!]
+    \subsection{List of listings}
+    \centering
+    \includegraphics[width=\textwidth,height=0.3\paperheight,keepaspectratio]{Diagrams/External_Interfaces/List_Of_Listings_1.png}
+    \includegraphics[width=\textwidth,height=0.3\paperheight,keepaspectratio]{Diagrams/External_Interfaces/List_Of_Listings_2.png}
+    \caption{Paginated list of listings}
+    \label{fig: List of listings}
+\end{figure}
+
+\FloatBarrier
+
+\begin{figure}[ht!]
+    \subsection{Latest listings}
+    \centering
+    \includegraphics[width=\textwidth,height=0.3\paperheight,keepaspectratio]{Diagrams/External_Interfaces/Latest_Listings.png}
+    \caption{Latest listing on home page}
+    \label{fig: Latest listings}
 \end{figure}
 \clearpage
 
@@ -683,17 +793,6 @@ Write something about class diagram here!
     \caption{Architectural Diagram}
     \label{fig: Architectural Diagram}
 \end{figure}
-
-\section{External Interface}
-\subsection{Home Page}
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=\textwidth,height=0.4\paperheight]{Diagrams/External_Interfaces/Home_Page.png} %I am not sure if this is the finalized picture.
-    \caption{Home Page}
-    \label{fig: Home Page}
-\end{figure}
-
-
 
 \section{Conclusion}
 
