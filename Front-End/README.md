@@ -2,19 +2,20 @@ Current process when adding new front-end feature:
 
 - Add component folders into src/components directory. 
 	For example, if you want to add components for the listings page, add a folder called 'Listings'.
-	Then, inside listings you can add multiple other folders for any children components you need to create for the Listings 		component.
+	Then, inside listings you can add multiple other folders for any children components you need to create for the Listings component.
 
 - In order to add new routes, edit the 'index.tsx' in src/. 
 	You can a new route like the following:    
 	
-	     <DefaultLayout path="/login" component={Login} pageTitle="Login" />
+        <SecureRoute authenticated path="/listings" pageComponent={ListingsPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
 	      
-	Where 'Login' is be the component which is rendered when the /login path is loaded.
+	Where 'ListingsPage' is the component rendered and 'DefaultLayout' is the layout rendered when the /listings path is loaded.
+	The optional 'authenticated' parameter means that this route will be reached by only authenticated users.
 	pageTitle is the title for the page.
 	
 	The router uses a switch which matches with the first URL is sees, so place the longer paths near the top
 	
-	For example, a route for /listings/id should be placed above /listings or else the switch will always match the /listings path 		right away.
+	For example, a route for /listings/id should be placed above /listings or else the switch will always match the /listings path right away.
 	
 - For SASS styling, you can add/edit .scss files in the src/styles/sass directory.
 	When adding a new sass file, make sure that it is a partial file (it has underscore prefix in its name e.g. _header)
@@ -26,7 +27,20 @@ Current process when adding new front-end feature:
 	
 	in index.scss
 	
-	*Note: You may have to re-run the project after you add a new .scss file in order for the file to be watched by the node-sass 		compiler
+	*Note: You may have to re-run the project after you add a new .scss file in order for the file to be watched by the node-sass compiler
+	
+- For making API calls, don't use axios improted from axios anymore.
+	Instead, use server and api objects: 
+	
+		import { server, api } from './server';
+		
+	The api object is just a flat object with all the api urls, and server is what you will use to make api calls with.
+	
+	For example: 
+	
+		const resp = await server.post(api.auth_login, userCredentials);
+
+
 
 If the process can be improved in anyway, feel free to bring it up.
 
