@@ -1,4 +1,3 @@
-
 export class ListingsModel {
     title: string;
     stock_count: number;

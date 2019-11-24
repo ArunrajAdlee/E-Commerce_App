@@ -1,5 +1,6 @@
 import { UserController } from './controllers/user.controller';
 import { ListingsController } from './controllers/listings.controller';
+import { AddressController } from './controllers/address.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
 export const Routes = [
@@ -52,6 +53,20 @@ export const Routes = [
     route: '/listings',
     controller: ListingsController,
     action: 'save'
+  },
+
+  //Address
+  {
+    method: 'get',
+    route: '/addresses',
+    controller: AddressController,
+    action: 'all'
+  },
+  {
+    method: 'get',
+    route: '/addresses/:id',
+    controller: AddressController,
+    action: 'allUserAddress'
   },
 
   //Auth
