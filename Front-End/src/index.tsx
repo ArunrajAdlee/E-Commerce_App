@@ -100,18 +100,6 @@ class App extends React.Component<{}, IStates> {
 }
 
 ReactDOM.render(
-<<<<<<< HEAD
-  <Router history={history}>
-    <Switch>
-      <DefaultLayout path="/listing/id" component={ListingDetails} pageTitle="Listing Detail" />
-      <DefaultLayout path="/listings" component={LandingPage} pageTitle="Listings" />
-      <DefaultLayout path="/cart" component={LandingPage} pageTitle="Your Shoppping Cart" />
-      <DefaultLayout path="/login" component={Login} pageTitle="Login/Register" />
-      <LandingLayout component={LandingPage} />
-    </Switch>
-  </Router>,
-=======
   <App />,
->>>>>>> origin/master
   document.getElementById('root'),
 );
