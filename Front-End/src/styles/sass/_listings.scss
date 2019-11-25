@@ -1,0 +1,40 @@
+.listings-container {
+
+    & .filters {
+        box-shadow: $generic-boxshadow;
+        
+        & .card {
+            border:none;
+            & .card-header {
+                color : white;
+                background-color: $listings-background;
+            }
+        }
+    }
+
+    & .pagination-container {
+        & .page-link { 
+           color: black;
+           border-radius: 0 !important;
+        }
+
+        & .active .page-link{
+            background: $theme-gradient;
+            border-color: black;
+        }
+    }
+
+    @media screen and (max-width: $sm-size) {
+        & .listings-content {
+            text-align: center;
+        }
+      }
+
+
+}
+
+.pagination-container {
+    height: 55px;
+    padding: 8px;
+    background-color: $listings-background;
+}
