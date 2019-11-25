@@ -4,7 +4,7 @@
    "port": 3306,
    "username": "root",
    "password": "fovzat-xudtEh-wamcy8",
-   "database": "DemoDB",
+   "database": "TestCheckoutDB",
    "synchronize": false,
    "logging": false,
    "entities": [

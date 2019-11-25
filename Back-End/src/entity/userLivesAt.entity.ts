@@ -1,10 +1,10 @@
 import {Column, Entity, PrimaryColumn} from 'typeorm';
 
 @Entity()
-export class ClientLivesAt {
+export class UserLivesAt {
 
     @PrimaryColumn()
-    client_id: number;
+    user_id: number;
 
     @PrimaryColumn()
     address_id: number;
