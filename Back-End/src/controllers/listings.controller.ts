@@ -3,6 +3,8 @@ import { getRepository } from 'typeorm';
 import { Listings } from '../entity/listings.entity';
 import { AuthModel } from '../models/auth.model';
 import { ListingsModel } from '../models/listings.model';
+import { User } from '../entity/user.entity';
+import { Categories } from '../entity/categories.entity';
 // tslint:disable-next-line
 const { checkAuth } = require('../helpers/check-auth');
 // tslint:disable-next-line
@@ -55,7 +57,7 @@ export class ListingsController {
       const newProduct: ListingsModel = {
         title: req.body.title,
         stock_count: req.body.stock_count,
-        category: req.body.category ? req.body.category : null,
+        category: req.body.category ? req.body.category : 4,
         image: imageURL,
         thumbnail: thumbnailURL,
         price: req.body.price
@@ -102,9 +104,22 @@ export class ListingsController {
       return;
     }
 
+    const user = await getRepository(User).findOne(listing.user_id);
+    if (!user) {
+      res.status(404).send('error retrieving user');
+      return;
+    }
+
+    
+    const categry = await getRepository(Categories).findOne(listing.category);
+    if (!categry) {
+      res.status(404).send('error retrieving category');
+      return;
+    }
+
     res.status(200).send({
       message: 'success',
-      listing: listing
+      listing: {...listing, username: user.username, categoryName: categry.name}
     });
   }
 }
