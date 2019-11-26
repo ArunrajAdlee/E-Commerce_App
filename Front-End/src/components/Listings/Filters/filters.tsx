@@ -125,7 +125,7 @@ class Filters extends React.Component<IProps, IStates> {
                                 type="number"
                                 name="minPrice"
                                 placeholder="Min"
-                                className={`form-control ${
+                                className={`form-control no-ticker ${
                                   touched.minPrice && errors.minPrice ? 'is-invalid' : ''
                                 }`}
                               />
@@ -142,9 +142,10 @@ class Filters extends React.Component<IProps, IStates> {
                           <Col xl={5} lg={12} className="p-0">
                             <div className="form-group">
                               <Field
+                                type="number"
                                 name="maxPrice"
                                 placeholder="Max"
-                                className={`form-control ${
+                                className={`form-control no-ticker ${
                                   touched.maxPrice && errors.maxPrice ? 'is-invalid' : ''
                                 }`}
                               />

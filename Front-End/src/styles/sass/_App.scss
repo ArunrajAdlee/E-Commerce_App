@@ -48,10 +48,12 @@ code {
     box-shadow: none !important;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+.no-ticker {
+  &::-webkit-inner-spin-button, 
+  &::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
 }
 
 

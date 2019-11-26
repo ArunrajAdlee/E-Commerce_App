@@ -15,4 +15,5 @@ export const api = {
   listings: '/listings',
   listings_category: '/listings/category/',
   listings_search: '/listings/search/',
+  listings_details: '/listings/',
 };

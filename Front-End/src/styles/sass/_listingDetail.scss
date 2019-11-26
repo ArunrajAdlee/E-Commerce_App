@@ -1,0 +1,32 @@
+.listing-details {
+    font-family: $primary-font;
+
+    & .image-container {
+        max-height: 540px;
+        max-width: 540px;
+
+        @media screen and (max-width: $md-size) {
+            max-width: 100% !important;
+        }
+
+        & .image {
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain;
+        }
+    }
+    
+    & .purchase-details {
+        padding: 60px 0 0 60px;
+
+        @media screen and (max-width: $sm-size) {
+            padding: 60px 0 0 0;
+        }
+
+        & .listing-price {
+            color: #ffba00 ;
+        }
+    }
+
+}
+

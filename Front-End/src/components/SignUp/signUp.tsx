@@ -218,7 +218,7 @@ class SignUp extends React.Component<{}, IStates> {
                           type="number"
                           name="streetNumber"
                           placeholder="Street Number"
-                          className="form-control styled-input"
+                          className="form-control styled-input no-ticker"
                         />
                       </div>
                     </Col>
@@ -246,7 +246,7 @@ class SignUp extends React.Component<{}, IStates> {
                           type="number"
                           name="unitNumber"
                           placeholder="Unit/APT"
-                          className="form-control styled-input"
+                          className="form-control styled-input no-ticker"
                         />
                       </div>
                     </Col>
