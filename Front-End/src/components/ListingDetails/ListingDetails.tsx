@@ -8,7 +8,7 @@ import { Button, Spinner } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import { server, api } from '../../server';
 
-interface ILisingDetails {
+interface IListingDetails {
   id: number,
   description: string,
   image: string,
@@ -27,7 +27,7 @@ interface ILisingDetails {
 
 interface IProps extends RouteComponentProps<any> {}
 interface IStates {
-  listing: ILisingDetails | null;
+  listing: IListingDetails | null;
   quantity: number;
   error: boolean,
 }
