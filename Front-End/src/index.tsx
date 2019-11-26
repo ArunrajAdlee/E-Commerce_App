@@ -19,6 +19,7 @@ import SignUp from './components/SignUp/signUp';
 import { StoreContext, IUserInfo } from './store';
 import ScrollToTop from './components/Misc/scrollToTop';
 import SecureRoute from './components/Authentication/secureRoute';
+
 const history = createBrowserHistory();
 
 interface IStates {
@@ -89,6 +90,7 @@ class App extends React.Component<{}, IStates> {
             <SecureRoute path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
             <SecureRoute path="/listings/category/:categoryId/:categoryName" pageComponent={CategoryPage} layoutComponent={DefaultLayout} pageTitle="Category Listings" />
             <SecureRoute path="/listings/search/:searchQuery" pageComponent={SearchPage} layoutComponent={DefaultLayout} pageTitle="Search Listings" />
+            <SecureRoute path="/listings/:id" pageComponent={ListingDetails} layoutComponent={DefaultLayout} pageTitle="Listing Details" />
             <SecureRoute path="/listings" pageComponent={ListingsPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
             <SecureRoute path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
             <SecureRoute pageComponent={LandingPage} layoutComponent={LandingLayout} />
