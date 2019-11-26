@@ -3,7 +3,7 @@ import Media from 'react-bootstrap/Media';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, Link } from 'react-router-dom';
 import { Button, Spinner } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import { server, api } from '../../server';
@@ -20,6 +20,9 @@ interface ILisingDetails {
   title: string,
   user_id: number,
   category: number,
+  category_name: string,
+  username: string,
+
 }
 
 interface IProps extends RouteComponentProps<any> {}
@@ -43,7 +46,6 @@ class ListingDetails extends React.Component<IProps, IStates> {
       const resp = await server.get(
         `${api.listings_details}${id}`,
       );
-      console.log(resp);
       if (resp.data.listing) {
         this.setState({
           listing: resp.data.listing,
@@ -70,17 +72,22 @@ class ListingDetails extends React.Component<IProps, IStates> {
             <Media>
               <Container>
                 <Row className="mb-5">
-                  <Col xs={12} lg={6} className="image-container">
+                  <Col sm={12} lg={6} className="image-container">
                     <Image className="image" src={listing.image} fluid />
                   </Col>
-                  <Col xs={12} lg={6}>
+                  <Col sm={12} lg={6}>
                     <Media.Body>
                       <div className="purchase-details">
                         <h3>{listing.title}</h3>
+                        <h5>
+                          Sold By:
+                          {' '}
+                          <Link to={`/user/${listing.username}`}>{listing.username}</Link>
+                        </h5>
                         <h4 className="listing-price">
                           {`$${listing.price}`}
                         </h4>
-                        <p className="mt-4">{`Category: ${listing.category}`}</p>
+                        <p className="mt-4">{`Category: ${listing.category_name}`}</p>
                         <p>{`Available Quantity: ${listing.stock_count}`}</p>
                         <hr />
                         <p className="mb-5">{listing.description}</p>
