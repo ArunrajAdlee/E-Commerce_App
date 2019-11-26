@@ -119,7 +119,7 @@ export class ListingsController {
 
     res.status(200).send({
       message: 'success',
-      listing: {...listing, username: user.username, categoryName: categry.name}
+      listing: {...listing, username: user.username, category_name: categry.name}
     });
   }
 }
