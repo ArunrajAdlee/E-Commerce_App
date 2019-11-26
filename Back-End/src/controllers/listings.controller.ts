@@ -64,8 +64,8 @@ export class ListingsController {
         stock_count: req.body.stock_count,
         category: req.body.category ? req.body.category : 4,
         image: imageURL,
-        thumbnail: thumbnailURL,
-        price: req.body.price
+        thumbnail: thumbnailURL
+
       };
       const listing = await this.listingsRepository.save(newProduct);
       res.status(200).send({

@@ -94,6 +94,7 @@ class App extends React.Component<{}, IStates> {
             <SecureRoute path="/listings/:id" pageComponent={ListingDetails} layoutComponent={DefaultLayout} pageTitle="Listing Details" />
             <SecureRoute path="/listings" pageComponent={ListingsPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
             <SecureRoute path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
+            <SecureRoute path="/createListing" pageComponent={CreateListing} layoutComponent={DefaultLayout} pageTitle="Create Listing" />
             <SecureRoute pageComponent={LandingPage} layoutComponent={LandingLayout} />
           </Switch>
         </Router>
