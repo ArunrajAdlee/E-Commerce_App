@@ -3,7 +3,10 @@ import { ListingsController } from './controllers/listings.controller';
 import { AddressController } from './controllers/address.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
+import { OrderController } from './controllers/order.controller';
 export const Routes = [
+  
+  //User
   {
     method: 'get',
     route: '/users',
@@ -55,20 +58,6 @@ export const Routes = [
     action: 'save'
   },
 
-  //Address
-  {
-    method: 'get',
-    route: '/addresses',
-    controller: AddressController,
-    action: 'all'
-  },
-  {
-    method: 'get',
-    route: '/addresses/:id',
-    controller: AddressController,
-    action: 'allUserAddress'
-  },
-
   //Auth
   {
     method: 'get',
@@ -107,5 +96,19 @@ export const Routes = [
     route: '/categories',
     controller: CategoriesController,
     action: 'all'
+  },
+
+  //Order
+  {
+    method: 'get',
+    route: '/order/totals/:userID',
+    controller: OrderController,
+    action: 'getOrderTotals'
+  },
+  {
+    method: 'post',
+    route: '/order/create',
+    controller: OrderController,
+    action: 'save'
   }
 ];
