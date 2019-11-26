@@ -4,8 +4,8 @@
    "port": 3306,
    "username": "root",
    "password": "fovzat-xudtEh-wamcy8",
-   "database": "Prototype",
-   "synchronize": true,
+   "database": "DemoDB",
+   "synchronize": false,
    "logging": false,
    "entities": [
       "src/entity/**/*.ts"

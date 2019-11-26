@@ -9,6 +9,11 @@ body {
 
 h1, h2, h3, h4 {
   font-family: $title-font !important;
+  word-break: break-word;
+}
+
+.mt-40p{
+  margin-top: 40px;
 }
 
 code {
@@ -18,15 +23,52 @@ code {
 
 .default-layout-content-container{
   margin: 100px auto 100px auto;
-  width: 55%;
+  width: 65%;
 
-  @media screen and (max-width: $sm-size) {
+  @media screen and (max-width: $lg-size) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: $md-size) {
     width: 90%;
   }
 }
 
 .styled-button {
-  background: linear-gradient(90deg,#ffba00 0%,#ff6c00 100%);
-  border: none;
+  background: $theme-gradient;
+  border: none !important;
+  color: white !important;
 }
+
+.styled-input {
+    border: none !important;
+    border-bottom: 1px solid #ccc !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.no-ticker {
+  &::-webkit-inner-spin-button, 
+  &::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+}
+
+
+.loading-spinner {
+  display: block !important;
+  position: fixed !important;
+  width: 126px !important;
+  height: 126px !important;
+  margin-top: -63px !important; 
+  margin-right: -63px!important;
+  top: 50% !important;
+  right: 50% !important;
+}
+
+
+
+
 
