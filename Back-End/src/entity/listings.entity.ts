@@ -41,5 +41,5 @@ export class Listings {
 
     @Column({nullable: true})
     category_name: string;
+    
 }
-
