@@ -40,6 +40,5 @@ export class Listings {
     category: number;
 
     @Column({nullable: true})
-    category_name: string;
-    
+    category_name: string; 
 }
