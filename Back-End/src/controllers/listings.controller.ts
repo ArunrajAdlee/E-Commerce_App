@@ -14,7 +14,11 @@ export class ListingsController {
   private listingsRepository = getRepository(Listings);
 
   async all(req: Request, res: Response, next: NextFunction) {
-    const listings = await this.listingsRepository.find();
+    const listings = await this.listingsRepository
+      .createQueryBuilder('listings')
+      .orderBy('listings.id', 'DESC')
+      .getMany();
+
     res.status(200).send({
       listings: listings
     });
@@ -22,7 +26,12 @@ export class ListingsController {
 
   //Gets all active listings
   async getActive(req: Request, res: Response, next: NextFunction) {
-    const activeListings = await this.listingsRepository.find({ status: true });
+    const activeListings = await this.listingsRepository
+      .createQueryBuilder('listings')
+      .where('listings.status = :status', { status: true })
+      .orderBy('listings.id', 'DESC')
+      .getMany();
+
     res.status(200).send({
       listings: activeListings
     });
@@ -57,15 +66,31 @@ export class ListingsController {
         '/w_255,h_270' +
         imageURL.substr(sizeInputLocation, imageURL.length - 1);
 
+      const user = await getRepository(User).findOne(authenticatedUser.id);
+      if (!user) {
+        res.status(404).send('error retrieving user');
+        return;
+      }
+
+      const categoryId = req.body.category ? req.body.category : 4;
+      let category = await getRepository(Categories).findOne(categoryId);
+      if (!category) {
+        res.status(404).send('error retrieving category');
+        return;
+      }
+
       const newProduct: ListingsModel = {
         title: req.body.title,
         description: req.body.description,
         price: req.body.price,
         stock_count: req.body.stock_count,
-        category: req.body.category ? req.body.category : 4,
+        category: categoryId,
         image: imageURL,
-        thumbnail: thumbnailURL
-
+        thumbnail: thumbnailURL,
+        price: req.body.price,
+        status: true,
+        username: user.username,
+        category_name: category.name
       };
       const listing = await this.listingsRepository.save(newProduct);
       res.status(200).send({
@@ -80,9 +105,11 @@ export class ListingsController {
 
   async allWithCategory(req: Request, res: Response, next: NextFunction) {
     const requestedCategory: number = parseInt(req.params.category);
-    const listingsWithCategory = await this.listingsRepository.find({
-      category: requestedCategory
-    });
+    const listingsWithCategory = await this.listingsRepository
+      .createQueryBuilder('listings')
+      .where('listings.category = :category', { category: requestedCategory })
+      .orderBy('listings.id', 'DESC')
+      .getMany();
 
     res.status(200).send({
       listings: listingsWithCategory
@@ -91,14 +118,14 @@ export class ListingsController {
 
   async allWithSearchQuery(req: Request, res: Response, next: NextFunction) {
     const query = req.params.searchQuery.replace('+', ' ').toLowerCase();
-    const allListings: ListingsModel[] = await this.listingsRepository.find();
-
-    const searchListings = allListings.filter(listing =>
-      listing.title.toLowerCase().includes(query)
-    );
+    const listingsWithSearchQuery = await this.listingsRepository
+      .createQueryBuilder('listings')
+      .where('listings.title like :query', { query: '%' + query + '%' })
+      .orderBy('listings.id', 'DESC')
+      .getMany();
 
     res.status(200).send({
-      listings: searchListings
+      listings: listingsWithSearchQuery
     });
   }
 
@@ -109,22 +136,9 @@ export class ListingsController {
       return;
     }
 
-    const user = await getRepository(User).findOne(listing.user_id);
-    if (!user) {
-      res.status(404).send('error retrieving user');
-      return;
-    }
-
-
-    const categry = await getRepository(Categories).findOne(listing.category);
-    if (!categry) {
-      res.status(404).send('error retrieving category');
-      return;
-    }
-
     res.status(200).send({
       message: 'success',
-      listing: {...listing, username: user.username, category_name: categry.name}
+      listing: listing 
     });
   }
 }
