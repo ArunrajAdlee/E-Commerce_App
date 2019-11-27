@@ -38,14 +38,11 @@ export class ListingsController {
   }
 
   async save(req: Request & { files: any }, res: Response, next: NextFunction) {
-    console.log('Here');
-    /*
     const authenticatedUser: AuthModel = checkAuth(req);
     if (!authenticatedUser) {
       res.status(404).send('user is not authenticated');
       return;
     }
-    */
 
     try {
       //Take the request image and store it on the cloud
