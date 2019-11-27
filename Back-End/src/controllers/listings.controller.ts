@@ -18,6 +18,7 @@ export class ListingsController {
     .createQueryBuilder("listings")
     .orderBy("listings.id", "DESC")
     .getMany();
+    
     res.status(200).send({
       listings: listings
     });
@@ -30,6 +31,7 @@ export class ListingsController {
     .where("listings.status = :status", {status: true})
     .orderBy("listings.id", "DESC")
     .getMany();
+
     res.status(200).send({
       listings: activeListings
     });
@@ -83,9 +85,11 @@ export class ListingsController {
 
   async allWithCategory(req: Request, res: Response, next: NextFunction) {
     const requestedCategory: number = parseInt(req.params.category);
-    const listingsWithCategory = await this.listingsRepository.find({
-      category: requestedCategory
-    });
+    const listingsWithCategory = await this.listingsRepository
+    .createQueryBuilder("listings")
+    .where("listings.category = :category", {category: requestedCategory})
+    .orderBy("listings.id", "DESC")
+    .getMany();
 
     res.status(200).send({
       listings: listingsWithCategory
