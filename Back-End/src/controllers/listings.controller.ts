@@ -25,7 +25,11 @@ export class ListingsController {
 
   //Gets all active listings
   async getActive(req: Request, res: Response, next: NextFunction) {
-    const activeListings = await this.listingsRepository.find({ status: true });
+    const activeListings = await this.listingsRepository
+    .createQueryBuilder("listings")
+    .where("listings.status = :status", {status: true})
+    .orderBy("listings.id", "DESC")
+    .getMany();
     res.status(200).send({
       listings: activeListings
     });

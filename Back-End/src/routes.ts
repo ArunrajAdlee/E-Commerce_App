@@ -43,7 +43,7 @@ export const Routes = [
   },
   {
     method: 'get',
-    route: '/listings/active',
+    route: '/listingsActive',
     controller: ListingsController,
     action: 'getActive'
   },
