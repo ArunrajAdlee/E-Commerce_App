@@ -22,12 +22,14 @@ class UserDisplay extends React.Component<IProps, UserDisplayState> {
     };
   }
 
+  // Used to toggle which display is showing
   public handleNav = (id: number) => {
     let curr: number = this.state.currentDisplay;
     curr = id;
     this.setState({ currentDisplay: curr });
   };
 
+  // Used to handle button to edit form
   public handleEdit = () => {
     let curr: number = this.state.currentDisplay;
     curr = 5;
@@ -42,6 +44,7 @@ class UserDisplay extends React.Component<IProps, UserDisplayState> {
 
     let show: any;
     if (this.state.currentDisplay === 1) {
+      /**USER INFO DISPLAY */
       show = (
         <UserInfo
           first_name={userInfo.first_name}
@@ -62,12 +65,19 @@ class UserDisplay extends React.Component<IProps, UserDisplayState> {
         ></UserInfo>
       );
     } else if (this.state.currentDisplay === 2) {
+      /* ORDER HISTORY COMPONENT GOES HERE*/
+
       show = <p>Order History</p>;
     } else if (this.state.currentDisplay === 3) {
+      /* LISTINGS COMPONENT GOES HERE*/
+
       show = <p>Listings</p>;
     } else if (this.state.currentDisplay === 4) {
+      /* REVIEW HISTORY COMPONENT GOES HERE*/
+
       show = <p>Reviews</p>;
     } else {
+      /**EDIT USER INFO COMPONENT */
       show = (
         <EditUserForm
           first_name={userInfo.first_name}
