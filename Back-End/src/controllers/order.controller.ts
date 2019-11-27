@@ -69,8 +69,20 @@ export class OrderController {
 			relations: ["listing"] 
 		});
 		if(cartItems.length == 0) {
-			res.status(404).send("no items in cart")
+			res.status(404).send("no items in cart");
 			return;
+		}
+
+		//Check if there is sufficient stock for each cart item
+		for (let cartItem of cartItems) {
+			if(cartItem.quantity > cartItem.listing.stock_count) {
+				res.status(404).send({
+					message: "error creating order: insufficient stock",
+					listing: cartItem.listing,
+					quantity: cartItem.quantity 
+				});
+				return;
+			}
 		}
 
 		//Create order
@@ -85,6 +97,10 @@ export class OrderController {
 			total_fee: 0
 		};
 		var order = await this.orderRepository.save(newOrder);
+		if(!order) {
+			res.status(404).send("error creating order");
+			return;
+		}
 
 		//Create order details for each cart item
 		var total_price_before_tax = 0;
@@ -107,11 +123,13 @@ export class OrderController {
 			total_price_before_tax += cartItem.listing.price;
 			total_fee += this.listingFee;
 
+			//Update listing stock and sold
 			cartItem.listing.stock_count -= cartItem.quantity;
-			if(cartItem.listing.stock_count <= 0) {
-				cartItem.listing.stock_count = 0;
+			cartItem.listing.quantity_sold += cartItem.quantity;
+			if(cartItem.listing.stock_count == 0) {
 				cartItem.listing.status = false;
 			}
+
 			await this.listingsRepository.save(cartItem.listing); //Update listing stock_count and status
 			await this.cartRepository.remove(cartItem); //Clear cart items
 		}
