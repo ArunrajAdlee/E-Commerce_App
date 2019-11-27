@@ -1,6 +1,5 @@
 import { UserController } from './controllers/user.controller';
 import { ListingsController } from './controllers/listings.controller';
-import { AddressController } from './controllers/address.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
 import { OrderController } from './controllers/order.controller';
@@ -101,9 +100,9 @@ export const Routes = [
   //Order
   {
     method: 'get',
-    route: '/order/totals/:userID',
+    route: '/order/summary/:userID',
     controller: OrderController,
-    action: 'getOrderTotals'
+    action: 'getOrderSummary'
   },
   {
     method: 'post',

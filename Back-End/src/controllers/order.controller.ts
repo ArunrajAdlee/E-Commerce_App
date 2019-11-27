@@ -1,27 +1,48 @@
 import {NextFunction, Request, Response} from 'express';
 import {getRepository} from 'typeorm';
+
+import {Address} from '../entity/address.entity';
 import {Cart} from '../entity/cart.entity';
 import {Listings} from '../entity/listings.entity';
 import {Order} from '../entity/order.entity';
 import {OrderDetails} from '../entity/orderDetails.entity';
+import {User} from '../entity/user.entity';
+
+import {AddressModel} from '../models/address.model';
 import {CartModel} from '../models/cart.model';
 import {ListingsModel} from '../models/listings.model';
 import {OrderModel} from '../models/order.model';
 import {OrderDetailsModel} from '../models/orderDetails.model';
+import {UserModel} from '../models/user.model';
 
 export class OrderController {
+	private addressRepository = getRepository(Address);
 	private cartRepository = getRepository(Cart);
 	private listingsRepository = getRepository(Listings);
-	private orderDetailsRepository = getRepository(OrderDetails);
 	private orderRepository = getRepository(Order);
+	private orderDetailsRepository = getRepository(OrderDetails);
+	private userRepository = getRepository(User);
+
 	private taxRate = 0.15; //TODO: CONFIRM TAX RATE = 15%
 	private listingFee = 0; //TODO: WHAT IS LISTING FEE?
 	private defaultShippingStatus = "TEMPORARY"; //TODO: WHAT IS DEFAULT SHIPPING STATUS?
 
-	//TODO: MOVE THIS TO CART CONTROLLER AS getCartTotals MAYBE???
-	async getOrderTotals(req: Request, res: Response, next: NextFunction) {
-		const requestedUser: number = parseInt(req.params.userID);
-		const cartItems = await this.cartRepository.find({ user_id: requestedUser });
+	async getOrderSummary(req: Request, res: Response, next: NextFunction) {
+		const userInfo = await this.userRepository.query(
+			"SELECT * " +
+			"FROM " + this.userRepository.metadata.tableName + " u " +
+			"INNER JOIN " + this.addressRepository.metadata.tableName + " a " +
+			"ON u.address = a.id " +
+			"WHERE u.id = " + req.params.userID
+		);
+
+		const cartItems = await this.cartRepository.query(
+			"SELECT * " +
+			"FROM " + this.cartRepository.metadata.tableName + " c " +
+			"INNER JOIN " + this.listingsRepository.metadata.tableName + " l " +
+			"ON c.listing_id = l.id " +
+			"WHERE c.user_id = " + req.params.userID
+		);
 
 		var total_price_before_tax = 0;
 		var total_fee = 0;
@@ -35,6 +56,8 @@ export class OrderController {
 		var total_price = Math.round(total_price_before_tax * (1 + this.taxRate) * 100) / 100;
 
 		res.status(200).send({
+			userInfo: userInfo,
+			cartItems: cartItems,
 			total_price_before_tax: total_price_before_tax,
 			total_tax: total_tax,
 			total_fee: total_fee,
@@ -43,8 +66,7 @@ export class OrderController {
 	}
 
 	async save(req: Request, res: Response, next: NextFunction) {
-		const requestedUser: number = parseInt(req.body.userID);
-		const cartItems = await this.cartRepository.find({ user_id: requestedUser });
+		const cartItems = await this.cartRepository.find({ user_id: req.body.userID });
 
 		//Create order
 		var newOrder: OrderModel = {
@@ -69,7 +91,7 @@ export class OrderController {
 			
 			newOrderDetails = {
 				order_id: order.id,
-				buyer_id: requestedUser,
+				buyer_id: req.body.userID,
 				listing_id: cartItem.listing_id,
 				seller_id: listing.user_id,
 				purchase_date: new Date(),
