@@ -59,7 +59,10 @@ const editFormSchema = Yup.object().shape({
   country: Yup.string()
     .required("Country is required")
     .max(64, "Maximum 64 characters"),
-  unitNumber: Yup.number()
+  unitNumber: Yup.number(),
+  city: Yup.string()
+    .required("City Name is required")
+    .max(32, "Character limit reached")
 });
 
 class EditUserForm extends React.Component<UserDisplayProps, {}> {
