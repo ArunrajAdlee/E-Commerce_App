@@ -84,7 +84,6 @@ export class ListingsController {
         category: categoryId,
         image: imageURL,
         thumbnail: thumbnailURL,
-        price: req.body.price,
         status: true,
         username: user.username,
         category_name: category.name
