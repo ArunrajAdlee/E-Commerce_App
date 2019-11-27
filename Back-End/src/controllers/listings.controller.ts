@@ -15,10 +15,10 @@ export class ListingsController {
 
   async all(req: Request, res: Response, next: NextFunction) {
     const listings = await this.listingsRepository
-    .createQueryBuilder("listings")
-    .orderBy("listings.id", "DESC")
+    .createQueryBuilder('listings')
+    .orderBy('listings.id', 'DESC')
     .getMany();
-    
+
     res.status(200).send({
       listings: listings
     });
@@ -27,9 +27,9 @@ export class ListingsController {
   //Gets all active listings
   async getActive(req: Request, res: Response, next: NextFunction) {
     const activeListings = await this.listingsRepository
-    .createQueryBuilder("listings")
-    .where("listings.status = :status", {status: true})
-    .orderBy("listings.id", "DESC")
+    .createQueryBuilder('listings')
+    .where('listings.status = :status', {status: true})
+    .orderBy('listings.id', 'DESC')
     .getMany();
 
     res.status(200).send({
@@ -86,9 +86,9 @@ export class ListingsController {
   async allWithCategory(req: Request, res: Response, next: NextFunction) {
     const requestedCategory: number = parseInt(req.params.category);
     const listingsWithCategory = await this.listingsRepository
-    .createQueryBuilder("listings")
-    .where("listings.category = :category", {category: requestedCategory})
-    .orderBy("listings.id", "DESC")
+    .createQueryBuilder('listings')
+    .where('listings.category = :category', {category: requestedCategory})
+    .orderBy('listings.id', 'DESC')
     .getMany();
 
     res.status(200).send({
@@ -98,14 +98,14 @@ export class ListingsController {
 
   async allWithSearchQuery(req: Request, res: Response, next: NextFunction) {
     const query = req.params.searchQuery.replace('+', ' ').toLowerCase();
-    const allListings: ListingsModel[] = await this.listingsRepository.find();
-
-    const searchListings = allListings.filter(listing =>
-      listing.title.toLowerCase().includes(query)
-    );
+    const listingsWithSearchQuery  = await this.listingsRepository
+    .createQueryBuilder("listings")
+    .where("listings.title like :query", {query: '%' + query + '%'})
+    .orderBy('listings.id', 'DESC')
+    .getMany();
 
     res.status(200).send({
-      listings: searchListings
+      listings: listingsWithSearchQuery
     });
   }
 
