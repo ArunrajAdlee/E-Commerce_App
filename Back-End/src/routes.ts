@@ -2,6 +2,7 @@ import { UserController } from './controllers/user.controller';
 import { ListingsController } from './controllers/listings.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
+import { CartController } from './controllers/cart.controller'; 
 export const Routes = [
   {
     method: 'get',
@@ -93,5 +94,14 @@ export const Routes = [
     route: '/categories',
     controller: CategoriesController,
     action: 'all'
+  },
+
+  //Cart
+  {
+    method: 'get',
+    route: '/cart/:user_id',
+    controller: CartController,
+    action: 'getCart'
   }
+  
 ];
