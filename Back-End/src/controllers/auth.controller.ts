@@ -1,25 +1,25 @@
-import bcrypt = require('bcryptjs');
-import { NextFunction, Request, Response } from 'express';
-import jwt = require('jsonwebtoken');
-import { getRepository } from 'typeorm';
-import { User } from '../entity/user.entity';
-import { AuthModel } from '../models/auth.model';
-import { UserModel } from '../models/user.model';
-import { Address } from '../entity/address.entity';
-import { AddressModel } from '../models/address.model';
-const { checkAuth } = require('../helpers/check-auth');
+import bcrypt = require("bcryptjs");
+import { NextFunction, Request, Response } from "express";
+import jwt = require("jsonwebtoken");
+import { getRepository } from "typeorm";
+import { User } from "../entity/user.entity";
+import { AuthModel } from "../models/auth.model";
+import { UserModel } from "../models/user.model";
+import { Address } from "../entity/address.entity";
+import { AddressModel } from "../models/address.model";
+const { checkAuth } = require("../helpers/check-auth");
 
 export class AuthController {
   private userRepository = getRepository(User);
   private adressRepository = getRepository(Address);
-  private cookieName = 'access_token';
+  private cookieName = "access_token";
 
   async createUser(req: Request, res: Response, next: NextFunction) {
     const userExists = await this.userRepository.findOne({
       username: req.body.username
     });
     if (userExists) {
-      res.status(404).send('user already exists');
+      res.status(404).send("user already exists");
       return;
     }
 
@@ -38,7 +38,7 @@ export class AuthController {
       };
       address = await this.adressRepository.save(reqAddress);
     } catch (err) {
-      res.status(404).send('Invalid address');
+      res.status(404).send("Invalid address");
     }
 
     // Hash password
@@ -59,7 +59,7 @@ export class AuthController {
     try {
       const savedUser = await this.userRepository.save(newUser);
       res.status(200).send({
-        message: 'sucessfully created the user',
+        message: "sucessfully created the user",
         savedUser
       });
     } catch (error) {
@@ -73,7 +73,7 @@ export class AuthController {
       username: req.body.username
     });
     if (!userData) {
-      res.status(404).send('user does not exist');
+      res.status(404).send("user does not exist");
       return;
     }
 
@@ -83,7 +83,7 @@ export class AuthController {
       userData.password
     );
     if (!validPassword) {
-      res.status(404).send('invalid password');
+      res.status(404).send("invalid password");
       return;
     }
 
@@ -93,8 +93,12 @@ export class AuthController {
         username: userData.username,
         id: userData.id
       },
-      'secretKey'
+      "secretKey"
     );
+
+    const addressData = await this.adressRepository.findOne({
+      id: userData.address
+    });
 
     //Create and return essential user data
     const user = {
@@ -102,7 +106,16 @@ export class AuthController {
       email: userData.email,
       first_name: userData.first_name,
       last_name: userData.last_name,
-      brand_name: userData.brand_name
+      brand_name: userData.brand_name,
+      phone_number: userData.phone_number,
+      address: userData.address,
+      street_name: addressData.street_name,
+      street_number: addressData.street_number,
+      unit_number: addressData.unit_number,
+      city: addressData.city,
+      province: addressData.province,
+      postal_code: addressData.postal_code,
+      country: addressData.country
     };
 
     res
@@ -112,23 +125,23 @@ export class AuthController {
         // uncomment 'secure' when running in production
         // secure: true
       })
-      .send({ message: 'cookie-set', user });
+      .send({ message: "cookie-set", user });
   }
 
   async remove(req: Request, res: Response, next: NextFunction) {
     // Find user to delete
     const userToRemove = await this.userRepository.findOne(req.params.id);
     if (!userToRemove) {
-      res.status(404).send('error');
+      res.status(404).send("error");
       return;
     }
 
     // Find user to delete
     const removedUser = await this.userRepository.remove(userToRemove);
     if (!removedUser) {
-      res.status(404).send('error');
+      res.status(404).send("error");
     } else {
-      res.status(200).send('successfully deleted');
+      res.status(200).send("successfully deleted");
     }
   }
 
@@ -147,12 +160,24 @@ export class AuthController {
 
       //Set user data
       if (userDatabase) {
+        const addressDatabase = await this.adressRepository.findOne({
+          id: userDatabase.address
+        });
         user = {
           username: userDatabase.username,
           email: userDatabase.email,
           first_name: userDatabase.first_name,
           last_name: userDatabase.last_name,
-          brand_name: userDatabase.brand_name
+          brand_name: userDatabase.brand_name,
+          phone_number: userDatabase.phone_number,
+          address: userDatabase.address,
+          street_name: addressDatabase.street_name,
+          street_number: addressDatabase.street_number,
+          unit_number: addressDatabase.unit_number,
+          city: addressDatabase.city,
+          province: addressDatabase.province,
+          postal_code: addressDatabase.postal_code,
+          country: addressDatabase.country
         };
       }
     }

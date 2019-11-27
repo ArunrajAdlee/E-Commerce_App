@@ -1,24 +1,24 @@
 /* eslint-disable react/no-unused-state */
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router, Switch } from 'react-router';
-import './styles/index.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { createBrowserHistory } from 'history';
-import { server, api } from './server';
-import Login, { ILoginFields } from './components/Login/login';
-import LandingPage from './components/LandingPage/landingPage';
-import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
-import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
-import ListingDetails from './components/ListingDetails/ListingDetails';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Router, Switch } from "react-router";
+import "./styles/index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { createBrowserHistory } from "history";
+import { server, api } from "./server";
+import Login, { ILoginFields } from "./components/Login/login";
+import LandingPage from "./components/LandingPage/landingPage";
+import DefaultLayout from "./layouts/DefaultLayout/defualtLayout";
+import LandingLayout from "./layouts/LandingPageLayout/landingPageLayout";
+import ListingDetails from "./components/ListingDetails/ListingDetails";
 
-import SearchPage from './components/Listings/SearchPage/searchPage';
-import CategoryPage from './components/Listings/CategoryPage/categoryPage';
-import ListingsPage from './components/Listings/ListingsPage/listingsPage';
-import SignUp from './components/SignUp/signUp';
-import { StoreContext, IUserInfo } from './store';
-import ScrollToTop from './components/Misc/scrollToTop';
-import SecureRoute from './components/Authentication/secureRoute';
+import SearchPage from "./components/Listings/SearchPage/searchPage";
+import CategoryPage from "./components/Listings/CategoryPage/categoryPage";
+import ListingsPage from "./components/Listings/ListingsPage/listingsPage";
+import SignUp from "./components/SignUp/signUp";
+import { StoreContext, IUserInfo } from "./store";
+import ScrollToTop from "./components/Misc/scrollToTop";
+import SecureRoute from "./components/Authentication/secureRoute";
 
 const history = createBrowserHistory();
 
@@ -35,25 +35,34 @@ class App extends React.Component<{}, IStates> {
     super(props);
     this.state = {
       userInfo: {
-        username: '',
-        email: '',
-        first_name: '',
-        last_name: '',
-        brand_name: '',
+        username: "",
+        email: "",
+        first_name: "",
+        last_name: "",
+        brand_name: "",
+        phone_number: "",
+        address: 0,
+        street_name: "",
+        street_number: 0,
+        unit_number: 0,
+        city: "",
+        province: "",
+        postal_code: "",
+        country: ""
       },
       isAuth: false,
       setAuthState: this.setAuthState,
       login: this.login,
-      logout: this.logout,
+      logout: this.logout
     };
   }
 
   public setAuthState = (isAuth: boolean, userInfo: IUserInfo) => {
     this.setState({
       isAuth,
-      userInfo,
+      userInfo
     });
-  }
+  };
 
   public login = async (userCredentials: ILoginFields) => {
     try {
@@ -62,23 +71,31 @@ class App extends React.Component<{}, IStates> {
         this.setAuthState(true, resp.data.user);
       }
     } catch {}
-  }
+  };
 
   public logout = async () => {
     try {
       const resp = await server.post(api.auth_logout);
       if (resp) {
         this.setAuthState(false, {
-          username: '',
-          email: '',
-          first_name: '',
-          last_name: '',
-          brand_name: '',
+          username: "",
+          email: "",
+          first_name: "",
+          last_name: "",
+          brand_name: "",
+          phone_number: "",
+          address: 0,
+          street_name: "",
+          street_number: 0,
+          unit_number: 0,
+          city: "",
+          province: "",
+          postal_code: "",
+          country: ""
         });
       }
     } catch {}
   };
-
 
   render() {
     return (
@@ -86,14 +103,60 @@ class App extends React.Component<{}, IStates> {
         <Router history={history}>
           <ScrollToTop />
           <Switch>
-            <SecureRoute authenticated path="/cart" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Your Shoppping Cart" />
-            <SecureRoute path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
-            <SecureRoute path="/listings/category/:categoryId/:categoryName" pageComponent={CategoryPage} layoutComponent={DefaultLayout} pageTitle="Category Listings" />
-            <SecureRoute path="/listings/search/:searchQuery" pageComponent={SearchPage} layoutComponent={DefaultLayout} pageTitle="Search Listings" />
-            <SecureRoute path="/listings/:id" pageComponent={ListingDetails} layoutComponent={DefaultLayout} pageTitle="Listing Details" />
-            <SecureRoute path="/listings" pageComponent={ListingsPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
-            <SecureRoute path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
-            <SecureRoute pageComponent={LandingPage} layoutComponent={LandingLayout} />
+            <SecureRoute
+              authenticated
+              path="/cart"
+              pageComponent={LandingPage}
+              layoutComponent={DefaultLayout}
+              pageTitle="Your Shoppping Cart"
+            />
+            <SecureRoute
+              path="/login"
+              pageComponent={Login}
+              layoutComponent={DefaultLayout}
+              pageTitle="Login/Register"
+            />
+            <SecureRoute
+              path="/listings/category/:categoryId/:categoryName"
+              pageComponent={CategoryPage}
+              layoutComponent={DefaultLayout}
+              pageTitle="Category Listings"
+            />
+            <SecureRoute
+              path="/listings/search/:searchQuery"
+              pageComponent={SearchPage}
+              layoutComponent={DefaultLayout}
+              pageTitle="Search Listings"
+            />
+            <SecureRoute
+              path="/listings/:id"
+              pageComponent={ListingDetails}
+              layoutComponent={DefaultLayout}
+              pageTitle="Listing Details"
+            />
+            <SecureRoute
+              path="/listings"
+              pageComponent={ListingsPage}
+              layoutComponent={DefaultLayout}
+              pageTitle="Listings"
+            />
+            <SecureRoute
+              path="/register"
+              pageComponent={SignUp}
+              layoutComponent={DefaultLayout}
+              pageTitle="Sign Up"
+            />
+
+            <SecureRoute
+              path="/profile"
+              pageComponent={UserDisplay}
+              layoutComponent={DefaultLayout}
+              pageTitle="User Profile"
+            />
+            <SecureRoute
+              pageComponent={LandingPage}
+              layoutComponent={LandingLayout}
+            />
           </Switch>
         </Router>
       </StoreContext.Provider>
@@ -101,7 +164,4 @@ class App extends React.Component<{}, IStates> {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root'),
-);
+ReactDOM.render(<App />, document.getElementById("root"));
