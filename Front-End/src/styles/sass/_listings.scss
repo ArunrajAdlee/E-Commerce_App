@@ -41,23 +41,21 @@
 
 .small-prev-container{
     max-width: 240px;
-    max-height: 240px;
 
     & img {
         width: 100%; 
-        height: 100%; 
-        object-fit: contain;
+        height: auto; 
+        display: block;
     }
 }
 
 .big-prev-container {
     max-width: 540px;
-    max-height: 540px;
 
     & img {
         width: 100%; 
-        height: 100%; 
-        object-fit: contain;
+        height: auto; 
+        display: block;
     }
 
     @media screen and (max-width: 240px) {
