@@ -31,6 +31,7 @@ interface UserDisplayProps {
 }
 export interface EditUserFormState {}
 
+//YUP form validation
 const editFormSchema = Yup.object().shape({
   email: Yup.string()
     .email()
@@ -44,13 +45,30 @@ const editFormSchema = Yup.object().shape({
     .max(32, "Maximum 32 characters"),
   streetName: Yup.string()
     .required("Street Name is required")
-    .max(64, "Maximum 64 characters")
+    .max(64, "Maximum 64 characters"),
+  streetNumber: Yup.number().required("Street Number is required"),
+  postalCode: Yup.string()
+    .required("Postal Code is required")
+    .max(64, "Maximum 64 characters"),
+  province: Yup.string()
+    .required("Province is required")
+    .max(64, "Maximum 64 characters"),
+  phoneNumber: Yup.string()
+    .required("Phone Number is required")
+    .max(64, "Maximum characters reached"),
+  country: Yup.string()
+    .required("Country is required")
+    .max(64, "Maximum 64 characters"),
+  unitNumber: Yup.number()
 });
 
 class EditUserForm extends React.Component<UserDisplayProps, {}> {
+  //Handle the form submit here
   handleSubmit(values: FormikValues, actions: any) {
     console.log("submitted");
   }
+
+  //render method
   render() {
     return (
       <Card>
@@ -58,6 +76,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
         <Card.Body>
           <Container fluid>
             <Formik
+              //Initial values for the form
               initialValues={{
                 email: this.props.email,
                 firstName: this.props.first_name,
@@ -73,6 +92,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                 phoneNumber: this.props.phone_number
               }}
               validationSchema={editFormSchema}
+              //onSubmit
               onSubmit={(values: FormikValues, actions: any) => {
                 actions.setSubmitting(true);
                 this.handleSubmit(values, actions);
@@ -88,7 +108,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                             <p>First Name</p>
                             <Field
                               name="firstName"
-                              placeholder="Username"
+                              placeholder="First Name"
                               className={`form-control ${
                                 touched.firstName && errors.firstName
                                   ? "is-invalid"
@@ -149,95 +169,165 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                         </Col>
 
                         <Col>
-                          <Form.Group controlId="editPhoneNumber">
-                            <Form.Label>Phone Number</Form.Label>
-                            <Form.Control
-                              type="text"
+                          <div className="form-group">
+                            <p>Phone Number</p>
+                            <Field
+                              name="phoneNumber"
                               placeholder="Phone Number"
-                              defaultValue={values.phoneNumber}
+                              className={`form-control ${
+                                touched.phoneNumber && errors.phoneNumber
+                                  ? "is-invalid"
+                                  : ""
+                              }`}
                             />
-                          </Form.Group>
+                            <ErrorMessage
+                              component="div"
+                              name="phoneNumber"
+                              className="invalid-feedback"
+                            />
+                          </div>
                         </Col>
                       </Row>
                     </ListGroupItem>
                     <ListGroupItem>
                       <Row>
                         <Col>
-                          <Form.Group controlId="editStreetNum">
-                            <Form.Label>Street Number</Form.Label>
-                            <Form.Control
-                              type="text"
+                          <div className="form-group">
+                            <p>Street Number</p>
+                            <Field
+                              name="streetNumber"
                               placeholder="Street Number"
-                              defaultValue={values.streetNumber}
+                              className={`form-control ${
+                                touched.streetNumber && errors.streetNumber
+                                  ? "is-invalid"
+                                  : ""
+                              }`}
                             />
-                          </Form.Group>
+                            <ErrorMessage
+                              component="div"
+                              name="streetNumber"
+                              className="invalid-feedback"
+                            />
+                          </div>
                         </Col>
 
                         <Col>
-                          <Form.Group controlId="editStreetName">
-                            <Form.Label>Street Name</Form.Label>
-                            <Form.Control
-                              type="text"
+                          <div className="form-group">
+                            <p>Street Name</p>
+                            <Field
+                              name="streetName"
                               placeholder="Street Name"
-                              defaultValue={values.streetName}
+                              className={`form-control ${
+                                touched.streetName && errors.streetName
+                                  ? "is-invalid"
+                                  : ""
+                              }`}
                             />
-                          </Form.Group>
+                            <ErrorMessage
+                              component="div"
+                              name="streetName"
+                              className="invalid-feedback"
+                            />
+                          </div>
                         </Col>
                         <Col>
-                          <Form.Group controlId="editUnit">
-                            <Form.Label>Unit Number</Form.Label>
-                            <Form.Control
-                              type="text"
+                          <div className="form-group">
+                            <p>Unit Number</p>
+                            <Field
+                              name="unitNumber"
                               placeholder="Unit Number"
-                              defaultValue={values.unitNumber}
+                              className={`form-control ${
+                                touched.unitNumber && errors.unitNumber
+                                  ? "is-invalid"
+                                  : ""
+                              }`}
                             />
-                          </Form.Group>
+                            <ErrorMessage
+                              component="div"
+                              name="unitNumber"
+                              className="invalid-feedback"
+                            />
+                          </div>
                         </Col>
                       </Row>
                     </ListGroupItem>
                     <ListGroupItem>
                       <Row>
                         <Col>
-                          <Form.Group controlId="editCity">
-                            <Form.Label>City</Form.Label>
-                            <Form.Control
-                              type="text"
+                          <div className="form-group">
+                            <p>City</p>
+                            <Field
+                              name="city"
                               placeholder="City"
-                              defaultValue={values.city}
+                              className={`form-control ${
+                                touched.city && errors.city ? "is-invalid" : ""
+                              }`}
                             />
-                          </Form.Group>
+                            <ErrorMessage
+                              component="div"
+                              name="city"
+                              className="invalid-feedback"
+                            />
+                          </div>
                         </Col>
 
                         <Col>
-                          <Form.Group controlId="editProvince">
-                            <Form.Label>Province</Form.Label>
-                            <Form.Control
-                              type="text"
+                          <div className="form-group">
+                            <p>Province</p>
+                            <Field
+                              name="province"
                               placeholder="Province"
-                              defaultValue={values.province}
+                              className={`form-control ${
+                                touched.province && errors.province
+                                  ? "is-invalid"
+                                  : ""
+                              }`}
                             />
-                          </Form.Group>
+                            <ErrorMessage
+                              component="div"
+                              name="province"
+                              className="invalid-feedback"
+                            />
+                          </div>
                         </Col>
                         <Col>
-                          <Form.Group controlId="editPostalCode">
-                            <Form.Label>Postal Code</Form.Label>
-                            <Form.Control
-                              type="text"
+                          <div className="form-group">
+                            <p>Phone Number</p>
+                            <Field
+                              name="postalCode"
                               placeholder="Postal Code"
-                              defaultValue={values.postalCode}
+                              className={`form-control ${
+                                touched.postalCode && errors.postalCode
+                                  ? "is-invalid"
+                                  : ""
+                              }`}
                             />
-                          </Form.Group>
+                            <ErrorMessage
+                              component="div"
+                              name="postalCode"
+                              className="invalid-feedback"
+                            />
+                          </div>
                         </Col>
 
                         <Col>
-                          <Form.Group controlId="editCountry">
-                            <Form.Label>Country</Form.Label>
-                            <Form.Control
-                              type="text"
+                          <div className="form-group">
+                            <p>Country</p>
+                            <Field
+                              name="country"
                               placeholder="Country"
-                              defaultValue={values.country}
+                              className={`form-control ${
+                                touched.country && errors.country
+                                  ? "is-invalid"
+                                  : ""
+                              }`}
                             />
-                          </Form.Group>
+                            <ErrorMessage
+                              component="div"
+                              name="country"
+                              className="invalid-feedback"
+                            />
+                          </div>
                         </Col>
                       </Row>
                     </ListGroupItem>
