@@ -34,5 +34,11 @@ export class Listings {
     user_id: number;
 
     @Column({nullable: true})
+    username: string;
+
+    @Column({nullable: true})
     category: number;
+
+    @Column({nullable: true})
+    category_name: string;
 }

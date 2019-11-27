@@ -9,5 +9,7 @@ export class ListingsModel {
     quantity_sold?: number;
     status?: boolean;
     user_id?: number;
+    username?: string;
     category?: number;
+    category_name?: string;
 }

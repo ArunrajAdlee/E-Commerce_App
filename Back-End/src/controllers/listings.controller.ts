@@ -15,9 +15,9 @@ export class ListingsController {
 
   async all(req: Request, res: Response, next: NextFunction) {
     const listings = await this.listingsRepository
-    .createQueryBuilder('listings')
-    .orderBy('listings.id', 'DESC')
-    .getMany();
+      .createQueryBuilder('listings')
+      .orderBy('listings.id', 'DESC')
+      .getMany();
 
     res.status(200).send({
       listings: listings
@@ -27,10 +27,10 @@ export class ListingsController {
   //Gets all active listings
   async getActive(req: Request, res: Response, next: NextFunction) {
     const activeListings = await this.listingsRepository
-    .createQueryBuilder('listings')
-    .where('listings.status = :status', {status: true})
-    .orderBy('listings.id', 'DESC')
-    .getMany();
+      .createQueryBuilder('listings')
+      .where('listings.status = :status', { status: true })
+      .orderBy('listings.id', 'DESC')
+      .getMany();
 
     res.status(200).send({
       listings: activeListings
@@ -63,14 +63,29 @@ export class ListingsController {
         '/w_255,h_270' +
         imageURL.substr(sizeInputLocation, imageURL.length - 1);
 
+      const user = await getRepository(User).findOne(authenticatedUser.id);
+      if (!user) {
+        res.status(404).send('error retrieving user');
+        return;
+      }
+
+      const categoryId = req.body.category ? req.body.category : 4;
+      let category = await getRepository(Categories).findOne(categoryId);
+      if (!category) {
+        res.status(404).send('error retrieving category');
+        return;
+      }
+
       const newProduct: ListingsModel = {
         title: req.body.title,
         stock_count: req.body.stock_count,
-        category: req.body.category ? req.body.category : 4,
+        category: categoryId,
         image: imageURL,
         thumbnail: thumbnailURL,
         price: req.body.price,
-        status: true
+        status: true,
+        username: user.username,
+        category_name: category.name
       };
       const listing = await this.listingsRepository.save(newProduct);
       res.status(200).send({
@@ -86,10 +101,10 @@ export class ListingsController {
   async allWithCategory(req: Request, res: Response, next: NextFunction) {
     const requestedCategory: number = parseInt(req.params.category);
     const listingsWithCategory = await this.listingsRepository
-    .createQueryBuilder('listings')
-    .where('listings.category = :category', {category: requestedCategory})
-    .orderBy('listings.id', 'DESC')
-    .getMany();
+      .createQueryBuilder('listings')
+      .where('listings.category = :category', { category: requestedCategory })
+      .orderBy('listings.id', 'DESC')
+      .getMany();
 
     res.status(200).send({
       listings: listingsWithCategory
@@ -98,11 +113,11 @@ export class ListingsController {
 
   async allWithSearchQuery(req: Request, res: Response, next: NextFunction) {
     const query = req.params.searchQuery.replace('+', ' ').toLowerCase();
-    const listingsWithSearchQuery  = await this.listingsRepository
-    .createQueryBuilder("listings")
-    .where("listings.title like :query", {query: '%' + query + '%'})
-    .orderBy('listings.id', 'DESC')
-    .getMany();
+    const listingsWithSearchQuery = await this.listingsRepository
+      .createQueryBuilder('listings')
+      .where('listings.title like :query', { query: '%' + query + '%' })
+      .orderBy('listings.id', 'DESC')
+      .getMany();
 
     res.status(200).send({
       listings: listingsWithSearchQuery
@@ -116,22 +131,9 @@ export class ListingsController {
       return;
     }
 
-    const user = await getRepository(User).findOne(listing.user_id);
-    if (!user) {
-      res.status(404).send('error retrieving user');
-      return;
-    }
-
-    
-    const categry = await getRepository(Categories).findOne(listing.category);
-    if (!categry) {
-      res.status(404).send('error retrieving category');
-      return;
-    }
-
     res.status(200).send({
       message: 'success',
-      listing: {...listing, username: user.username, category_name: categry.name}
+      listing: { ...listing }
     });
   }
 }
