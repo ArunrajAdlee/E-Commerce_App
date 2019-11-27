@@ -7,7 +7,7 @@ import { OrderController } from './controllers/order.controller';
 import { AdsController } from './controllers/ads.controller';
 import { ReviewsController } from './controllers/reviews.controller';
 import { AdminController } from './controllers/admin.controller';
-
+import { CartController } from './controllers/cart.controller'; 
 export const Routes = [
   //User
   {
@@ -200,5 +200,13 @@ export const Routes = [
     route: '/admin/activity',
     controller: AdminController,
     action: 'siteActivity'
+  },
+  //Cart
+  {
+    method: 'get',
+    route: '/cart/:user_id',
+    controller: CartController,
+    action: 'getCart'
   }
+  
 ];
