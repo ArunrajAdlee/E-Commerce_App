@@ -60,7 +60,8 @@ export class ListingsController {
         category: req.body.category ? req.body.category : 4,
         image: imageURL,
         thumbnail: thumbnailURL,
-        price: req.body.price
+        price: req.body.price,
+        status: true
       };
       const listing = await this.listingsRepository.save(newProduct);
       res.status(200).send({
