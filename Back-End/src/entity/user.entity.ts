@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn} from 'typeorm';
+import { Address } from './address.entity';
 
 @Entity()
 export class User {
@@ -34,4 +35,8 @@ export class User {
 
   @Column({ nullable: true })
   address: number;
+
+  @OneToOne(type => Address)
+  @JoinColumn([{ name: 'address', referencedColumnName: 'id'}])
+  fullAddress: Address;
 }

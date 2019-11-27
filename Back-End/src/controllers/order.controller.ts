@@ -1,14 +1,12 @@
 import {NextFunction, Request, Response} from 'express';
 import {getRepository} from 'typeorm';
 
-import {Address} from '../entity/address.entity';
 import {Cart} from '../entity/cart.entity';
 import {Listings} from '../entity/listings.entity';
 import {Order} from '../entity/order.entity';
 import {OrderDetails} from '../entity/orderDetails.entity';
 import {User} from '../entity/user.entity';
 
-import {AddressModel} from '../models/address.model';
 import {CartModel} from '../models/cart.model';
 import {ListingsModel} from '../models/listings.model';
 import {OrderModel} from '../models/order.model';
@@ -16,7 +14,6 @@ import {OrderDetailsModel} from '../models/orderDetails.model';
 import {UserModel} from '../models/user.model';
 
 export class OrderController {
-	private addressRepository = getRepository(Address);
 	private cartRepository = getRepository(Cart);
 	private listingsRepository = getRepository(Listings);
 	private orderRepository = getRepository(Order);
@@ -28,28 +25,28 @@ export class OrderController {
 	private defaultShippingStatus = "TEMPORARY"; //TODO: WHAT IS DEFAULT SHIPPING STATUS?
 
 	async getOrderSummary(req: Request, res: Response, next: NextFunction) {
-		const userInfo = await this.userRepository.query(
-			"SELECT * " +
-			"FROM " + this.userRepository.metadata.tableName + " u " +
-			"INNER JOIN " + this.addressRepository.metadata.tableName + " a " +
-			"ON u.address = a.id " +
-			"WHERE u.id = " + req.params.userID
-		);
+		//Get user and user address information
+		const userInfo = await this.userRepository.findOne(req.params.userID, { relations: ["fullAddress"] });
+		if(!userInfo) {
+			res.status(404).send('user not found');
+			return;
+		}
 
-		const cartItems = await this.cartRepository.query(
-			"SELECT * " +
-			"FROM " + this.cartRepository.metadata.tableName + " c " +
-			"INNER JOIN " + this.listingsRepository.metadata.tableName + " l " +
-			"ON c.listing_id = l.id " +
-			"WHERE c.user_id = " + req.params.userID
-		);
-
+		//Get cart and listing information
+		const cartItems = await this.cartRepository.find({ 
+			where: { user_id: req.params.userID }, 
+			relations: ["listing"] 
+		})
+		if(!cartItems) {
+			res.status(404).send('error retrieving cart');
+			return;
+		}
+	
+		//Compute order totals
 		var total_price_before_tax = 0;
 		var total_fee = 0;
-		var listing;
 		for (let cartItem of cartItems) {
-			listing = await this.listingsRepository.findOne(cartItem.listing_id);
-			total_price_before_tax += Math.round(listing.price * cartItem.quantity * 100) / 100;
+			total_price_before_tax += Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100;
 			total_fee += this.listingFee;
 		}
 		var total_tax = Math.round(total_price_before_tax * this.taxRate * 100) / 100;
@@ -66,12 +63,20 @@ export class OrderController {
 	}
 
 	async save(req: Request, res: Response, next: NextFunction) {
-		const cartItems = await this.cartRepository.find({ user_id: req.body.userID });
+		//Get cart and listing information
+		const cartItems = await this.cartRepository.find({ 
+			where: {user_id: req.body.userID},
+			relations: ["listing"] 
+		});
+		if(cartItems.length == 0) {
+			res.status(404).send("no items in cart")
+			return;
+		}
 
 		//Create order
 		var newOrder: OrderModel = {
 			date: new Date(),
-			shipping_type: req.body.shippingType = "TEST", //FOR EASY TESTING (REMOVE LATER)
+			shipping_type: req.body.shippingType,
 			shipped_to: req.body.userID,
 			shipping_status: this.defaultShippingStatus,
 			total_price_before_tax: 0,
@@ -84,33 +89,30 @@ export class OrderController {
 		//Create order details for each cart item
 		var total_price_before_tax = 0;
 		var total_fee = 0;
-		var listing;
 		var newOrderDetails: OrderDetailsModel;
 		for (let cartItem of cartItems) {
-			listing = await this.listingsRepository.findOne(cartItem.listing_id);
-			
 			newOrderDetails = {
 				order_id: order.id,
 				buyer_id: req.body.userID,
 				listing_id: cartItem.listing_id,
-				seller_id: listing.user_id,
+				seller_id: cartItem.listing.user_id,
 				purchase_date: new Date(),
 				quantity: cartItem.quantity,
-				price_before_tax: Math.round(listing.price * cartItem.quantity * 100) / 100,
-				tax: Math.round(listing.price * cartItem.quantity * this.taxRate * 100) / 100,
+				price_before_tax: Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100,
+				tax: Math.round(cartItem.listing.price * cartItem.quantity * this.taxRate * 100) / 100,
 				listing_fee: this.listingFee,
-				price_after_tax: Math.round(listing.price * (1 + this.taxRate) * 100) / 100,
+				price_after_tax: Math.round(cartItem.listing.price * (1 + this.taxRate) * 100) / 100,
 			};
 			await this.orderDetailsRepository.save(newOrderDetails);
-			total_price_before_tax += listing.price;
+			total_price_before_tax += cartItem.listing.price;
 			total_fee += this.listingFee;
 
-			listing.stock_count -= cartItem.quantity;
-			if(listing.stock_count <= 0) {
-				listing.stock_count = 0;
-				listing.status = false;
+			cartItem.listing.stock_count -= cartItem.quantity;
+			if(cartItem.listing.stock_count <= 0) {
+				cartItem.listing.stock_count = 0;
+				cartItem.listing.status = false;
 			}
-			await this.listingsRepository.save(listing); //Update listing stock_count and status
+			await this.listingsRepository.save(cartItem.listing); //Update listing stock_count and status
 			await this.cartRepository.remove(cartItem); //Clear cart items
 		}
 
