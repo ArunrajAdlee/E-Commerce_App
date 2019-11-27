@@ -14,7 +14,10 @@ export class ListingsController {
   private listingsRepository = getRepository(Listings);
 
   async all(req: Request, res: Response, next: NextFunction) {
-    const listings = await this.listingsRepository.find();
+    const listings = await this.listingsRepository
+    .createQueryBuilder("listings")
+    .orderBy("listings.id", "DESC")
+    .getMany();
     res.status(200).send({
       listings: listings
     });
