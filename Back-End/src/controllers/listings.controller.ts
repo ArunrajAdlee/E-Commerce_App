@@ -77,7 +77,9 @@ export class ListingsController {
       }
 
       const newProduct: ListingsModel = {
+        user_id: user.id,
         title: req.body.title,
+        description: req.body.description,
         stock_count: req.body.stock_count,
         category: categoryId,
         image: imageURL,

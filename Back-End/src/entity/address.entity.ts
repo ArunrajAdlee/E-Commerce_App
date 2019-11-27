@@ -9,21 +9,21 @@ export class Address {
     @Column()
     street_name: string;
 
-    @Column({nullable: true})
+    @Column()
     street_number: number;
 
     @Column({nullable: true})
     unit_number: number;
 
-    @Column({nullable: true})
+    @Column()
     city: string;
 
-    @Column({nullable: true})
+    @Column()
     province: string;
 
-    @Column({nullable: true})
+    @Column()
     postal_code: string;
 
-    @Column({nullable: true})
+    @Column()
     country: string;
 }
