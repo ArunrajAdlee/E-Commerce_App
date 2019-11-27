@@ -6,7 +6,7 @@ import { CategoriesController } from './controllers/categories.controller';
 import { OrderController } from './controllers/order.controller';
 import { AdsController } from './controllers/ads.controller';
 import { ReviewsController } from './controllers/reviews.controller';
-
+import { CartController } from './controllers/cart.controller'; 
 export const Routes = [
   //User
   {
@@ -179,5 +179,12 @@ export const Routes = [
     route: '/ads/:id',
     controller: AdsController,
     action: 'getClickCount'
+  //Cart
+  {
+    method: 'get',
+    route: '/cart/:user_id',
+    controller: CartController,
+    action: 'getCart'
   }
+  
 ];
