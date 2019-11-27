@@ -38,3 +38,29 @@
     padding: 8px;
     background-color: $listings-background;
 }
+
+.small-prev-container{
+    max-width: 240px;
+    max-height: 240px;
+
+    & img {
+        width: 100%; 
+        height: 100%; 
+        object-fit: contain;
+    }
+}
+
+.big-prev-container {
+    max-width: 540px;
+    max-height: 540px;
+
+    & img {
+        width: 100%; 
+        height: 100%; 
+        object-fit: contain;
+    }
+
+    @media screen and (max-width: 240px) {
+       display: none;
+      }
+}
