@@ -133,7 +133,7 @@ export class ListingsController {
 
     res.status(200).send({
       message: 'success',
-      listing: { ...listing }
+      listing: listing 
     });
   }
 }
