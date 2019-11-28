@@ -11,6 +11,7 @@ import { Sticky } from 'react-sticky';
 import { StoreContext } from '../../../store';
 import Search from '../../../components/Search/search';
 import Category from '../../../components/Category/category';
+import CreateListing from '../../../components/CreateListing';
 
 class NavigationBar extends React.Component<{}> {
     private handleLogout = () => {
@@ -65,6 +66,7 @@ class NavigationBar extends React.Component<{}> {
                               pathname: '/login',
                             }}
                           >
+
                       LOGIN
                           </Link>
                         )}
@@ -76,6 +78,17 @@ class NavigationBar extends React.Component<{}> {
                       >
                         <FontAwesomeIcon icon={faCartArrowDown} />
                       </Link>
+
+                      <Link
+                        className="nav-link"
+                        to={{
+                          pathname: '/createListing',
+                        }}
+                      >
+                        CREATE LISTING
+                      </Link>
+
+
                     </Nav>
                   </Navbar.Collapse>
                 </Navbar>
