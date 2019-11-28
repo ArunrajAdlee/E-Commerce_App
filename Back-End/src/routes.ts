@@ -4,6 +4,8 @@ import { AddressController } from './controllers/address.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
 import { OrderController } from './controllers/order.controller';
+import { ReviewsController } from './controllers/reviews.controller';
+
 export const Routes = [
   
   //User
@@ -119,5 +121,22 @@ export const Routes = [
     route: '/order/create',
     controller: OrderController,
     action: 'save'
+  //Reviews
+
+  {
+    method: 'post',
+    route: '/reviews',
+    controller: ReviewsController,
+    action: 'saveReviews'
+
+  },
+
+  {
+    method: 'get',
+    route: '/reviews/:id',
+    controller: ReviewsController,
+    action: 'getReviews'
   }
+
+
 ];
