@@ -39,6 +39,7 @@ export class AuthController {
       address = await this.adressRepository.save(reqAddress);
     } catch (err) {
       res.status(404).send('Invalid address');
+      return;
     }
 
     // Hash password
@@ -63,7 +64,7 @@ export class AuthController {
         savedUser
       });
     } catch (error) {
-      res.status(404).send(error);
+      res.status(404).send('an error has occured');
     }
   }
 

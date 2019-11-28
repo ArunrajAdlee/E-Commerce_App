@@ -44,7 +44,7 @@ const listingThumbnail = (listing: IListing) => {
       <div>
         {/* Link to listing view */}
         <Link
-          to={`/listing/${listing.id}`}
+          to={`/listings/${listing.id}`}
           className="text-decoration-none text-dark"
         >
           <Image src={listingImage} alt={listing.name} fluid />

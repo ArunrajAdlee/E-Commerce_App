@@ -14,6 +14,12 @@ export const Routes = [
   },
   {
     method: 'get',
+    route: '/listings/active',
+    controller: ListingsController,
+    action: 'getActive'
+  },
+  {
+    method: 'get',
     route: '/users/:id',
     controller: UserController,
     action: 'one'
@@ -44,12 +50,7 @@ export const Routes = [
     controller: ListingsController,
     action: 'allWithSearchQuery'
   },
-  {
-    method: 'get',
-    route: '/listings/active',
-    controller: ListingsController,
-    action: 'getActive'
-  },
+
   {
     method: 'post',
     route: '/listings',

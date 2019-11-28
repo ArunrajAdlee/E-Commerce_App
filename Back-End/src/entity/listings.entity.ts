@@ -12,27 +12,33 @@ export class Listings {
     @Column()
     stock_count: number;
 
-    @Column({nullable: true})
+    @Column({ nullable: true })
     image: string;
 
-    @Column({nullable: true})
+    @Column({ nullable: true })
     thumbnail: string;
 
-    @Column({nullable: true})
+    @Column()
     description: string;
 
-    @Column({nullable: true})
+    @Column()
     price: number;
 
-    @Column({nullable: true})
+    @Column({default: 0})
     quantity_sold: number;
 
-    @Column({nullable: true})
+    @Column()
     status: boolean;
 
-    @Column({nullable: true})
+    @Column()
     user_id: number;
 
-    @Column({nullable: true})
+    @Column()
+    username: string;
+
+    @Column()
     category: number;
+
+    @Column()
+    category_name: string;
 }
