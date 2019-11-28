@@ -32,5 +32,3 @@ VALUES ('Google Home Mini', 185, 'http://res.cloudinary.com/ddubs1/image/upload/
 'Brand New',50,0,1,1,1,'admin','Shoes'),
 ('Air Jordan 1 Retro - Orange',15,'http://res.cloudinary.com/ddubs1/image/upload/v1573185381/gith9igmymb2y8wqrrmx.png','http://res.cloudinary.com/ddubs1/image/upload/w_255,h_270/v1573185381/gith9igmymb2y8wqrrmx.png',
 'Brand New',150,0,1,1,1,'admin','Shoes');
-
-
