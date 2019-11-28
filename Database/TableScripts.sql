@@ -105,5 +105,3 @@ ALTER TABLE `listings` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 ALTER TABLE `order` ADD FOREIGN KEY (`shipped_to`) REFERENCES `address` (`id`);
 ALTER TABLE `order` ADD FOREIGN KEY (`buyer_id`) REFERENCES `user` (`id`);
-
-
