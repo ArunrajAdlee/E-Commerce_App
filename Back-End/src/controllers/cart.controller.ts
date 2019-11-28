@@ -12,7 +12,7 @@ export class CartController {
 
     async getCart(req: Request, res: Response, next: NextFunction) {
         const user_id: number = +(req.params.user_id);
-        const desiredCarts: CartModel[] = await this.cartRepository.find({user_id: user_id});
+        const desiredCarts: CartModel[] = await this.cartRepository.find({ user_id: user_id });
         if(!desiredCarts) {
             res.status(404).send('cart not found');
             return;
@@ -29,5 +29,27 @@ export class CartController {
         return cartListings;
     }
 
+    async addToCart(req: Request, res: Response, next: NextFunction) {
+        const queryParams = req.params.searchQuery.split('+');
+        const user_id: number = +(queryParams[0]);
+        const listing_id: number = +(queryParams[1]);
+        const quantity: number = +(queryParams[2]);
+        const newCart: CartModel = {
+            user_id: user_id,
+            listing_id: listing_id,
+            quantity: quantity
+        };
+
+        try {
+            const addedCart = await this.cartRepository.save(newCart);
+            res.status(200).send({
+                cart: addedCart
+            });
+        } catch (e) {
+            res.status(404).send({ //ask about the status code
+                message: 'an error accured'
+            })
+        }
+    }
     
 }

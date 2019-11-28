@@ -102,6 +102,12 @@ export const Routes = [
     route: '/cart/:user_id',
     controller: CartController,
     action: 'getCart'
+  },
+  {
+    method: 'post',
+    route: '/cart/:searchQuery', //ask for help
+    controller: CartController,
+    action: 'addToCart'
   }
   
 ];
