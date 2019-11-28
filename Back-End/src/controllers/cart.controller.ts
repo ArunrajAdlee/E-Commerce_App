@@ -4,6 +4,8 @@ import { CartModel } from '../models/cart.model';
 import { ListingsModel } from '../models/listings.model';
 import { Cart } from "../entity/cart.entity";
 import { Listings } from '../entity/listings.entity';
+import { AuthModel } from "../models/auth.model";
+const { checkAuth } = require('../helpers/check-auth');
 
 export class CartController {
 
@@ -11,8 +13,13 @@ export class CartController {
     private listingRepository = getRepository(Listings);
 
     async getCart(req: Request, res: Response, next: NextFunction) {
-        const user_id: number = +(req.params.user_id);
-        const desiredCarts: CartModel[] = await this.cartRepository.find({ user_id: user_id });
+        const authenticatedUser: AuthModel = checkAuth(req);
+        if (!authenticatedUser) {
+            res.status(404).send('user is not authenticated');
+            return;
+        }
+
+        const desiredCarts: CartModel[] = await this.cartRepository.find({ user_id: authenticatedUser.id });
         if(!desiredCarts) {
             res.status(404).send('cart not found');
             return;
@@ -30,12 +37,17 @@ export class CartController {
     }
 
     async addToCart(req: Request, res: Response, next: NextFunction) {
-        const queryParams = req.params.searchQuery.split('+');
-        const user_id: number = +(queryParams[0]);
-        const listing_id: number = +(queryParams[1]);
-        const quantity: number = +(queryParams[2]);
+        const authenticatedUser: AuthModel = checkAuth(req);
+        if (!authenticatedUser) {
+            res.status(404).send('user is not authenticated');
+            return;
+        }
+
+        const listing_id = req.body.listing_id;
+        const quantity: number = req.body.quantity;
+
         const newCart: CartModel = {
-            user_id: user_id,
+            user_id: authenticatedUser.id,
             listing_id: listing_id,
             quantity: quantity
         };
@@ -46,7 +58,7 @@ export class CartController {
                 cart: addedCart
             });
         } catch (e) {
-            res.status(404).send({ //ask about the status code
+            res.status(404).send({
                 message: 'an error accured'
             })
         }
