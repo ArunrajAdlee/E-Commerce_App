@@ -28,8 +28,8 @@ CREATE TABLE `address` (
 CREATE TABLE `listings` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `thumbnail` VARCHAR(255) NOT NULL,
+  `image` varchar(255),
+  `thumbnail` VARCHAR(255),
   `description` varchar(255) NOT NULL,
   `price` double NOT NULL,
   `stock_count` int NOT NULL,
