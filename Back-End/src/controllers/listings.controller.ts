@@ -45,30 +45,35 @@ export class ListingsController {
     }
 
     try {
-      //Take the request image and store it on the cloud
-      const reqImage = req.files.image;
+      //Default images
+      let imageURL = 'http://res.cloudinary.com/ddubs1/image/upload/v1574908017/padgc44p9ucchbiqznhp.png';
+      let thumbnailURL = 'http://res.cloudinary.com/ddubs1/image/upload/w_255,h_270/v1574908017/padgc44p9ucchbiqznhp.png';
+      if (req.files && req.files.image) {
+        //Take the request image and store it on the cloud
+        const reqImage = req.files.image;
 
-      const cloudImage = await cloudinary.uploader.upload(
-        reqImage.tempFilePath,
-        { unique_filename: true, width: 540, height: 580 }
-      );
-      const imageURL = cloudImage.url;
-      //Crop the size of the image for the thumbnail (225 x 225)
-      const sizeInputLocation = imageURL.lastIndexOf(
-        '/',
-        imageURL.lastIndexOf('/') - 1
-      );
-      const thumbnailURL =
-        imageURL.substr(0, sizeInputLocation) +
-        '/w_255,h_270' +
-        imageURL.substr(sizeInputLocation, imageURL.length - 1);
+        const cloudImage = await cloudinary.uploader.upload(
+          reqImage.tempFilePath,
+          { unique_filename: true, width: 540, height: 580 }
+        );
+        imageURL = cloudImage.url;
+        //Crop the size of the image for the thumbnail (225 x 225)
+        const sizeInputLocation = imageURL.lastIndexOf(
+          '/',
+          imageURL.lastIndexOf('/') - 1
+        );
+        thumbnailURL =
+          imageURL.substr(0, sizeInputLocation) +
+          '/w_255,h_270' +
+          imageURL.substr(sizeInputLocation, imageURL.length - 1);
+        }
 
-      const user = await getRepository(User).findOne(authenticatedUser.id);
-      if (!user) {
-        res.status(404).send('error retrieving user');
-        return;
-      }
-
+        const user = await getRepository(User).findOne(authenticatedUser.id);
+        if (!user) {
+          res.status(404).send('error retrieving user');
+          return;
+        }
+      
       const categoryId = req.body.category ? req.body.category : 4;
       let category = await getRepository(Categories).findOne(categoryId);
       if (!category) {
@@ -77,6 +82,7 @@ export class ListingsController {
       }
 
       const newProduct: ListingsModel = {
+        user_id: user.id,
         title: req.body.title,
         description: req.body.description,
         price: req.body.price,

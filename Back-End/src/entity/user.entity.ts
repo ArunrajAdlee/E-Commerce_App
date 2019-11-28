@@ -11,13 +11,13 @@ export class User {
   @Column()
   password: string;
 
-  @Column({ nullable: true })
+  @Column()
   email: string;
 
-  @Column({ nullable: true })
+  @Column()
   first_name: string;
 
-  @Column({ nullable: true })
+  @Column()
   last_name: string;
 
   @Column({ nullable: true })
@@ -32,6 +32,6 @@ export class User {
   @Column({ nullable: true })
   age: number;
 
-  @Column({ nullable: true })
-  address: number;
+  @Column()
+  address_id: number;
 }
