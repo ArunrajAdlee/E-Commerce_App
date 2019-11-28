@@ -10,6 +10,12 @@ export const Routes = [
     action: 'all'
   },
   {
+    method: 'post',
+    route: '/users/:id',
+    controller: UserController,
+    action: 'EditUserInfo'
+  },
+  {
     method: 'get',
     route: '/listings/active',
     controller: ListingsController,
