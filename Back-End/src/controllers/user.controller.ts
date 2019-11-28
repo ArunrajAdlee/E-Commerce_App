@@ -12,4 +12,11 @@ export class UserController {
   async one(req: Request, res: Response, next: NextFunction) {
     return this.userRepository.findOne(req.params.id);
   }
+
+  async EditUserInfo(req: Request, res: Response, next: NextFunction){
+    this.userRepository.createQueryBuilder('listings').update('listings')
+        .set({ username:"hello"})
+        .where("id = :id", { id: req.params.id })
+        .execute();
+  }
 }
