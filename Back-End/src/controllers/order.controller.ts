@@ -125,6 +125,7 @@ export class OrderController {
 					order_id: order.id,
 					listing_id: cartItem.listing_id,
 					seller_id: cartItem.listing.user_id,
+					purchase_date: new Date(),
 					quantity: cartItem.quantity,
 					price_before_tax: Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100,
 					tax: Math.round(cartItem.listing.price * cartItem.quantity * this.taxRate * 100) / 100,
