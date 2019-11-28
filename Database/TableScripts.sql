@@ -59,7 +59,7 @@ CREATE TABLE `order` (
   `total_fee` double NOT NULL
   );
   
-  CREATE TABLE `order_details` (
+CREATE TABLE `order_details` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `order_id` int(11) NOT NULL,
   `listing_id` int(11) NOT NULL,
