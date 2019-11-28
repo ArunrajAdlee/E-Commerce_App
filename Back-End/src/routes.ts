@@ -2,6 +2,8 @@ import { UserController } from './controllers/user.controller';
 import { ListingsController } from './controllers/listings.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
+import { ReviewsController } from './controllers/reviews.controller';
+
 export const Routes = [
   {
     method: 'get',
@@ -93,5 +95,24 @@ export const Routes = [
     route: '/categories',
     controller: CategoriesController,
     action: 'all'
+  },
+
+  //Reviews
+
+  {
+    method: 'post',
+    route: '/reviews',
+    controller: ReviewsController,
+    action: 'saveReviews'
+
+  },
+
+  {
+    method: 'get',
+    route: '/reviews/:id',
+    controller: ReviewsController,
+    action: 'getReviews'
   }
+
+
 ];
