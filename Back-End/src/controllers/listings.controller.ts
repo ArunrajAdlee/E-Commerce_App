@@ -5,7 +5,6 @@ import { AuthModel } from '../models/auth.model';
 import { ListingsModel } from '../models/listings.model';
 import { User } from '../entity/user.entity';
 import { Categories } from '../entity/categories.entity';
-
 // tslint:disable-next-line
 const { checkAuth } = require('../helpers/check-auth');
 // tslint:disable-next-line
