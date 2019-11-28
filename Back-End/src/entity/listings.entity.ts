@@ -12,10 +12,10 @@ export class Listings {
     @Column()
     stock_count: number;
 
-    @Column()
+    @Column({ nullable: true })
     image: string;
 
-    @Column()
+    @Column({ nullable: true })
     thumbnail: string;
 
     @Column()
