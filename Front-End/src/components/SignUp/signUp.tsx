@@ -19,10 +19,12 @@ interface ISignUpValues {
   lastName: string;
   brandName: string
   streetNumber: number;
+  age: number,
   streetName: string;
   unitNumber: number;
   country: string;
   city: string;
+  province: string;
   postalCode: string;
   phoneNumber: string;
 }
@@ -59,6 +61,24 @@ const SignUpSchema = Yup.object().shape({
   streetName: Yup.string()
     .required('Street Name is required')
     .max(64, 'Maximum 64 characters'),
+  province: Yup.string()
+    .required('Province/State is required')
+    .max(32, 'Maximum 32 characters'),
+  city: Yup.string()
+    .required('City is required')
+    .max(32, 'Maximum 32 characters'),
+  country: Yup.string()
+    .required('Country is required')
+    .max(32, 'Maximum 32 characters'),
+  streetNumber: Yup.number()
+    .required('Street Number is required')
+    .typeError('Enter a number'),
+  postalCode: Yup.string()
+    .required('Postal Code is required')
+    .max(8, 'Maximum 8 characters')
+    .typeError('Enter a number'),
+  age: Yup.number()
+    .typeError('Enter a number'),
 });
 
 class SignUp extends React.Component<{}, IStates> {
@@ -97,7 +117,7 @@ class SignUp extends React.Component<{}, IStates> {
               ) : ''}
             <Formik
               initialValues={{
-                username: '', email: '', password: '', confirmPassword: '', firstName: '', lastName: '', brandName: '', streetNumber: undefined, streetName: '', unitNumber: undefined, city: '', country: '', postalCode: '', phoneNumber: '',
+                username: '', email: '', password: '', province: '', age: '', confirmPassword: '', firstName: '', lastName: '', brandName: '', streetNumber: '', streetName: '', unitNumber: '', city: '', country: '', postalCode: '', phoneNumber: '',
               }}
               validationSchema={SignUpSchema}
               onSubmit={(values: FormikValues, actions: any) => {
@@ -177,7 +197,7 @@ class SignUp extends React.Component<{}, IStates> {
                       </div>
                     </Col>
 
-                    <Col sm={12} lg={6}>
+                    <Col sm={12} lg={5}>
                       <div className="form-group">
                         <Field
                           name="firstName"
@@ -194,7 +214,7 @@ class SignUp extends React.Component<{}, IStates> {
                       </div>
                     </Col>
 
-                    <Col sm={12} lg={6}>
+                    <Col sm={12} lg={5}>
                       <div className="form-group">
                         <Field
                           name="lastName"
@@ -211,6 +231,24 @@ class SignUp extends React.Component<{}, IStates> {
                       </div>
                     </Col>
 
+                    <Col sm={12} lg={2}>
+                      <div className="form-group">
+                        <Field
+                          type="number"
+                          name="age"
+                          placeholder="Age"
+                          className={`form-control no-ticker styled-input ${
+                            touched.age && errors.age ? 'is-invalid' : ''
+                          }`}
+                        />
+                        <ErrorMessage
+                          component="div"
+                          name="age"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                    </Col>
+
 
                     <Col sm={12} lg={3}>
                       <div className="form-group">
@@ -218,7 +256,14 @@ class SignUp extends React.Component<{}, IStates> {
                           type="number"
                           name="streetNumber"
                           placeholder="Street Number"
-                          className="form-control styled-input no-ticker"
+                          className={`form-control no-ticker styled-input ${
+                            touched.streetNumber && errors.streetNumber ? 'is-invalid' : ''
+                          }`}
+                        />
+                        <ErrorMessage
+                          component="div"
+                          name="streetNumber"
+                          className="invalid-feedback"
                         />
                       </div>
                     </Col>
@@ -251,7 +296,7 @@ class SignUp extends React.Component<{}, IStates> {
                       </div>
                     </Col>
 
-                    <Col sm={12} lg={6}>
+                    <Col sm={12} lg={4}>
                       <div className="form-group">
                         <Field
                           name="city"
@@ -268,7 +313,25 @@ class SignUp extends React.Component<{}, IStates> {
                       </div>
                     </Col>
 
-                    <Col sm={12} lg={6}>
+
+                    <Col sm={12} lg={4}>
+                      <div className="form-group">
+                        <Field
+                          name="province"
+                          placeholder="Province / State"
+                          className={`form-control styled-input ${
+                            touched.province && errors.province ? 'is-invalid' : ''
+                          }`}
+                        />
+                        <ErrorMessage
+                          component="div"
+                          name="province"
+                          className="invalid-feedback"
+                        />
+                      </div>
+                    </Col>
+
+                    <Col sm={12} lg={4}>
                       <div className="form-group">
                         <Field
                           name="country"
