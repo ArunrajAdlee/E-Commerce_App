@@ -73,7 +73,7 @@ CREATE TABLE `order` (
 ); 
 
 
-  CREATE TABLE `cart` (
+CREATE TABLE `cart` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `listing_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
