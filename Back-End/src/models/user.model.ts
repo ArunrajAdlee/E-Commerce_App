@@ -8,5 +8,5 @@ export class UserModel {
   date_of_birth?: Date;
   phone_number?: string;
   age?: number;
-  address?: number;
+  address_id?: number;
 }

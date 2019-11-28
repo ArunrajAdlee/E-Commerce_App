@@ -52,7 +52,7 @@ export class AuthController {
       last_name: req.body.lastName,
       brand_name: req.body.brandName,
       phone_number: req.body.phoneNumber,
-      address: address.id
+      address_id: address.id
     };
 
     // Save new user to the database

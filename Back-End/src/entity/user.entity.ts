@@ -34,9 +34,9 @@ export class User {
   age: number;
 
   @Column({ nullable: true })
-  address: number;
+  address_id: number;
 
   @OneToOne(type => Address)
-  @JoinColumn([{ name: 'address', referencedColumnName: 'id'}])
-  fullAddress: Address;
+  @JoinColumn([{ name: 'address_id', referencedColumnName: 'id'}])
+  address: Address;
 }

@@ -7,11 +7,14 @@ import {Order} from '../entity/order.entity';
 import {OrderDetails} from '../entity/orderDetails.entity';
 import {User} from '../entity/user.entity';
 
+import {AuthModel} from '../models/auth.model';
 import {CartModel} from '../models/cart.model';
 import {ListingsModel} from '../models/listings.model';
 import {OrderModel} from '../models/order.model';
 import {OrderDetailsModel} from '../models/orderDetails.model';
 import {UserModel} from '../models/user.model';
+
+const {checkAuth} = require('../helpers/check-auth');
 
 export class OrderController {
 	private cartRepository = getRepository(Cart);
@@ -25,16 +28,18 @@ export class OrderController {
 	private defaultShippingStatus = "TEMPORARY"; //TODO: WHAT IS DEFAULT SHIPPING STATUS?
 
 	async getOrderSummary(req: Request, res: Response, next: NextFunction) {
+		const authenticatedUser: AuthModel = checkAuth(req);
+	    if (!authenticatedUser) {
+	      res.status(404).send('user is not authenticated');
+	      return;
+	    }
+
 		//Get user and user address information
-		const userInfo = await this.userRepository.findOne(req.params.userID, { relations: ["fullAddress"] });
-		if(!userInfo) {
-			res.status(404).send('user not found');
-			return;
-		}
+		const userInfo = await this.userRepository.findOne(2, { relations: ["address"] });
 
 		//Get cart and listing information
 		const cartItems = await this.cartRepository.find({ 
-			where: { user_id: req.params.userID }, 
+			where: { user_id: authenticatedUser.id }, 
 			relations: ["listing"] 
 		})
 		if(!cartItems) {
@@ -63,9 +68,16 @@ export class OrderController {
 	}
 
 	async save(req: Request, res: Response, next: NextFunction) {
+		const authenticatedUser: AuthModel = checkAuth(req);
+	    if (!authenticatedUser) {
+	      res.status(404).send('user is not authenticated');
+	      return;
+	    }
+	    const user = await this.userRepository.findOne(authenticatedUser.id);
+
 		//Get cart and listing information
 		const cartItems = await this.cartRepository.find({ 
-			where: {user_id: req.body.userID},
+			where: {user_id: authenticatedUser.id},
 			relations: ["listing"] 
 		});
 		if(cartItems.length == 0) {
@@ -87,9 +99,10 @@ export class OrderController {
 
 		//Create order
 		var newOrder: OrderModel = {
+			buyer_id: authenticatedUser.id,
 			date: new Date(),
 			shipping_type: req.body.shippingType,
-			shipped_to: req.body.userID,
+			shipped_to: user.address_id,
 			shipping_status: this.defaultShippingStatus,
 			total_price_before_tax: 0,
 			total_tax: 0,
@@ -109,10 +122,8 @@ export class OrderController {
 		for (let cartItem of cartItems) {
 			newOrderDetails = {
 				order_id: order.id,
-				buyer_id: req.body.userID,
 				listing_id: cartItem.listing_id,
 				seller_id: cartItem.listing.user_id,
-				purchase_date: new Date(),
 				quantity: cartItem.quantity,
 				price_before_tax: Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100,
 				tax: Math.round(cartItem.listing.price * cartItem.quantity * this.taxRate * 100) / 100,

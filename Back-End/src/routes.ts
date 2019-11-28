@@ -100,7 +100,7 @@ export const Routes = [
   //Order
   {
     method: 'get',
-    route: '/order/summary/:userID',
+    route: '/order/summary',
     controller: OrderController,
     action: 'getOrderSummary'
   },

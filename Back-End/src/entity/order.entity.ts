@@ -7,13 +7,16 @@ export class Order {
     id: number;
 
     @Column()
+    buyer_id: number;
+
+    @Column()
     date: Date;
 
     @Column()
     shipping_type: string;
 
     @Column()
-    shipped_to: string;
+    shipped_to: number;
 
     @Column()
     shipping_status: string;

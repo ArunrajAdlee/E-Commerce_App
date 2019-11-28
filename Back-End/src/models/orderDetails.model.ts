@@ -1,10 +1,9 @@
 export class OrderDetailsModel {
-	order_details_id?: number;
+	id?: number;
 	order_id: number;
-	buyer_id: number;
 	listing_id: number;
 	seller_id: number;
-	purchase_date: Date;
+	purchase_date?: Date;
 	quantity: number;
 	price_before_tax: number;
 	tax: number;

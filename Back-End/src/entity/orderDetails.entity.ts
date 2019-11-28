@@ -4,13 +4,10 @@ import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 export class OrderDetails {
 
     @PrimaryGeneratedColumn()
-    order_details_id: number;
+    id: number;
 
     @Column()
     order_id: number;
-
-    @Column()
-    buyer_id: number;
 
     @Column()
     listing_id: number;
@@ -18,7 +15,7 @@ export class OrderDetails {
     @Column()
     seller_id: number;
 
-    @Column()
+    @Column({ nullable: true })
     purchase_date: Date;
 
     @Column()
