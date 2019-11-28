@@ -45,8 +45,9 @@ export class ListingsController {
     }
 
     try {
-      let imageURL;
-      let thumbnailURL;
+      //Default images
+      let imageURL = 'http://res.cloudinary.com/ddubs1/image/upload/v1574908017/padgc44p9ucchbiqznhp.png';
+      let thumbnailURL = 'http://res.cloudinary.com/ddubs1/image/upload/w_255,h_270/v1574908017/padgc44p9ucchbiqznhp.png';
       if (req.files && req.files.image) {
         //Take the request image and store it on the cloud
         const reqImage = req.files.image;
@@ -86,8 +87,8 @@ export class ListingsController {
         description: req.body.description,
         stock_count: req.body.stock_count,
         category: categoryId,
-        image: imageURL ? imageURL : null,
-        thumbnail: thumbnailURL ? thumbnailURL : null,
+        image: imageURL,
+        thumbnail: thumbnailURL,
         price: req.body.price,
         status: true,
         username: user.username,
