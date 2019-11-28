@@ -11,7 +11,7 @@ export const Routes = [
   },
   {
     method: 'post',
-    route: '/users/:id',
+    route: '/users',
     controller: UserController,
     action: 'EditUserInfo'
   },
