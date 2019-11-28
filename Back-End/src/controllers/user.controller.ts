@@ -46,11 +46,11 @@ export class UserController {
     //update the following fields based on the address ID associated to the user---------
     this.addressRepository.createQueryBuilder('Address').update('Address')
         .set({ street_name:"sample",street_number:5,city:"quebec",province:"canada",country:"brazil"})
-        .where("id = :id", { id: user.address})
+        .where("id = :id", { id: user.address_id})
         .execute();
 
 
-    const address = await this.addressRepository.findOne(user.address);
+    const address = await this.addressRepository.findOne(user.address_id);
     if (!address) {
       res.status(404).send({
         message: 'error'
