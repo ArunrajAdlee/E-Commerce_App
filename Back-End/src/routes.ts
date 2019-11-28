@@ -99,13 +99,13 @@ export const Routes = [
   //Cart
   {
     method: 'get',
-    route: '/cart/:user_id',
+    route: '/cart',
     controller: CartController,
     action: 'getCart'
   },
   {
     method: 'post',
-    route: '/cart/:searchQuery', //ask for help
+    route: '/cart', 
     controller: CartController,
     action: 'addToCart'
   }
