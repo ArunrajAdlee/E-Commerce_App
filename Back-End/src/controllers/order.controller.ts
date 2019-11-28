@@ -97,63 +97,68 @@ export class OrderController {
 			}
 		}
 
-		//Create order
-		var newOrder: OrderModel = {
-			buyer_id: authenticatedUser.id,
-			date: new Date(),
-			shipping_type: req.body.shippingType,
-			shipped_to: user.address_id,
-			shipping_status: this.defaultShippingStatus,
-			total_price_before_tax: 0,
-			total_tax: 0,
-			total_price: 0,
-			total_fee: 0
-		};
-		var order = await this.orderRepository.save(newOrder);
-		if(!order) {
-			res.status(404).send("error creating order");
-			return;
-		}
-
-		//Create order details for each cart item
-		var total_price_before_tax = 0;
-		var total_fee = 0;
-		var newOrderDetails: OrderDetailsModel;
-		for (let cartItem of cartItems) {
-			newOrderDetails = {
-				order_id: order.id,
-				listing_id: cartItem.listing_id,
-				seller_id: cartItem.listing.user_id,
-				quantity: cartItem.quantity,
-				price_before_tax: Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100,
-				tax: Math.round(cartItem.listing.price * cartItem.quantity * this.taxRate * 100) / 100,
-				listing_fee: this.listingFee,
-				price_after_tax: Math.round(cartItem.listing.price * (1 + this.taxRate) * 100) / 100,
+		try {
+			//Create order
+			var newOrder: OrderModel = {
+				buyer_id: authenticatedUser.id,
+				date: new Date(),
+				shipping_type: req.body.shippingType,
+				shipped_to: user.address_id,
+				shipping_status: this.defaultShippingStatus,
+				total_price_before_tax: 0,
+				total_tax: 0,
+				total_price: 0,
+				total_fee: 0
 			};
-			await this.orderDetailsRepository.save(newOrderDetails);
-			total_price_before_tax += cartItem.listing.price;
-			total_fee += this.listingFee;
-
-			//Update listing stock and sold
-			cartItem.listing.stock_count -= cartItem.quantity;
-			cartItem.listing.quantity_sold += cartItem.quantity;
-			if(cartItem.listing.stock_count == 0) {
-				cartItem.listing.status = false;
+			var order = await this.orderRepository.save(newOrder);
+			if(!order) {
+				res.status(404).send("error creating order");
+				return;
 			}
 
-			await this.listingsRepository.save(cartItem.listing); //Update listing stock_count and status
-			await this.cartRepository.remove(cartItem); //Clear cart items
+			//Create order details for each cart item
+			var total_price_before_tax = 0;
+			var total_fee = 0;
+			var newOrderDetails: OrderDetailsModel;
+			for (let cartItem of cartItems) {
+				newOrderDetails = {
+					order_id: order.id,
+					listing_id: cartItem.listing_id,
+					seller_id: cartItem.listing.user_id,
+					quantity: cartItem.quantity,
+					price_before_tax: Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100,
+					tax: Math.round(cartItem.listing.price * cartItem.quantity * this.taxRate * 100) / 100,
+					listing_fee: this.listingFee,
+					price_after_tax: Math.round(cartItem.listing.price * (1 + this.taxRate) * 100) / 100,
+				};
+				await this.orderDetailsRepository.save(newOrderDetails);
+				total_price_before_tax += cartItem.listing.price;
+				total_fee += this.listingFee;
+
+				//Update listing stock and sold
+				cartItem.listing.stock_count -= cartItem.quantity;
+				cartItem.listing.quantity_sold += cartItem.quantity;
+				if(cartItem.listing.stock_count == 0) {
+					cartItem.listing.status = false;
+				}
+
+				await this.listingsRepository.save(cartItem.listing); //Update listing stock_count and status
+				await this.cartRepository.remove(cartItem); //Clear cart items
+			}
+
+			//Compute order totals and update order
+			order.total_price_before_tax = total_price_before_tax;
+			order.total_tax = Math.round(total_price_before_tax * this.taxRate * 100) / 100;
+			order.total_fee = total_fee;
+			order.total_price = total_price_before_tax + order.total_tax;
+			await this.orderRepository.save(order);
+
+			res.status(200).send({
+	        	order: order
+			});
 		}
-
-		//Compute order totals and update order
-		order.total_price_before_tax = total_price_before_tax;
-		order.total_tax = Math.round(total_price_before_tax * this.taxRate * 100) / 100;
-		order.total_fee = total_fee;
-		order.total_price = total_price_before_tax + order.total_tax;
-		await this.orderRepository.save(order);
-
-		res.status(200).send({
-        	order: order
-		});
+		catch(e) {
+			res.status(404).send("an error has occured");
+		}
 	}
 }
