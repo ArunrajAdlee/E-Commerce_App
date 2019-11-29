@@ -35,7 +35,7 @@ export class OrderController {
 	    }
 
 		//Get user and user address information
-		const userInfo = await this.userRepository.findOne(2, { relations: ["address"] });
+		const userInfo = await this.userRepository.findOne(authenticatedUser.id, { relations: ["address"] });
 
 		//Get cart and listing information
 		const cartItems = await this.cartRepository.find({ 
