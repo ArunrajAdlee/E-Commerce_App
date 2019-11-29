@@ -25,6 +25,8 @@ export class OrderController {
 
 	private taxRate = 0.15;
 	private listingFeeRate = 0.08;
+	private reducedListingFeeRate = 0.03;
+	private reducedFeeItemLimit = 10;
 	private defaultShippingStatus = "Processing Order";
 
 	async getOrderSummary(req: Request, res: Response, next: NextFunction) {
@@ -121,6 +123,14 @@ export class OrderController {
 			var total_fee = 0;
 			var newOrderDetails: OrderDetailsModel;
 			for (let cartItem of cartItems) {
+				//Determine listing fee
+				var itemsSold = await this.countItemsSold(cartItem.listing.user_id);
+				var appliedFeeRate = this.listingFeeRate;
+				if(itemsSold <= this.reducedFeeItemLimit) {
+					appliedFeeRate = this.reducedListingFeeRate;
+				}
+
+				//Create order detail	
 				newOrderDetails = {
 					order_id: order.id,
 					listing_id: cartItem.listing_id,
@@ -129,7 +139,7 @@ export class OrderController {
 					quantity: cartItem.quantity,
 					price_before_tax: Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100,
 					tax: Math.round(cartItem.listing.price * cartItem.quantity * this.taxRate * 100) / 100,
-					listing_fee: Math.round(cartItem.listing.price * this.listingFeeRate * 100) / 100,
+					listing_fee: Math.round(cartItem.listing.price * appliedFeeRate * 100) / 100,
 					price_after_tax: Math.round(cartItem.listing.price * (1 + this.taxRate) * 100) / 100,
 				};
 				await this.orderDetailsRepository.save(newOrderDetails);
@@ -161,5 +171,15 @@ export class OrderController {
 		catch(e) {
 			res.status(404).send("an error has occured");
 		}
+	}
+
+	async countItemsSold(userID: number) {
+		const quantity_sold = await this.listingsRepository
+			.createQueryBuilder('listings')
+			.select("SUM(quantity_sold)", "sum")
+			.where("user_id = " +  userID)
+			.getRawOne();
+		
+		return  quantity_sold.sum;
 	}
 }
