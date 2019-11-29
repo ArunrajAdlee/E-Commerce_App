@@ -11,7 +11,8 @@ CREATE TABLE `user` (
   `date_of_birth` date,
   `phone_number` VARCHAR(255),
   `age` integer,
-  `address_id` int NOT NULL
+  `address_id` int NOT NULL,
+  `isAdmin` BOOL DEFAULT FALSE
 );
 
 CREATE TABLE `address` (
