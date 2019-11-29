@@ -33,5 +33,19 @@ export class ReviewsController {
                     res.status(404).send({message: 'failed to save'});
                 }
             }
-        }
-    
+            
+            async getReviews(req: Request, res: Response, next: NextFunction) {
+              const reviewsWithSellerId = await this.reviewsRepository
+                .createQueryBuilder('reviews')
+                .where('reviews.seller_id = :seller_id' , { seller_id: req.params.seller_id })
+                .orderBy('reviews.id', 'DESC')
+                .getMany();
+          
+              res.status(200).send({
+                reviews: reviewsWithSellerId
+              });
+            }
+      
+}
+
+      

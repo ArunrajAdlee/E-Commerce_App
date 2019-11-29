@@ -133,7 +133,7 @@ export const Routes = [
 
   {
     method: 'get',
-    route: '/reviews/:id',
+    route: '/reviews/:seller_id',
     controller: ReviewsController,
     action: 'getReviews'
   }
