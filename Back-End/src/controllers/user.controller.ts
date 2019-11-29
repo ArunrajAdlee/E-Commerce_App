@@ -26,13 +26,9 @@ export class UserController {
       return;
     }
 
-    // Hash password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
     //update the following fields based on the userID-------
     this.userRepository.createQueryBuilder('User').update('User')
-        .set({ first_name:req.body.first_name,last_name:req.body.last_name,email:req.body.email,phone_number:req.body.phone_number,password:hashedPassword})
+        .set({ first_name:req.body.first_name,last_name:req.body.last_name,email:req.body.email,phone_number:req.body.phone_number})
         .where("id = :id", { id: authenticatedUser.id })
         .execute();
 
@@ -40,12 +36,12 @@ export class UserController {
     const user = await this.userRepository.findOne(req.params.id); //store user info in a variable------
     if (!user) {
       res.status(404).send({
-        message: 'an error occured'
+        message: 'an error occurred'
       })
     }
     //update the following fields based on the address ID associated to the user---------
     this.addressRepository.createQueryBuilder('Address').update('Address')
-        .set({ street_name:"sample",street_number:5,city:"quebec",province:"canada",country:"brazil"})
+        .set({ street_name:req.body.street_name,street_number:req.body.street_number,city:req.body.city,province:req.body.province,country:req.body.country})
         .where("id = :id", { id: user.address_id})
         .execute();
 
