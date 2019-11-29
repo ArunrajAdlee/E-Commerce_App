@@ -14,6 +14,8 @@ export interface UserDisplayState {
   currentDisplay: number;
 }
 
+// Main Display of the user profile page
+// Holds the components for side navigation bar, user info, order history, listings, and review history
 class UserDisplay extends React.Component<IProps, UserDisplayState> {
   constructor(props: IProps) {
     super(props);
