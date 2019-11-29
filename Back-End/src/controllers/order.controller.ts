@@ -23,7 +23,7 @@ export class OrderController {
 	private orderDetailsRepository = getRepository(OrderDetails);
 	private userRepository = getRepository(User);
 
-	private taxRate = 0.15; //TODO: CONFIRM TAX RATE = 15%
+	private taxRate = 0.15;
 	private listingFee = 0; //TODO: WHAT IS LISTING FEE?
 	private defaultShippingStatus = "TEMPORARY"; //TODO: WHAT IS DEFAULT SHIPPING STATUS?
 
@@ -103,7 +103,7 @@ export class OrderController {
 				buyer_id: authenticatedUser.id,
 				date: new Date(),
 				shipping_type: req.body.shippingType,
-				shipped_to: user.address_id,
+				shipped_to: req.body.addressID,
 				shipping_status: this.defaultShippingStatus,
 				total_price_before_tax: 0,
 				total_tax: 0,
