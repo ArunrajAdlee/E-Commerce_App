@@ -24,8 +24,8 @@ export class OrderController {
 	private userRepository = getRepository(User);
 
 	private taxRate = 0.15;
-	private listingFee = 0; //TODO: WHAT IS LISTING FEE?
-	private defaultShippingStatus = "TEMPORARY"; //TODO: WHAT IS DEFAULT SHIPPING STATUS?
+	private listingFeeRate = 0.08;
+	private defaultShippingStatus = "Processing Order";
 
 	async getOrderSummary(req: Request, res: Response, next: NextFunction) {
 		const authenticatedUser: AuthModel = checkAuth(req);
@@ -52,7 +52,7 @@ export class OrderController {
 		var total_fee = 0;
 		for (let cartItem of cartItems) {
 			total_price_before_tax += Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100;
-			total_fee += this.listingFee;
+			total_fee += Math.round(cartItem.listing.price * this.listingFeeRate * 100) / 100;
 		}
 		var total_tax = Math.round(total_price_before_tax * this.taxRate * 100) / 100;
 		var total_price = Math.round(total_price_before_tax * (1 + this.taxRate) * 100) / 100;
@@ -129,12 +129,12 @@ export class OrderController {
 					quantity: cartItem.quantity,
 					price_before_tax: Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100,
 					tax: Math.round(cartItem.listing.price * cartItem.quantity * this.taxRate * 100) / 100,
-					listing_fee: this.listingFee,
+					listing_fee: Math.round(cartItem.listing.price * this.listingFeeRate * 100) / 100,
 					price_after_tax: Math.round(cartItem.listing.price * (1 + this.taxRate) * 100) / 100,
 				};
 				await this.orderDetailsRepository.save(newOrderDetails);
-				total_price_before_tax += cartItem.listing.price;
-				total_fee += this.listingFee;
+				total_price_before_tax += cartItem.listing.price; //Compute order's total price before tax
+				total_fee += newOrderDetails.listing_fee //Compute order's total fee
 
 				//Update listing stock and sold
 				cartItem.listing.stock_count -= cartItem.quantity;

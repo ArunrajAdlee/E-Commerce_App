@@ -1,5 +1,6 @@
 import { UserController } from './controllers/user.controller';
 import { ListingsController } from './controllers/listings.controller';
+import { AddressController } from './controllers/address.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
 import { OrderController } from './controllers/order.controller';
@@ -55,6 +56,14 @@ export const Routes = [
     method: 'post',
     route: '/listings',
     controller: ListingsController,
+    action: 'save'
+  },
+
+  //Address
+  {
+    method: 'post',
+    route: '/address/create',
+    controller: AddressController,
     action: 'save'
   },
 
