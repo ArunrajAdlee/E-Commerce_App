@@ -45,6 +45,9 @@ const editFormSchema = Yup.object().shape({
   streetName: Yup.string()
     .required("Street Name is required")
     .max(64, "Maximum 64 characters"),
+  brandName: Yup.string()
+    .required("Brand Name is required")
+    .max(64, "Maximum 64 characters"),
   streetNumber: Yup.number().required("Street Number is required"),
   postalCode: Yup.string()
     .required("Postal Code is required")
@@ -71,6 +74,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
     console.log("Here");
     const formData = new FormData();
     formData.append("email", values.email);
+    formData.append("brand_name", values.brandName);
     formData.append("first_name", values.firstName);
     formData.append("last_name", values.lastName);
     formData.append("street_number", values.streetNumber);
@@ -99,7 +103,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                 email: this.props.email,
                 firstName: this.props.first_name,
                 lastName: this.props.last_name,
-                brandName: "",
+                brandName: this.props.brand_name,
                 streetNumber: this.props.street_number,
                 streetName: this.props.street_name,
                 unitNumber: this.props.unit_number,
@@ -120,6 +124,27 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                 <Form>
                   <ListGroup className="list-group-flush">
                     <ListGroupItem>
+                      <Row>
+                        <Col>
+                          <div className="form-group">
+                            <p>Brand Name</p>
+                            <Field
+                              name="brandName"
+                              placeholder="Brand Name"
+                              className={`form-control ${
+                                touched.brandName && errors.brandName
+                                  ? "is-invalid"
+                                  : ""
+                                }`}
+                            />
+                            <ErrorMessage
+                              component="div"
+                              name="brandName"
+                              className="invalid-feedback"
+                            />
+                          </div>
+                        </Col>
+                      </Row>
                       <Row>
                         <Col>
                           <div className="form-group">

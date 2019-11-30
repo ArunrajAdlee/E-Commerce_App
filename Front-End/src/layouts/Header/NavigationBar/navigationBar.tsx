@@ -66,7 +66,7 @@ class NavigationBar extends React.Component<{}> {
                               pathname: "/createListing"
                             }}
                           >
-                            CREATE LISTING
+                            Create Listing
                           </Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
@@ -80,15 +80,15 @@ class NavigationBar extends React.Component<{}> {
                         </Dropdown.Item>{" "}
                       </DropdownButton>
                     ) : (
-                      <Link
-                        className="nav-link"
-                        to={{
-                          pathname: "/login"
-                        }}
-                      >
-                        LOGIN
+                        <Link
+                          className="nav-link"
+                          to={{
+                            pathname: "/login"
+                          }}
+                        >
+                          LOGIN
                       </Link>
-                    )}
+                      )}
                     <Link
                       className="nav-link"
                       to={{
