@@ -34,4 +34,7 @@ export class User {
 
   @Column()
   address_id: number;
+
+  @Column({default: false})
+  isAdmin: boolean;
 }

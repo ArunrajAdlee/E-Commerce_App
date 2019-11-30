@@ -9,4 +9,5 @@ export class UserModel {
   phone_number?: string;
   age?: number;
   address_id: number;
+  isAdmin?: boolean;
 }

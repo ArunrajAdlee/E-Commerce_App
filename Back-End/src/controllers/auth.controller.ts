@@ -78,6 +78,8 @@ export class AuthController {
       return;
     }
 
+    //Check if user is an admin
+    const isAdmin = userData.isAdmin;
     // Validate password
     const validPassword = await bcrypt.compare(
       req.body.password,
@@ -92,7 +94,8 @@ export class AuthController {
     const token = jwt.sign(
       {
         username: userData.username,
-        id: userData.id
+        id: userData.id,
+        isAdmin: isAdmin
       },
       'secretKey'
     );

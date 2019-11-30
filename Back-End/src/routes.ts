@@ -2,6 +2,7 @@ import { UserController } from './controllers/user.controller';
 import { ListingsController } from './controllers/listings.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
+import { AdminController } from './controllers/admin.controller';
 export const Routes = [
   {
     method: 'get',
@@ -93,5 +94,13 @@ export const Routes = [
     route: '/categories',
     controller: CategoriesController,
     action: 'all'
+  },
+
+  //Admin
+  {
+  method: 'get',
+  route: '/admin/listings',
+  controller: AdminController,
+  action: 'listings'
   }
 ];
