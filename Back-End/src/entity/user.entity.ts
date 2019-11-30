@@ -36,6 +36,12 @@ export class User {
   @Column()
   address_id: number;
 
+  @Column({nullable: true})
+  resetPasswordToken: string;
+
+  @Column({nullable: true})
+  resetPasswordExpires: Date;
+  
   @OneToOne(type => Address)
   @JoinColumn([{ name: 'address_id', referencedColumnName: 'id'}])
   address: Address;
