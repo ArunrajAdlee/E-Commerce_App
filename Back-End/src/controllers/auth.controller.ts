@@ -1,13 +1,15 @@
-import bcrypt = require("bcryptjs");
-import { NextFunction, Request, Response } from "express";
-import jwt = require("jsonwebtoken");
-import { getRepository } from "typeorm";
-import { User } from "../entity/user.entity";
-import { AuthModel } from "../models/auth.model";
-import { UserModel } from "../models/user.model";
-import { Address } from "../entity/address.entity";
-import { AddressModel } from "../models/address.model";
-const { checkAuth } = require("../helpers/check-auth");
+import bcrypt = require('bcryptjs');
+import { NextFunction, Request, Response } from 'express';
+import jwt = require('jsonwebtoken');
+import { getRepository, MoreThan } from 'typeorm';
+import { User } from '../entity/user.entity';
+import { AuthModel } from '../models/auth.model';
+import { UserModel } from '../models/user.model';
+import { Address } from '../entity/address.entity';
+import { AddressModel } from '../models/address.model';
+const { checkAuth } = require('../helpers/check-auth');
+const nodemailer = require('nodemailer');
+const crypto = require('crypto');
 
 export class AuthController {
   private userRepository = getRepository(User);
@@ -15,11 +17,15 @@ export class AuthController {
   private cookieName = "access_token";
 
   async createUser(req: Request, res: Response, next: NextFunction) {
-    const userExists = await this.userRepository.findOne({
-      username: req.body.username
-    });
+
+    const userExists = await this.userRepository
+      .createQueryBuilder('user')
+      .where('user.username = :username OR user.email = :email', { username: req.body.username, email: req.body.email })
+      .getOne();
     if (userExists) {
-      res.status(404).send("user already exists");
+      res.status(404).send({
+        message: 'username or email already exists'
+      });
       return;
     }
 
@@ -144,6 +150,127 @@ export class AuthController {
     } else {
       res.status(200).send("successfully deleted");
     }
+  }
+
+  async forgotPassword(req: Request, res: Response, next: NextFunction) {
+    //Fetch user based on provided email
+    let user = await this.userRepository.findOne({ email: req.body.email });
+    if (!user) {
+      res.status(404).send({
+        message: 'email does not exist'
+      });
+      return;
+    }
+
+    //Create hashed token
+    const token = crypto.randomBytes(20).toString('hex');
+
+    //Store token and expiry date
+    user.resetPasswordToken = token;
+    user.resetPasswordExpires = new Date((new Date()).getTime() + 360000);
+
+    //Save updated user
+    try {
+      await this.userRepository.save(user);
+    } catch (e) {
+      res.status(404).send({
+        message: 'error updating user'
+      });
+      return;
+    }
+
+    //Email used to send recoery email
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: '354TheStars@gmail.com',
+        pass: 'Throwaway'
+      }
+    });
+
+    const mailOptions = {
+      from: '354TheStars@gmail.com',
+      to: req.body.email,
+      subject: '354TheStars Password Reset',
+      text:
+        'A request to reset your password has been made. If you did not make this request, simply ignore this email. If you did make this request just click the link below: \n\n' +
+        `http://localhost:3000/auth/reset/${token}\n\n`
+    };
+
+    //Sends mail
+    transporter.sendMail(mailOptions, function (err, resp) {
+      if (err) {
+        res.status(404).send({
+          message: 'error sending email'
+        });
+        return;
+      } else {
+        res.status(200).send({
+          message: 'recovery email sent'
+        });
+        return;
+      }
+    });
+  }
+
+  async checkResetToken(req: Request, res: Response, next: NextFunction) {
+    //Fetch user based on token
+    //Also check if token is not expired
+    const user = await this.userRepository.findOne({
+      where: {
+        resetPasswordToken: req.query.resetPasswordToken,
+        resetPasswordExpires: MoreThan(Date.now())
+      }
+    });
+    if (!user) {
+      res.status(404).send({
+        message: 'invalid token'
+      });
+      return;
+    }
+
+    res.status(200).send({
+      message: 'valid token',
+      username: user.username
+    });
+  }
+
+  async resetPassword(req: Request, res: Response, next: NextFunction) {
+    //Fetch user based on user,token
+    const user = await this.userRepository.findOne({
+      where: {
+        username: req.body.username,
+        resetPasswordToken: req.body.resetPasswordToken,
+        resetPasswordExpires: MoreThan(Date.now())
+      }
+    });
+    if (!user) {
+      res.status(404).send({
+        message: 'error retrieving user'
+      });
+      return;
+    }
+
+    //Hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
+
+    user.password = hashedPassword;
+    user.resetPasswordToken = null, //Reset token
+      user.resetPasswordExpires = null; //Reset expiration
+    try {
+      await this.userRepository.save(user);
+    } catch (e) {
+      res.status(404).send({
+        messsage: 'error saving password'
+      });
+      return;
+    }
+
+    res.status(200).send({
+      message: 'password changed'
+    });
   }
 
   async getAuthStatus(req: Request, res: Response, next: NextFunction) {
