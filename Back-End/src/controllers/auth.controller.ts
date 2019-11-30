@@ -1,7 +1,7 @@
 import bcrypt = require('bcryptjs');
 import { NextFunction, Request, Response } from 'express';
 import jwt = require('jsonwebtoken');
-import { getRepository, MoreThan, LessThan } from 'typeorm';
+import { getRepository, MoreThan } from 'typeorm';
 import { User } from '../entity/user.entity';
 import { AuthModel } from '../models/auth.model';
 import { UserModel } from '../models/user.model';
