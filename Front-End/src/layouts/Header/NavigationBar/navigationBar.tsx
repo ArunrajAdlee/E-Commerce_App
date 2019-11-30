@@ -75,7 +75,7 @@ class NavigationBar extends React.Component<{}> {
                             className="nav-link align-self-center mt-1"
                             to={{ pathname: "/profile" }}
                           >
-                            {`Hi ${userInfo.first_name} !`}
+                            {`${userInfo.first_name}'s profile`}
                           </Link>
                         </Dropdown.Item>{" "}
                       </DropdownButton>
