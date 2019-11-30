@@ -17,11 +17,15 @@ export class AuthController {
   private cookieName = 'access_token';
 
   async createUser(req: Request, res: Response, next: NextFunction) {
-    const userExists = await this.userRepository.findOne({
-      username: req.body.username
-    });
+
+    const userExists = await this.userRepository
+    .createQueryBuilder('user')
+    .where('user.username = :username OR user.email = :email', {username: req.body.username, email: req.body.email})
+    .getOne();
     if (userExists) {
-      res.status(404).send('user already exists');
+      res.status(404).send({
+        message: 'username or email already exists'
+      });
       return;
     }
 
