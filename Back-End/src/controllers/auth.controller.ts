@@ -53,7 +53,7 @@ export class AuthController {
       last_name: req.body.lastName,
       brand_name: req.body.brandName,
       phone_number: req.body.phoneNumber,
-      address: address.id
+      address_id: address.id
     };
 
     // Save new user to the database
@@ -98,7 +98,7 @@ export class AuthController {
     );
 
     const addressData = await this.adressRepository.findOne({
-      id: userData.address
+      id: userData.address_id
     });
 
     //Create and return essential user data
@@ -109,7 +109,7 @@ export class AuthController {
       last_name: userData.last_name,
       brand_name: userData.brand_name,
       phone_number: userData.phone_number,
-      address: userData.address,
+      address: userData.address_id,
       street_name: addressData.street_name,
       street_number: addressData.street_number,
       unit_number: addressData.unit_number,
@@ -162,7 +162,7 @@ export class AuthController {
       //Set user data
       if (userDatabase) {
         const addressDatabase = await this.adressRepository.findOne({
-          id: userDatabase.address
+          id: userDatabase.address_id
         });
         user = {
           username: userDatabase.username,
@@ -171,7 +171,7 @@ export class AuthController {
           last_name: userDatabase.last_name,
           brand_name: userDatabase.brand_name,
           phone_number: userDatabase.phone_number,
-          address: userDatabase.address,
+          address: userDatabase.address_id,
           street_name: addressDatabase.street_name,
           street_number: addressDatabase.street_number,
           unit_number: addressDatabase.unit_number,
