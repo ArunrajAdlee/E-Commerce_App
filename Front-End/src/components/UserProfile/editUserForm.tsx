@@ -10,12 +10,11 @@ import {
 } from "react-bootstrap";
 import { Formik, Field, Form, ErrorMessage, FormikValues } from "formik";
 import * as Yup from "yup";
-import { RouteComponentProps } from "react-router";
 import { server, api } from "../../server";
+import { RouteComponentProps } from "react-router-dom";
 
 interface UserDisplayProps {
   handleNav: (id: number) => void;
-
   username: string;
   first_name: string;
   last_name: string;
@@ -30,8 +29,6 @@ interface UserDisplayProps {
   postal_code: string;
   country: string;
 }
-
-
 
 //YUP form validation
 const editFormSchema = Yup.object().shape({
@@ -66,12 +63,12 @@ const editFormSchema = Yup.object().shape({
     .required("City Name is required")
     .max(32, "Character limit reached")
 });
-
+interface IProps extends RouteComponentProps<any> { }
 class EditUserForm extends React.Component<UserDisplayProps, {}> {
+
   //Handle the form submit here
   private handleSubmit = async (values: FormikValues, actions: any) => {
     console.log("Here");
-    const { history } = this.context;
     const formData = new FormData();
     formData.append("email", values.email);
     formData.append("first_name", values.firstName);
@@ -86,7 +83,8 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
     formData.append("phone_number", values.phoneNumber);
 
     const resp = await server.post(api.user_profile, formData);
-    //this.props.history.push('/profile');
+    window.location.reload();
+
   };
   //render method
   render() {

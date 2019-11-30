@@ -38,6 +38,7 @@ class UserDisplay extends React.Component<IProps, UserDisplayState> {
     this.setState({ currentDisplay: curr });
   };
 
+
   public render() {
     const { isAuth } = this.context;
     const { userInfo } = this.context;
