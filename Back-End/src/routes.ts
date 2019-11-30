@@ -4,6 +4,7 @@ import { AddressController } from './controllers/address.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
 import { OrderController } from './controllers/order.controller';
+import { AdsController } from './controllers/ads.controller';
 export const Routes = [
   
   //User
@@ -125,5 +126,12 @@ export const Routes = [
     route: '/order/create',
     controller: OrderController,
     action: 'save'
+  },
+  //Ads
+  {
+    method: 'post',
+    route: '/ads/:id',
+    controller: AdsController,
+    action: 'increaseClickCount'
   }
 ];
