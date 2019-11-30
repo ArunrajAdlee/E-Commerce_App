@@ -102,7 +102,6 @@ export class OrderController {
 		try {
 			//Create order
 			const newOrder: OrderModel = {
-				buyer_id: authenticatedUser.id,
 				date: new Date(),
 				shipping_type: req.body.shippingType,
 				shipped_to: req.body.addressID,
@@ -131,6 +130,7 @@ export class OrderController {
 
 				//Create order detail	
 				const newOrderDetails: OrderDetailsModel = {
+					buyer_id: authenticatedUser.id,
 					order_id: order.id,
 					listing_id: cartItem.listing_id,
 					seller_id: cartItem.listing.user_id,

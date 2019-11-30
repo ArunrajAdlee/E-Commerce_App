@@ -51,7 +51,6 @@ CREATE TABLE `categories` (
 
 CREATE TABLE `order` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-   `buyer_id` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `shipping_type` varchar(255) NOT NULL,
   `shipped_to` int NOT NULL,
@@ -64,6 +63,7 @@ CREATE TABLE `order` (
   
 CREATE TABLE `order_details` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
+  `buyer_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `listing_id` int(11) NOT NULL,
   `seller_id` int(11) NOT NULL,
@@ -106,10 +106,10 @@ ALTER TABLE `cart` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 ALTER TABLE `cart` ADD FOREIGN KEY (`listing_id`) REFERENCES `listings` (`id`);
 
 ALTER TABLE `order_details` ADD FOREIGN KEY (`order_id`) REFERENCES `order` (`id`);
-
 ALTER TABLE `order_details` ADD FOREIGN KEY (`seller_id`) REFERENCES `user` (`id`);
+ALTER TABLE `order_details` ADD FOREIGN KEY (`buyer_id`) REFERENCES `user` (`id`);
 
 ALTER TABLE `listings` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 ALTER TABLE `order` ADD FOREIGN KEY (`shipped_to`) REFERENCES `address` (`id`);
-ALTER TABLE `order` ADD FOREIGN KEY (`buyer_id`) REFERENCES `user` (`id`);
+
