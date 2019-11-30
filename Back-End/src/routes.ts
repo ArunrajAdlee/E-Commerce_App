@@ -133,5 +133,12 @@ export const Routes = [
     route: '/ads/:id',
     controller: AdsController,
     action: 'increaseClickCount'
+  }, 
+  {
+    method: 'get',
+    route: '/ads/:id',
+    controller: AdsController,
+    action: 'getClickCount'
   }
+
 ];

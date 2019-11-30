@@ -22,4 +22,18 @@ export class AdsController {
       });
     }
   }
+
+  async getClickCount(req: Request, res: Response, next: NextFunction) {
+    const ad = await this.adsRepository.findOne(req.body.id);
+    if (!ad) {
+      res.status(404).send({
+        message: 'an error occured'
+      });
+      return;
+    }
+
+    res.status(200).send({
+      clickCount: ad.click_count
+    });
+  }
 }
