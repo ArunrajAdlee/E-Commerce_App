@@ -47,7 +47,6 @@ export const Routes = [
     controller: ListingsController,
     action: 'allWithSearchQuery'
   },
-
   {
     method: 'post',
     route: '/listings',
@@ -63,6 +62,12 @@ export const Routes = [
     action: 'getAuthStatus'
   },
   {
+    method: 'get',
+    route: '/auth/checkResetToken',
+    controller: AuthController,
+    action: 'checkResetToken'
+  },
+  {
     method: 'post',
     route: '/auth/create',
     controller: AuthController,
@@ -74,12 +79,18 @@ export const Routes = [
     controller: AuthController,
     action: 'login'
   },
-	{
-		method: 'get',
-		route: '/auth/status',
-		controller: AuthController,
-		action: 'getAuthStatus'
-	},
+  {
+    method: 'post',
+    route: '/auth/forgotPassword',
+    controller: AuthController,
+    action: 'forgotPassword'
+  },
+  {
+    method: 'post',
+    route: '/auth/resetPassword',
+    controller: AuthController,
+    action: 'resetPassword'
+  },
 	{
 		method: 'post',
 		route: '/auth/logout',

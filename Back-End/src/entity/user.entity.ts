@@ -34,4 +34,10 @@ export class User {
 
   @Column()
   address_id: number;
+
+  @Column({nullable: true})
+  resetPasswordToken: string;
+
+  @Column({nullable: true})
+  resetPasswordExpires: Date;
 }
