@@ -181,7 +181,7 @@ export class AuthController {
       subject: '354TheStars Password Reset',
       text:
       'A request to reset your password has been made. If you did not make this request, simply ignore this email. If you did make this request just click the link below: \n\n' +
-      `http://localhost:3000/reset/${token}\n\n`
+      `http://localhost:3000/auth/reset/${token}\n\n`
     };
 
     //Sends mail
