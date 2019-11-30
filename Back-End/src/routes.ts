@@ -4,6 +4,8 @@ import { AddressController } from './controllers/address.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
 import { OrderController } from './controllers/order.controller';
+import { ReviewsController } from './controllers/reviews.controller';
+
 export const Routes = [
   
   //User
@@ -57,7 +59,6 @@ export const Routes = [
     controller: ListingsController,
     action: 'allWithSearchQuery'
   },
-
   {
     method: 'post',
     route: '/listings',
@@ -81,6 +82,12 @@ export const Routes = [
     action: 'getAuthStatus'
   },
   {
+    method: 'get',
+    route: '/auth/checkResetToken',
+    controller: AuthController,
+    action: 'checkResetToken'
+  },
+  {
     method: 'post',
     route: '/auth/create',
     controller: AuthController,
@@ -92,12 +99,18 @@ export const Routes = [
     controller: AuthController,
     action: 'login'
   },
-	{
-		method: 'get',
-		route: '/auth/status',
-		controller: AuthController,
-		action: 'getAuthStatus'
-	},
+  {
+    method: 'post',
+    route: '/auth/forgotPassword',
+    controller: AuthController,
+    action: 'forgotPassword'
+  },
+  {
+    method: 'post',
+    route: '/auth/resetPassword',
+    controller: AuthController,
+    action: 'resetPassword'
+  },
 	{
 		method: 'post',
 		route: '/auth/logout',
@@ -124,6 +137,23 @@ export const Routes = [
     method: 'post',
     route: '/order/create',
     controller: OrderController,
-    action: 'save'
+    action: 'save' },
+  //Reviews
+
+  {
+    method: 'post',
+    route: '/reviews',
+    controller: ReviewsController,
+    action: 'saveReviews'
+
+  },
+
+  {
+    method: 'get',
+    route: '/reviews/:seller_id',
+    controller: ReviewsController,
+    action: 'getReviews'
   }
+
+
 ];
