@@ -1,7 +1,5 @@
 import * as React from "react";
-import { Component } from "react";
 import {
-  Form,
   Row,
   Col,
   Button,
@@ -10,11 +8,14 @@ import {
   ListGroup,
   ListGroupItem
 } from "react-bootstrap";
-import { Field, ErrorMessage, Formik, FormikValues } from "formik";
+import { Formik, Field, Form, ErrorMessage, FormikValues } from "formik";
 import * as Yup from "yup";
+import { RouteComponentProps } from "react-router";
+import { server, api } from "../../server";
 
 interface UserDisplayProps {
   handleNav: (id: number) => void;
+
   username: string;
   first_name: string;
   last_name: string;
@@ -29,7 +30,8 @@ interface UserDisplayProps {
   postal_code: string;
   country: string;
 }
-export interface EditUserFormState {}
+
+
 
 //YUP form validation
 const editFormSchema = Yup.object().shape({
@@ -67,10 +69,25 @@ const editFormSchema = Yup.object().shape({
 
 class EditUserForm extends React.Component<UserDisplayProps, {}> {
   //Handle the form submit here
-  handleSubmit(values: FormikValues, actions: any) {
-    console.log("submitted");
-  }
+  private handleSubmit = async (values: FormikValues, actions: any) => {
+    console.log("Here");
+    const { history } = this.context;
+    const formData = new FormData();
+    formData.append("email", values.email);
+    formData.append("first_name", values.firstName);
+    formData.append("last_name", values.lastName);
+    formData.append("street_number", values.streetNumber);
+    formData.append("street_name", values.streetName);
+    formData.append("unit_number", values.unitNumber);
+    formData.append("city", values.city);
+    formData.append("province", values.province);
+    formData.append("country", values.country);
+    formData.append("postal_code", values.postalCode);
+    formData.append("phone_number", values.phoneNumber);
 
+    const resp = await server.post(api.user_profile, formData);
+    //this.props.history.push('/profile');
+  };
   //render method
   render() {
     return (
@@ -101,7 +118,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                 this.handleSubmit(values, actions);
               }}
             >
-              {({ touched, errors, values }) => (
+              {({ touched, errors, values, isSubmitting }) => (
                 <Form>
                   <ListGroup className="list-group-flush">
                     <ListGroupItem>
@@ -116,7 +133,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                                 touched.firstName && errors.firstName
                                   ? "is-invalid"
                                   : ""
-                              }`}
+                                }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -127,25 +144,23 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                         </Col>
 
                         <Col>
-                          <Form.Group controlId="editLastName">
-                            <div className="form-group">
-                              <p>Last Name</p>
-                              <Field
-                                name="lastName"
-                                placeholder="lastName"
-                                className={`form-control ${
-                                  touched.lastName && errors.lastName
-                                    ? "is-invalid"
-                                    : ""
+                          <div className="form-group">
+                            <p>Last Name</p>
+                            <Field
+                              name="lastName"
+                              placeholder="lastName"
+                              className={`form-control ${
+                                touched.lastName && errors.lastName
+                                  ? "is-invalid"
+                                  : ""
                                 }`}
-                              />
-                              <ErrorMessage
-                                component="div"
-                                name="lastName"
-                                className="invalid-feedback"
-                              />
-                            </div>
-                          </Form.Group>
+                            />
+                            <ErrorMessage
+                              component="div"
+                              name="lastName"
+                              className="invalid-feedback"
+                            />
+                          </div>
                         </Col>
                       </Row>
                     </ListGroupItem>
@@ -161,7 +176,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                                 touched.email && errors.email
                                   ? "is-invalid"
                                   : ""
-                              }`}
+                                }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -181,7 +196,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                                 touched.phoneNumber && errors.phoneNumber
                                   ? "is-invalid"
                                   : ""
-                              }`}
+                                }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -204,7 +219,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                                 touched.streetNumber && errors.streetNumber
                                   ? "is-invalid"
                                   : ""
-                              }`}
+                                }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -224,7 +239,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                                 touched.streetName && errors.streetName
                                   ? "is-invalid"
                                   : ""
-                              }`}
+                                }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -243,7 +258,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                                 touched.unitNumber && errors.unitNumber
                                   ? "is-invalid"
                                   : ""
-                              }`}
+                                }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -264,7 +279,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                               placeholder="City"
                               className={`form-control ${
                                 touched.city && errors.city ? "is-invalid" : ""
-                              }`}
+                                }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -284,7 +299,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                                 touched.province && errors.province
                                   ? "is-invalid"
                                   : ""
-                              }`}
+                                }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -295,7 +310,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                         </Col>
                         <Col>
                           <div className="form-group">
-                            <p>Phone Number</p>
+                            <p>Postal Code</p>
                             <Field
                               name="postalCode"
                               placeholder="Postal Code"
@@ -303,7 +318,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                                 touched.postalCode && errors.postalCode
                                   ? "is-invalid"
                                   : ""
-                              }`}
+                                }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -323,7 +338,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                                 touched.country && errors.country
                                   ? "is-invalid"
                                   : ""
-                              }`}
+                                }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -337,8 +352,13 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                   </ListGroup>
                   <Row>
                     <Col className="mt-2">
-                      <Button className="btn btn-primary mr-1" type="submit">
-                        Submit
+                      <Button
+                        type="submit"
+                        className="btn styled-button post mr-2"
+                        disabled={isSubmitting}
+                        variant="warning"
+                      >
+                        {isSubmitting ? "Please wait..." : "Submit"}
                       </Button>
                       <Button
                         onClick={() => this.props.handleNav(1)}

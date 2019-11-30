@@ -6,9 +6,9 @@ import { Redirect, RouteComponentProps } from "react-router-dom";
 import { StoreContext } from "../../store";
 import EditUserForm from "./editUserForm";
 
-export interface UserDisplayProps {}
+export interface UserDisplayProps { }
 
-interface IProps extends RouteComponentProps<any> {}
+interface IProps extends RouteComponentProps<any> { }
 
 export interface UserDisplayState {
   currentDisplay: number;
@@ -41,8 +41,6 @@ class UserDisplay extends React.Component<IProps, UserDisplayState> {
   public render() {
     const { isAuth } = this.context;
     const { userInfo } = this.context;
-
-    console.log("userDisplay", userInfo);
 
     let show: any;
     if (this.state.currentDisplay === 1) {
@@ -103,24 +101,24 @@ class UserDisplay extends React.Component<IProps, UserDisplayState> {
     return !isAuth ? (
       <Redirect to="/" />
     ) : (
-      <Container fluid>
-        <Row>
-          <Col>
-            <h2> Welcome Back, {userInfo.first_name}</h2>
-          </Col>
-        </Row>
-        <Row>
-          {/* Options Card */}
-          <Col md={12} lg={3} xs={12}>
-            <SideNav handleNav={this.handleNav}></SideNav>
-          </Col>
-          {/*Info Display */}
-          <Col md={12} lg={9} xs={12}>
-            {show}
-          </Col>
-        </Row>
-      </Container>
-    );
+        <Container fluid>
+          <Row>
+            <Col>
+              <h2> Welcome Back, {userInfo.first_name}</h2>
+            </Col>
+          </Row>
+          <Row>
+            {/* Options Card */}
+            <Col md={12} lg={3} xs={12}>
+              <SideNav handleNav={this.handleNav}></SideNav>
+            </Col>
+            {/*Info Display */}
+            <Col md={12} lg={9} xs={12}>
+              {show}
+            </Col>
+          </Row>
+        </Container>
+      );
   }
 }
 UserDisplay.contextType = StoreContext;
