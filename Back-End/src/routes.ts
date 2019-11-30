@@ -139,6 +139,12 @@ export const Routes = [
     controller: OrderController,
     action: 'save'
   },
+  {
+    method: 'get',
+    route: '/order/history',
+    controller: OrderController,
+    action: 'getOrderHistory'
+  },
 
   //Reviews
   {
