@@ -4,10 +4,10 @@ import { AddressController } from './controllers/address.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
 import { OrderController } from './controllers/order.controller';
+import { AdsController } from './controllers/ads.controller';
 import { ReviewsController } from './controllers/reviews.controller';
 
 export const Routes = [
-  
   //User
   {
     method: 'get',
@@ -111,11 +111,11 @@ export const Routes = [
     controller: AuthController,
     action: 'resetPassword'
   },
-	{
-		method: 'post',
-		route: '/auth/logout',
-		controller: AuthController,
-		action: 'logout'
+  {
+    method: 'post',
+    route: '/auth/logout',
+    controller: AuthController,
+    action: 'logout'
   },
 
   //Categories
@@ -137,15 +137,15 @@ export const Routes = [
     method: 'post',
     route: '/order/create',
     controller: OrderController,
-    action: 'save' },
-  //Reviews
+    action: 'save'
+  },
 
+  //Reviews
   {
     method: 'post',
     route: '/reviews',
     controller: ReviewsController,
     action: 'saveReviews'
-
   },
 
   {
@@ -153,7 +153,19 @@ export const Routes = [
     route: '/reviews/:seller_id',
     controller: ReviewsController,
     action: 'getReviews'
+  },
+
+  //Ads
+  {
+    method: 'post',
+    route: '/ads/:id',
+    controller: AdsController,
+    action: 'increaseClickCount'
+  },
+  {
+    method: 'get',
+    route: '/ads/:id',
+    controller: AdsController,
+    action: 'getClickCount'
   }
-
-
 ];

@@ -92,6 +92,11 @@ CREATE TABLE `reviews` (
   `rating` int
 );
 
+CREATE TABLE `ads` (
+`id` int PRIMARY KEY AUTO_INCREMENT,
+`click_count` int NOT NULL DEFAULT 0
+);
+
 ALTER TABLE `reviews` ADD FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 ALTER TABLE `reviews` ADD FOREIGN KEY (`seller_id`) REFERENCES `user` (`id`);
 
