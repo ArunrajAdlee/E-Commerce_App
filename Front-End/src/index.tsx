@@ -155,6 +155,15 @@ class App extends React.Component<{}, IStates> {
               layoutComponent={DefaultLayout}
               pageTitle="User Profile"
             />
+
+            <SecureRoute
+              authenticated
+              path="/createListing"
+              pageComponent={CreateListing}
+              layoutComponent={DefaultLayout}
+              pageTitle="Create Listing"
+            />
+
             <SecureRoute
               pageComponent={LandingPage}
               layoutComponent={LandingLayout}

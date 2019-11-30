@@ -63,9 +63,11 @@ export class UserController {
           street_number: req.body.street_number,
           city: req.body.city,
           province: req.body.province,
-          country: req.body.country
+          country: req.body.country,
+          unit_number: req.body.unit_number,
+          postal_code: req.body.postal_code
         })
-        .where("id = :id", { id: user.address })
+        .where("id = :id", { id: user.address_id })
         .execute();
     } catch (e) {
       res.status(404).send({
@@ -74,7 +76,7 @@ export class UserController {
       return;
     }
 
-    const address = await this.addressRepository.findOne(user.address);
+    const address = await this.addressRepository.findOne(user.address_id);
     if (!address) {
       res.status(404).send({
         message: "error"
