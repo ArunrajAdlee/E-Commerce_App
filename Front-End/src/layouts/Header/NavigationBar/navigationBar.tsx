@@ -7,6 +7,7 @@ import { Sticky } from "react-sticky";
 import { StoreContext } from "../../../store";
 import Search from "../../../components/Search/search";
 import Category from "../../../components/Category/category";
+import CreateListing from "../../../components/CreateListing";
 
 class NavigationBar extends React.Component<{}> {
   private handleLogout = () => {
@@ -58,6 +59,16 @@ class NavigationBar extends React.Component<{}> {
                         </Dropdown.Item>
                         <Dropdown.Divider />
                         {/* OnClick, go to account settings page */}
+                        <Dropdown.Item>
+                          <Link
+                            className="nav-link"
+                            to={{
+                              pathname: "/createListing"
+                            }}
+                          >
+                            CREATE LISTING
+                          </Link>
+                        </Dropdown.Item>
                         <Dropdown.Item>
                           {" "}
                           <Link

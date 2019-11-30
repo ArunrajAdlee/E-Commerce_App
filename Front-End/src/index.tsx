@@ -9,6 +9,7 @@ import { server, api } from "./server";
 import Login, { ILoginFields } from "./components/Login/login";
 import LandingPage from "./components/LandingPage/landingPage";
 import DefaultLayout from "./layouts/DefaultLayout/defualtLayout";
+import CreateListing from "./components/CreateListing";
 import LandingLayout from "./layouts/LandingPageLayout/landingPageLayout";
 import ListingDetails from "./components/ListingDetails/ListingDetails";
 

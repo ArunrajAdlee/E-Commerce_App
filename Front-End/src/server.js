@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const server = axios.create({
   baseURL: 'http://localhost:4000',
-  timeout: 1000,
+  timeout: 0,
   withCredentials: true,
 });
 
