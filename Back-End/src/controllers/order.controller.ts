@@ -50,14 +50,14 @@ export class OrderController {
 		}
 	
 		//Compute order totals
-		var total_price_before_tax = 0;
-		var total_fee = 0;
+		let total_price_before_tax = 0;
+		let total_fee = 0;
 		for (let cartItem of cartItems) {
 			total_price_before_tax += Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100;
 			total_fee += Math.round(cartItem.listing.price * this.listingFeeRate * 100) / 100;
 		}
-		var total_tax = Math.round(total_price_before_tax * this.taxRate * 100) / 100;
-		var total_price = Math.round(total_price_before_tax * (1 + this.taxRate) * 100) / 100;
+		const total_tax = Math.round(total_price_before_tax * this.taxRate * 100) / 100;
+		const total_price = Math.round(total_price_before_tax * (1 + this.taxRate) * 100) / 100;
 
 		res.status(200).send({
 			userInfo: userInfo,
@@ -101,7 +101,7 @@ export class OrderController {
 
 		try {
 			//Create order
-			var newOrder: OrderModel = {
+			const newOrder: OrderModel = {
 				buyer_id: authenticatedUser.id,
 				date: new Date(),
 				shipping_type: req.body.shippingType,
@@ -112,26 +112,25 @@ export class OrderController {
 				total_price: 0,
 				total_fee: 0
 			};
-			var order = await this.orderRepository.save(newOrder);
+			const order = await this.orderRepository.save(newOrder);
 			if(!order) {
 				res.status(404).send("error creating order");
 				return;
 			}
 
 			//Create order details for each cart item
-			var total_price_before_tax = 0;
-			var total_fee = 0;
-			var newOrderDetails: OrderDetailsModel;
+			let total_price_before_tax = 0;
+			let total_fee = 0;
 			for (let cartItem of cartItems) {
 				//Determine listing fee
-				var itemsSold = await this.countItemsSold(cartItem.listing.user_id);
-				var appliedFeeRate = this.listingFeeRate;
+				const itemsSold = await this.countItemsSold(cartItem.listing.user_id);
+				let appliedFeeRate = this.listingFeeRate;
 				if(itemsSold <= this.reducedFeeItemLimit) {
 					appliedFeeRate = this.reducedListingFeeRate;
 				}
 
 				//Create order detail	
-				newOrderDetails = {
+				const newOrderDetails: OrderDetailsModel = {
 					order_id: order.id,
 					listing_id: cartItem.listing_id,
 					seller_id: cartItem.listing.user_id,
