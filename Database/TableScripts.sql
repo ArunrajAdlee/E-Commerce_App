@@ -12,6 +12,8 @@ CREATE TABLE `user` (
   `phone_number` VARCHAR(255),
   `age` integer,
   `address_id` int NOT NULL,
+  `resetPasswordToken` VARCHAR(255),
+  `resetPasswordExpires` Date,
   `isAdmin` bool DEFAULT FALSE
 );
 
