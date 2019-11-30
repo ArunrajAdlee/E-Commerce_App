@@ -9,6 +9,7 @@ import { server, api } from './server';
 import Login, { ILoginFields } from './components/Login/login';
 import LandingPage from './components/LandingPage/landingPage';
 import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
+import CreateListing from './components/CreateListing';
 import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
 import ListingDetails from './components/ListingDetails/ListingDetails';
 
@@ -93,6 +94,7 @@ class App extends React.Component<{}, IStates> {
             <SecureRoute path="/listings/:id" pageComponent={ListingDetails} layoutComponent={DefaultLayout} pageTitle="Listing Details" />
             <SecureRoute path="/listings" pageComponent={ListingsPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
             <SecureRoute path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
+            <SecureRoute authenticated path="/createListing" pageComponent={CreateListing} layoutComponent={DefaultLayout} pageTitle="Create Listing" />
             <SecureRoute pageComponent={LandingPage} layoutComponent={LandingLayout} />
           </Switch>
         </Router>

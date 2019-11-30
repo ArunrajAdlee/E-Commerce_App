@@ -81,11 +81,11 @@ export class ListingsController {
         user_id: user.id,
         title: req.body.title,
         description: req.body.description,
+        price: req.body.price,
         stock_count: req.body.stock_count,
         category: categoryId,
         image: imageURL,
         thumbnail: thumbnailURL,
-        price: req.body.price,
         status: true,
         username: user.username,
         category_name: category.name
