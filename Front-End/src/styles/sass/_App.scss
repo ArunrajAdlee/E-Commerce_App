@@ -49,10 +49,10 @@ code {
 }
 
 .no-ticker {
-  &::-webkit-inner-spin-button, 
-  &::-webkit-outer-spin-button { 
-    -webkit-appearance: none; 
-    margin: 0; 
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 }
 
@@ -62,13 +62,12 @@ code {
   position: fixed !important;
   width: 126px !important;
   height: 126px !important;
-  margin-top: -63px !important; 
+  margin-top: -63px !important;
   margin-right: -63px!important;
   top: 50% !important;
   right: 50% !important;
 }
 
-
-
-
-
+ul {
+  list-style-type: none;
+}

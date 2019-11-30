@@ -7,6 +7,16 @@ import { RouteComponentProps, Link } from 'react-router-dom';
 import { Button, Spinner } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import { server, api } from '../../server';
+import Rating from 'react-rating';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  faHeart as fasFaHeart,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faHeart as farFaHeart,
+} from '@fortawesome/free-regular-svg-icons';
+library.add(fasFaHeart, farFaHeart)
 
 interface IListingDetails {
   id: number,
@@ -25,10 +35,17 @@ interface IListingDetails {
 
 }
 
+interface IReviewDetails {
+  title: string,
+  description: string,
+  rating: number,
+}
+
 interface IProps extends RouteComponentProps<any> {}
 interface IStates {
   listing: IListingDetails | null;
   quantity: number;
+  reviews: IReviewDetails[];
   error: boolean,
 }
 
@@ -36,6 +53,7 @@ class ListingDetails extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
     listing: null,
     quantity: 1,
+    reviews: [],
     error: false,
   };
 
@@ -51,6 +69,12 @@ class ListingDetails extends React.Component<IProps, IStates> {
           listing: resp.data.listing,
         });
       }
+
+      const tempReviews = ([{title: "Great shoes", description: "I'm so glad I found them", rating: 4},
+              {title: "Love at first sight", description: "I really wish I hated you right now", rating: 5}])
+
+      this.setState({reviews: tempReviews});
+
     } catch (e) {
       this.setState({ error: true });
     }
@@ -62,9 +86,17 @@ class ListingDetails extends React.Component<IProps, IStates> {
     // API STUFF FOR ADDING TO THE ITEM TO USER'S CART
   }
 
+  private displayRating = (r: any) => {
+    var rating =[];
+    for (let i = 0; i < r-1; i++){
+      rating.push(<FontAwesomeIcon icon={fasFaHeart} key = {i} />);
+    }
+    return rating;
+  }
+
+
   public render() {
     const { listing, error } = this.state;
-
     return (
       listing
         ? (
@@ -99,7 +131,27 @@ class ListingDetails extends React.Component<IProps, IStates> {
                     </Media.Body>
                   </Col>
                 </Row>
-                <span className="mt-5">Review Component Ova Here</span>
+                <Row className="mt-5">
+                <ul>
+                  <li>
+                  <h3> Reviews </h3>
+                  <br />
+                  </li>
+                  {this.state.reviews.map(r => (
+                    <li>
+                    <h5>{r.title} {' '}
+                    <Rating
+                    initialRating = {r.rating}
+                    emptySymbol={<FontAwesomeIcon icon={farFaHeart} />}
+                    readonly = {true}
+                    fullSymbol={<FontAwesomeIcon icon={fasFaHeart} />}
+                    />
+                    </h5>
+                    <p> {r.description}</p>
+                    </li>
+                    ))}
+                  </ul>
+                </Row>
               </Container>
             </Media>
 
