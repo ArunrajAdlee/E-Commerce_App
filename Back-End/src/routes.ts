@@ -3,6 +3,8 @@ import { ListingsController } from './controllers/listings.controller';
 import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
 export const Routes = [
+  
+  //User
   {
     method: 'get',
     route: '/users',
@@ -13,7 +15,7 @@ export const Routes = [
     method: 'post',
     route: '/users',
     controller: UserController,
-    action: 'EditUserInfo'
+    action: 'editUserInfo'
   },
   {
     method: 'get',
