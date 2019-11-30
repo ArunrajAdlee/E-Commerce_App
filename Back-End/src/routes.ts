@@ -120,7 +120,7 @@ export const Routes = [
     method: 'post',
     route: '/order/create',
     controller: OrderController,
-    action: 'save'
+    action: 'save' },
   //Reviews
 
   {
