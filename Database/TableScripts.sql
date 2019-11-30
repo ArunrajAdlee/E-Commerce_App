@@ -13,7 +13,7 @@ CREATE TABLE `user` (
   `age` integer,
   `address_id` int NOT NULL,
   `resetPasswordToken` VARCHAR(255),
-  `resetPasswordExpires` Date,
+  `resetPasswordExpires` DATETIME,
   `isAdmin` bool DEFAULT FALSE
 );
 
