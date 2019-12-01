@@ -10,25 +10,13 @@ const { checkAuth } = require('../helpers/check-auth');
 
 export class AdminController {
 
-    
-  async listings(req: Request, res: Response, next: NextFunction) {
+  async siteActivity(req: Request, res: Response, next: NextFunction) {
     const authenticatedUser: AuthModel = checkAuth(req);
-    if (!authenticatedUser) {
+    if (!authenticatedUser || !authenticatedUser.isAdmin) {
       res.status(404).send('user is not authenticated');
       return;
     }
-
-    const listings = await getRepository(Listings)
-      .createQueryBuilder('listings')
-      .orderBy('listings.id', 'DESC')
-      .getMany();
-
-    res.status(200).send({
-      listings: listings
-    });
-  }
-
-  async siteActivity(req: Request, res: Response, next: NextFunction) {
+    
     const ad = await getRepository(Ads).findOne(1);
     if (!ad) {
       res.status(404).send({
