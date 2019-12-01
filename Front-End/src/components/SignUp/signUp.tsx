@@ -105,7 +105,7 @@ class SignUp extends React.Component<{}, IStates> {
     const { isError } = this.state;
 
     return (
-      isAuth ? <Redirect to="/" />
+      isAuth ? <Redirect push to="/" />
         : (
           <div className="register-container">
             <h1>Create an account</h1>
