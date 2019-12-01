@@ -7,6 +7,9 @@ export class Order {
     id: number;
 
     @Column()
+    buyer_id: number;
+
+    @Column()
     date: Date;
 
     @Column()

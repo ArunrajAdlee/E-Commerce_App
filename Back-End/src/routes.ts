@@ -142,6 +142,12 @@ export const Routes = [
   },
   {
     method: 'get',
+    route: '/order/history/buyer/:id',
+    controller: OrderController,
+    action: 'getBuyerOrderDetailsHistory'
+  },
+  {
+    method: 'get',
     route: '/order/history/buyer',
     controller: OrderController,
     action: 'getBuyerOrderHistory'
