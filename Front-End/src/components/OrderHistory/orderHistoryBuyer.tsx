@@ -46,14 +46,14 @@ interface orderSeller {
 
 interface IStates{
 
-  objbuyer: orderSeller,
+  objbuyer: orderBuyer[],
 }
 
 //Buyer history component
 class BuyerOrderHistory extends React.Component {
 
   public readonly state: Readonly<IStates> = {
-    objbuyer : //wtf i put here? 
+    objbuyer: []
   };
 
   
@@ -67,13 +67,8 @@ class BuyerOrderHistory extends React.Component {
       price: product.total_price,
 
     }));
-
     this.setState({
-
-
-
-
-
+      objbuyer: resOrders
     });
     console.log(resOrders);
     
