@@ -393,6 +393,7 @@ class Checkout extends React.Component<IProps, IStates> {
           className="loading-modal"
           show={payalLoading}
           animation={false}
+          onHide={() => ''}
         >
           <Modal.Header><Spinner animation="border" className="loading-spinner" variant="warning" /></Modal.Header>
         </Modal>

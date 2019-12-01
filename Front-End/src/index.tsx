@@ -20,6 +20,7 @@ import { StoreContext, IUserInfo } from './store';
 import ScrollToTop from './components/Misc/scrollToTop';
 import SecureRoute from './components/Authentication/secureRoute';
 import Checkout from './components/Checkout/checkout';
+import ResetPassword from './components/Login/ResetPassword/resetPassword';
 
 const history = createBrowserHistory();
 
@@ -57,12 +58,10 @@ class App extends React.Component<{}, IStates> {
   }
 
   public login = async (userCredentials: ILoginFields) => {
-    try {
-      const resp = await server.post(api.auth_login, userCredentials);
-      if (resp) {
-        this.setAuthState(true, resp.data.user);
-      }
-    } catch {}
+    const resp = await server.post(api.auth_login, userCredentials);
+    if (resp) {
+      this.setAuthState(true, resp.data.user);
+    }
   }
 
   public logout = async () => {
@@ -88,6 +87,7 @@ class App extends React.Component<{}, IStates> {
           <ScrollToTop />
           <Switch>
             <SecureRoute authenticated path="/checkout" pageComponent={Checkout} layoutComponent={DefaultLayout} pageTitle="Checkout" />
+            <SecureRoute path="/auth/reset/:token" pageComponent={ResetPassword} layoutComponent={DefaultLayout} pageTitle="Reset Password" />
             <SecureRoute path="/cart" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Your Shoppping Cart" />
             <SecureRoute path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
             <SecureRoute path="/listings/category/:categoryId/:categoryName" pageComponent={CategoryPage} layoutComponent={DefaultLayout} pageTitle="Category Listings" />
