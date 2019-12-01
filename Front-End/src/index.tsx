@@ -12,7 +12,6 @@ import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
 import CreateListing from './components/CreateListing';
 import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
 import ListingDetails from './components/ListingDetails/ListingDetails';
-
 import SearchPage from './components/Listings/SearchPage/searchPage';
 import CategoryPage from './components/Listings/CategoryPage/categoryPage';
 import ListingsPage from './components/Listings/ListingsPage/listingsPage';
@@ -20,6 +19,9 @@ import SignUp from './components/SignUp/signUp';
 import { StoreContext, IUserInfo } from './store';
 import ScrollToTop from './components/Misc/scrollToTop';
 import SecureRoute from './components/Authentication/secureRoute';
+import Checkout from './components/Checkout/checkout';
+import UserDisplay from './components/UserProfile/userDisplay';
+import UserProfileLayout from './layouts/UserProfileLayout/userProfileLayout';
 
 const history = createBrowserHistory();
 
@@ -41,6 +43,15 @@ class App extends React.Component<{}, IStates> {
         first_name: '',
         last_name: '',
         brand_name: '',
+        phone_number: '',
+        address: 0,
+        street_name: '',
+        street_number: 0,
+        unit_number: 0,
+        city: '',
+        province: '',
+        postal_code: '',
+        country: '',
       },
       isAuth: false,
       setAuthState: this.setAuthState,
@@ -54,7 +65,7 @@ class App extends React.Component<{}, IStates> {
       isAuth,
       userInfo,
     });
-  }
+  };
 
   public login = async (userCredentials: ILoginFields) => {
     try {
@@ -63,7 +74,7 @@ class App extends React.Component<{}, IStates> {
         this.setAuthState(true, resp.data.user);
       }
     } catch {}
-  }
+  };
 
   public logout = async () => {
     try {
@@ -75,11 +86,19 @@ class App extends React.Component<{}, IStates> {
           first_name: '',
           last_name: '',
           brand_name: '',
+          phone_number: '',
+          address: 0,
+          street_name: '',
+          street_number: 0,
+          unit_number: 0,
+          city: '',
+          province: '',
+          postal_code: '',
+          country: '',
         });
       }
     } catch {}
   };
-
 
   render() {
     return (
@@ -87,7 +106,9 @@ class App extends React.Component<{}, IStates> {
         <Router history={history}>
           <ScrollToTop />
           <Switch>
-            <SecureRoute authenticated path="/cart" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Your Shoppping Cart" />
+            <SecureRoute authenticated path="/profile" pageComponent={UserDisplay} layoutComponent={UserProfileLayout} pageTitle="User Profile" />
+            <SecureRoute authenticated path="/checkout" pageComponent={Checkout} layoutComponent={DefaultLayout} pageTitle="Checkout" />
+            <SecureRoute path="/cart" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Your Shoppping Cart" />
             <SecureRoute path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
             <SecureRoute path="/listings/category/:categoryId/:categoryName" pageComponent={CategoryPage} layoutComponent={DefaultLayout} pageTitle="Category Listings" />
             <SecureRoute path="/listings/search/:searchQuery" pageComponent={SearchPage} layoutComponent={DefaultLayout} pageTitle="Search Listings" />
@@ -103,7 +124,4 @@ class App extends React.Component<{}, IStates> {
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root'),
-);
+ReactDOM.render(<App />, document.getElementById('root'));

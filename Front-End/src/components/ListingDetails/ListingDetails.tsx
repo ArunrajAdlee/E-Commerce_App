@@ -8,7 +8,7 @@ import { Button, Spinner } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import { server, api } from '../../server';
 
-interface IListingDetails {
+export interface IListingDetails {
   id: number,
   description: string,
   image: string,
