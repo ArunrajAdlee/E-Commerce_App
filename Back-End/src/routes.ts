@@ -201,6 +201,7 @@ export const Routes = [
     controller: AdminController,
     action: 'siteActivity'
   },
+  
   //Cart
   {
     method: 'get',
