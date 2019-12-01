@@ -7,6 +7,7 @@ import { RouteComponentProps, Link } from 'react-router-dom';
 import { Button, Spinner } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import Rating from 'react-rating';
+import { server, api } from '../../server';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -16,6 +17,8 @@ import {
   faStar as farFaStar,
 } from '@fortawesome/free-regular-svg-icons';
 library.add(fasFaStar, farFaStar)
+
+
 
 export interface IListingDetails {
 
@@ -174,16 +177,17 @@ class ListingDetails extends React.Component<IProps, IStates> {
                     <li key = {index}>
                     <h5>
                       {`${r.title}  `}
+                    </h5>
                       <Rating
                         initialRating = {r.rating}
                         emptySymbol={<FontAwesomeIcon icon={farFaStar} className="text-warning" size = "sm"/>}
                         readonly
                         fullSymbol={<FontAwesomeIcon icon={fasFaStar} className="text-warning" size = 'sm' />}
                         />
-                      </h5>
-                    <p> className = "text-muted"> {r.description}</p>
+                      <p/>
+                    <p className = "text-muted"> {r.description}</p>
+                    <br/>
                     </li>
-
                     ))}
                   </ul>
                 </Row>
