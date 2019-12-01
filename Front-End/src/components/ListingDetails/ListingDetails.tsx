@@ -6,17 +6,18 @@ import Col from 'react-bootstrap/Col';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import { Button, Spinner } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
-import { server, api } from '../../server';
 import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faHeart as fasFaHeart,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faHeart as farFaHeart,
 } from '@fortawesome/free-regular-svg-icons';
-library.add(fasFaHeart, farFaHeart)
+import { server, api } from '../../server';
+
+library.add(fasFaHeart, farFaHeart);
 
 
 interface IListingDetails {
@@ -56,7 +57,6 @@ interface IStates {
 }
 
 class ListingDetails extends React.Component<IProps, IStates> {
-
   public readonly state: Readonly<IStates> = {
     listing: null,
     quantity: 1,
@@ -78,36 +78,28 @@ class ListingDetails extends React.Component<IProps, IStates> {
         this.setState({
           listing: resp.data.listing,
         });
+        const { user_id } = resp.data.listing;
+
+        const reviewResp = await server.get(
+          `${api.reviews}${user_id}`,
+        );
+
+        if (reviewResp.data.reviews) {
+          let overallRating = 0;
+
+          for (let i = 0; i < reviewResp.data.reviews.length - 1; i++) {
+            overallRating += reviewResp.data.reviews[i].rating;
+          }
+
+          overallRating /= reviewResp.data.reviews.length;
+
+          this.setState({
+            reviews: reviewResp.data.reviews,
+            overallReview: overallRating,
+            numReviews: reviewResp.data.reviews.length,
+          });
+        }
       }
-
-      const user_id = resp.data.listing.user_id;
-
-      const reviewResp = await server.get(
-        `${api.reviews}${user_id}`,
-      );
-      if(reviewResp.data.reviews){
-        this.setState({
-          reviews: reviewResp.data.reviews,
-        });
-      }
-
-      let overallRating = 0;
-
-      for (let i = 0; i < reviewResp.data.reviews.length-1; i++){
-        overallRating = overallRating + reviewResp.data.reviews[i].rating;
-      }
-
-      overallRating = overallRating/reviewResp.data.reviews.length;
-
-      this.setState({
-        overallReview: overallRating,
-      });
-
-      this.setState({
-        numReviews: reviewResp.data.reviews.length,
-      });
-
-
     } catch (e) {
       this.setState({ error: true });
     }
@@ -120,7 +112,9 @@ class ListingDetails extends React.Component<IProps, IStates> {
   }
 
   public render() {
-    const { listing, error } = this.state;
+    const {
+      listing, error, reviews, overallReview, numReviews,
+    } = this.state;
     return (
       listing
         ? (
@@ -141,14 +135,13 @@ class ListingDetails extends React.Component<IProps, IStates> {
                           <Link to={`/user/${listing.username}`}>{listing.username}</Link>
                           {' '}
                           <Rating
-                          initialRating = {this.state.overallReview}
-                          emptySymbol={<FontAwesomeIcon icon={farFaHeart} />}
-                          readonly = {true}
-                          fullSymbol={<FontAwesomeIcon icon={fasFaHeart} />}
+                            initialRating={overallReview}
+                            emptySymbol={<FontAwesomeIcon icon={farFaHeart} />}
+                            readonly
+                            fullSymbol={<FontAwesomeIcon icon={fasFaHeart} />}
                           />
-                          {' '}
                           <p className="text-muted">
-                          {this.state.numReviews} reviews
+                            {`${numReviews} reviews `}
                           </p>
                         </h5>
                         <h4 className="listing-price">
@@ -167,23 +160,26 @@ class ListingDetails extends React.Component<IProps, IStates> {
                   </Col>
                 </Row>
                 <Row className="mt-5">
-                <ul>
-                  <li>
-                  <h3> Reviews </h3>
-                  <br />
-                  </li>
-                  {this.state.reviews.map(r => (
+                  <ul>
                     <li>
-                    <h5>{r.title} {' '}
-                    <Rating
-                    initialRating = {r.rating}
-                    emptySymbol={<FontAwesomeIcon icon={farFaHeart} />}
-                    readonly = {true}
-                    fullSymbol={<FontAwesomeIcon icon={fasFaHeart} />}
-                    />
-                    </h5>
-                    <p> {r.description}</p>
+                      <h3>Reviews</h3>
+                      <br />
                     </li>
+                    {reviews.map((r, index) => (
+                      <li key={index}>
+                        <h5>
+                          {`${r.title}  `}
+                          <Rating
+                            initialRating={r.rating}
+                            emptySymbol={<FontAwesomeIcon icon={farFaHeart} />}
+                            readonly
+                            fullSymbol={<FontAwesomeIcon icon={fasFaHeart} />}
+                          />
+                        </h5>
+                        <p>
+                          {r.description}
+                        </p>
+                      </li>
                     ))}
                   </ul>
                 </Row>
