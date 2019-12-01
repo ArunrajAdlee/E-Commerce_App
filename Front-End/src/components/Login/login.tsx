@@ -8,6 +8,7 @@ import {
 import * as Yup from 'yup';
 import { Link, Redirect, RouteComponentProps } from 'react-router-dom';
 import { StoreContext } from '../../store';
+import ErrorAlert from '../Misc/errorAlert';
 
 
 export interface ILoginFields {
@@ -47,7 +48,7 @@ class Login extends React.Component<IProps, IStates> {
     const { isAuth } = this.context;
     const { isError } = this.state;
     return (
-      isAuth ? <Redirect to="/" />
+      isAuth ? <Redirect push to="/" />
         : (
           <Row className="login-register-container">
             <Col className="create-account" lg={12} xl={6}>
@@ -62,12 +63,7 @@ class Login extends React.Component<IProps, IStates> {
             <Col className="login-container" lg={12} xl={6}>
               <div className="login-content">
                 <h5>LOG IN</h5>
-                { isError
-                  ? (
-                    <Alert variant="danger" onClose={() => this.setState({ isError: !isError })} dismissible>
-                      <p>Username or Password is incorrect!</p>
-                    </Alert>
-                  ) : ''}
+                <ErrorAlert msg="Username or Password is incorrect!" isError={isError} onCloseError={() => this.setState({ isError: !isError })} />
                 <Formik
                   initialValues={{ username: '', password: '' }}
                   validationSchema={LoginSchema}
@@ -114,7 +110,7 @@ class Login extends React.Component<IProps, IStates> {
                         className="btn-block styled-button sign-in"
                         disabled={isSubmitting}
                       >
-                        {isSubmitting ? 'Please wait...' : 'Sign in'}
+                        {isSubmitting ? 'PLEASE WAIT...' : 'LOGIN'}
                       </Button>
                     </Form>
                   )}

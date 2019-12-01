@@ -1,0 +1,54 @@
+.checkout-form {
+    display: contents;
+
+    & .card { 
+        border: none;
+        
+        & .card-header {
+            cursor: pointer;
+            font-family: $title-font !important;
+            font-size:18px;
+            padding-left: 5px;
+            padding-right: 0;
+            background: none;
+            border: none;
+        }
+    }
+
+    & .shipping-options {
+        & .shipping-type {
+            cursor: pointer;
+            text-align: center;
+            border-radius: 4px;
+            padding: 20px 6px 6px 6px;
+        }
+
+        & .shipping-selected {
+            background-color: lightgreen;
+        }
+    }
+}
+
+.order-summary { 
+    padding: 25px;
+    background: #e5ecee;
+    font-family: $title-font !important;
+    
+
+    & .row {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    & .order-products-container {
+        max-height: 350px;
+    }
+
+    & .order-paypal-info {
+        font-size: 14px;
+
+        & .fa-paypal{
+            font-size: 30px;
+        }
+    }
+}
