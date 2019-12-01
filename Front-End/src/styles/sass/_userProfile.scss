@@ -1,0 +1,12 @@
+.user-profile-sidenav { 
+     & .card-header { 
+         background-color: $listings-background;
+     }
+}
+
+.user-info-container {
+    & .card-header, & .card-footer {
+        background-color: $listings-background;
+
+    }
+}

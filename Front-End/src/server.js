@@ -20,6 +20,7 @@ export const api = {
   listings_category: '/listings/category/',
   listings_search: '/listings/search/',
   listings_details: '/listings/',
+  user_profile: '/users',
   order_summary: '/order/summary',
   order_create: '/order/create',
 };
