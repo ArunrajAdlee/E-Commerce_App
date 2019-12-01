@@ -10,6 +10,9 @@ export class OrderDetails {
     order_id: number;
 
     @Column()
+    buyer_id: number;
+    
+    @Column()
     listing_id: number;
 
     @Column()
