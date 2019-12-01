@@ -19,11 +19,8 @@ import SignUp from './components/SignUp/signUp';
 import { StoreContext, IUserInfo } from './store';
 import ScrollToTop from './components/Misc/scrollToTop';
 import SecureRoute from './components/Authentication/secureRoute';
-<<<<<<< HEAD
 import TextFilter from './components/OrderHistory/orderHistoryBuyer';
-=======
 import Checkout from './components/Checkout/checkout';
->>>>>>> master
 
 const history = createBrowserHistory();
 

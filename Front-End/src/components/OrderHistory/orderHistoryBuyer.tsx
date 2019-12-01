@@ -6,6 +6,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
 import { RouteComponentProps, Link } from 'react-router-dom';
+import { server, api } from '../../server';
 
 
 
@@ -53,12 +54,17 @@ interface orderSeller {
 
 class BuyerOrderHistory extends React.Component {
 
+   public async getBuyersHistory(){
+    const resp = await server.get(api.order_history_buyer);
+    {console.log(resp)};
+  }
+
 
 render() {
 return (
       <BootstrapTable data={ products } trClassName='bootstrap_table'>
         
-        <TableHeaderColumn dataField='id' isKey filter={ { type: 'TextFilter', delay: 1000 } }>Order ID</TableHeaderColumn>
+<TableHeaderColumn dataField='id' isKey filter={ { type: 'TextFilter', delay: 1000 } }>{Response.toString}</TableHeaderColumn>
         <TableHeaderColumn dataField='date'>Date</TableHeaderColumn> 
         <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
           
