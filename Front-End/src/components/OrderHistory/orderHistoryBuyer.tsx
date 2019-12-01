@@ -80,7 +80,7 @@ class BuyerOrderHistory extends React.Component {
       
       <div>
       <BootstrapTable data={ objbuyer } trClassName='bootstrap_table'>
-        <TableHeaderColumn dataField='id' isKey filter={ { type: 'TextFilter', delay: 1000 } }>Order Id</TableHeaderColumn>
+        <TableHeaderColumn dataField='orderid' isKey filter={ { type: 'TextFilter', delay: 1000 } }>Order Id</TableHeaderColumn>
         <TableHeaderColumn dataField='date'>Date</TableHeaderColumn> 
         <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>  
       </BootstrapTable>
