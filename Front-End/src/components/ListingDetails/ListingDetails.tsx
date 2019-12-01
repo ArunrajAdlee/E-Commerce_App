@@ -11,12 +11,12 @@ import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
-  faHeart as fasFaHeart,
+  faStar as fasFaStar,
 } from '@fortawesome/free-solid-svg-icons';
 import {
-  faHeart as farFaHeart,
+  faStar as farFaStar,
 } from '@fortawesome/free-regular-svg-icons';
-library.add(fasFaHeart, farFaHeart)
+library.add(fasFaStar, farFaStar)
 
 
 interface IListingDetails {
@@ -142,9 +142,9 @@ class ListingDetails extends React.Component<IProps, IStates> {
                           {' '}
                           <Rating
                           initialRating = {this.state.overallReview}
-                          emptySymbol={<FontAwesomeIcon icon={farFaHeart} />}
+                          emptySymbol={<FontAwesomeIcon icon={farFaStar} className="text-warning" />}
                           readonly = {true}
-                          fullSymbol={<FontAwesomeIcon icon={fasFaHeart} />}
+                          fullSymbol={<FontAwesomeIcon icon={fasFaStar} className="text-warning" />}
                           />
                           {' '}
                           <p className="text-muted">
@@ -166,24 +166,35 @@ class ListingDetails extends React.Component<IProps, IStates> {
                     </Media.Body>
                   </Col>
                 </Row>
-                <Row className="mt-5">
+                <Row className = "review"/>
+                <Row className = "review">
+                  <Col/>
+                  <Col>
+                    <h4> Reviews </h4>
+                  </Col>
+                </Row>
+                <Row className = "review"/>
+                <Row className="reviewBorder">
                 <ul>
                   <li>
-                  <h3> Reviews </h3>
                   <br />
                   </li>
                   {this.state.reviews.map(r => (
                     <li>
-                    <h5>{r.title} {' '}
+                    <h5>
+                    {r.title} {' '}
+                    </h5>
                     <Rating
                     initialRating = {r.rating}
-                    emptySymbol={<FontAwesomeIcon icon={farFaHeart} />}
+                    emptySymbol={<FontAwesomeIcon icon={farFaStar} className="text-warning" size = "sm"/>}
                     readonly = {true}
-                    fullSymbol={<FontAwesomeIcon icon={fasFaHeart} />}
+                    fullSymbol={<FontAwesomeIcon icon={fasFaStar} className="text-warning" size = 'sm' />}
                     />
-                    </h5>
-                    <p> {r.description}</p>
+                    <p> </p>
+                    <p className = "text-muted"> {r.description}</p>
+                    <br />
                     </li>
+
                     ))}
                   </ul>
                 </Row>
