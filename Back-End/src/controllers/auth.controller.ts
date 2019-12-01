@@ -135,7 +135,7 @@ export class AuthController {
         // uncomment 'secure' when running in production
         // secure: true
       })
-      .send({ message: "cookie-set", user });
+      .send({ message: "cookie-set", isAdmin, user });
   }
 
   async remove(req: Request, res: Response, next: NextFunction) {
