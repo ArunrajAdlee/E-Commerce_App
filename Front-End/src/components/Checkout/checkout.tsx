@@ -111,7 +111,7 @@ class Checkout extends React.Component<IProps, IStates> {
       formData.append('province', values.province);
       formData.append('postalCode', values.postalCode);
       formData.append('country', values.country);
-      debugger;
+
       const addressResponse = await server.post(api.address_create, formData);
 
       if (addressResponse.data.address.id) {
@@ -148,7 +148,7 @@ class Checkout extends React.Component<IProps, IStates> {
                 }}
                 validationSchema={CheckoutSchema}
               >
-                {({ touched, errors, isSubmitting }) => (
+                {({ touched, errors }) => (
                   <Form className="checkout-form">
                     <Col lg={8}>
                       <Accordion defaultActiveKey="0">
