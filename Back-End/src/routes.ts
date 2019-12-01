@@ -187,6 +187,8 @@ export const Routes = [
     controller: AdsController,
     action: 'getClickCount'
   },
+
+  //Admin
   {
     method: 'get',
     route: '/admin/activity',

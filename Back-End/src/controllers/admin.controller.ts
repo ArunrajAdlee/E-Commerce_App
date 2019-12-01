@@ -11,6 +11,12 @@ const { checkAuth } = require('../helpers/check-auth');
 export class AdminController {
 
   async siteActivity(req: Request, res: Response, next: NextFunction) {
+    const authenticatedUser: AuthModel = checkAuth(req);
+    if (!authenticatedUser || !authenticatedUser.isAdmin) {
+      res.status(404).send('user is not authenticated');
+      return;
+    }
+    
     const ad = await getRepository(Ads).findOne(1);
     if (!ad) {
       res.status(404).send({
