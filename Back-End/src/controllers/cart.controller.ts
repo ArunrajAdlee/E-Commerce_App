@@ -9,7 +9,6 @@ const { checkAuth } = require('../helpers/check-auth');
 
 export class CartController {
   private cartRepository = getRepository(Cart);
-  private listingRepository = getRepository(Listings);
 
   async getCart(req: Request, res: Response, next: NextFunction) {
     const authenticatedUser: AuthModel = checkAuth(req);
@@ -80,5 +79,25 @@ export class CartController {
         message: 'an error accured'
       });
     }
+  }
+
+  async deleteCart(req: Request, res: Response, next: NextFunction) {
+    const authenticatedUser: AuthModel = checkAuth(req);
+    if (!authenticatedUser) {
+      res.status(404).send('user is not authenticated');
+      return;
+    }
+    
+    const cartToRemove = await this.cartRepository.findOne({
+        id: +(req.params.cart_id)
+    });
+    
+    const removedCart = await this.cartRepository.remove(cartToRemove);
+    if (!removedCart) {
+      res.status(404).send("error");
+    } else {
+      res.status(200).send("successfully deleted");
+    }
+
   }
 }

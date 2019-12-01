@@ -200,6 +200,7 @@ export const Routes = [
     controller: AdminController,
     action: 'siteActivity'
   },
+
   //Cart
   {
     method: 'get',
@@ -212,6 +213,12 @@ export const Routes = [
     route: '/cart', 
     controller: CartController,
     action: 'addToCart'
+  },
+  {
+    method: 'delete',
+    route: '/cart/:cart_id',
+    controller: CartController,
+    action: 'deleteCart'
   }
   
 ];
