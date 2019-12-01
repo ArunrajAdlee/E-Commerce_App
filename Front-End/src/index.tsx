@@ -31,7 +31,8 @@ const history = createBrowserHistory();
 interface IStates {
   userInfo: IUserInfo;
   isAuth: boolean;
-  setAuthState: (isAuth: boolean, userInfo: IUserInfo) => void;
+  isAdmin: boolean;
+  setAuthState: (isAuth: boolean, isAdmin: boolean, userInfo: IUserInfo) => void;
   login: (userCredentials: ILoginFields) => void;
   logout: () => void;
 }
@@ -57,15 +58,17 @@ class App extends React.Component<{}, IStates> {
         country: '',
       },
       isAuth: false,
+      isAdmin: false,
       setAuthState: this.setAuthState,
       login: this.login,
       logout: this.logout,
     };
   }
 
-  public setAuthState = (isAuth: boolean, userInfo: IUserInfo) => {
+  public setAuthState = (isAuth: boolean, isAdmin: boolean, userInfo: IUserInfo) => {
     this.setState({
       isAuth,
+      isAdmin,
       userInfo,
     });
   };
@@ -73,7 +76,7 @@ class App extends React.Component<{}, IStates> {
   public login = async (userCredentials: ILoginFields) => {
     const resp = await server.post(api.auth_login, userCredentials);
     if (resp) {
-      this.setAuthState(true, resp.data.user);
+      this.setAuthState(true, resp.data.isAdmin, resp.data.user);
     }
   };
 
@@ -81,7 +84,7 @@ class App extends React.Component<{}, IStates> {
     try {
       const resp = await server.post(api.auth_logout);
       if (resp) {
-        this.setAuthState(false, {
+        this.setAuthState(false, false, {
           username: '',
           email: '',
           first_name: '',
@@ -109,15 +112,15 @@ class App extends React.Component<{}, IStates> {
           <Switch>
             <SecureRoute authenticated path="/profile" pageComponent={UserDisplay} layoutComponent={UserProfileLayout} pageTitle="User Profile" />
             <SecureRoute authenticated path="/checkout" pageComponent={Checkout} layoutComponent={DefaultLayout} pageTitle="Checkout" />
-            <SecureRoute authenticated path="/admin/activity" pageComponent={SiteActivty} layoutComponent={AdminPanelLayout} pageTitle="Site Activity" />
-            <SecureRoute path="/auth/reset/:token" pageComponent={ResetPassword} layoutComponent={DefaultLayout} pageTitle="Reset Password" />
+            <SecureRoute admin path="/admin/activity" pageComponent={SiteActivty} layoutComponent={AdminPanelLayout} pageTitle="Site Activity" />
+            <SecureRoute noAuth path="/auth/reset/:token" pageComponent={ResetPassword} layoutComponent={DefaultLayout} pageTitle="Reset Password" />
             <SecureRoute path="/cart" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Your Shoppping Cart" />
-            <SecureRoute path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
+            <SecureRoute noAuth path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
             <SecureRoute path="/listings/category/:categoryId/:categoryName" pageComponent={CategoryPage} layoutComponent={DefaultLayout} pageTitle="Category Listings" />
             <SecureRoute path="/listings/search/:searchQuery" pageComponent={SearchPage} layoutComponent={DefaultLayout} pageTitle="Search Listings" />
             <SecureRoute path="/listings/:id" pageComponent={ListingDetails} layoutComponent={DefaultLayout} pageTitle="Listing Details" />
             <SecureRoute path="/listings" pageComponent={ListingsPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
-            <SecureRoute path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
+            <SecureRoute noAuth path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
             <SecureRoute authenticated path="/createListing" pageComponent={CreateListing} layoutComponent={DefaultLayout} pageTitle="Create Listing" />
             <SecureRoute pageComponent={LandingPage} layoutComponent={LandingLayout} />
           </Switch>

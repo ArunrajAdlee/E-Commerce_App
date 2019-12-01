@@ -49,8 +49,7 @@ class SiteActivty extends React.Component<IProps, IStates> {
     }
 
     public render() {
-      let { data } = this.state;
-
+      const { data } = this.state;
       return (
         Object.values(data).length >= 1
           ? (
@@ -58,13 +57,13 @@ class SiteActivty extends React.Component<IProps, IStates> {
               <h2 className="text-center">Site Activity</h2>
               <hr />
               <Row>
-                <Col lg={4} className="mb-3">
+                <Col xl={4} className="mb-3">
                   <ActivityCard title="Total Sales (Before Tax)" description="Total amount from all website sales excluding tax" importantText={`$${data.totalSaleAmounts[0].sum_price_before_tax}`}/>
                 </Col>
-                <Col lg={4} className="mb-3">
+                <Col xl={4} className="mb-3">
                   <ActivityCard title="Total Sales (After Tax)" description="Total amount from all website sales including tax" importantText={`$${data.totalSaleAmounts[0].sum_price_after_tax}`}/>
                 </Col>
-                <Col lg={4} className="mb-3">
+                <Col xl={4} className="mb-3">
                   <ActivityCard title="Total Revenue" description="How much Bob has made from listing fees" importantText={`$${data.totalSaleAmounts[0].sum_listing_fee}`}/>
                 </Col>
               </Row>
@@ -76,7 +75,7 @@ class SiteActivty extends React.Component<IProps, IStates> {
               <h2 className="text-center">Top Five Sellers</h2>
               <hr />
               <Row className="top-sellers-container">
-                {data.topSellers.map((seller, index) => (
+                {data.topSellers.map((seller) => (
                   <Col key={seller.order_details_seller_id} lg={4} className="mb-3">
                     <ActivityCard title={`${seller.user_username}'s total from sales`} description={`Seller ID: ${seller.order_details_seller_id}`} importantText={`$${seller.totalSum}`} />
                   </Col>

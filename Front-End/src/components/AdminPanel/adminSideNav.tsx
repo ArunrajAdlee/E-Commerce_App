@@ -14,11 +14,6 @@ const AdminSideNav = () => (
             <Link to="/admin/activity">Site Activity</Link>
           </Nav.Item>
         </ListGroupItem>
-        <ListGroupItem>
-          <Nav.Item>
-            <Link to="/">Order History</Link>
-          </Nav.Item>
-        </ListGroupItem>
       </ListGroup>
     </Card.Body>
   </Card>
