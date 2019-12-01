@@ -1,6 +1,6 @@
 export class OrderModel {
   id?: number;
-  buyer_id: number;
+	buyer_id: number;
   date: Date;
   shipping_type: string;
   shipped_to: number;

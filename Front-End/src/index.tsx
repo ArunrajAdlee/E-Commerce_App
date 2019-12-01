@@ -12,7 +12,6 @@ import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
 import CreateListing from './components/CreateListing';
 import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
 import ListingDetails from './components/ListingDetails/ListingDetails';
-
 import SearchPage from './components/Listings/SearchPage/searchPage';
 import CategoryPage from './components/Listings/CategoryPage/categoryPage';
 import ListingsPage from './components/Listings/ListingsPage/listingsPage';
@@ -20,6 +19,7 @@ import SignUp from './components/SignUp/signUp';
 import { StoreContext, IUserInfo } from './store';
 import ScrollToTop from './components/Misc/scrollToTop';
 import SecureRoute from './components/Authentication/secureRoute';
+import Checkout from './components/Checkout/checkout';
 import UserDisplay from './components/UserProfile/userDisplay';
 import UserProfileLayout from './layouts/UserProfileLayout/userProfileLayout';
 
@@ -106,68 +106,17 @@ class App extends React.Component<{}, IStates> {
         <Router history={history}>
           <ScrollToTop />
           <Switch>
-            <SecureRoute
-              authenticated
-              path="/cart"
-              pageComponent={LandingPage}
-              layoutComponent={DefaultLayout}
-              pageTitle="Your Shoppping Cart"
-            />
-            <SecureRoute
-              path="/login"
-              pageComponent={Login}
-              layoutComponent={DefaultLayout}
-              pageTitle="Login/Register"
-            />
-            <SecureRoute
-              path="/listings/category/:categoryId/:categoryName"
-              pageComponent={CategoryPage}
-              layoutComponent={DefaultLayout}
-              pageTitle="Category Listings"
-            />
-            <SecureRoute
-              path="/listings/search/:searchQuery"
-              pageComponent={SearchPage}
-              layoutComponent={DefaultLayout}
-              pageTitle="Search Listings"
-            />
-            <SecureRoute
-              path="/listings/:id"
-              pageComponent={ListingDetails}
-              layoutComponent={DefaultLayout}
-              pageTitle="Listing Details"
-            />
-            <SecureRoute
-              path="/listings"
-              pageComponent={ListingsPage}
-              layoutComponent={DefaultLayout}
-              pageTitle="Listings"
-            />
-            <SecureRoute
-              path="/register"
-              pageComponent={SignUp}
-              layoutComponent={DefaultLayout}
-              pageTitle="Sign Up"
-            />
-            <SecureRoute
-              authenticated
-              path="/profile"
-              pageComponent={UserDisplay}
-              layoutComponent={UserProfileLayout}
-              pageTitle="User Profile"
-            />
-            <SecureRoute
-              authenticated
-              path="/createListing"
-              pageComponent={CreateListing}
-              layoutComponent={DefaultLayout}
-              pageTitle="Create Listing"
-            />
-
-            <SecureRoute
-              pageComponent={LandingPage}
-              layoutComponent={LandingLayout}
-            />
+            <SecureRoute authenticated path="/profile" pageComponent={UserDisplay} layoutComponent={UserProfileLayout} pageTitle="User Profile" />
+            <SecureRoute authenticated path="/checkout" pageComponent={Checkout} layoutComponent={DefaultLayout} pageTitle="Checkout" />
+            <SecureRoute path="/cart" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Your Shoppping Cart" />
+            <SecureRoute path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
+            <SecureRoute path="/listings/category/:categoryId/:categoryName" pageComponent={CategoryPage} layoutComponent={DefaultLayout} pageTitle="Category Listings" />
+            <SecureRoute path="/listings/search/:searchQuery" pageComponent={SearchPage} layoutComponent={DefaultLayout} pageTitle="Search Listings" />
+            <SecureRoute path="/listings/:id" pageComponent={ListingDetails} layoutComponent={DefaultLayout} pageTitle="Listing Details" />
+            <SecureRoute path="/listings" pageComponent={ListingsPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
+            <SecureRoute path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
+            <SecureRoute authenticated path="/createListing" pageComponent={CreateListing} layoutComponent={DefaultLayout} pageTitle="Create Listing" />
+            <SecureRoute pageComponent={LandingPage} layoutComponent={LandingLayout} />
           </Switch>
         </Router>
       </StoreContext.Provider>

@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from 'express';
-import {getRepository} from 'typeorm';
+import {getRepository, createQueryBuilder} from 'typeorm';
 
 import {Cart} from '../entity/cart.entity';
 import {Listings} from '../entity/listings.entity';
@@ -139,7 +139,7 @@ export class OrderController {
 					price_before_tax: Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100,
 					tax: Math.round(cartItem.listing.price * cartItem.quantity * this.taxRate * 100) / 100,
 					listing_fee: Math.round(cartItem.listing.price * appliedFeeRate * 100) / 100,
-					price_after_tax: Math.round(cartItem.listing.price * (1 + this.taxRate) * 100) / 100,
+					price_after_tax: Math.round(cartItem.listing.price * cartItem.quantity * (1 + this.taxRate) * 100) / 100,
 				};
 				await this.orderDetailsRepository.save(newOrderDetails);
 				total_price_before_tax += cartItem.listing.price; //Compute order's total price before tax
@@ -170,6 +170,45 @@ export class OrderController {
 		catch(e) {
 			res.status(404).send("an error has occured");
 		}
+	}
+
+	async getBuyerOrderHistory(req: Request, res: Response, next: NextFunction) {
+		const authenticatedUser: AuthModel = checkAuth(req);
+	    if (!authenticatedUser) {
+	      res.status(404).send('user is not authenticated');
+	      return;
+		}
+		
+		return this.orderRepository.find({buyer_id: authenticatedUser.id});
+	}
+
+	async getBuyerOrderDetailsHistory(req: Request, res: Response, next: NextFunction) {
+		const orderId: number = parseInt(req.params.id);
+		const orderDetails = await this.orderDetailsRepository.find({order_id: orderId});
+		if (orderDetails && orderDetails.length == 0) {
+			res.status(404).send({
+				message: 'failed to retrieve order details'
+			});
+			return;
+		}
+
+		res.status(200).send({
+			orderDetails: orderDetails
+		});
+	}
+
+	async getSellerOrderHistory(req: Request, res: Response, next: NextFunction) {
+		const authenticatedUser: AuthModel = checkAuth(req);
+	    if (!authenticatedUser) {
+	      res.status(404).send('user is not authenticated');
+	      return;
+		}
+
+		const orderDetails = await this.orderDetailsRepository.find({seller_id: authenticatedUser.id});
+		
+		res.status(200).send({
+			order: orderDetails
+		})
 	}
 
 	async countItemsSold(userID: number) {

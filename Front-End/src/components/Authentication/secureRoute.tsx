@@ -35,7 +35,7 @@ const SecureRoute: React.SFC<IProps> = (props) => {
                 )}
               />
             )
-            : <Redirect exact to="/login" />
+            : <Redirect exact push to="/login" />
           : <Spinner className="loading-spinner" animation="border" variant="warning" />
       )}
     />
