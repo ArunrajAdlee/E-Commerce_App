@@ -172,7 +172,7 @@ export class OrderController {
 		}
 	}
 
-	async getOrderHistory(req: Request, res: Response, next: NextFunction) {
+	async getBuyerOrderHistory(req: Request, res: Response, next: NextFunction) {
 		const authenticatedUser: AuthModel = checkAuth(req);
 	    if (!authenticatedUser) {
 	      res.status(404).send('user is not authenticated');
@@ -180,9 +180,10 @@ export class OrderController {
 		}
 		
 		const orderDetails = await this.orderDetailsRepository.find({buyer_id: authenticatedUser.id});
-		if (!orderDetails) {
-			res.status(404).send({
-				message: 'an error occured'
+		if (orderDetails && orderDetails.length == 0) {
+			res.status(200).send({
+				message: 'no bought orders',
+				order: []
 			});
 			return;
 		}
@@ -206,7 +207,20 @@ export class OrderController {
 		res.status(200).send({
 			order: orders
 		});
+	}
 
+	async getSellerOrderHistory(req: Request, res: Response, next: NextFunction) {
+		const authenticatedUser: AuthModel = checkAuth(req);
+	    if (!authenticatedUser) {
+	      res.status(404).send('user is not authenticated');
+	      return;
+		}
+
+		const orderDetails = await this.orderDetailsRepository.find({seller_id: authenticatedUser.id});
+		
+		res.status(200).send({
+			order: orderDetails
+		})
 	}
 
 	async countItemsSold(userID: number) {

@@ -141,9 +141,15 @@ export const Routes = [
   },
   {
     method: 'get',
-    route: '/order/history',
+    route: '/order/history/buyer',
     controller: OrderController,
-    action: 'getOrderHistory'
+    action: 'getBuyerOrderHistory'
+  },
+  {
+    method: 'get',
+    route: '/order/history/seller',
+    controller: OrderController,
+    action: 'getSellerOrderHistory'
   },
 
   //Reviews
