@@ -179,6 +179,7 @@ export const Routes = [
     route: '/ads/:id',
     controller: AdsController,
     action: 'getClickCount'
+  },
   //Cart
   {
     method: 'get',
