@@ -9,8 +9,6 @@ export class OrderDetails {
     @Column()
     order_id: number;
 
-    @Column()
-    buyer_id: number;
     
     @Column()
     listing_id: number;
