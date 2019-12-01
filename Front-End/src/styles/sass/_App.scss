@@ -56,6 +56,16 @@ code {
   }
 }
 
+.loading-modal {
+  & .modal-content {
+    height: 0;
+    width: 0;
+
+    & .modal-header {
+      border: none;
+    }
+  }
+}
 
 .loading-spinner {
   display: block !important;
@@ -66,6 +76,30 @@ code {
   margin-right: -63px!important;
   top: 50% !important;
   right: 50% !important;
+}
+
+.custom-scrollbar {
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    padding-left:5px;
+    width: 8px;
+    height: 8px;
+    background-color: #aaa; /* or add it to the track */
+  }
+
+  /* Add a thumb */
+  &::-webkit-scrollbar-thumb {
+    background-color: #F90;	
+    background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, .2) 50%,
+      rgba(255, 255, 255, .2) 75%,
+      transparent 75%,
+      transparent)
+  }
 }
 
 
