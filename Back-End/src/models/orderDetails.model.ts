@@ -1,6 +1,5 @@
 export class OrderDetailsModel {
 	id?: number;
-	buyer_id: number;
 	order_id: number;
 	listing_id: number;
 	seller_id: number;

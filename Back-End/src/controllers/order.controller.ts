@@ -102,6 +102,7 @@ export class OrderController {
 		try {
 			//Create order
 			const newOrder: OrderModel = {
+				buyer_id: authenticatedUser.id,
 				date: new Date(),
 				shipping_type: req.body.shippingType,
 				shipped_to: req.body.addressID,
@@ -130,7 +131,6 @@ export class OrderController {
 
 				//Create order detail	
 				const newOrderDetails: OrderDetailsModel = {
-					buyer_id: authenticatedUser.id,
 					order_id: order.id,
 					listing_id: cartItem.listing_id,
 					seller_id: cartItem.listing.user_id,
@@ -172,42 +172,42 @@ export class OrderController {
 		}
 	}
 
-	async getBuyerOrderHistory(req: Request, res: Response, next: NextFunction) {
-		const authenticatedUser: AuthModel = checkAuth(req);
-	    if (!authenticatedUser) {
-	      res.status(404).send('user is not authenticated');
-	      return;
-		}
+	// async getBuyerOrderHistory(req: Request, res: Response, next: NextFunction) {
+	// 	const authenticatedUser: AuthModel = checkAuth(req);
+	//     if (!authenticatedUser) {
+	//       res.status(404).send('user is not authenticated');
+	//       return;
+	// 	}
 		
-		const orderDetails = await this.orderDetailsRepository.find({buyer_id: authenticatedUser.id});
-		if (orderDetails && orderDetails.length == 0) {
-			res.status(200).send({
-				message: 'no bought orders',
-				order: []
-			});
-			return;
-		}
+	// 	const orderDetails = await this.orderDetailsRepository.find({buyer_id: authenticatedUser.id});
+	// 	if (orderDetails && orderDetails.length == 0) {
+	// 		res.status(200).send({
+	// 			message: 'no bought orders',
+	// 			order: []
+	// 		});
+	// 		return;
+	// 	}
 
-		const uniqueValues = orderDetails.map(item => item.order_id).filter((value, index, self) => self.indexOf(value) === index);
-		let orders = [];
-		for (let uniqueValue of uniqueValues) {
-			const orderRes = await this.orderRepository.findOne(uniqueValue);
-			orders.push(orderRes);
-		}
+	// 	const uniqueValues = orderDetails.map(item => item.order_id).filter((value, index, self) => self.indexOf(value) === index);
+	// 	let orders = [];
+	// 	for (let uniqueValue of uniqueValues) {
+	// 		const orderRes = await this.orderRepository.findOne(uniqueValue);
+	// 		orders.push(orderRes);
+	// 	}
 
-		for (let order of orders) {
-			order.orderDetails = [];
-			for (let orderDetail of orderDetails) {
-				if (order.id == orderDetail.order_id) {
-					order.orderDetails.push(orderDetail);
-				}
-			}
-		}
+	// 	for (let order of orders) {
+	// 		order.orderDetails = [];
+	// 		for (let orderDetail of orderDetails) {
+	// 			if (order.id == orderDetail.order_id) {
+	// 				order.orderDetails.push(orderDetail);
+	// 			}
+	// 		}
+	// 	}
 
-		res.status(200).send({
-			order: orders
-		});
-	}
+	// 	res.status(200).send({
+	// 		order: orders
+	// 	});
+	// }
 
 	async getSellerOrderHistory(req: Request, res: Response, next: NextFunction) {
 		const authenticatedUser: AuthModel = checkAuth(req);
