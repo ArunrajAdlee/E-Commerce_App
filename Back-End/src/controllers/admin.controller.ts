@@ -37,29 +37,24 @@ export class AdminController {
       return;
     }
 
-    const totalAmounts = await getRepository(OrderDetails).createQueryBuilder('order_details')
-    .select(['SUM(price_before_tax) AS sum_price_before_tax', 
-            'SUM(price_after_tax) AS sum_price_after_tax',
-            'SUM(listing_fee) AS sum_listing_fee']
+    const totalSaleAmounts = await getRepository(OrderDetails).createQueryBuilder('order_details')
+    .select(['FORMAT(SUM(price_before_tax), 2) AS sum_price_before_tax', 
+            'FORMAT(SUM(price_after_tax), 2) AS sum_price_after_tax',
+            'FORMAT(SUM(listing_fee), 2) AS sum_listing_fee']
     ).getRawMany();
 
-    console.log(totalAmounts);
-
-    const highestOrders = await getRepository(OrderDetails).createQueryBuilder('order_details')
+    const topSellers = await getRepository(OrderDetails).createQueryBuilder('order_details')
     .innerJoin(User, 'user', 'user.id = order_details.seller_id')
-    .select(['order_details.seller_id', 'user.username', 'SUM(order_details.price_before_tax) AS totalSum'])
+    .select(['order_details.seller_id', 'user.username', 'FORMAT(SUM(order_details.price_before_tax), 2) AS totalSum'])
     .groupBy('order_details.seller_id')
-    .orderBy('totalSum', 'DESC')
+    .orderBy('totalSum', 'ASC')
     .limit(10)
     .getRawMany();
-    
-   
 
-// const user = await getRepository(User).createQueryBuilder("user")
-//     .innerJoin(OrderDetails,  "orderDetails", "orderDetails.seller_id = user.id")
-//     .select(['orderDetails.price_after_tax'])
-//     .getRawMany();
-//     console.log(user);
-
+    res.status(200).send({
+      adClickCount: ad.click_count,
+      totalSaleAmounts: totalSaleAmounts,
+      topSellers: topSellers
+    });
   }
 }
