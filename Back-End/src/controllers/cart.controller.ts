@@ -18,25 +18,15 @@ export class CartController {
       return;
     }
 
-    const desiredCarts: CartModel[] = await this.cartRepository.find({
-      user_id: authenticatedUser.id
-    });
-    if (!desiredCarts) {
-      res.status(404).send('cart not found');
-      return;
-    }
+    const cartInfo = await getRepository(Cart).createQueryBuilder('cart')
+    .innerJoin(Listings, 'listing', 'listing.id = cart.listing_id')
+    .select(['cart.id', 'cart.user_id', 'cart.quantity', 'cart.listing_id', 'listing.title', 
+    'listing.image', 'listing.thumbnail', 'listing.description', 'listing.price', 'listing.stock_count',
+    'listing.quantity_sold', 'listing.status', 'listing.user_id', 'listing.username', 'listing.category',
+    'listing.category_name'])
+    .getRawMany();
 
-    const cartListings: ListingsModel[] = [];
-
-    for (var cart of desiredCarts) {
-      cartListings.push(
-        await this.listingRepository.findOne({
-          id: cart.listing_id
-        })
-      );
-    }
-
-    return cartListings;
+     return cartInfo;
   }
 
   async addToCart(req: Request, res: Response, next: NextFunction) {
