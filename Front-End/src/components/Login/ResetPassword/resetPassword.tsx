@@ -2,17 +2,14 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import {
-  FormControl, InputGroup, Row, Col,
+  Row, Col,
 } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { RouteComponentProps, Redirect } from 'react-router';
 import {
   Field, ErrorMessage, Formik, FormikValues, Form,
 } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
-import ErrorAlert from '../../Misc/errorAlert';
 import { server, api } from '../../../server';
 import { StoreContext } from '../../../store';
 
@@ -141,7 +138,7 @@ class ResetPassword extends React.Component<IProps, IStates> {
             : (
               <>
                 <h3>Your password has been reset!</h3>
-                <Link to="/login">Clik Here to go to Login Page</Link>
+                <Link to="/login">Click here to go to Login Page</Link>
               </>
             )
           : <Redirect to="/" push />

@@ -1,12 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import {
-  FormControl, InputGroup, Row, Col,
-} from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { RouteComponentProps } from 'react-router';
-import {
   Field, ErrorMessage, Formik, FormikValues, Form,
 } from 'formik';
 import * as Yup from 'yup';
