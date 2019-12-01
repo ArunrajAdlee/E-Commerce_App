@@ -49,7 +49,12 @@ export class AddressController {
 
         let address;
         if(!existingAddress) {
-            address = await this.addressRepository.save(newAddress);
+            try {
+              address = await this.addressRepository.save(newAddress);
+            }
+            catch(e) {
+              res.status(404).send("error creating address");
+            }
         }
         else {
             address = existingAddress;
