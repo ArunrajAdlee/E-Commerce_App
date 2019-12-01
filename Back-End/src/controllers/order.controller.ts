@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from 'express';
-import {getRepository} from 'typeorm';
+import {getRepository, createQueryBuilder} from 'typeorm';
 
 import {Cart} from '../entity/cart.entity';
 import {Listings} from '../entity/listings.entity';
@@ -170,6 +170,57 @@ export class OrderController {
 		catch(e) {
 			res.status(404).send("an error has occured");
 		}
+	}
+
+	async getBuyerOrderHistory(req: Request, res: Response, next: NextFunction) {
+		const authenticatedUser: AuthModel = checkAuth(req);
+	    if (!authenticatedUser) {
+	      res.status(404).send('user is not authenticated');
+	      return;
+		}
+		
+		const orderDetails = await this.orderDetailsRepository.find({buyer_id: authenticatedUser.id});
+		if (orderDetails && orderDetails.length == 0) {
+			res.status(200).send({
+				message: 'no bought orders',
+				order: []
+			});
+			return;
+		}
+
+		const uniqueValues = orderDetails.map(item => item.order_id).filter((value, index, self) => self.indexOf(value) === index);
+		let orders = [];
+		for (let uniqueValue of uniqueValues) {
+			const orderRes = await this.orderRepository.findOne(uniqueValue);
+			orders.push(orderRes);
+		}
+
+		for (let order of orders) {
+			order.orderDetails = [];
+			for (let orderDetail of orderDetails) {
+				if (order.id == orderDetail.order_id) {
+					order.orderDetails.push(orderDetail);
+				}
+			}
+		}
+
+		res.status(200).send({
+			order: orders
+		});
+	}
+
+	async getSellerOrderHistory(req: Request, res: Response, next: NextFunction) {
+		const authenticatedUser: AuthModel = checkAuth(req);
+	    if (!authenticatedUser) {
+	      res.status(404).send('user is not authenticated');
+	      return;
+		}
+
+		const orderDetails = await this.orderDetailsRepository.find({seller_id: authenticatedUser.id});
+		
+		res.status(200).send({
+			order: orderDetails
+		})
 	}
 
 	async countItemsSold(userID: number) {
