@@ -20,6 +20,7 @@ import SignUp from './components/SignUp/signUp';
 import { StoreContext, IUserInfo } from './store';
 import ScrollToTop from './components/Misc/scrollToTop';
 import SecureRoute from './components/Authentication/secureRoute';
+import TextFilter from './components/OrderHistory/orderHistoryBuyer';
 
 const history = createBrowserHistory();
 
@@ -95,7 +96,9 @@ class App extends React.Component<{}, IStates> {
             <SecureRoute path="/listings" pageComponent={ListingsPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
             <SecureRoute path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
             <SecureRoute authenticated path="/createListing" pageComponent={CreateListing} layoutComponent={DefaultLayout} pageTitle="Create Listing" />
+            <SecureRoute path="/orderhistory" pageComponent={TextFilter} layoutComponent={DefaultLayout} pageTitle="Order history" />
             <SecureRoute pageComponent={LandingPage} layoutComponent={LandingLayout} />
+            
           </Switch>
         </Router>
       </StoreContext.Provider>

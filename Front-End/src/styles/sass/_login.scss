@@ -67,3 +67,26 @@
 
     }
 }
+
+
+
+.nav-tabs{
+    
+    .nav-link{
+
+       &:focus{
+           background: $theme-gradient !important;          
+       }
+    
+            
+    }
+}
+
+     
+    
+
+
+
+   
+
+
