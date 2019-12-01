@@ -50,6 +50,7 @@ export class CartController {
       user_id: authenticatedUser.id
     });
 
+    //If listing already exists in cart, update quantity
     for (let cartItem of cartItems) {
       if (cartItem.listing_id == req.body.listing_id) {
         try {
