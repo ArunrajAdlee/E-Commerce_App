@@ -139,7 +139,7 @@ export class OrderController {
 					price_before_tax: Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100,
 					tax: Math.round(cartItem.listing.price * cartItem.quantity * this.taxRate * 100) / 100,
 					listing_fee: Math.round(cartItem.listing.price * appliedFeeRate * 100) / 100,
-					price_after_tax: Math.round(cartItem.listing.price * (1 + this.taxRate) * 100) / 100,
+					price_after_tax: Math.round(cartItem.listing.price * cartItem.quantity * (1 + this.taxRate) * 100) / 100,
 				};
 				await this.orderDetailsRepository.save(newOrderDetails);
 				total_price_before_tax += cartItem.listing.price; //Compute order's total price before tax
