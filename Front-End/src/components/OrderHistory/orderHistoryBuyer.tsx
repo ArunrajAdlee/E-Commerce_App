@@ -47,13 +47,15 @@ interface orderSeller {
 interface IStates{
 
   objbuyer: orderBuyer[],
+  objseller: orderSeller[],
 }
 
 //Buyer history component
 class BuyerOrderHistory extends React.Component {
 
   public readonly state: Readonly<IStates> = {
-    objbuyer: []
+    objbuyer: [],
+    objseller: []
   };
 
   
@@ -76,6 +78,7 @@ class BuyerOrderHistory extends React.Component {
 
   render() {
     let { objbuyer } = this.state;
+    {objbuyer}
     return (
       
       <div>
@@ -98,17 +101,40 @@ class BuyerOrderHistory extends React.Component {
 //Seller history component
 class SellerOrderHistory extends React.Component{
 
+  public readonly state: Readonly<IStates> = {
+    objbuyer: [],
+    objseller: [],
+  };
+
+  public async componentDidMount(){
+    const resp = await server.get(api.order_history_buyer);
+    const resOrders : orderSeller = resp.data.map((product: any) => ({
+
+      orderid: product.order.id,
+      date: product.purchase_date,
+      price: product.price_after_tax,
+      profit: 0,
+
+    }));
+    this.setState({
+      objseller: resOrders
+    });
+    console.log(resOrders);
+    
+  }
+
 
   render(){
+    let { objseller } = this.state;
 
     return(
 
-      <BootstrapTable data={ products } trClassName='bootstrap_table'>
+      <BootstrapTable data={ objseller } trClassName='bootstrap_table'>
         
-      <TableHeaderColumn dataField='id' isKey filter={ { type: 'TextFilter', delay: 1000 } }>Order ID</TableHeaderColumn>
-      <TableHeaderColumn dataField='name' filter={ { type: 'TextFilter', delay: 1000 } }>Product Name</TableHeaderColumn>
+      <TableHeaderColumn dataField='orderid' isKey filter={ { type: 'TextFilter', delay: 1000 } }>Order ID</TableHeaderColumn>
+      <TableHeaderColumn dataField='' filter={ { type: 'TextFilter', delay: 1000 } }>Purchase Date</TableHeaderColumn>
       <TableHeaderColumn dataField='price' filter={ { type: 'TextFilter', delay: 1000 } }>Product Price</TableHeaderColumn>
-      <TableHeaderColumn dataField='date' filter={ { type: 'TextFilter', delay: 1000 } }>Product Price</TableHeaderColumn> 
+      <TableHeaderColumn dataField='profit' filter={ { type: 'TextFilter', delay: 1000 } }>Profit</TableHeaderColumn> 
        </BootstrapTable>
 
     );
