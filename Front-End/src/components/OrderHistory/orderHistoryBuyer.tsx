@@ -44,26 +44,58 @@ interface orderSeller {
   
 }
 
+interface IStates{
+
+  objbuyer: orderSeller,
+}
+
 //Buyer history component
 class BuyerOrderHistory extends React.Component {
 
-  public async getBuyersHistory(){
+  public readonly state: Readonly<IStates> = {
+    objbuyer : //wtf i put here? 
+  };
+
+  
+  
+  public async componentDidMount(){
     const resp = await server.get(api.order_history_buyer);
-    {console.log(resp)};
+    const resOrders : orderBuyer = resp.data.map((product: any) => ({
+
+      orderid: product.id,
+      date: product.date,
+      price: product.total_price,
+
+    }));
+
+    this.setState({
+
+
+
+
+
+    });
+    console.log(resOrders);
+    
   }
 
   render() {
 
     return (
-      <BootstrapTable data={ products } trClassName='bootstrap_table'>
-
-
-<TableHeaderColumn dataField='id' isKey filter={ { type: 'TextFilter', delay: 1000 } }>{Response.toString}</TableHeaderColumn>
-        <TableHeaderColumn dataField='date'>Date</TableHeaderColumn> 
-        <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
-          
-      </BootstrapTable>
       
+      <div>
+      <BootstrapTable data={ products } trClassName='bootstrap_table'>
+        <TableHeaderColumn dataField='id' isKey filter={ { type: 'TextFilter', delay: 1000 } }>Order Id</TableHeaderColumn>
+        <TableHeaderColumn dataField='date'>Date</TableHeaderColumn> 
+        <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>  
+      </BootstrapTable>
+
+      
+      </div>
+
+    
+      
+
     );
   } 
 };
