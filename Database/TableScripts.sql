@@ -4,7 +4,7 @@ CREATE TABLE `user` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `username` VARCHAR(255) UNIQUE,
   `password` VARCHAR(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL UNIQUE,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `brand_name` varchar(255),
