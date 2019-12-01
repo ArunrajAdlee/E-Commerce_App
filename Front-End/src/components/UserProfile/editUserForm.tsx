@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   Row,
   Col,
@@ -6,15 +6,16 @@ import {
   Card,
   Container,
   ListGroup,
-  ListGroupItem
-} from "react-bootstrap";
-import { Formik, Field, Form, ErrorMessage, FormikValues } from "formik";
-import * as Yup from "yup";
-import { server, api } from "../../server";
-import { RouteComponentProps } from "react-router-dom";
+  ListGroupItem,
+} from 'react-bootstrap';
+import {
+  Formik, Field, Form, ErrorMessage, FormikValues,
+} from 'formik';
+import * as Yup from 'yup';
+import { server, api } from '../../server';
 
-interface UserDisplayProps {
-  handleNav: (id: number) => void;
+export interface EditDisplayProps {
+  handleShowEdit: (isEdit: boolean) => void;
   username: string;
   first_name: string;
   last_name: string;
@@ -30,97 +31,100 @@ interface UserDisplayProps {
   country: string;
 }
 
-//YUP form validation
+// YUP form validation
 const editFormSchema = Yup.object().shape({
   email: Yup.string()
     .email()
-    .required("Password is required")
-    .max(32, "Maximum 32 characters"),
+    .required('Password is required')
+    .max(32, 'Maximum 32 characters'),
   firstName: Yup.string()
-    .required("First Name is required")
-    .max(32, "Maximum 32 characters"),
+    .required('First Name is required')
+    .max(32, 'Maximum 32 characters'),
   lastName: Yup.string()
-    .required("Last Name is required")
-    .max(32, "Maximum 32 characters"),
+    .required('Last Name is required')
+    .max(32, 'Maximum 32 characters'),
   streetName: Yup.string()
-    .required("Street Name is required")
-    .max(64, "Maximum 64 characters"),
+    .required('Street Name is required')
+    .max(64, 'Maximum 64 characters'),
   brandName: Yup.string()
-    .required("Brand Name is required")
-    .max(64, "Maximum 64 characters"),
-  streetNumber: Yup.number().required("Street Number is required"),
+    .required('Brand Name is required')
+    .max(64, 'Maximum 64 characters'),
+  streetNumber: Yup.number().required('Street Number is required'),
   postalCode: Yup.string()
-    .required("Postal Code is required")
-    .max(64, "Maximum 64 characters"),
+    .required('Postal Code is required')
+    .max(64, 'Maximum 64 characters'),
   province: Yup.string()
-    .required("Province is required")
-    .max(64, "Maximum 64 characters"),
+    .required('Province is required')
+    .max(64, 'Maximum 64 characters'),
   phoneNumber: Yup.string()
-    .required("Phone Number is required")
-    .max(64, "Maximum characters reached"),
+    .required('Phone Number is required')
+    .max(64, 'Maximum characters reached'),
   country: Yup.string()
-    .required("Country is required")
-    .max(64, "Maximum 64 characters"),
+    .required('Country is required')
+    .max(64, 'Maximum 64 characters'),
   unitNumber: Yup.number(),
   city: Yup.string()
-    .required("City Name is required")
-    .max(32, "Character limit reached")
+    .required('City Name is required')
+    .max(32, 'Character limit reached'),
 });
-interface IProps extends RouteComponentProps<any> { }
-class EditUserForm extends React.Component<UserDisplayProps, {}> {
 
-  //Handle the form submit here
+class EditUserForm extends React.Component<EditDisplayProps, {}> {
+  // Handle the form submit here
   private handleSubmit = async (values: FormikValues, actions: any) => {
-    console.log("Here");
     const formData = new FormData();
-    formData.append("email", values.email);
-    formData.append("brand_name", values.brandName);
-    formData.append("first_name", values.firstName);
-    formData.append("last_name", values.lastName);
-    formData.append("street_number", values.streetNumber);
-    formData.append("street_name", values.streetName);
-    formData.append("unit_number", values.unitNumber);
-    formData.append("city", values.city);
-    formData.append("province", values.province);
-    formData.append("country", values.country);
-    formData.append("postal_code", values.postalCode);
-    formData.append("phone_number", values.phoneNumber);
+    formData.append('email', values.email);
+    formData.append('brand_name', values.brandName);
+    formData.append('first_name', values.firstName);
+    formData.append('last_name', values.lastName);
+    formData.append('street_number', values.streetNumber);
+    formData.append('street_name', values.streetName);
+    formData.append('unit_number', values.unitNumber);
+    formData.append('city', values.city);
+    formData.append('province', values.province);
+    formData.append('country', values.country);
+    formData.append('postal_code', values.postalCode);
+    formData.append('phone_number', values.phoneNumber);
 
     const resp = await server.post(api.user_profile, formData);
     window.location.reload();
-
   };
-  //render method
+
+  // render method
   render() {
+    const {
+      handleShowEdit, email, first_name, last_name, brand_name, street_number, street_name, unit_number, city, province, country, postal_code, phone_number,
+    } = this.props;
     return (
       <Card>
-        <Card.Header className="bg-info text-light">Form Edit</Card.Header>
+        <Card.Header className="text-light">Form Edit</Card.Header>
         <Card.Body>
           <Container fluid>
             <Formik
-              //Initial values for the form
+              // Initial values for the form
               initialValues={{
-                email: this.props.email,
-                firstName: this.props.first_name,
-                lastName: this.props.last_name,
-                brandName: this.props.brand_name,
-                streetNumber: this.props.street_number,
-                streetName: this.props.street_name,
-                unitNumber: this.props.unit_number,
-                city: this.props.city,
-                province: this.props.province,
-                country: this.props.country,
-                postalCode: this.props.postal_code,
-                phoneNumber: this.props.phone_number
+                email,
+                firstName: first_name,
+                lastName: last_name,
+                brandName: brand_name,
+                streetNumber: street_number,
+                streetName: street_name,
+                unitNumber: unit_number,
+                city,
+                province,
+                country,
+                postalCode: postal_code,
+                phoneNumber: phone_number,
               }}
               validationSchema={editFormSchema}
-              //onSubmit
+              // onSubmit
               onSubmit={(values: FormikValues, actions: any) => {
                 actions.setSubmitting(true);
                 this.handleSubmit(values, actions);
               }}
             >
-              {({ touched, errors, values, isSubmitting }) => (
+              {({
+                touched, errors, values, isSubmitting,
+              }) => (
                 <Form>
                   <ListGroup className="list-group-flush">
                     <ListGroupItem>
@@ -133,9 +137,9 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                               placeholder="Brand Name"
                               className={`form-control ${
                                 touched.brandName && errors.brandName
-                                  ? "is-invalid"
-                                  : ""
-                                }`}
+                                  ? 'is-invalid'
+                                  : ''
+                              }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -154,9 +158,9 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                               placeholder="First Name"
                               className={`form-control ${
                                 touched.firstName && errors.firstName
-                                  ? "is-invalid"
-                                  : ""
-                                }`}
+                                  ? 'is-invalid'
+                                  : ''
+                              }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -174,9 +178,9 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                               placeholder="lastName"
                               className={`form-control ${
                                 touched.lastName && errors.lastName
-                                  ? "is-invalid"
-                                  : ""
-                                }`}
+                                  ? 'is-invalid'
+                                  : ''
+                              }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -197,9 +201,9 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                               placeholder="email"
                               className={`form-control ${
                                 touched.email && errors.email
-                                  ? "is-invalid"
-                                  : ""
-                                }`}
+                                  ? 'is-invalid'
+                                  : ''
+                              }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -217,9 +221,9 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                               placeholder="Phone Number"
                               className={`form-control ${
                                 touched.phoneNumber && errors.phoneNumber
-                                  ? "is-invalid"
-                                  : ""
-                                }`}
+                                  ? 'is-invalid'
+                                  : ''
+                              }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -240,9 +244,9 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                               placeholder="Street Number"
                               className={`form-control ${
                                 touched.streetNumber && errors.streetNumber
-                                  ? "is-invalid"
-                                  : ""
-                                }`}
+                                  ? 'is-invalid'
+                                  : ''
+                              }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -260,9 +264,9 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                               placeholder="Street Name"
                               className={`form-control ${
                                 touched.streetName && errors.streetName
-                                  ? "is-invalid"
-                                  : ""
-                                }`}
+                                  ? 'is-invalid'
+                                  : ''
+                              }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -279,9 +283,9 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                               placeholder="Unit Number"
                               className={`form-control ${
                                 touched.unitNumber && errors.unitNumber
-                                  ? "is-invalid"
-                                  : ""
-                                }`}
+                                  ? 'is-invalid'
+                                  : ''
+                              }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -301,8 +305,8 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                               name="city"
                               placeholder="City"
                               className={`form-control ${
-                                touched.city && errors.city ? "is-invalid" : ""
-                                }`}
+                                touched.city && errors.city ? 'is-invalid' : ''
+                              }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -320,9 +324,9 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                               placeholder="Province"
                               className={`form-control ${
                                 touched.province && errors.province
-                                  ? "is-invalid"
-                                  : ""
-                                }`}
+                                  ? 'is-invalid'
+                                  : ''
+                              }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -339,9 +343,9 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                               placeholder="Postal Code"
                               className={`form-control ${
                                 touched.postalCode && errors.postalCode
-                                  ? "is-invalid"
-                                  : ""
-                                }`}
+                                  ? 'is-invalid'
+                                  : ''
+                              }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -359,9 +363,9 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                               placeholder="Country"
                               className={`form-control ${
                                 touched.country && errors.country
-                                  ? "is-invalid"
-                                  : ""
-                                }`}
+                                  ? 'is-invalid'
+                                  : ''
+                              }`}
                             />
                             <ErrorMessage
                               component="div"
@@ -381,10 +385,10 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
                         disabled={isSubmitting}
                         variant="warning"
                       >
-                        {isSubmitting ? "Please wait..." : "Submit"}
+                        {isSubmitting ? 'Please wait...' : 'Submit'}
                       </Button>
                       <Button
-                        onClick={() => this.props.handleNav(1)}
+                        onClick={() => handleShowEdit(false)}
                         className="btn btn-danger"
                       >
                         Cancel
@@ -396,7 +400,7 @@ class EditUserForm extends React.Component<UserDisplayProps, {}> {
             </Formik>
           </Container>
         </Card.Body>
-        <Card.Footer className="bg-info"></Card.Footer>
+        <Card.Footer></Card.Footer>
       </Card>
     );
   }
