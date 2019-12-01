@@ -7,6 +7,10 @@ import { RouteComponentProps, Link } from 'react-router-dom';
 import { Button, Spinner } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import { server, api } from '../../server';
+import * as Yup from 'yup';
+import {
+  Formik, Field, Form, ErrorMessage, FormikValues,
+} from 'formik';
 import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -17,6 +21,7 @@ import {
   faHeart as farFaHeart,
 } from '@fortawesome/free-regular-svg-icons';
 library.add(fasFaHeart, farFaHeart)
+
 
 interface IListingDetails {
   id: number,
@@ -39,9 +44,22 @@ interface IReviewDetails {
   title: string,
   description: string,
   rating: number,
+  seller_id: number,
+  user_id: number,
+}
+
+export interface FormFields {
+  user_id: number,
+  seller_id: number,
+  listing_id: number,
+  title: string,
+  description: string,
+  rating: number,
+
 }
 
 interface IProps extends RouteComponentProps<any> {}
+
 interface IStates {
   listing: IListingDetails | null;
   quantity: number;
@@ -49,7 +67,20 @@ interface IStates {
   error: boolean,
 }
 
+const ReviewSchema = Yup.object().shape({
+  title: Yup.string()
+    .max(50, 'You\'ve reached the character limit')
+    .required('Title is required'),
+  description: Yup.string()
+    .max(400, 'The description is over the character limit (400)')
+    .required('Description is required'),
+    rating: Yup.number()
+      .typeError('Please add a rating')
+      .required('Please add a rating'),
+});
+
 class ListingDetails extends React.Component<IProps, IStates> {
+
   public readonly state: Readonly<IStates> = {
     listing: null,
     quantity: 1,
@@ -60,6 +91,8 @@ class ListingDetails extends React.Component<IProps, IStates> {
   public async componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
+    const user_id = 5;
+
     try {
       const resp = await server.get(
         `${api.listings_details}${id}`,
@@ -70,10 +103,14 @@ class ListingDetails extends React.Component<IProps, IStates> {
         });
       }
 
-      const tempReviews = ([{title: "Great shoes", description: "I'm so glad I found them", rating: 4},
-              {title: "Love at first sight", description: "I really wish I hated you right now", rating: 5}])
-
-      this.setState({reviews: tempReviews});
+      const reviewResp = await server.get(
+        `${api.reviews}${user_id}`,
+      );
+      if(reviewResp.data.reviews){
+        this.setState({
+          reviews: resp.data.reviews,
+        });
+      }
 
     } catch (e) {
       this.setState({ error: true });
@@ -86,12 +123,8 @@ class ListingDetails extends React.Component<IProps, IStates> {
     // API STUFF FOR ADDING TO THE ITEM TO USER'S CART
   }
 
-  private displayRating = (r: any) => {
-    var rating =[];
-    for (let i = 0; i < r-1; i++){
-      rating.push(<FontAwesomeIcon icon={fasFaHeart} key = {i} />);
-    }
-    return rating;
+  private handleSubmit = async (values: FormikValues, actions: any) => {
+    await server.post(api.reviews_post, values);
   }
 
 
@@ -152,6 +185,109 @@ class ListingDetails extends React.Component<IProps, IStates> {
                     ))}
                   </ul>
                 </Row>
+
+
+
+
+                <Formik
+                  initialValues={
+                  {
+                    user_id: 5,
+                    seller_id: 5,
+                    listing_id: 28,
+                    title: '',
+                    description: '',
+                    rating: -1,
+                  }
+                  }
+                  validationSchema={ReviewSchema}
+                  onSubmit={(values: FormikValues, actions: any) => {
+                    actions.setSubmitting(true);
+                    this.handleSubmit(values, actions);
+                  }}
+                >
+                  {({ touched, errors, isSubmitting }) => (
+                    <Form>
+                          <Row>
+                            <Col lg={2}>
+                              <label htmlFor="title">Review Title*</label>
+                            </Col>
+                            <Col lg={9}>
+                              <Field
+                                name="title"
+                                className={`form-control styled-input listing-input ${
+                                  touched.title && errors.title ? 'is-invalid' : ''
+                                }`}
+                              />
+                              <ErrorMessage
+                                component="div"
+                                name="title"
+                                className="invalid-feedback"
+                              />
+                            </Col>
+                          </Row>
+                          <br />
+                          <Row>
+                            <Col lg={2}>
+                              <label htmlFor="description">Review Text*</label>
+                            </Col>
+                            <Col lg={9}>
+                              <Field
+                                component="textarea"
+                                style={{ height: '100px' }}
+                                name="description"
+                                className={`form-control styled-input listing-input ${
+                                  touched.description && errors.description ? 'is-invalid' : ''
+                                }`}
+                              />
+                              <ErrorMessage
+                                component="div"
+                                name="description"
+                                className="invalid-feedback"
+                              />
+                            </Col>
+                          </Row>
+
+                          <Row>
+                            <Col lg={2}>
+                              <label htmlFor="description">Seller Rating*</label>
+                            </Col>
+                            <Col lg={9}>
+                              <Field
+                              component="select"
+                              name = "rating"
+                              className={`form-control styled-input listing-input ${
+                                touched.rating && errors.rating ? 'is-invalid' : ''
+                              }`}>
+                              <option value=""> -- select a rating -- </option>
+                              <option value = "1"> 1 </option>
+                              <option value = "2"> 2 </option>
+                              <option value = "3"> 3 </option>
+                              <option value = "4"> 4 </option>
+                              <option value = "5"> 5 </option>
+                              </Field>
+                              <ErrorMessage
+                                component="div"
+                                name="rating"
+                                className="invalid-feedback"
+                              />
+                            </Col>
+
+
+                          </Row>
+
+                          <Button
+                            type="submit"
+                            className="btn styled-button post"
+                            disabled={isSubmitting}
+                            variant="warning"
+                          >
+                            {isSubmitting ? 'Please wait...' : 'Post'}
+                          </Button>
+                    </Form>
+                  )}
+                </Formik>
+
               </Container>
             </Media>
 

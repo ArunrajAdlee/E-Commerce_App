@@ -16,4 +16,6 @@ export const api = {
   listings_category: '/listings/category/',
   listings_search: '/listings/search/',
   listings_details: '/listings/',
+  reviews: '/reviews/',
+  reviews_post: '/reviews'
 };

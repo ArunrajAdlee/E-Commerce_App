@@ -7,7 +7,7 @@ import { OrderController } from './controllers/order.controller';
 import { ReviewsController } from './controllers/reviews.controller';
 
 export const Routes = [
-  
+
   //User
   {
     method: 'get',
