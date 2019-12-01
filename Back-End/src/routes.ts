@@ -176,6 +176,12 @@ export const Routes = [
 
   //Ads
   {
+    method: 'get',
+    route: '/ads',
+    controller: AdsController,
+    action: 'getAdProduct'
+  },
+  {
     method: 'post',
     route: '/ads/:id',
     controller: AdsController,
