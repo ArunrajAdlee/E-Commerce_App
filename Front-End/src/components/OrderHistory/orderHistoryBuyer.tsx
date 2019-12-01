@@ -5,8 +5,9 @@ import { render } from 'react-dom';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
-import { RouteComponentProps, Link } from 'react-router-dom';
+import { RouteComponentProps, Link, Redirect } from 'react-router-dom';
 import { server, api } from '../../server';
+import { Button } from 'react-bootstrap';
 
 
 //Test inputs
@@ -57,8 +58,6 @@ class BuyerOrderHistory extends React.Component {
     objbuyer: [],
     objseller: []
   };
-
-  
   
   public async componentDidMount(){
     const resp = await server.get(api.order_history_buyer);
@@ -76,6 +75,12 @@ class BuyerOrderHistory extends React.Component {
     
   }
 
+  orderIdButton(cell: any, row: any) {
+     return<Button onClick={() => console.log('test')}>{row.orderid}</Button>;
+  }
+
+
+
   render() {
     let { objbuyer } = this.state;
     
@@ -83,7 +88,8 @@ class BuyerOrderHistory extends React.Component {
       
       <div>
       <BootstrapTable data={ objbuyer } trClassName='bootstrap_table'>
-        <TableHeaderColumn dataField='orderid' isKey filter={ { type: 'TextFilter', delay: 1000 } }>Order Id</TableHeaderColumn>
+       
+        <TableHeaderColumn  dataField='orderid' dataFormat={this.orderIdButton}  isKey filter={ { type: 'TextFilter', delay: 1000 }  }>Order Id</TableHeaderColumn>
         <TableHeaderColumn dataField='date' filter={ { type: 'TextFilter', delay: 1000 } }>Date</TableHeaderColumn> 
         <TableHeaderColumn dataField='price' filter={ { type: 'TextFilter', delay: 1000 } }>Product Price</TableHeaderColumn>  
       </BootstrapTable>
