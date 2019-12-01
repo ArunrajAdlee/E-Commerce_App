@@ -72,20 +72,20 @@ class BuyerOrderHistory extends React.Component {
     this.setState({
       objbuyer: resOrders
     });
-    console.log(resOrders);
+    //console.log(resOrders);
     
   }
 
   render() {
     let { objbuyer } = this.state;
-    {objbuyer}
+    
     return (
       
       <div>
       <BootstrapTable data={ objbuyer } trClassName='bootstrap_table'>
         <TableHeaderColumn dataField='orderid' isKey filter={ { type: 'TextFilter', delay: 1000 } }>Order Id</TableHeaderColumn>
-        <TableHeaderColumn dataField='date'>Date</TableHeaderColumn> 
-        <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>  
+        <TableHeaderColumn dataField='date' filter={ { type: 'TextFilter', delay: 1000 } }>Date</TableHeaderColumn> 
+        <TableHeaderColumn dataField='price' filter={ { type: 'TextFilter', delay: 1000 } }>Product Price</TableHeaderColumn>  
       </BootstrapTable>
 
       
@@ -107,15 +107,25 @@ class SellerOrderHistory extends React.Component{
   };
 
   public async componentDidMount(){
-    const resp = await server.get(api.order_history_buyer);
-    const resOrders : orderSeller = resp.data.map((product: any) => ({
-
-      orderid: product.order.id,
+    const resp = await server.get(api.order_history_seller);
+    console.log('printing results:')
+    //console.log('Resuts',resp);
+    const resOrders : any = resp.data.order.map((product: any) => ({
+      
+      orderid: product.id,
       date: product.purchase_date,
       price: product.price_after_tax,
       profit: 0,
 
     }));
+
+
+
+
+    console.log(resOrders);
+
+    
+  
     this.setState({
       objseller: resOrders
     });
