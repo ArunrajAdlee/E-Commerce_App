@@ -172,42 +172,30 @@ export class OrderController {
 		}
 	}
 
-	// async getBuyerOrderHistory(req: Request, res: Response, next: NextFunction) {
-	// 	const authenticatedUser: AuthModel = checkAuth(req);
-	//     if (!authenticatedUser) {
-	//       res.status(404).send('user is not authenticated');
-	//       return;
-	// 	}
+	async getBuyerOrderHistory(req: Request, res: Response, next: NextFunction) {
+		const authenticatedUser: AuthModel = checkAuth(req);
+	    if (!authenticatedUser) {
+	      res.status(404).send('user is not authenticated');
+	      return;
+		}
 		
-	// 	const orderDetails = await this.orderDetailsRepository.find({buyer_id: authenticatedUser.id});
-	// 	if (orderDetails && orderDetails.length == 0) {
-	// 		res.status(200).send({
-	// 			message: 'no bought orders',
-	// 			order: []
-	// 		});
-	// 		return;
-	// 	}
+		return this.orderRepository.find({buyer_id: authenticatedUser.id});
+	}
 
-	// 	const uniqueValues = orderDetails.map(item => item.order_id).filter((value, index, self) => self.indexOf(value) === index);
-	// 	let orders = [];
-	// 	for (let uniqueValue of uniqueValues) {
-	// 		const orderRes = await this.orderRepository.findOne(uniqueValue);
-	// 		orders.push(orderRes);
-	// 	}
+	async getBuyerOrderDetailsHistory(req: Request, res: Response, next: NextFunction) {
+		const orderId: number = parseInt(req.params.id);
+		const orderDetails = await this.orderDetailsRepository.find({order_id: orderId});
+		if (orderDetails && orderDetails.length == 0) {
+			res.status(404).send({
+				message: 'failed to retrieve order details'
+			});
+			return;
+		}
 
-	// 	for (let order of orders) {
-	// 		order.orderDetails = [];
-	// 		for (let orderDetail of orderDetails) {
-	// 			if (order.id == orderDetail.order_id) {
-	// 				order.orderDetails.push(orderDetail);
-	// 			}
-	// 		}
-	// 	}
-
-	// 	res.status(200).send({
-	// 		order: orders
-	// 	});
-	// }
+		res.status(200).send({
+			orderDetails: orderDetails
+		});
+	}
 
 	async getSellerOrderHistory(req: Request, res: Response, next: NextFunction) {
 		const authenticatedUser: AuthModel = checkAuth(req);
