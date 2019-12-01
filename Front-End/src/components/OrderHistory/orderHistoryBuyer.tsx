@@ -9,8 +9,6 @@ import { RouteComponentProps, Link } from 'react-router-dom';
 import { server, api } from '../../server';
 
 
-
-
 //Test inputs
 const products = [{
     id: '342432',
@@ -46,40 +44,35 @@ interface orderSeller {
   
 }
 
-
-
-
-
-
-
+//Buyer history component
 class BuyerOrderHistory extends React.Component {
 
-   public async getBuyersHistory(){
+  public async getBuyersHistory(){
     const resp = await server.get(api.order_history_buyer);
     {console.log(resp)};
   }
 
+  render() {
 
-render() {
-return (
+    return (
       <BootstrapTable data={ products } trClassName='bootstrap_table'>
-        
+
+
 <TableHeaderColumn dataField='id' isKey filter={ { type: 'TextFilter', delay: 1000 } }>{Response.toString}</TableHeaderColumn>
         <TableHeaderColumn dataField='date'>Date</TableHeaderColumn> 
         <TableHeaderColumn dataField='price'>Product Price</TableHeaderColumn>
           
       </BootstrapTable>
+      
     );
-  }
+  } 
 };
 
+//Seller history component
 class SellerOrderHistory extends React.Component{
 
 
   render(){
-
-
-
 
     return(
 
