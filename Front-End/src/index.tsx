@@ -23,6 +23,8 @@ import Checkout from './components/Checkout/checkout';
 import ResetPassword from './components/Login/ResetPassword/resetPassword';
 import UserDisplay from './components/UserProfile/userDisplay';
 import UserProfileLayout from './layouts/UserProfileLayout/userProfileLayout';
+import AdminPanelLayout from './layouts/AdminPanelLayout/adminPanelLayout';
+import SiteActivty from './components/AdminPanel/SiteActivity/siteActivity';
 
 const history = createBrowserHistory();
 
@@ -107,6 +109,7 @@ class App extends React.Component<{}, IStates> {
           <Switch>
             <SecureRoute authenticated path="/profile" pageComponent={UserDisplay} layoutComponent={UserProfileLayout} pageTitle="User Profile" />
             <SecureRoute authenticated path="/checkout" pageComponent={Checkout} layoutComponent={DefaultLayout} pageTitle="Checkout" />
+            <SecureRoute authenticated path="/admin/activity" pageComponent={SiteActivty} layoutComponent={AdminPanelLayout} pageTitle="Site Activity" />
             <SecureRoute path="/auth/reset/:token" pageComponent={ResetPassword} layoutComponent={DefaultLayout} pageTitle="Reset Password" />
             <SecureRoute path="/cart" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Your Shoppping Cart" />
             <SecureRoute path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
