@@ -5,6 +5,7 @@ import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
 import { OrderController } from './controllers/order.controller';
 import { AdsController } from './controllers/ads.controller';
+import { AdminController } from './controllers/admin.controller';
 import { ReviewsController } from './controllers/reviews.controller';
 import { CartController } from './controllers/cart.controller'; 
 export const Routes = [
@@ -198,6 +199,18 @@ export const Routes = [
     route: '/cart', 
     controller: CartController,
     action: 'addToCart'
+  },
+  {
+    method: 'get',
+    route: '/admin/listings',
+    controller: AdminController,
+    action: 'listings'
+  },
+  {
+    method: 'get',
+    route: '/admin/activity',
+    controller: AdminController,
+    action: 'siteActivity'
   }
   
 ];
