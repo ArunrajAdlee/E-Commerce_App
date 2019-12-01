@@ -24,6 +24,7 @@ export class CartController {
     'listing.image', 'listing.thumbnail', 'listing.description', 'listing.price', 'listing.stock_count',
     'listing.quantity_sold', 'listing.status', 'listing.user_id', 'listing.username', 'listing.category',
     'listing.category_name'])
+    .where("cart.user_id = :id", { id: authenticatedUser.id })
     .getRawMany();
 
      return cartInfo;
