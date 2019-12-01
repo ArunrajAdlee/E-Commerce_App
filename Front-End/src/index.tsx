@@ -12,6 +12,7 @@ import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
 import CreateListing from './components/CreateListing';
 import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
 import ListingDetails from './components/ListingDetails/ListingDetails';
+import Cart from './components/Cart/cart';
 
 import SearchPage from './components/Listings/SearchPage/searchPage';
 import CategoryPage from './components/Listings/CategoryPage/categoryPage';
@@ -87,7 +88,7 @@ class App extends React.Component<{}, IStates> {
         <Router history={history}>
           <ScrollToTop />
           <Switch>
-            <SecureRoute authenticated path="/cart" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Your Shoppping Cart" />
+            <SecureRoute authenticated path="/cart" pageComponent={Cart} layoutComponent={DefaultLayout} pageTitle="Your Shopping Cart" />
             <SecureRoute path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
             <SecureRoute path="/listings/category/:categoryId/:categoryName" pageComponent={CategoryPage} layoutComponent={DefaultLayout} pageTitle="Category Listings" />
             <SecureRoute path="/listings/search/:searchQuery" pageComponent={SearchPage} layoutComponent={DefaultLayout} pageTitle="Search Listings" />
