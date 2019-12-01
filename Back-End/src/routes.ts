@@ -188,5 +188,11 @@ export const Routes = [
     route: '/admin/listings',
     controller: AdminController,
     action: 'listings'
+  },
+  {
+    method: 'get',
+    route: '/admin/activity',
+    controller: AdminController,
+    action: 'siteActivity'
   }
 ];
