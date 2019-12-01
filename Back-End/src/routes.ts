@@ -6,6 +6,7 @@ import { CategoriesController } from './controllers/categories.controller';
 import { OrderController } from './controllers/order.controller';
 import { AdsController } from './controllers/ads.controller';
 import { ReviewsController } from './controllers/reviews.controller';
+import { AdminController } from './controllers/admin.controller';
 
 export const Routes = [
   //User
@@ -185,5 +186,19 @@ export const Routes = [
     route: '/ads/:id',
     controller: AdsController,
     action: 'getClickCount'
+  },
+
+  //Admin
+  {
+    method: 'get',
+    route: '/admin/listings',
+    controller: AdminController,
+    action: 'listings'
+  },
+  {
+    method: 'get',
+    route: '/admin/activity',
+    controller: AdminController,
+    action: 'siteActivity'
   }
 ];
