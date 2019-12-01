@@ -7,6 +7,7 @@ export const server = axios.create({
 });
 
 export const api = {
+  address_create: '/address/create',
   auth_create: '/auth/create',
   auth_status: '/auth/status',
   auth_login: '/auth/login',
@@ -16,6 +17,8 @@ export const api = {
   listings_category: '/listings/category/',
   listings_search: '/listings/search/',
   listings_details: '/listings/',
+  order_summary: '/order/summary',
+  order_create: '/order/create',
   reviews: '/reviews/',
   reviews_post: '/reviews'
 };

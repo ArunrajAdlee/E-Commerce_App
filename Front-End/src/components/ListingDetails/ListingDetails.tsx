@@ -18,9 +18,9 @@ import {
 import { server, api } from '../../server';
 
 library.add(fasFaHeart, farFaHeart);
+export interface IListingDetails {
 
 
-interface IListingDetails {
   id: number,
   description: string,
   image: string,
