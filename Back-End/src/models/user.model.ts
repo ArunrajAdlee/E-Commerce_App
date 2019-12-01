@@ -10,4 +10,6 @@ export class UserModel {
   age?: number;
   address_id: number;
   isAdmin?: boolean;
+  resetPasswordToken?: string;
+  resetPasswordExpires?: Date;
 }

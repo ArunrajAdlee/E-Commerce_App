@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn} from 'typeorm';
+import { Address } from './address.entity';
 
 @Entity()
 export class User {
@@ -37,4 +38,14 @@ export class User {
 
   @Column({default: false})
   isAdmin: boolean;
+  
+  @Column({nullable: true})
+  resetPasswordToken: string;
+
+  @Column({nullable: true})
+  resetPasswordExpires: Date;
+  
+  @OneToOne(type => Address)
+  @JoinColumn([{ name: 'address_id', referencedColumnName: 'id'}])
+  address: Address;
 }
