@@ -53,6 +53,10 @@ class Cart extends React.Component<IProps, IStates> {
       isLoading, totalPriceBeforeTax, totalItems, carts,
     } = this.state;
 
+    const {
+      history, location, match,
+    } = this.props;
+
     return isLoading ? <Spinner animation="border" variant="warning" /> : (
       <Container>
         <Row>
@@ -60,7 +64,16 @@ class Cart extends React.Component<IProps, IStates> {
           <Col md={8}>
             <Container>
               {carts.map((cart: ICartItem) => (
-                <CartListing key={cart.id} listing={cart.listing} quantity={cart.quantity} />))}
+                <CartListing
+                  key={cart.id}
+                  listing={cart.listing}
+                  quantity={cart.quantity}
+                  id={cart.id}
+                  history={history}
+                  location={location}
+                  match={match}
+                />
+              ))}
             </Container>
           </Col>
           {/* Cart summary */}
