@@ -27,7 +27,18 @@ export class CartController {
       return;
     }
 
-    return cartItems
+    // Compute cart totals
+    let total_price_before_tax = 0;
+    let total_items = 0;
+    for (let cartItem of cartItems) {
+      total_price_before_tax += Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100;
+      total_items += cartItem.quantity;
+    }
+    res.status(200).send({
+      cartItems: cartItems,
+      total_price_before_tax: total_price_before_tax,
+      total_items: total_items,
+    });
   }
 
   async addToCart(req: Request, res: Response, next: NextFunction) {

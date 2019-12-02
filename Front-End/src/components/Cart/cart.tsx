@@ -9,8 +9,8 @@ import { api, server } from '../../server';
 
 interface IStates {
   isLoading: boolean;
-  subtotal: number;
-  numOfItems: number;
+  totalPriceBeforeTax: number;
+  totalItems: number;
   carts: ICartItem[];
 }
 
@@ -26,41 +26,31 @@ interface IProps extends RouteComponentProps<any> {}
 class Cart extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
     isLoading: true,
-    numOfItems: 0,
-    subtotal: 0,
+    totalItems: 0,
+    totalPriceBeforeTax: 0,
     carts: [],
   };
 
   public async componentDidMount() {
     const result = await server.get(api.cart);
-    const resCarts: ICartItem[] = result.data.map((cart: any) => ({
+    const resCarts: ICartItem[] = result.data.cartItems.map((cart: any) => ({
       id: cart.id,
       user_id: cart.user_id,
       quantity: cart.quantity,
       listing: cart.listing,
     }));
 
-    let cartSubtotal:number = 0;
-    let items:number = 0;
-    for (let i = 0; i < resCarts.length; i++) {
-      // Calculate cart subtotal
-      cartSubtotal += resCarts[i].quantity * resCarts[i].listing.price;
-
-      // Calculate number of items
-      items += resCarts[i].quantity;
-    }
-
     this.setState({
       isLoading: false,
-      subtotal: cartSubtotal,
-      numOfItems: items,
+      totalPriceBeforeTax: result.data.total_price_before_tax,
+      totalItems: result.data.total_items,
       carts: resCarts,
     });
   }
 
   public render() {
     const {
-      isLoading, subtotal, numOfItems, carts,
+      isLoading, totalPriceBeforeTax, totalItems, carts,
     } = this.state;
 
     return isLoading ? <Spinner animation="border" variant="warning" /> : (
@@ -90,7 +80,7 @@ class Cart extends React.Component<IProps, IStates> {
                 <Col xs={6}>
                   <h5>
                     $
-                    {subtotal}
+                    {totalPriceBeforeTax}
                   </h5>
                 </Col>
               </Row>
@@ -101,7 +91,7 @@ class Cart extends React.Component<IProps, IStates> {
                 </Col>
                 <Col xs={6}>
                   <h5>
-                    {numOfItems}
+                    {totalItems}
                     {' '}
                   </h5>
                 </Col>
