@@ -1,5 +1,5 @@
-
 export class ListingsModel {
+    id?: number;
     title: string;
     stock_count: number;
     image: string;

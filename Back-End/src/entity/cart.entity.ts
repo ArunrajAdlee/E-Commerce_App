@@ -1,8 +1,9 @@
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn} from 'typeorm';
+import {Listings} from './listings.entity';
 
 @Entity()
 export class Cart {
- 
+
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -15,4 +16,7 @@ export class Cart {
     @Column()
     quantity: number;
 
+    @OneToOne(type => Listings)
+    @JoinColumn({ name: 'listing_id', referencedColumnName: 'id' })
+    listing: Listings;
 }

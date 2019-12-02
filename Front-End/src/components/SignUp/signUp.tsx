@@ -9,6 +9,7 @@ import * as Yup from 'yup';
 import { Redirect } from 'react-router-dom';
 import { server, api } from '../../server';
 import { StoreContext } from '../../store';
+import ErrorAlert from '../Misc/errorAlert';
 
 interface ISignUpValues {
   username: string;
@@ -105,16 +106,11 @@ class SignUp extends React.Component<{}, IStates> {
     const { isError } = this.state;
 
     return (
-      isAuth ? <Redirect to="/" />
+      isAuth ? <Redirect push to="/" />
         : (
           <div className="register-container">
             <h1>Create an account</h1>
-            { isError
-              ? (
-                <Alert variant="danger" onClose={() => this.setState({ isError: !isError })} dismissible>
-                  <p>Username already exists!</p>
-                </Alert>
-              ) : ''}
+            <ErrorAlert msg="Username or E-mail is already in use!" isError={isError} onCloseError={() => this.setState({ isError: false })} />
             <Formik
               initialValues={{
                 username: '', email: '', password: '', province: '', age: '', confirmPassword: '', firstName: '', lastName: '', brandName: '', streetNumber: '', streetName: '', unitNumber: '', city: '', country: '', postalCode: '', phoneNumber: '',
