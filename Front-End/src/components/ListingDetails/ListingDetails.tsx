@@ -7,8 +7,6 @@ import { RouteComponentProps, Link } from 'react-router-dom';
 import { Button, Spinner } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import Rating from 'react-rating';
-import { server, api } from '../../server';
-import ErrorAlert from '../Misc/errorAlert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -17,7 +15,10 @@ import {
 import {
   faStar as farFaStar,
 } from '@fortawesome/free-regular-svg-icons';
-library.add(fasFaStar, farFaStar)
+import ErrorAlert from '../Misc/errorAlert';
+import { server, api } from '../../server';
+
+library.add(fasFaStar, farFaStar);
 
 export interface IListingDetails {
 
@@ -157,10 +158,10 @@ class ListingDetails extends React.Component<IProps, IStates> {
                           <Link to={`/user/${listing.username}`}>{listing.username}</Link>
                           {' '}
                           <Rating
-                          initialRating = {overallReview}
-                          emptySymbol={<FontAwesomeIcon icon={farFaStar} className="text-warning" />}
-                          readonly = {true}
-                          fullSymbol={<FontAwesomeIcon icon={fasFaStar} className="text-warning" />}
+                            initialRating={overallReview}
+                            emptySymbol={<FontAwesomeIcon icon={farFaStar} className="text-warning" />}
+                            readonly
+                            fullSymbol={<FontAwesomeIcon icon={fasFaStar} className="text-warning" />}
                           />
                           <p className="text-muted">
                             {`${numReviews} reviews `}
@@ -181,34 +182,37 @@ class ListingDetails extends React.Component<IProps, IStates> {
                     </Media.Body>
                   </Col>
                 </Row>
-                <Row className = "review"/>
-                <Row className = "review">
-                  <Col/>
+                <Row className="review" />
+                <Row className="review">
+                  <Col />
                   <Col>
                     <h4> Reviews </h4>
                   </Col>
                 </Row>
-                <Row className = "review"/>
+                <Row className="review" />
                 <Row className="reviewBorder">
-                <ul>
-                  <li>
-                  <br />
-                  </li>
-                  {reviews.map((r, index) => (
-                    <li key = {index}>
-                    <h5>
-                      {`${r.title}  `}
-                    </h5>
-                      <Rating
-                        initialRating = {r.rating}
-                        emptySymbol={<FontAwesomeIcon icon={farFaStar} className="text-warning" size = "sm"/>}
-                        readonly
-                        fullSymbol={<FontAwesomeIcon icon={fasFaStar} className="text-warning" size = 'sm' />}
-                        />
-                      <p/>
-                    <p className = "text-muted"> {r.description}</p>
-                    <br/>
+                  <ul>
+                    <li>
+                      <br />
                     </li>
+                    {reviews.map((r, index) => (
+                      <li key={index}>
+                        <h5>
+                          {`${r.title}  `}
+                        </h5>
+                        <Rating
+                          initialRating={r.rating}
+                          emptySymbol={<FontAwesomeIcon icon={farFaStar} className="text-warning" size="sm" />}
+                          readonly
+                          fullSymbol={<FontAwesomeIcon icon={fasFaStar} className="text-warning" size="sm" />}
+                        />
+                        <p />
+                        <p className="text-muted">
+                          {' '}
+                          {r.description}
+                        </p>
+                        <br />
+                      </li>
                     ))}
                   </ul>
                 </Row>
