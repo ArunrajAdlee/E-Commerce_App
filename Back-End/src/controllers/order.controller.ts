@@ -184,8 +184,13 @@ export class OrderController {
 	}
 
 	async getBuyerOrderDetailsHistory(req: Request, res: Response, next: NextFunction) {
+		const authenticatedUser: AuthModel = checkAuth(req);
+		if (!authenticatedUser) {
+			res.status(404).send('user is not authenticated');
+			return;
+		}
+
 		const orderId: number = parseInt(req.params.id);
-		// const orderDetails = await this.orderDetailsRepository.find({order_id: orderId});
 		const orderDetails = await this.orderDetailsRepository
 		.createQueryBuilder('order_details')
 		.innerJoin(Listings, 'listings', 'listings.id = order_details.listing_id')
@@ -219,9 +224,23 @@ export class OrderController {
 			return;
 		}
 
+		
+		const order = await getRepository(Order)
+      	.createQueryBuilder('order')
+      	.select(['order.id', 'order.total_price_before_tax', 'order.total_price'])
+      	.where('order.id = :id', {id: orderDetails[0].order_details_order_id})
+		.getRawMany();
+		if (!order) {
+			res.status(404).send({
+				message: 'an error occured'
+			});
+			return;
+		}  
+
 		res.status(200).send({
 			orderDetails: orderDetails,
-			address: address
+			address: address,
+			order: order
 		});
 	}
 
