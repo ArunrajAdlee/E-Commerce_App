@@ -11,6 +11,7 @@ export interface IListing {
     image: string;
     price: number;
     quantity: number;
+    title: string;
     isAvailable: boolean;
 }
 

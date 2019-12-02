@@ -1,64 +1,66 @@
 import React from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import {
-  Button, Card, Col, Container, Row, Spinner,
+  Button, Col, Container, Row, Spinner,
 } from 'react-bootstrap';
 import CartListing from './cartListing';
 import { IListing } from '../Listings/Listing/listing';
 import { api, server } from '../../server';
 
 interface IStates {
-  listings: IListing[];
   isLoading: boolean;
   subtotal: number;
   numOfItems: number;
+  carts: ICartItem[];
+}
+
+interface ICartItem {
+  id: number,
+  user_id: number,
+  quantity: number,
+  listing: IListing,
 }
 
 interface IProps extends RouteComponentProps<any> {}
 
 class Cart extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
-    listings: [],
     isLoading: true,
-    subtotal: 0,
     numOfItems: 0,
+    subtotal: 0,
+    carts: [],
   };
 
   public async componentDidMount() {
-    const result = await server.get(api.listings);
-    const resListings: IListing[] = result.data.listings.map((product: any) => ({
-      id: product.id,
-      name: product.title,
-      image: product.image,
-      thumbnail: product.thumbnail,
-      price: product.price,
-      quantity: product.stock_count,
-      isAvailable: product.status,
+    const result = await server.get(api.cart);
+    const resCarts: ICartItem[] = result.data.map((cart: any) => ({
+      id: cart.id,
+      user_id: cart.user_id,
+      quantity: cart.quantity,
+      listing: cart.listing,
     }));
 
-    // Calculate cart subtotal
     let cartSubtotal:number = 0;
-    for (let i = 0; i < resListings.length; i++) {
-      cartSubtotal += resListings[i].price;
-    }
-
-    // Calculate number of items
     let items:number = 0;
-    for (let i = 0; i < resListings.length; i++) {
-      items += resListings[i].quantity;
+    for (let i = 0; i < resCarts.length; i++) {
+      // Calculate cart subtotal
+      cartSubtotal += resCarts[i].quantity * resCarts[i].listing.price;
+
+      // Calculate number of items
+      items += resCarts[i].quantity;
     }
 
     this.setState({
       isLoading: false,
-      listings: resListings,
       subtotal: cartSubtotal,
       numOfItems: items,
+      carts: resCarts,
     });
   }
 
   public render() {
     const {
-      listings, isLoading, subtotal, numOfItems,
+      isLoading, subtotal, numOfItems, carts,
     } = this.state;
 
     return isLoading ? <Spinner animation="border" variant="warning" /> : (
@@ -67,8 +69,8 @@ class Cart extends React.Component<IProps, IStates> {
           {/* Cart element */}
           <Col md={8}>
             <Container>
-              {listings.map((listing: IListing) => (
-                <CartListing key={listing.id} listing={listing} />))}
+              {carts.map((cart: ICartItem) => (
+                <CartListing key={cart.id} listing={cart.listing} quantity={cart.quantity} />))}
             </Container>
           </Col>
           {/* Cart summary */}
@@ -87,7 +89,8 @@ class Cart extends React.Component<IProps, IStates> {
                 </Col>
                 <Col xs={6}>
                   <h5>
-                    ${subtotal}
+                    $
+                    {subtotal}
                   </h5>
                 </Col>
               </Row>

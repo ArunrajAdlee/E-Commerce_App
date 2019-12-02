@@ -15,6 +15,7 @@ export const api = {
   auth_resetPassword: '/auth/resetPassword',
   auth_checkResetPassword: '/auth/checkResetToken',
   auth_logout: '/auth/logout',
+  cart: '/cart',
   categories: '/categories',
   listings: '/listings',
   listings_category: '/listings/category/',

@@ -6,10 +6,11 @@ import {
 import { IListing } from '../Listings/Listing/listing';
 
 interface IProps {
+    quantity: number;
     listing: IListing;
 }
 
-const listingThumbnail = (listing: IListing) => {
+const listingThumbnail = (listing: IListing, quantity: number) => {
   // Placeholder until there is a database with an error image to point to
   let listingImage = 'https://3.bp.blogspot.com/-XB85UD145qE/V5buf22iv2I/AAAAAAAAA1I/8LBmpwNX-rU7ZjzrHOS2b0F_Pj0xqpHIQCLcB/s1600/nia.png';
   if (listing.thumbnail) {
@@ -29,7 +30,7 @@ const listingThumbnail = (listing: IListing) => {
         <Link
           to={`/listings/${listing.id}`}
         >
-          <Image src={listingImage} alt={listing.name} fluid />
+          <Image src={listingImage} alt={listing.title} fluid />
         </Link>
       </Col>
       <Col xs={7}>
@@ -40,7 +41,7 @@ const listingThumbnail = (listing: IListing) => {
               to={`/listings/${listing.id}`}
               className="text-decoration-none text-dark"
             >
-              <h3>{listing.name}</h3>
+              <h3>{listing.title}</h3>
             </Link>
           </Col>
         </Row>
@@ -59,13 +60,13 @@ const listingThumbnail = (listing: IListing) => {
           <Col xs={3}>
             <Dropdown className="float-right">
               <Dropdown.Toggle variant="outline-dark" size="sm" id="dropdown-basic">
-                {listing.quantity}
+                {quantity}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                {quantities.map((quantity) => (
-                  <Dropdown.Item key={quantity} href="/cart">
-                    {quantity}
+                {quantities.map((num) => (
+                  <Dropdown.Item key={num} href="/cart">
+                    {num}
                   </Dropdown.Item>
                 ))}
               </Dropdown.Menu>
@@ -86,9 +87,9 @@ const listingThumbnail = (listing: IListing) => {
 
 
 const CartListing: React.SFC<IProps> = (props) => {
-  const { listing } = props;
+  const { listing, quantity } = props;
   return (
-    listingThumbnail(listing)
+    listingThumbnail(listing, quantity)
   );
 };
 

@@ -17,16 +17,17 @@ export class CartController {
       return;
     }
 
-    const cartInfo = await getRepository(Cart).createQueryBuilder('cart')
-    .innerJoin(Listings, 'listing', 'listing.id = cart.listing_id')
-    .select(['cart.id', 'cart.user_id', 'cart.quantity', 'cart.listing_id', 'listing.title',
-    'listing.image', 'listing.thumbnail', 'listing.description', 'listing.price', 'listing.stock_count',
-    'listing.quantity_sold', 'listing.status', 'listing.user_id', 'listing.username', 'listing.category',
-    'listing.category_name'])
-    .where("cart.user_id = :id", { id: authenticatedUser.id })
-    .getRawMany();
+    // Get listings in cart
+    const cartItems = await this.cartRepository.find({
+      where: { user_id: authenticatedUser.id },
+      relations: ["listing"]
+    });
+    if(!cartItems) {
+      res.status(404).send('error retrieving cart');
+      return;
+    }
 
-     return cartInfo;
+    return cartItems
   }
 
   async addToCart(req: Request, res: Response, next: NextFunction) {
