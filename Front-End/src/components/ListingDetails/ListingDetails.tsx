@@ -56,11 +56,16 @@ class ListingDetails extends React.Component<IProps, IStates> {
     }
   }
 
-  public onAddToCart = () => {
+  public onAddToCart = async () => {
     const { quantity, listing } = this.state;
 
-    // API STUFF FOR ADDING TO THE ITEM TO USER'S CART
-  }
+    try {
+      const res = await server.post('/cart', { listing_id: listing!.id, quantity });
+      window.location.reload(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   public render() {
     const { listing, error } = this.state;
