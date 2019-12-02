@@ -6,15 +6,26 @@ interface IProps {
     isError: boolean;
     onCloseError: () => void;
     msg: string,
+    type?:
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'info'
+    | 'dark'
+    | 'light';
 }
 
 const ErrorAlert = (props: IProps) => {
-  const { isError, onCloseError, msg } = props;
-
+  const {
+    isError, onCloseError, msg, type,
+  } = props;
+  const variant = type || 'danger';
   return (
     isError
       ? (
-        <Alert variant="danger" onClose={() => onCloseError()} dismissible>
+        <Alert variant={variant} onClose={() => onCloseError()} dismissible>
           <p>{msg}</p>
         </Alert>
       ) : <></>

@@ -10,25 +10,13 @@ const { checkAuth } = require('../helpers/check-auth');
 
 export class AdminController {
 
-    
-  async listings(req: Request, res: Response, next: NextFunction) {
+  async siteActivity(req: Request, res: Response, next: NextFunction) {
     const authenticatedUser: AuthModel = checkAuth(req);
-    if (!authenticatedUser) {
+    if (!authenticatedUser || !authenticatedUser.isAdmin) {
       res.status(404).send('user is not authenticated');
       return;
     }
-
-    const listings = await getRepository(Listings)
-      .createQueryBuilder('listings')
-      .orderBy('listings.id', 'DESC')
-      .getMany();
-
-    res.status(200).send({
-      listings: listings
-    });
-  }
-
-  async siteActivity(req: Request, res: Response, next: NextFunction) {
+    
     const ad = await getRepository(Ads).findOne(1);
     if (!ad) {
       res.status(404).send({
@@ -47,9 +35,11 @@ export class AdminController {
     .innerJoin(User, 'user', 'user.id = order_details.seller_id')
     .select(['order_details.seller_id', 'user.username', 'FORMAT(SUM(order_details.price_before_tax), 2) AS totalSum'])
     .groupBy('order_details.seller_id')
-    .orderBy('totalSum', 'ASC')
-    .limit(10)
+    .orderBy('totalSum', 'DESC')
+    .limit(3)
     .getRawMany();
+
+    topSellers.sort((a,b) => parseFloat(b.totalSum.replace(/,/g,'')) > parseFloat(a.totalSum.replace(/,/g,'')) ? 1: -1);
 
     res.status(200).send({
       adClickCount: ad.click_count,

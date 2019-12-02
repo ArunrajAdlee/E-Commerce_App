@@ -5,9 +5,9 @@ import { AuthController } from './controllers/auth.controller';
 import { CategoriesController } from './controllers/categories.controller';
 import { OrderController } from './controllers/order.controller';
 import { AdsController } from './controllers/ads.controller';
-import { ReviewsController } from './controllers/reviews.controller';
 import { AdminController } from './controllers/admin.controller';
-
+import { ReviewsController } from './controllers/reviews.controller';
+import { CartController } from './controllers/cart.controller'; 
 export const Routes = [
   //User
   {
@@ -176,6 +176,12 @@ export const Routes = [
 
   //Ads
   {
+    method: 'get',
+    route: '/ads',
+    controller: AdsController,
+    action: 'getAdProduct'
+  },
+  {
     method: 'post',
     route: '/ads/:id',
     controller: AdsController,
@@ -187,18 +193,32 @@ export const Routes = [
     controller: AdsController,
     action: 'getClickCount'
   },
-
   //Admin
-  {
-    method: 'get',
-    route: '/admin/listings',
-    controller: AdminController,
-    action: 'listings'
-  },
   {
     method: 'get',
     route: '/admin/activity',
     controller: AdminController,
     action: 'siteActivity'
+  },
+
+  //Cart
+  {
+    method: 'get',
+    route: '/cart',
+    controller: CartController,
+    action: 'getCart'
+  },
+  {
+    method: 'post',
+    route: '/cart', 
+    controller: CartController,
+    action: 'addToCart'
+  },
+  {
+    method: 'delete',
+    route: '/cart/:cart_id',
+    controller: CartController,
+    action: 'deleteCart'
   }
+  
 ];
