@@ -43,7 +43,7 @@ code {
   border: solid 1.2px black;
   overflow: hidden;
   margin-bottom: 25px;
-  background: url(#{$img-path}/banner/banner-bg.jpg) center no-repeat; 
+  background: url(#{$img-path}/banner/banner-bg.jpg) center no-repeat;
 
   & .helper {
     display: inline-block;
@@ -67,7 +67,7 @@ code {
   & .btn-link {
     float: right;
     margin-right: 45px;
-    
+
     @media screen and (max-width: $lg-size) {
       margin-right: 0%;
     }
@@ -82,7 +82,7 @@ code {
     & .title, & .price {
       display: none;
     }
-    
+
     & .image {
       margin-left: 10px;
     }
@@ -104,10 +104,10 @@ code {
 }
 
 .no-ticker {
-  &::-webkit-inner-spin-button, 
-  &::-webkit-outer-spin-button { 
-    -webkit-appearance: none; 
-    margin: 0; 
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 }
 
@@ -127,7 +127,7 @@ code {
   position: fixed !important;
   width: 126px !important;
   height: 126px !important;
-  margin-top: -63px !important; 
+  margin-top: -63px !important;
   margin-right: -63px!important;
   top: 50% !important;
   right: 50% !important;
@@ -146,7 +146,7 @@ code {
 
   /* Add a thumb */
   &::-webkit-scrollbar-thumb {
-    background-color: #F90;	
+    background-color: #F90;
     background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 25%,
       transparent 25%,
       transparent 50%,
@@ -157,8 +157,6 @@ code {
   }
 }
 
-
-
-
-
-
+ul {
+  list-style-type: none;
+}

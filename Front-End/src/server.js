@@ -25,4 +25,6 @@ export const api = {
   user_profile: '/users',
   order_summary: '/order/summary',
   order_create: '/order/create',
+  reviews: '/reviews/',
+  reviews_post: '/reviews'
 };
