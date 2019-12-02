@@ -42,9 +42,21 @@ class ListingDetails extends React.Component<IProps, IStates> {
   public async componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
+    await this.getListingDetails(id);
+  }
+
+  public async componentDidUpdate(prevProps: IProps) {
+    const { match } = this.props;
+    const { id } = match.params;
+    if (id !== prevProps.match.params.id) {
+      await this.getListingDetails(id);
+    }
+  }
+
+  public getListingDetails = async (ID: number) => {
     try {
       const resp = await server.get(
-        `${api.listings_details}${id}`,
+        `${api.listings_details}${ID}`,
       );
       if (resp.data.listing) {
         this.setState({
@@ -56,6 +68,7 @@ class ListingDetails extends React.Component<IProps, IStates> {
     }
   }
 
+
   public onAddToCart = () => {
     const { quantity, listing } = this.state;
 
@@ -64,7 +77,6 @@ class ListingDetails extends React.Component<IProps, IStates> {
 
   public render() {
     const { listing, error } = this.state;
-
     return (
       listing
         ? (
