@@ -35,9 +35,11 @@ export class AdminController {
     .innerJoin(User, 'user', 'user.id = order_details.seller_id')
     .select(['order_details.seller_id', 'user.username', 'FORMAT(SUM(order_details.price_before_tax), 2) AS totalSum'])
     .groupBy('order_details.seller_id')
-    .orderBy('totalSum', 'ASC')
-    .limit(10)
+    .orderBy('totalSum', 'DESC')
+    .limit(5)
     .getRawMany();
+
+    topSellers.sort((a,b) => b.totalSum.localeCompare(a.totalSum));
 
     res.status(200).send({
       adClickCount: ad.click_count,
