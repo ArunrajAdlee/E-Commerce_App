@@ -21,16 +21,20 @@ import ScrollToTop from './components/Misc/scrollToTop';
 import SecureRoute from './components/Authentication/secureRoute';
 import TextFilter from './components/OrderHistory/orderHistoryBuyer';
 import Checkout from './components/Checkout/checkout';
+import ResetPassword from './components/Login/ResetPassword/resetPassword';
 import UserDisplay from './components/UserProfile/userDisplay';
 import UserProfileLayout from './layouts/UserProfileLayout/userProfileLayout';
 import OrderDetails from './components/OrderHistory/orderDetails';
+import AdminPanelLayout from './layouts/AdminPanelLayout/adminPanelLayout';
+import SiteActivty from './components/AdminPanel/SiteActivity/siteActivity';
 
 const history = createBrowserHistory();
 
 interface IStates {
   userInfo: IUserInfo;
   isAuth: boolean;
-  setAuthState: (isAuth: boolean, userInfo: IUserInfo) => void;
+  isAdmin: boolean;
+  setAuthState: (isAuth: boolean, isAdmin: boolean, userInfo: IUserInfo) => void;
   login: (userCredentials: ILoginFields) => void;
   logout: () => void;
 }
@@ -56,33 +60,33 @@ class App extends React.Component<{}, IStates> {
         country: '',
       },
       isAuth: false,
+      isAdmin: false,
       setAuthState: this.setAuthState,
       login: this.login,
       logout: this.logout,
     };
   }
 
-  public setAuthState = (isAuth: boolean, userInfo: IUserInfo) => {
+  public setAuthState = (isAuth: boolean, isAdmin: boolean, userInfo: IUserInfo) => {
     this.setState({
       isAuth,
+      isAdmin,
       userInfo,
     });
   };
 
   public login = async (userCredentials: ILoginFields) => {
-    try {
-      const resp = await server.post(api.auth_login, userCredentials);
-      if (resp) {
-        this.setAuthState(true, resp.data.user);
-      }
-    } catch {}
+    const resp = await server.post(api.auth_login, userCredentials);
+    if (resp) {
+      this.setAuthState(true, resp.data.isAdmin, resp.data.user);
+    }
   };
 
   public logout = async () => {
     try {
       const resp = await server.post(api.auth_logout);
       if (resp) {
-        this.setAuthState(false, {
+        this.setAuthState(false, false, {
           username: '',
           email: '',
           first_name: '',
@@ -110,13 +114,15 @@ class App extends React.Component<{}, IStates> {
           <Switch>
             <SecureRoute authenticated path="/profile" pageComponent={UserDisplay} layoutComponent={UserProfileLayout} pageTitle="User Profile" />
             <SecureRoute authenticated path="/checkout" pageComponent={Checkout} layoutComponent={DefaultLayout} pageTitle="Checkout" />
+            <SecureRoute admin path="/admin/activity" pageComponent={SiteActivty} layoutComponent={AdminPanelLayout} pageTitle="Site Activity" />
+            <SecureRoute noAuth path="/auth/reset/:token" pageComponent={ResetPassword} layoutComponent={DefaultLayout} pageTitle="Reset Password" />
             <SecureRoute path="/cart" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Your Shoppping Cart" />
-            <SecureRoute path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
+            <SecureRoute noAuth path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
             <SecureRoute path="/listings/category/:categoryId/:categoryName" pageComponent={CategoryPage} layoutComponent={DefaultLayout} pageTitle="Category Listings" />
             <SecureRoute path="/listings/search/:searchQuery" pageComponent={SearchPage} layoutComponent={DefaultLayout} pageTitle="Search Listings" />
             <SecureRoute path="/listings/:id" pageComponent={ListingDetails} layoutComponent={DefaultLayout} pageTitle="Listing Details" />
             <SecureRoute path="/listings" pageComponent={ListingsPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
-            <SecureRoute path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
+            <SecureRoute noAuth path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
             <SecureRoute authenticated path="/createListing" pageComponent={CreateListing} layoutComponent={DefaultLayout} pageTitle="Create Listing" />
             <SecureRoute path="/orderhistory" pageComponent={TextFilter} layoutComponent={DefaultLayout} pageTitle="Order History" />
             <SecureRoute path="/orderdetails" pageComponent={OrderDetails} layoutComponent={DefaultLayout} pageTitle="Order Details" />

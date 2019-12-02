@@ -61,10 +61,15 @@
 }
 
 .register-container {
-
     .form-group {
         padding: 12px;
 
+    }
+}
+
+.forgot-password-modal {
+    & .modal-body {
+        padding: 15px;
     }
 }
 
