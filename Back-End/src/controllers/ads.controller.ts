@@ -1,10 +1,22 @@
 import { NextFunction, Request, Response } from 'express';
 import { Ads } from '../entity/ads.entity';
 import { getRepository } from 'typeorm';
+import { Listings } from '../entity/listings.entity';
 
 export class AdsController {
   private adsRepository = getRepository(Ads);
 
+  async getAdProduct(req: Request, res: Response, next: NextFunction) {
+    const listing = await getRepository(Listings)
+    .createQueryBuilder('listing')
+    .orderBy('RAND()')
+    .getOne();
+
+    res.status(200).send({
+      listing: listing
+    });
+  }
+  
   async increaseClickCount(req: Request, res: Response, next: NextFunction) {
     try {
       await this.adsRepository
