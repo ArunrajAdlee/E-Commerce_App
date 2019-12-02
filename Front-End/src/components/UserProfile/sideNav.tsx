@@ -16,17 +16,7 @@ const UserProfileSideNav = () => (
         </ListGroupItem>
         <ListGroupItem>
           <Nav.Item>
-            <Link to="/">Order History</Link>
-          </Nav.Item>
-        </ListGroupItem>
-        <ListGroupItem>
-          <Nav.Item>
-            <Link to="/">Listings</Link>
-          </Nav.Item>
-        </ListGroupItem>
-        <ListGroupItem>
-          <Nav.Item>
-            <Link to="/">Reviews</Link>
+            <Link to="/profile/orderhistory">Order History</Link>
           </Nav.Item>
         </ListGroupItem>
       </ListGroup>
