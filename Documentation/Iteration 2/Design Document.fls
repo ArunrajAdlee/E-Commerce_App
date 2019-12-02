@@ -130,10 +130,10 @@ INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
+INPUT /usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/local/texlive/2019/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.toc
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.toc
-INPUT /usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 OUTPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.toc
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.lof
 INPUT /Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.lof
