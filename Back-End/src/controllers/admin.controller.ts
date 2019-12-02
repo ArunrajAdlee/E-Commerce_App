@@ -36,7 +36,7 @@ export class AdminController {
     .select(['order_details.seller_id', 'user.username', 'FORMAT(SUM(order_details.price_before_tax), 2) AS totalSum'])
     .groupBy('order_details.seller_id')
     .orderBy('totalSum', 'DESC')
-    .limit(5)
+    .limit(3)
     .getRawMany();
 
     topSellers.sort((a,b) => parseFloat(b.totalSum.replace(/,/g,'')) > parseFloat(a.totalSum.replace(/,/g,'')) ? 1: -1);

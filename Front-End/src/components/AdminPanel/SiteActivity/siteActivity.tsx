@@ -72,7 +72,7 @@ class SiteActivty extends React.Component<IProps, IStates> {
                   <ActivityCard title="Advertisement Click Count" description="How many times have users clicked on our ads" importantText={data.adClickCount} />
                 </Col>
               </Row>
-              <h2 className="text-center mt-5">Top Five Sellers</h2>
+              <h2 className="text-center mt-5">Top Sellers</h2>
               <hr />
               <Row className="top-sellers-container">
                 {data.topSellers.map((seller) => (
