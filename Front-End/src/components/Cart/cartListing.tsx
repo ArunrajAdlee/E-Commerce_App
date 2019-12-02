@@ -5,7 +5,7 @@ import {
   Col, Image, Row, Container,
 } from 'react-bootstrap';
 import { IListing } from '../Listings/Listing/listing';
-import { server } from '../../server';
+import { api, server } from '../../server';
 
 interface IProps {
     quantity: number;
@@ -24,7 +24,7 @@ interface IProps extends RouteComponentProps<any> {}
 
 class CartListing extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
-    editQuantity: 0,
+    editQuantity: -1,
   };
 
   private handleDelete = async () => {
@@ -41,13 +41,22 @@ class CartListing extends React.Component<IProps, IStates> {
   private handleEdit = async (event: any) => {
     const { listing } = this.props;
     const { editQuantity } = this.state;
+
     try {
-      const res = await server.post('/cart', { listing_id: listing!.id, quantity: editQuantity });
-      window.location.reload(false);
+      // If there has been a modification
+      if (editQuantity != -1) {
+        if (editQuantity == 0) throw 'Edit quantity is 0';
+        // else if (editQuantity > listing.stockCount) throw 'Quantity desired is more than that in stock';
+        else {
+          const res = await server.post('/cart', { listing_id: listing!.id, quantity: editQuantity });
+        }
+        window.location.reload(false);
+      }
     } catch (e) {
-      console.log(e);
+      if (e === 'Edit quantity is 0') return e;
+      // if (e === 'Quantity desired is more than that in stock') this.setState({ noStockError: true });
     }
-  }
+  };
 
   public render() {
     const { listing, quantity } = this.props;
@@ -97,7 +106,7 @@ class CartListing extends React.Component<IProps, IStates> {
               <Col xs={4}>
                 <input
                   type="number"
-                  className="ml-3 styled-input"
+                  className="styled-input w-100 mb-2"
                   onKeyDown={() => false}
                   onChange={async (e: any) => {
                     await this.setState({ editQuantity: e.target.value });

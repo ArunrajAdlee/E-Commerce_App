@@ -60,7 +60,7 @@ class ListingDetails extends React.Component<IProps, IStates> {
   }
 
   public onAddToCart = async () => {
-    const { quantity, listing, noStockError } = this.state;
+    const { quantity, listing } = this.state;
 
     try {
       if (listing!.stock_count < quantity) {
