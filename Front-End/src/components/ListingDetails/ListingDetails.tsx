@@ -7,6 +7,7 @@ import { RouteComponentProps, Link } from 'react-router-dom';
 import { Button, Spinner } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import { server, api } from '../../server';
+import ErrorAlert from '../Misc/errorAlert';
 
 export interface IListingDetails {
   id: number,
@@ -30,6 +31,7 @@ interface IStates {
   listing: IListingDetails | null;
   quantity: number;
   error: boolean,
+  noStockError: boolean,
 }
 
 class ListingDetails extends React.Component<IProps, IStates> {
@@ -37,6 +39,7 @@ class ListingDetails extends React.Component<IProps, IStates> {
     listing: null,
     quantity: 1,
     error: false,
+    noStockError: false,
   };
 
   public async componentDidMount() {
@@ -57,23 +60,27 @@ class ListingDetails extends React.Component<IProps, IStates> {
   }
 
   public onAddToCart = async () => {
-    const { quantity, listing } = this.state;
+    const { quantity, listing, noStockError } = this.state;
 
     try {
+      if (listing!.stock_count < quantity) {
+        throw 'Quantity desired is more than that in stock';
+      }
       const res = await server.post('/cart', { listing_id: listing!.id, quantity });
       window.location.reload(false);
     } catch (e) {
-      console.log(e);
+      if (e === 'Quantity desired is more than that in stock') this.setState({ noStockError: true });
     }
   };
 
   public render() {
-    const { listing, error } = this.state;
+    const { listing, error, noStockError } = this.state;
 
     return (
       listing
         ? (
           <div className="listing-details">
+            <ErrorAlert msg="Listing could not be added to your cart. Please select an available quantity." isError={noStockError} onCloseError={() => this.setState({ noStockError: false })} />
             <Media>
               <Container>
                 <Row className="mb-5">
