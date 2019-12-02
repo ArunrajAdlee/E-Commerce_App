@@ -33,12 +33,12 @@ class Advert extends React.Component<IProps, IStates> {
   }
 
   private getAdvertListing = async () => {
-    const result = await server.get(api.ad_get);
+    const result = await server.get(api.ads);
     if (result.data) { this.setState({ advertListing: result.data.listing }); }
   }
 
   private incrementAdCounter = async () => {
-    await server.post(`${api.ad_post}1`);
+    await server.post(api.ads);
   }
 
   public render() {
