@@ -8,6 +8,7 @@ export const server = axios.create({
 
 export const api = {
   ads: '/ads',
+  admin_activity: '/admin/activity',
   address_create: '/address/create',
   auth_create: '/auth/create',
   auth_status: '/auth/status',

@@ -18,7 +18,7 @@ class NavigationBar extends React.Component<{}> {
   };
 
   public render() {
-    const { isAuth, userInfo } = this.context;
+    const { isAuth, userInfo, isAdmin } = this.context;
     return (
       <Sticky topOffset={40}>
         {({ style, isSticky }) => (
@@ -79,6 +79,16 @@ class NavigationBar extends React.Component<{}> {
                             {`${userInfo.first_name}'s profile`}
                           </Link>
                         </Dropdown.Item>
+                        {isAdmin ? (
+                          <Dropdown.Item as="div">
+                            <Link
+                              className="nav-link align-self-center mt-1"
+                              to={{ pathname: '/admin/activity' }}
+                            >
+                              Admin Panel
+                            </Link>
+                          </Dropdown.Item>
+                        ) : ''}
                       </DropdownButton>
                     ) : (
                       <Link
