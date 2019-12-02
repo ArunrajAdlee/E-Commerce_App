@@ -26,5 +26,6 @@ export const api = {
   order_create: '/order/create',
   order_history_buyer: '/order/history/buyer',
   order_history_seller: '/order/history/seller',
+  order_details: '/order/history/buyer/',
 
 };

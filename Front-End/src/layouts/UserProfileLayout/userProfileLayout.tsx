@@ -22,10 +22,10 @@ const UserProfileLayout: React.SFC<IProps> = (props) => {
       <Header pageTitle={pageTitle} />
       <div className="default-layout-content-container">
         <Row>
-          <Col lg={4} xl={3}>
+          <Col xl={2}>
             <UserProfileSideNav />
           </Col>
-          <Col lg={8} xl={9}>
+          <Col xl={10}>
             <Component {...matchProps} />
           </Col>
         </Row>
