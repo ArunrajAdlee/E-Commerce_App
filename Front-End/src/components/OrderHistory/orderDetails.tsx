@@ -39,7 +39,12 @@ class OrderDetails extends React.Component{
     };
 
     public async componentDidMount(){
-        const resp = await server.get(api.order_summary);
+        
+        //const { match }  = this.props;
+        //const { id } = match.params;
+        const id = 1;
+        const resp = await server.get(`${api.order_history_buyer}${id}`,);
+        console.log(resp)
         const ordersum : any = resp.data.cartItems.map((product: any) => ({
 
             orderid: product.id,
@@ -49,25 +54,18 @@ class OrderDetails extends React.Component{
 
         }));
 
-        console.log('Results: ', ordersum);
+        //console.log('Results: ', ordersum);
 
         this.setState({
             order: ordersum
 
         });
-
     }
 
-
     render(){
-
         let {order} = this.state;
-
         return(
-
-
-            <div className="row"> 
-
+           <div className="row"> 
                 <div className="col-lg-4">
                     <table>
                         <th>
@@ -76,15 +74,15 @@ class OrderDetails extends React.Component{
 
                         <tr>
                             <td>Order #</td>
-                            <td>{order.orderid}</td>
+                            {/* API DATA <td>{order.orderid}</td> */}
                         </tr>
                         <tr>
                             <td>Date</td>
-                            <td>API CALL</td>
+                            {/* API DATA <td>{order.date}</td> */}
                         </tr>
                         <tr>
                             <td>Total</td>
-                            <td>API CALL</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>Payment</td>
@@ -92,9 +90,9 @@ class OrderDetails extends React.Component{
                         </tr>
 
                     </table>
-                </div>
                 
-
+                </div>
+    
                 <div className="col-lg-4">
                     <table>
                         <th>
@@ -147,19 +145,11 @@ class OrderDetails extends React.Component{
                     </table>
                 </div>
 
-
-
-
-            
+                {/* Need to pass in the data here  */}
                 {/* <div> <OrderSummary></OrderSummary> </div> */}
             </div>    
         );
     };
-
-
-
-
-
 }
 
 export default OrderDetails;
