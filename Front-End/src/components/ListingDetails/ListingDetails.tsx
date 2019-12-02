@@ -80,9 +80,7 @@ class ListingDetails extends React.Component<IProps, IStates> {
                       <div className="purchase-details">
                         <h3>{listing.title}</h3>
                         <h5>
-                          Sold By:
-                          {' '}
-                          <Link to={`/user/${listing.username}`}>{listing.username}</Link>
+                          {`Sold By ${listing.username}`}
                         </h5>
                         <h4 className="listing-price">
                           {`$${listing.price}`}
