@@ -65,8 +65,10 @@ class OrderSummary extends React.Component<IProps, IStates> {
     return (
       Object.values(data).length >= 1 ? (
         <div className="order-summary">
-          <h5>Your Order</h5>
-          <hr />
+          <div className="text-center">
+            <h5>Your Order</h5>
+            <hr />
+          </div>
           <Row>
             <Col xs={6}>
             Product

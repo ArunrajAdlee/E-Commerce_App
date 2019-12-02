@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 import {
   Button, Card, Col, Container, Row, Spinner,
 } from 'react-bootstrap';
@@ -65,33 +65,54 @@ class Cart extends React.Component<IProps, IStates> {
       <Container>
         <Row>
           {/* Cart element */}
-          <Col md={9}>
+          <Col md={8}>
             <Container>
               {listings.map((listing: IListing) => (
                 <CartListing key={listing.id} listing={listing} />))}
             </Container>
           </Col>
           {/* Cart summary */}
-          <Col md={3}>
-            <Card>
-              <Card.Body>
-                <Card.Title>
-                  Subtotal: $
-                  {subtotal}
-                </Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                  {numOfItems}
-                  {' '}
-                  Items
-                </Card.Subtitle>
-              </Card.Body>
-            </Card>
-            <Button
-              type="submit"
-              className="btn-block styled-button"
-            >
-            Proceed to Checkout
-            </Button>
+          <Col md={4}>
+            <div className="order-summary">
+              <Row>
+                <Col className="text-center">
+                  <h5>Your Order</h5>
+                  <hr />
+                </Col>
+              </Row>
+              {/* Subtotal */}
+              <Row>
+                <Col xs={6}>
+                  <h5>Subtotal:</h5>
+                </Col>
+                <Col xs={6}>
+                  <h5>
+                    ${subtotal}
+                  </h5>
+                </Col>
+              </Row>
+              {/* Items */}
+              <Row className="text-secondary">
+                <Col xs={6}>
+                  <h5>Items:</h5>
+                </Col>
+                <Col xs={6}>
+                  <h5>
+                    {numOfItems}
+                    {' '}
+                  </h5>
+                </Col>
+              </Row>
+              <br />
+              <Link to="/checkout" className="text-decoration-none">
+                <Button
+                  type="submit"
+                  className="btn-block styled-button"
+                >
+                  Proceed to Checkout
+                </Button>
+              </Link>
+            </div>
           </Col>
         </Row>
         <Container />
