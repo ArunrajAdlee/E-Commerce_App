@@ -1,5 +1,5 @@
-import React from "react";
-import { ILoginFields } from "../components/Login/login";
+import React from 'react';
+import { ILoginFields } from '../components/Login/login';
 
 export interface IUserInfo {
   username: string;
@@ -20,25 +20,26 @@ export interface IUserInfo {
 
 export const store = {
   userInfo: {
-    username: "",
-    email: "",
-    first_name: "",
-    last_name: "",
-    brand_name: "",
-    phone_number: "",
+    username: '',
+    email: '',
+    first_name: '',
+    last_name: '',
+    brand_name: '',
+    phone_number: '',
     address: 0,
-    street_name: "",
+    street_name: '',
     street_number: 0,
     unit_number: 0,
-    city: "",
-    province: "",
-    postal_code: "",
-    country: ""
+    city: '',
+    province: '',
+    postal_code: '',
+    country: '',
   },
   isAuth: false,
-  setAuthState: (isAuth: boolean, userInfo: IUserInfo) => {},
+  isAdmin: false,
+  setAuthState: (isAuth: boolean, isAdmin: boolean, userInfo: IUserInfo) => {},
   login: (userCredentials: ILoginFields) => {},
-  logout: () => {}
+  logout: () => {},
 };
 
 export const StoreContext = React.createContext(store);

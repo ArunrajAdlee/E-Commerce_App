@@ -1,0 +1,23 @@
+
+.activity-card {
+    text-align: center;
+
+    & .important-text {
+        padding-top: 10px;
+        color: green;
+    }
+}
+
+.admin-activity {
+    & .top-sellers-container {
+        & .activity-card {
+            margin-right: 2.5%;
+            margin-left: 2.5%;
+
+            & .important-text {
+                padding-top: 10px;
+                color: blue;
+            }
+        }
+    }
+}

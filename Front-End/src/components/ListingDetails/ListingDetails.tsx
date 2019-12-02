@@ -6,10 +6,21 @@ import Col from 'react-bootstrap/Col';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import { Button, Spinner } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
+import Rating from 'react-rating';
 import { server, api } from '../../server';
 import ErrorAlert from '../Misc/errorAlert';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faStar as fasFaStar,
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faStar as farFaStar,
+} from '@fortawesome/free-regular-svg-icons';
+library.add(fasFaStar, farFaStar)
 
 export interface IListingDetails {
+
   id: number,
   description: string,
   image: string,
@@ -26,10 +37,22 @@ export interface IListingDetails {
 
 }
 
+interface IReviewDetails {
+  title: string,
+  description: string,
+  rating: number,
+  seller_id: number,
+  user_id: number,
+}
+
 interface IProps extends RouteComponentProps<any> {}
+
 interface IStates {
   listing: IListingDetails | null;
   quantity: number;
+  reviews: IReviewDetails[];
+  overallReview: number;
+  numReviews: number;
   error: boolean,
   noStockError: boolean,
 }
@@ -38,6 +61,9 @@ class ListingDetails extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
     listing: null,
     quantity: 1,
+    reviews: [],
+    overallReview: 0,
+    numReviews: 0,
     error: false,
     noStockError: false,
   };
@@ -45,14 +71,47 @@ class ListingDetails extends React.Component<IProps, IStates> {
   public async componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
+    await this.getListingDetails(id);
+  }
+
+  public async componentDidUpdate(prevProps: IProps) {
+    const { match } = this.props;
+    const { id } = match.params;
+    if (id !== prevProps.match.params.id) {
+      await this.getListingDetails(id);
+    }
+  }
+
+  public getListingDetails = async (ID: number) => {
     try {
       const resp = await server.get(
-        `${api.listings_details}${id}`,
+        `${api.listings_details}${ID}`,
       );
       if (resp.data.listing) {
         this.setState({
           listing: resp.data.listing,
         });
+        const { user_id } = resp.data.listing;
+
+        const reviewResp = await server.get(
+          `${api.reviews}${user_id}`,
+        );
+
+        if (reviewResp.data.reviews) {
+          let overallRating = 0;
+
+          for (let i = 0; i < reviewResp.data.reviews.length - 1; i++) {
+            overallRating += reviewResp.data.reviews[i].rating;
+          }
+
+          overallRating /= reviewResp.data.reviews.length;
+
+          this.setState({
+            reviews: reviewResp.data.reviews,
+            overallReview: overallRating,
+            numReviews: reviewResp.data.reviews.length,
+          });
+        }
       }
     } catch (e) {
       this.setState({ error: true });
@@ -74,8 +133,9 @@ class ListingDetails extends React.Component<IProps, IStates> {
   };
 
   public render() {
-    const { listing, error, noStockError } = this.state;
-
+    const {
+      listing, error, reviews, overallReview, numReviews, noStockError,
+    } = this.state;
     return (
       listing
         ? (
@@ -95,6 +155,16 @@ class ListingDetails extends React.Component<IProps, IStates> {
                           Sold By:
                           {' '}
                           <Link to={`/user/${listing.username}`}>{listing.username}</Link>
+                          {' '}
+                          <Rating
+                          initialRating = {overallReview}
+                          emptySymbol={<FontAwesomeIcon icon={farFaStar} className="text-warning" />}
+                          readonly = {true}
+                          fullSymbol={<FontAwesomeIcon icon={fasFaStar} className="text-warning" />}
+                          />
+                          <p className="text-muted">
+                            {`${numReviews} reviews `}
+                          </p>
                         </h5>
                         <h4 className="listing-price">
                           {`$${listing.price}`}
@@ -111,7 +181,37 @@ class ListingDetails extends React.Component<IProps, IStates> {
                     </Media.Body>
                   </Col>
                 </Row>
-                <span className="mt-5">Review Component Ova Here</span>
+                <Row className = "review"/>
+                <Row className = "review">
+                  <Col/>
+                  <Col>
+                    <h4> Reviews </h4>
+                  </Col>
+                </Row>
+                <Row className = "review"/>
+                <Row className="reviewBorder">
+                <ul>
+                  <li>
+                  <br />
+                  </li>
+                  {reviews.map((r, index) => (
+                    <li key = {index}>
+                    <h5>
+                      {`${r.title}  `}
+                    </h5>
+                      <Rating
+                        initialRating = {r.rating}
+                        emptySymbol={<FontAwesomeIcon icon={farFaStar} className="text-warning" size = "sm"/>}
+                        readonly
+                        fullSymbol={<FontAwesomeIcon icon={fasFaStar} className="text-warning" size = 'sm' />}
+                        />
+                      <p/>
+                    <p className = "text-muted"> {r.description}</p>
+                    <br/>
+                    </li>
+                    ))}
+                  </ul>
+                </Row>
               </Container>
             </Media>
 
@@ -120,8 +220,6 @@ class ListingDetails extends React.Component<IProps, IStates> {
         : error
           ? <span>This listing does not exist!</span>
           : <Spinner animation="border" variant="warning" />
-
-
     );
   }
 }

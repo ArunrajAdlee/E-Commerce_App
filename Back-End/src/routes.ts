@@ -183,7 +183,7 @@ export const Routes = [
   },
   {
     method: 'post',
-    route: '/ads/:id',
+    route: '/ads',
     controller: AdsController,
     action: 'increaseClickCount'
   },
