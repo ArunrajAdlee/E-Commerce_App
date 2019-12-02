@@ -31,15 +31,15 @@ class CheckAuth extends React.Component<IProps, IStates> {
     const { logout, isAuth, setAuthState } = this.context;
     const resp = await server.get(api.auth_status);
     if (resp) {
-      if (!resp.data.isAuthenticated && isAuth) { logout(); } else if (resp.data.isAuthenticated && !isAuth) { setAuthState(true, resp.data.user); }
+      if (!resp.data.isAuthenticated && isAuth) { logout(); } else if (resp.data.isAuthenticated && !isAuth) { setAuthState(true, resp.data.isAdmin, resp.data.user); }
     }
   }
 
   public render() {
     const { render } = this.props;
     const { isMounted } = this.state;
-    const { isAuth } = this.context;
-    return (render(isAuth, isMounted));
+    const { isAuth, isAdmin } = this.context;
+    return (render(isAuth, isAdmin, isMounted));
   }
 }
 

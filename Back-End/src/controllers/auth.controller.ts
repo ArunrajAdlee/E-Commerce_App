@@ -84,6 +84,8 @@ export class AuthController {
       return;
     }
 
+    //Check if user is an admin
+    const isAdmin = userData.isAdmin;
     // Validate password
     const validPassword = await bcrypt.compare(
       req.body.password,
@@ -98,7 +100,8 @@ export class AuthController {
     const token = jwt.sign(
       {
         username: userData.username,
-        id: userData.id
+        id: userData.id,
+        isAdmin: isAdmin
       },
       "secretKey"
     );
@@ -132,7 +135,7 @@ export class AuthController {
         // uncomment 'secure' when running in production
         // secure: true
       })
-      .send({ message: "cookie-set", user });
+      .send({ message: "cookie-set", isAdmin, user });
   }
 
   async remove(req: Request, res: Response, next: NextFunction) {
@@ -275,6 +278,7 @@ export class AuthController {
 
   async getAuthStatus(req: Request, res: Response, next: NextFunction) {
     let isAuthenticated = false;
+    let isAdmin = false;
     let user: any;
     //Check if the user is authenticated
     const authenticatedUser: AuthModel = checkAuth(req);
@@ -285,6 +289,9 @@ export class AuthController {
       const userDatabase = await this.userRepository.findOne({
         id: authenticatedUser.id
       });
+
+      //Check to see if user is an admin
+      isAdmin = userDatabase.isAdmin;
 
       //Set user data
       if (userDatabase) {
@@ -310,7 +317,7 @@ export class AuthController {
       }
     }
     //Return authentication status and user data
-    res.status(200).send({ isAuthenticated, user });
+    res.status(200).send({ isAuthenticated, isAdmin, user });
   }
 
   async logout(req: Request, res: Response, next: NextFunction) {

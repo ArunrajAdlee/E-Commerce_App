@@ -34,6 +34,61 @@ code {
   }
 }
 
+
+.advertisement-container {
+  width: 100%;
+  display: inline-block;
+  height: 85px;
+  margin-top: -70px;
+  border: solid 1.2px black;
+  overflow: hidden;
+  margin-bottom: 25px;
+  background: url(#{$img-path}/banner/banner-bg.jpg) center no-repeat;
+
+  & .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-left: 5%;
+    color: black;
+  }
+
+  & .title {
+    width: 35%;
+    overflow: hidden;
+    white-space: pre;
+  }
+
+  & .price {
+    padding-top: 35px;
+    margin-left: -35%;
+  }
+
+  & .btn-link {
+    float: right;
+    margin-right: 45px;
+
+    @media screen and (max-width: $lg-size) {
+      margin-right: 0%;
+    }
+  }
+
+  & .image {
+    margin-left: 10%;
+    max-height: 105px;
+  }
+
+  @media screen and (max-width: $sm-size) {
+    & .title, & .price {
+      display: none;
+    }
+
+    & .image {
+      margin-left: 10px;
+    }
+  }
+}
+
 .styled-button {
   background: $theme-gradient;
   border: none !important;
@@ -91,7 +146,7 @@ code {
 
   /* Add a thumb */
   &::-webkit-scrollbar-thumb {
-    background-color: #F90;	
+    background-color: #F90;
     background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 25%,
       transparent 25%,
       transparent 50%,

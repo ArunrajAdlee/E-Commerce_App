@@ -14,18 +14,23 @@ interface IProps {
   exact?: boolean;
   pageTitle?: string;
   authenticated?: boolean;
+  admin?: boolean;
+  noAuth?: boolean;
 }
 
 const SecureRoute: React.SFC<IProps> = (props) => {
   const {
-    pageTitle, authenticated, pageComponent: PageComponent, layoutComponent: LayoutComponent, ...rest
+    pageTitle, admin, authenticated, noAuth, pageComponent: PageComponent, layoutComponent: LayoutComponent, ...rest
   } = props;
   return (
     <CheckAuth
-      render={(isAuth: boolean, isMounted: boolean) => (
+      render={(isAuth: boolean, isAdmin: boolean, isMounted: boolean) => (
         isMounted
-          ? (isAuth && authenticated) || !authenticated
-            ? (
+          ? (!isAuth && authenticated) || (!isAdmin && admin) || ((isAuth || isAdmin) && noAuth)
+            ? ((!isAdmin && admin)) || ((isAuth || isAdmin) && noAuth)
+              ? <Redirect exact push to="/" />
+              : <Redirect exact push to="/login" />
+            : (
               <Route
                 {...rest}
                 render={(matchProps) => (
@@ -35,7 +40,6 @@ const SecureRoute: React.SFC<IProps> = (props) => {
                 )}
               />
             )
-            : <Redirect exact push to="/login" />
           : <Spinner className="loading-spinner" animation="border" variant="warning" />
       )}
     />
