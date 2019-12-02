@@ -39,7 +39,7 @@ export class AdminController {
     .limit(5)
     .getRawMany();
 
-    topSellers.sort((a,b) => b.totalSum.localeCompare(a.totalSum));
+    topSellers.sort((a,b) => parseFloat(b.totalSum.replace(/,/g,'')) > parseFloat(a.totalSum.replace(/,/g,'')) ? 1: -1);
 
     res.status(200).send({
       adClickCount: ad.click_count,
