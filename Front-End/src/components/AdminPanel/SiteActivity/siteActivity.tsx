@@ -58,13 +58,13 @@ class SiteActivty extends React.Component<IProps, IStates> {
               <hr />
               <Row>
                 <Col xl={4} className="mb-3">
-                  <ActivityCard title="Total Sales (Before Tax)" description="Total amount from all website sales excluding tax" importantText={`$${data.totalSaleAmounts[0].sum_price_before_tax}`}/>
+                  <ActivityCard title="Total Sales (Before Tax)" description="Total amount from all website sales excluding tax" importantText={`$${data.totalSaleAmounts[0].sum_price_before_tax}`} />
                 </Col>
                 <Col xl={4} className="mb-3">
-                  <ActivityCard title="Total Sales (After Tax)" description="Total amount from all website sales including tax" importantText={`$${data.totalSaleAmounts[0].sum_price_after_tax}`}/>
+                  <ActivityCard title="Total Sales (After Tax)" description="Total amount from all website sales including tax" importantText={`$${data.totalSaleAmounts[0].sum_price_after_tax}`} />
                 </Col>
                 <Col xl={4} className="mb-3">
-                  <ActivityCard title="Total Revenue" description="How much Bob has made from listing fees" importantText={`$${data.totalSaleAmounts[0].sum_listing_fee}`}/>
+                  <ActivityCard title="Total Revenue" description="How much Bob has made from listing fees" importantText={`$${data.totalSaleAmounts[0].sum_listing_fee}`} />
                 </Col>
               </Row>
               <Row className="mb-3">
@@ -72,7 +72,7 @@ class SiteActivty extends React.Component<IProps, IStates> {
                   <ActivityCard title="Advertisement Click Count" description="How many times have users clicked on our ads" importantText={data.adClickCount} />
                 </Col>
               </Row>
-              <h2 className="text-center">Top Five Sellers</h2>
+              <h2 className="text-center mt-5">Top Five Sellers</h2>
               <hr />
               <Row className="top-sellers-container">
                 {data.topSellers.map((seller) => (
