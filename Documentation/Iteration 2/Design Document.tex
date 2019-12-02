@@ -793,19 +793,19 @@ A \textit{Review} is an assessment a \textit{Client} leaves on a \textit{Listing
     \caption{Architectural Diagram}
     \label{fig: Architectural Diagram}
 \end{figure}
-\section{Tools and longuages used}
+\section{Tools and languages used}
     \subsection{Front-end}
         The front-end on the 354TheStars uses \textit{React} as the main framework for building the user interfaces as it is optimal for fetching rapidly changing data that needs to be recorded. We don't like how Javascript does not have any type checking so \textit{Typescript} saves us from a lot of trouble.
-        The front-end also uses \textit{react-router-dom} framework for a simple and easy way to handle routing to send request to the backend. 
-        Front-end is all about the looks, and design. we achieved an atractive look by using  \textit{React-Bootstrap}  which provides design templates for user interface components, \textit{SASS} also helps us to make a beautiful styling for our UI components. 
-        354TheStars provides a minimal looking forms for a great user-experience using \textit{Formik} and \textit{Yup} helps us in validating those forms.
+        The front-end also uses the \textit{react-router-dom} framework for a simple and easy way to handle routing to send requests to the back-end. 
+        Front-end is all about the looks, and design. We achieved an attractive look by using  \textit{React-Bootstrap}  which provides design templates for user interface components. \textit{SASS} also helps us make beautiful styling for our UI components. 
+        354TheStars provides minimalistic looking forms for a great user-experience. \textit{Formik} and \textit{Yup} help us in validating those forms.
     \subsection{Back-end}
-        The back-end of 354TheStars uses \textit{Node.js} to provide a reliable server-side implementation. Since routing is a crucial part of the back-end we use \textit{Express.js} framework to abstract some work on networking layer. 
-        Our back-end is not useful without data, in order to make the process of querying the database easier we benefit from \textit{typeorm} framework.
-        Since storing image in SQL is not really efficient, we make use of \textit{Cloudinary} framework which is a cloud-based image and video management system, therefore we achieve a faster and more efficient way in storing and fetching media.
-        We want to have a fast and reliable contact with our users, for that reason we use \textit{NodeMailer} to send emails from the server to clients. This is used for the forgot-password feature
+        The back-end of 354TheStars uses \textit{Node.js} to provide a reliable server-side implementation. Since routing is a crucial part of the back-end we use the \textit{Express.js} framework to abstract some work on the networking layer. 
+        Our back-end is not useful without data, in order to make the process of querying the database easier we benefit from the \textit{typeorm} framework.
+        Since storing images in SQL is not really efficient, we make use of the \textit{Cloudinary} framework which is a cloud-based image and video management system. Therefore, we achieve a faster and more efficient way of storing and fetching media.
+        We want to have a fast and reliable contact with our users. For that reason we use \textit{NodeMailer} to send emails from the server to clients. This is used for the forgot-password feature.
     \subsection{Database}
-        The 354TheStars uses relational database for that reason \textit{MySQL} is the good candidate. In order to have consistent data between all of your clients, a SQL server is required. We use \textit{Google Cloud Platform} to have our SQL server.
+        The 354TheStars uses relational database. For that reason, \textit{MySQL} is a good candidate. In order to have consistent data between all of your clients, a SQL server is required. We use the \textit{Google Cloud Platform} to have our SQL server.
 
 \section{Conclusion}
 
