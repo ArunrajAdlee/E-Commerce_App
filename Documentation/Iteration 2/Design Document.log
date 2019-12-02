@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  8 NOV 2019 22:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  1 DEC 2019 19:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -398,19 +398,21 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 90.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 90.
- (/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.toc [1
+ [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.6 ...ine {1.5}Site Browsing}{19}{subsection.1.5}
-                                                  %pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
+l.134 \clearpage
+                pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.6 ...ine {1.5}Site Browsing}{19}{subsection.1.5}
-                                                  %] [2])
+l.134 \clearpage
+                ] (/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.toc [2
+
+])
 \tf@toc=\write5
 \openout5 = `"Design Document.toc"'.
 
@@ -425,483 +427,484 @@ l.6 ...ine {1.5}Site Browsing}{19}{subsection.1.5}
  [5
 
 ]
-<Diagrams/Use_Case/ucdselling.png, id=389, 419.5675pt x 489.83pt>
+<Diagrams/Use_Case/ucdselling.png, id=429, 419.5675pt x 489.83pt>
 File: Diagrams/Use_Case/ucdselling.png Graphic file (type png)
 <use Diagrams/Use_Case/ucdselling.png>
-Package pdftex.def Info: Diagrams/Use_Case/ucdselling.png  used on input line 153.
+Package pdftex.def Info: Diagrams/Use_Case/ucdselling.png  used on input line 161.
 (pdftex.def)             Requested size: 241.84842pt x 282.34515pt.
 
-Underfull \hbox (badness 2644) in paragraph at lines 163--163
+Underfull \hbox (badness 2644) in paragraph at lines 171--171
 []|\OT1/cmr/m/n/10.95 Product photo, []prod-uct de-scrip-tion, price, stock count,product
  []
 
 [6
 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+] [7pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.235 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucdselling.png>] [7pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has been already used, duplicate ignored
+l.243 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucdselling.png>] [8pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.235 \clearpage
-                ] [8pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has been already used, duplicate ignored
+l.243 \clearpage
+                ] [9pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.235 \clearpage
-                ] [9pdfTeX warning (ext4): destination with the same identifier (name{table.5}) has been already used, duplicate ignored
+l.243 \clearpage
+                ] [10pdfTeX warning (ext4): destination with the same identifier (name{table.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.235 \clearpage
+l.243 \clearpage
                 ]
-<Diagrams/Use_Case/ucd2.png, id=433, 378.41376pt x 421.575pt>
+<Diagrams/Use_Case/ucd2.png, id=478, 378.41376pt x 421.575pt>
 File: Diagrams/Use_Case/ucd2.png Graphic file (type png)
 <use Diagrams/Use_Case/ucd2.png>
-Package pdftex.def Info: Diagrams/Use_Case/ucd2.png  used on input line 243.
+Package pdftex.def Info: Diagrams/Use_Case/ucd2.png  used on input line 251.
 (pdftex.def)             Requested size: 241.84842pt x 269.43398pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 256--256
+Underfull \hbox (badness 10000) in paragraph at lines 264--264
 []\OT1/cmr/m/n/10.95 Pre-
  []
 
-[10
+[11
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.313 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd2.png>] [11pdfTeX warning (ext4): destination with the same identifier (name{table.6}) has been already used, duplicate ignored
+l.321 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd2.png>] [12pdfTeX warning (ext4): destination with the same identifier (name{table.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.313 \clearpage
-                ] [12pdfTeX warning (ext4): destination with the same identifier (name{table.7}) has been already used, duplicate ignored
+l.321 \clearpage
+                ] [13pdfTeX warning (ext4): destination with the same identifier (name{table.7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.313 \clearpage
+l.321 \clearpage
                 ]
-<Diagrams/Use_Case/ucd3.png, id=475, 400.49625pt x 415.5525pt>
+<Diagrams/Use_Case/ucd3.png, id=520, 400.49625pt x 415.5525pt>
 File: Diagrams/Use_Case/ucd3.png Graphic file (type png)
 <use Diagrams/Use_Case/ucd3.png>
-Package pdftex.def Info: Diagrams/Use_Case/ucd3.png  used on input line 320.
+Package pdftex.def Info: Diagrams/Use_Case/ucd3.png  used on input line 328.
 (pdftex.def)             Requested size: 241.84842pt x 250.94398pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--331
+Underfull \hbox (badness 10000) in paragraph at lines 339--339
 []\OT1/cmr/m/n/10.95 Pre-
  []
 
-[13
+[14
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.428 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd3.png>] [14pdfTeX warning (ext4): destination with the same identifier (name{table.8}) has been already used, duplicate ignored
+l.436 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd3.png>] [15pdfTeX warning (ext4): destination with the same identifier (name{table.8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.428 \clearpage
-                ] [15pdfTeX warning (ext4): destination with the same identifier (name{table.9}) has been already used, duplicate ignored
+l.436 \clearpage
+                ] [16pdfTeX warning (ext4): destination with the same identifier (name{table.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.428 \clearpage
-                ] [16pdfTeX warning (ext4): destination with the same identifier (name{table.10}) has been already used, duplicate ignored
+l.436 \clearpage
+                ] [17pdfTeX warning (ext4): destination with the same identifier (name{table.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.428 \clearpage
-                ] [17pdfTeX warning (ext4): destination with the same identifier (name{table.11}) has been already used, duplicate ignored
+l.436 \clearpage
+                ] [18pdfTeX warning (ext4): destination with the same identifier (name{table.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.428 \clearpage
+l.436 \clearpage
                 ]
-<Diagrams/Use_Case/ucdadmin.png, id=524, 355.3275pt x 497.86pt>
+<Diagrams/Use_Case/ucdadmin.png, id=568, 355.3275pt x 497.86pt>
 File: Diagrams/Use_Case/ucdadmin.png Graphic file (type png)
 <use Diagrams/Use_Case/ucdadmin.png>
-Package pdftex.def Info: Diagrams/Use_Case/ucdadmin.png  used on input line 437.
+Package pdftex.def Info: Diagrams/Use_Case/ucdadmin.png  used on input line 445.
 (pdftex.def)             Requested size: 241.84842pt x 338.86697pt.
- [18
+ [19
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.442 \clearpage
+l.450 \clearpage
                  </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucdadmin.png>]
-<Diagrams/Use_Case/ucd4.png, id=529, 585.18625pt x 644.4075pt>
+<Diagrams/Use_Case/ucd4.png, id=574, 585.18625pt x 644.4075pt>
 File: Diagrams/Use_Case/ucd4.png Graphic file (type png)
 <use Diagrams/Use_Case/ucd4.png>
-Package pdftex.def Info: Diagrams/Use_Case/ucd4.png  used on input line 449.
+Package pdftex.def Info: Diagrams/Use_Case/ucd4.png  used on input line 457.
 (pdftex.def)             Requested size: 314.39998pt x 346.22462pt.
- [19
+ [20
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.455 \clearpage
+l.463 \clearpage
                  </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Use_Case/ucd4.png>]
-<Diagrams/ER/ER_Diagram_Typed.png, id=536, 1353.055pt x 924.45375pt>
+<Diagrams/ER/ER_Diagram_Typed.png, id=580, 1353.055pt x 924.45375pt>
 File: Diagrams/ER/ER_Diagram_Typed.png Graphic file (type png)
 <use Diagrams/ER/ER_Diagram_Typed.png>
-Package pdftex.def Info: Diagrams/ER/ER_Diagram_Typed.png  used on input line 459.
+Package pdftex.def Info: Diagrams/ER/ER_Diagram_Typed.png  used on input line 467.
 (pdftex.def)             Requested size: 435.32419pt x 297.42522pt.
-<Diagrams/ER/ER_Diagram.png, id=537, 1013.7875pt x 735.74875pt>
+<Diagrams/ER/ER_Diagram.png, id=581, 1013.7875pt x 735.74875pt>
 File: Diagrams/ER/ER_Diagram.png Graphic file (type png)
 <use Diagrams/ER/ER_Diagram.png>
-Package pdftex.def Info: Diagrams/ER/ER_Diagram.png  used on input line 466.
+Package pdftex.def Info: Diagrams/ER/ER_Diagram.png  used on input line 474.
 (pdftex.def)             Requested size: 435.32419pt x 315.92795pt.
- [20
+ [21
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.481 \subsubsection
-                    {Address} </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/ER/ER_Diagram_Typed.png>] [21pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has been already used, duplicate ignored
+l.489 \subsubsection
+                    {Address} </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/ER/ER_Diagram_Typed.png>] [22pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.489 
-       </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/ER/ER_Diagram.png>] [22]
-<Diagrams/Class/class_diagram.png, id=553, 614.295pt x 794.97pt>
+l.497 
+       </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/ER/ER_Diagram.png>] [23]
+<Diagrams/Class/class_diagram.png, id=598, 614.295pt x 794.97pt>
 File: Diagrams/Class/class_diagram.png Graphic file (type png)
 <use Diagrams/Class/class_diagram.png>
-Package pdftex.def Info: Diagrams/Class/class_diagram.png  used on input line 503.
+Package pdftex.def Info: Diagrams/Class/class_diagram.png  used on input line 511.
 (pdftex.def)             Requested size: 386.95894pt x 500.7731pt.
- [23
+ [24
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.511 
-       </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Class/class_diagram.png>] [24]
-<Diagrams/Sequence/Add_Review.png, id=564, 1535.7375pt x 1009.52156pt>
+l.519 
+       </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Class/class_diagram.png>] [25]
+<Diagrams/Sequence/Add_Review.png, id=609, 1535.7375pt x 1009.52156pt>
 File: Diagrams/Sequence/Add_Review.png Graphic file (type png)
 <use Diagrams/Sequence/Add_Review.png>
-Package pdftex.def Info: Diagrams/Sequence/Add_Review.png  used on input line 536.
+Package pdftex.def Info: Diagrams/Sequence/Add_Review.png  used on input line 544.
 (pdftex.def)             Requested size: 386.95634pt x 238.48532pt.
-<Diagrams/Sequence/Cart_Operations.jpg, id=565, 1506.62875pt x 2107.875pt>
+<Diagrams/Sequence/Cart_Operations.jpg, id=610, 1506.62875pt x 2107.875pt>
 File: Diagrams/Sequence/Cart_Operations.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Cart_Operations.jpg>
-Package pdftex.def Info: Diagrams/Sequence/Cart_Operations.jpg  used on input line 548.
+Package pdftex.def Info: Diagrams/Sequence/Cart_Operations.jpg  used on input line 556.
 (pdftex.def)             Requested size: 314.37831pt x 357.7229pt.
-<Diagrams/Sequence/Checkout.jpg, id=566, 1244.65pt x 642.4pt>
+<Diagrams/Sequence/Checkout.jpg, id=611, 1244.65pt x 642.4pt>
 File: Diagrams/Sequence/Checkout.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Checkout.jpg>
-Package pdftex.def Info: Diagrams/Sequence/Checkout.jpg  used on input line 559.
+Package pdftex.def Info: Diagrams/Sequence/Checkout.jpg  used on input line 567.
 (pdftex.def)             Requested size: 290.21378pt x 119.23422pt.
-<Diagrams/Sequence/Edit_Client_Info.jpg, id=567, 1585.925pt x 1545.775pt>
+<Diagrams/Sequence/Edit_Client_Info.jpg, id=612, 1585.925pt x 1545.775pt>
 File: Diagrams/Sequence/Edit_Client_Info.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Edit_Client_Info.jpg>
-Package pdftex.def Info: Diagrams/Sequence/Edit_Client_Info.jpg  used on input line 570.
+Package pdftex.def Info: Diagrams/Sequence/Edit_Client_Info.jpg  used on input line 578.
 (pdftex.def)             Requested size: 314.39647pt x 238.48409pt.
-<Diagrams/Sequence/Filter_Listings.jpg, id=568, 1063.975pt x 643.40375pt>
+<Diagrams/Sequence/Filter_Listings.jpg, id=613, 1063.975pt x 643.40375pt>
 File: Diagrams/Sequence/Filter_Listings.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Filter_Listings.jpg>
-Package pdftex.def Info: Diagrams/Sequence/Filter_Listings.jpg  used on input line 581.
+Package pdftex.def Info: Diagrams/Sequence/Filter_Listings.jpg  used on input line 589.
 (pdftex.def)             Requested size: 241.83553pt x 119.234pt.
-<Diagrams/Sequence/Listing_Details.png, id=569, 962.59625pt x 567.11874pt>
+<Diagrams/Sequence/Listing_Details.png, id=614, 962.59625pt x 567.11874pt>
 File: Diagrams/Sequence/Listing_Details.png Graphic file (type png)
 <use Diagrams/Sequence/Listing_Details.png>
-Package pdftex.def Info: Diagrams/Sequence/Listing_Details.png  used on input line 592.
+Package pdftex.def Info: Diagrams/Sequence/Listing_Details.png  used on input line 600.
 (pdftex.def)             Requested size: 338.57349pt x 198.73683pt.
-<Diagrams/Sequence/Lists_of_Listings.jpg, id=570, 1164.35pt x 583.17876pt>
+<Diagrams/Sequence/Lists_of_Listings.jpg, id=615, 1164.35pt x 583.17876pt>
 File: Diagrams/Sequence/Lists_of_Listings.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Lists_of_Listings.jpg>
-Package pdftex.def Info: Diagrams/Sequence/Lists_of_Listings.jpg  used on input line 603.
+Package pdftex.def Info: Diagrams/Sequence/Lists_of_Listings.jpg  used on input line 611.
 (pdftex.def)             Requested size: 241.83797pt x 119.24097pt.
-<Diagrams/Sequence/Order_History.png, id=571, 1806.75pt x 923.45pt>
+<Diagrams/Sequence/Order_History.png, id=616, 1806.75pt x 923.45pt>
 File: Diagrams/Sequence/Order_History.png Graphic file (type png)
 <use Diagrams/Sequence/Order_History.png>
-Package pdftex.def Info: Diagrams/Sequence/Order_History.png  used on input line 614.
+Package pdftex.def Info: Diagrams/Sequence/Order_History.png  used on input line 622.
 (pdftex.def)             Requested size: 314.39401pt x 158.98529pt.
-<Diagrams/Sequence/Login.jpg, id=572, 1445.4pt x 1385.175pt>
+<Diagrams/Sequence/Login.jpg, id=617, 1445.4pt x 1385.175pt>
 File: Diagrams/Sequence/Login.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Login.jpg>
-Package pdftex.def Info: Diagrams/Sequence/Login.jpg  used on input line 625.
+Package pdftex.def Info: Diagrams/Sequence/Login.jpg  used on input line 633.
 (pdftex.def)             Requested size: 290.22174pt x 238.47795pt.
-<Diagrams/Sequence/Logout.jpg, id=573, 1064.97874pt x 542.025pt>
+<Diagrams/Sequence/Logout.jpg, id=618, 1064.97874pt x 542.025pt>
 File: Diagrams/Sequence/Logout.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Logout.jpg>
-Package pdftex.def Info: Diagrams/Sequence/Logout.jpg  used on input line 636.
+Package pdftex.def Info: Diagrams/Sequence/Logout.jpg  used on input line 644.
 (pdftex.def)             Requested size: 241.83617pt x 119.2376pt.
-<Diagrams/Sequence/Register.jpg, id=574, 1245.65375pt x 1386.17876pt>
+<Diagrams/Sequence/Register.jpg, id=619, 1245.65375pt x 1386.17876pt>
 File: Diagrams/Sequence/Register.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Register.jpg>
-Package pdftex.def Info: Diagrams/Sequence/Register.jpg  used on input line 647.
+Package pdftex.def Info: Diagrams/Sequence/Register.jpg  used on input line 655.
 (pdftex.def)             Requested size: 290.21973pt x 238.48155pt.
-<Diagrams/Sequence/Registered_User_Purchase.jpg, id=575, 1304.875pt x 1366.10374pt>
+<Diagrams/Sequence/Registered_User_Purchase.jpg, id=620, 1304.875pt x 1366.10374pt>
 File: Diagrams/Sequence/Registered_User_Purchase.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Registered_User_Purchase.jpg>
-Package pdftex.def Info: Diagrams/Sequence/Registered_User_Purchase.jpg  used on input line 658.
+Package pdftex.def Info: Diagrams/Sequence/Registered_User_Purchase.jpg  used on input line 666.
 (pdftex.def)             Requested size: 290.21928pt x 238.48807pt.
-<Diagrams/Sequence/Categories.png, id=576, 1525.7pt x 823.075pt>
+<Diagrams/Sequence/Categories.png, id=621, 1525.7pt x 823.075pt>
 File: Diagrams/Sequence/Categories.png Graphic file (type png)
 <use Diagrams/Sequence/Categories.png>
-Package pdftex.def Info: Diagrams/Sequence/Categories.png  used on input line 669.
+Package pdftex.def Info: Diagrams/Sequence/Categories.png  used on input line 677.
 (pdftex.def)             Requested size: 314.40015pt x 158.9856pt.
-<Diagrams/Sequence/Confirmation_Email.png, id=577, 1099.10625pt x 557.08125pt>
+<Diagrams/Sequence/Confirmation_Email.png, id=622, 1099.10625pt x 557.08125pt>
 File: Diagrams/Sequence/Confirmation_Email.png Graphic file (type png)
 <use Diagrams/Sequence/Confirmation_Email.png>
-Package pdftex.def Info: Diagrams/Sequence/Confirmation_Email.png  used on input line 680.
+Package pdftex.def Info: Diagrams/Sequence/Confirmation_Email.png  used on input line 688.
 (pdftex.def)             Requested size: 290.22197pt x 119.2346pt.
-<Diagrams/Sequence/Sort_Listings.jpg, id=578, 1063.975pt x 643.40375pt>
+<Diagrams/Sequence/Sort_Listings.jpg, id=623, 1063.975pt x 643.40375pt>
 File: Diagrams/Sequence/Sort_Listings.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Sort_Listings.jpg>
-Package pdftex.def Info: Diagrams/Sequence/Sort_Listings.jpg  used on input line 691.
+Package pdftex.def Info: Diagrams/Sequence/Sort_Listings.jpg  used on input line 699.
 (pdftex.def)             Requested size: 290.2156pt x 158.9852pt.
- [25pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) has been already used, duplicate ignored
+ [26pdfTeX warning (ext4): destination with the same identifier (name{figure.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Add_Review.png>] [26pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) has been already used, duplicate ignored
+l.706 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Add_Review.png>] [27pdfTeX warning (ext4): destination with the same identifier (name{figure.10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Cart_Operations.jpg>] [27pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) has been already used, duplicate ignored
+l.706 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Cart_Operations.jpg>] [28pdfTeX warning (ext4): destination with the same identifier (name{figure.11}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Checkout.jpg>] [28pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) has been already used, duplicate ignored
+l.706 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Checkout.jpg>] [29pdfTeX warning (ext4): destination with the same identifier (name{figure.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Edit_Client_Info.jpg>] [29pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) has been already used, duplicate ignored
+l.706 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Edit_Client_Info.jpg>] [30pdfTeX warning (ext4): destination with the same identifier (name{figure.13}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
+l.706 \clearpage
                 pdfTeX warning (ext4): destination with the same identifier (name{figure.14}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Filter_Listings.jpg> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Listing_Details.png>] [30pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) has been already used, duplicate ignored
+l.706 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Filter_Listings.jpg> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Listing_Details.png>] [31pdfTeX warning (ext4): destination with the same identifier (name{figure.15}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
+l.706 \clearpage
                 pdfTeX warning (ext4): destination with the same identifier (name{figure.16}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Lists_of_Listings.jpg> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Order_History.png>] [31pdfTeX warning (ext4): destination with the same identifier (name{figure.17}) has been already used, duplicate ignored
+l.706 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Lists_of_Listings.jpg> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Order_History.png>] [32pdfTeX warning (ext4): destination with the same identifier (name{figure.17}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
+l.706 \clearpage
                 pdfTeX warning (ext4): destination with the same identifier (name{figure.18}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Login.jpg> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Logout.jpg>] [32pdfTeX warning (ext4): destination with the same identifier (name{figure.19}) has been already used, duplicate ignored
+l.706 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Login.jpg> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Logout.jpg>] [33pdfTeX warning (ext4): destination with the same identifier (name{figure.19}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Register.jpg>] [33pdfTeX warning (ext4): destination with the same identifier (name{figure.20}) has been already used, duplicate ignored
+l.706 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Register.jpg>] [34pdfTeX warning (ext4): destination with the same identifier (name{figure.20}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
+l.706 \clearpage
                 pdfTeX warning (ext4): destination with the same identifier (name{figure.21}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Registered_User_Purchase.jpg> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Categories.png>] [34pdfTeX warning (ext4): destination with the same identifier (name{figure.22}) has been already used, duplicate ignored
+l.706 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Registered_User_Purchase.jpg> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Categories.png>] [35pdfTeX warning (ext4): destination with the same identifier (name{figure.22}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
+l.706 \clearpage
                 pdfTeX warning (ext4): destination with the same identifier (name{figure.23}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.698 \clearpage
+l.706 \clearpage
                  </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Confirmation_Email.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Sequence/Sort_Listings.jpg>]
-<Diagrams/External_Interfaces/Home_Page.png, id=636, 1776.6375pt x 883.3pt>
+<Diagrams/External_Interfaces/Home_Page.png, id=680, 1776.6375pt x 883.3pt>
 File: Diagrams/External_Interfaces/Home_Page.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Home_Page.png>
-Package pdftex.def Info: Diagrams/External_Interfaces/Home_Page.png  used on input line 705.
+Package pdftex.def Info: Diagrams/External_Interfaces/Home_Page.png  used on input line 713.
 (pdftex.def)             Requested size: 479.67143pt x 238.48071pt.
-<Diagrams/External_Interfaces/Login.png, id=637, 1637.11626pt x 996.72375pt>
+<Diagrams/External_Interfaces/Login.png, id=681, 1637.11626pt x 996.72375pt>
 File: Diagrams/External_Interfaces/Login.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Login.png>
-Package pdftex.def Info: Diagrams/External_Interfaces/Login.png  used on input line 715.
+Package pdftex.def Info: Diagrams/External_Interfaces/Login.png  used on input line 723.
 (pdftex.def)             Requested size: 391.71687pt x 238.48857pt.
-<Diagrams/External_Interfaces/Create_Account.png, id=638, 1580.90625pt x 779.91376pt>
+<Diagrams/External_Interfaces/Create_Account.png, id=682, 1580.90625pt x 779.91376pt>
 File: Diagrams/External_Interfaces/Create_Account.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Create_Account.png>
-Package pdftex.def Info: Diagrams/External_Interfaces/Create_Account.png  used on input line 725.
+Package pdftex.def Info: Diagrams/External_Interfaces/Create_Account.png  used on input line 733.
 (pdftex.def)             Requested size: 483.41803pt x 238.48622pt.
- [35
+ [36
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.24}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.729 \FloatBarrier
+l.737 \FloatBarrier
                    pdfTeX warning (ext4): destination with the same identifier (name{figure.25}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.729 \FloatBarrier
+l.737 \FloatBarrier
                     </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Home_Page.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Login.png>]
-<Diagrams/External_Interfaces/Categories.png, id=645, 1449.415pt x 887.315pt>
+<Diagrams/External_Interfaces/Categories.png, id=690, 1449.415pt x 887.315pt>
 File: Diagrams/External_Interfaces/Categories.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Categories.png>
-Package pdftex.def Info: Diagrams/External_Interfaces/Categories.png  used on input line 735.
+Package pdftex.def Info: Diagrams/External_Interfaces/Categories.png  used on input line 743.
 (pdftex.def)             Requested size: 483.68268pt x 296.1049pt.
- [36pdfTeX warning (ext4): destination with the same identifier (name{figure.26}) has been already used, duplicate ignored
+ [37pdfTeX warning (ext4): destination with the same identifier (name{figure.26}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.739 \FloatBarrier
-                    </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Create_Account.png>] [37pdfTeX warning (ext4): destination with the same identifier (name{figure.27}) has been already used, duplicate ignored
+l.747 \FloatBarrier
+                    </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Create_Account.png>] [38pdfTeX warning (ext4): destination with the same identifier (name{figure.27}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.739 \FloatBarrier
+l.747 \FloatBarrier
                     </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Categories.png>]
-<Diagrams/External_Interfaces/Categories_filtered.png, id=657, 1533.73pt x 539.01375pt>
+<Diagrams/External_Interfaces/Categories_filtered.png, id=702, 1533.73pt x 539.01375pt>
 File: Diagrams/External_Interfaces/Categories_filtered.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Categories_filtered.png>
-Package pdftex.def Info: Diagrams/External_Interfaces/Categories_filtered.png  used on input line 745.
+Package pdftex.def Info: Diagrams/External_Interfaces/Categories_filtered.png  used on input line 753.
 (pdftex.def)             Requested size: 483.68918pt x 169.98761pt.
-<Diagrams/External_Interfaces/Search_Listing.png, id=658, 1563.8425pt x 982.67125pt>
+<Diagrams/External_Interfaces/Search_Listing.png, id=703, 1563.8425pt x 982.67125pt>
 File: Diagrams/External_Interfaces/Search_Listing.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Search_Listing.png>
-Package pdftex.def Info: Diagrams/External_Interfaces/Search_Listing.png  used on input line 755.
+Package pdftex.def Info: Diagrams/External_Interfaces/Search_Listing.png  used on input line 763.
 (pdftex.def)             Requested size: 379.52963pt x 238.48492pt.
-<Diagrams/External_Interfaces/List_Of_Listings_1.png, id=659, 1425.325pt x 981.6675pt>
+<Diagrams/External_Interfaces/List_Of_Listings_1.png, id=704, 1425.325pt x 981.6675pt>
 File: Diagrams/External_Interfaces/List_Of_Listings_1.png Graphic file (type png)
 <use Diagrams/External_Interfaces/List_Of_Listings_1.png>
-Package pdftex.def Info: Diagrams/External_Interfaces/List_Of_Listings_1.png  used on input line 764.
+Package pdftex.def Info: Diagrams/External_Interfaces/List_Of_Listings_1.png  used on input line 772.
 (pdftex.def)             Requested size: 346.26074pt x 238.48099pt.
-<Diagrams/External_Interfaces/List_Of_Listings_2.png, id=660, 1427.3325pt x 797.98125pt>
+<Diagrams/External_Interfaces/List_Of_Listings_2.png, id=705, 1427.3325pt x 797.98125pt>
 File: Diagrams/External_Interfaces/List_Of_Listings_2.png Graphic file (type png)
 <use Diagrams/External_Interfaces/List_Of_Listings_2.png>
-Package pdftex.def Info: Diagrams/External_Interfaces/List_Of_Listings_2.png  used on input line 765.
+Package pdftex.def Info: Diagrams/External_Interfaces/List_Of_Listings_2.png  used on input line 773.
 (pdftex.def)             Requested size: 426.59138pt x 238.49518pt.
- [38
+ [39
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.28}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.770 \FloatBarrier
+l.778 \FloatBarrier
                    pdfTeX warning (ext4): destination with the same identifier (name{figure.29}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.770 \FloatBarrier
+l.778 \FloatBarrier
                     </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Categories_filtered.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Search_Listing.png>]
-<Diagrams/External_Interfaces/Latest_Listings.png, id=667, 1364.09625pt x 924.45375pt>
+<Diagrams/External_Interfaces/Latest_Listings.png, id=712, 1364.09625pt x 924.45375pt>
 File: Diagrams/External_Interfaces/Latest_Listings.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Latest_Listings.png>
-Package pdftex.def Info: Diagrams/External_Interfaces/Latest_Listings.png  used on input line 775.
+Package pdftex.def Info: Diagrams/External_Interfaces/Latest_Listings.png  used on input line 783.
 (pdftex.def)             Requested size: 351.90916pt x 238.49031pt.
- [39pdfTeX warning (ext4): destination with the same identifier (name{figure.30}) has been already used, duplicate ignored
+ [40pdfTeX warning (ext4): destination with the same identifier (name{figure.30}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.779 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/List_Of_Listings_1.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/List_Of_Listings_2.png>] [40pdfTeX warning (ext4): destination with the same identifier (name{figure.31}) has been already used, duplicate ignored
+l.787 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/List_Of_Listings_1.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/List_Of_Listings_2.png>] [41pdfTeX warning (ext4): destination with the same identifier (name{figure.31}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.779 \clearpage
+l.787 \clearpage
                  </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/External_Interfaces/Latest_Listings.png>]
-<Diagrams/Class/Architectural_diagram.png, id=679, 7649.57875pt x 7649.57875pt>
+<Diagrams/Class/Architectural_diagram.png, id=724, 7649.57875pt x 7649.57875pt>
 File: Diagrams/Class/Architectural_diagram.png Graphic file (type png)
 <use Diagrams/Class/Architectural_diagram.png>
-Package pdftex.def Info: Diagrams/Class/Architectural_diagram.png  used on input line 784.
+Package pdftex.def Info: Diagrams/Class/Architectural_diagram.png  used on input line 792.
 (pdftex.def)             Requested size: 483.58348pt x 476.93028pt.
- [41
+ [42
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.32}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.800 
-       </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Class/Architectural_diagram.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 803--805
+l.802     \subsection
+                     {Back-end} </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Diagrams/Class/Architectural_diagram.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 824--826
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 805.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
+[43]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 826.
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 805.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 826.
 
-Underfull \hbox (badness 10000) in paragraph at lines 816--818
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 829--831
+Underfull \hbox (badness 10000) in paragraph at lines 837--839
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 840--842
-
- []
-
-[42]
-Underfull \hbox (badness 10000) in paragraph at lines 851--853
+Underfull \hbox (badness 10000) in paragraph at lines 850--852
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 862--864
+Underfull \hbox (badness 10000) in paragraph at lines 861--863
 
  []
 
-(/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.ind [43])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 887.
- [44]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 887.
+
+Underfull \hbox (badness 10000) in paragraph at lines 872--874
+
+ []
+
+[44]
+Underfull \hbox (badness 10000) in paragraph at lines 883--885
+
+ []
+
+(/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.ind) [45]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 908.
+ [46]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 908.
  (/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 887.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 887.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 908.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 908.
 Package rerunfilecheck Info: File `"Design Document".out' has not changed.
-(rerunfilecheck)             Checksum: 06F3CC3B666C2CECEAAA9C78B97C43DE;3303.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 887.
+(rerunfilecheck)             Checksum: A6BB43100CF5218EA7A2A623E08F1B93;3755.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 908.
  ) 
 Here is how much of TeX's memory you used:
- 7719 strings out of 492616
- 121333 string characters out of 6129482
- 228221 words of memory out of 5000000
- 11267 multiletter control sequences out of 15000+600000
+ 7737 strings out of 492616
+ 121567 string characters out of 6129482
+ 228183 words of memory out of 5000000
+ 11275 multiletter control sequences out of 15000+600000
  8243 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,13n,37p,1235b,462s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,13n,37p,1235b,414s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on "/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.pdf" (44 pages, 4622802 bytes).
+Output written on "/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Iteration 2/Design Document.pdf" (46 pages, 4631967 bytes).
 PDF statistics:
- 808 PDF objects out of 1000 (max. 8388607)
- 686 compressed objects within 7 object streams
- 224 named destinations out of 1000 (max. 500000)
- 598 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 858 PDF objects out of 1000 (max. 8388607)
+ 733 compressed objects within 8 object streams
+ 234 named destinations out of 1000 (max. 500000)
+ 662 words of extra memory for PDF output out of 10000 (max. 10000000)
 
