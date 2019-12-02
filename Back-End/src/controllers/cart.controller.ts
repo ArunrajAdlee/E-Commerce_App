@@ -56,7 +56,7 @@ export class CartController {
     for (let cartItem of cartItems) {
       if (cartItem.listing_id == req.body.listing_id) {
         try {
-          cartItem.quantity += parseInt(req.body.quantity);
+          cartItem.quantity = parseInt(req.body.quantity);
           const updatedCart = await this.cartRepository.save(cartItem);
 
           res.status(200).send({

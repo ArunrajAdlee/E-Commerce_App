@@ -13,6 +13,7 @@ export interface IListing {
     quantity: number;
     title: string;
     isAvailable: boolean;
+    stockCount: number;
 }
 
 interface IProps {

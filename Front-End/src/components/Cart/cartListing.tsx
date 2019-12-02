@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Redirect, RouteComponentProps } from 'react-router-dom';
 import {
   Button,
-  Col, Dropdown, Image, Row, Container,
+  Col, Image, Row, Container,
 } from 'react-bootstrap';
 import { IListing } from '../Listings/Listing/listing';
 import { server } from '../../server';
@@ -16,9 +16,17 @@ interface IProps {
     match: any,
 }
 
+interface IStates {
+  editQuantity: number;
+}
+
 interface IProps extends RouteComponentProps<any> {}
 
-class CartListing extends React.Component<IProps> {
+class CartListing extends React.Component<IProps, IStates> {
+  public readonly state: Readonly<IStates> = {
+    editQuantity: 0,
+  };
+
   private handleDelete = async () => {
     const { id } = this.props;
 
@@ -30,6 +38,17 @@ class CartListing extends React.Component<IProps> {
     }
   };
 
+  private handleEdit = async (event: any) => {
+    const { listing } = this.props;
+    const { editQuantity } = this.state;
+    try {
+      const res = await server.post('/cart', { listing_id: listing!.id, quantity: editQuantity });
+      window.location.reload(false);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   public render() {
     const { listing, quantity } = this.props;
 
@@ -37,12 +56,6 @@ class CartListing extends React.Component<IProps> {
     let listingImage = 'https://3.bp.blogspot.com/-XB85UD145qE/V5buf22iv2I/AAAAAAAAA1I/8LBmpwNX-rU7ZjzrHOS2b0F_Pj0xqpHIQCLcB/s1600/nia.png';
     if (listing.thumbnail) {
       listingImage = listing.thumbnail;
-    }
-
-    // Listing quantities
-    const quantities:number[] = [];
-    for (let i = 1; i < 10; i++) {
-      quantities.push(i);
     }
 
     return (
@@ -82,19 +95,20 @@ class CartListing extends React.Component<IProps> {
               </Col>
               {/* Quantity */}
               <Col xs={4}>
-                <Dropdown className="mb-2">
-                  <Dropdown.Toggle variant="outline-dark" size="sm" id="dropdown-basic">
-                    {quantity}
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu>
-                    {quantities.map((num) => (
-                      <Dropdown.Item key={num} href="/cart">
-                        {num}
-                      </Dropdown.Item>
-                    ))}
-                  </Dropdown.Menu>
-                </Dropdown>
+                <input
+                  type="number"
+                  className="ml-3 styled-input"
+                  onKeyDown={() => false}
+                  onChange={async (e: any) => {
+                    await this.setState({ editQuantity: e.target.value });
+                  }}
+                  onBlur={async (e: any) => {
+                    await this.handleEdit(e);
+                  }}
+                  max={listing.stockCount}
+                  min={1}
+                  defaultValue={quantity}
+                />
               </Col>
             </Row>
           </Col>
