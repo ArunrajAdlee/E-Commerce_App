@@ -13,6 +13,7 @@ import {ListingsModel} from '../models/listings.model';
 import {OrderModel} from '../models/order.model';
 import {OrderDetailsModel} from '../models/orderDetails.model';
 import {UserModel} from '../models/user.model';
+import { Address } from '../entity/address.entity';
 
 const {checkAuth} = require('../helpers/check-auth');
 
@@ -184,16 +185,43 @@ export class OrderController {
 
 	async getBuyerOrderDetailsHistory(req: Request, res: Response, next: NextFunction) {
 		const orderId: number = parseInt(req.params.id);
-		const orderDetails = await this.orderDetailsRepository.find({order_id: orderId});
-		if (orderDetails && orderDetails.length == 0) {
+		// const orderDetails = await this.orderDetailsRepository.find({order_id: orderId});
+		const orderDetails = await this.orderDetailsRepository
+		.createQueryBuilder('order_details')
+		.innerJoin(Listings, 'listings', 'listings.id = order_details.listing_id')
+		.innerJoin(Order, 'order', 'order.id = order_details.order_id')
+		.innerJoin(User, 'user', 'user.id = order.buyer_id')
+		.innerJoin(Address, 'address', 'address.id = user.address_id')
+		.select(['order_details.order_id', 
+		'order_details.listing_id', 
+		'order_details.seller_id',
+		'order_details.purchase_date',
+		'order_details.quantity',
+		'order_details.price_before_tax',
+		'order_details.price_after_tax',
+		'order_details.listing_fee',
+		'listings.title',
+		'address.id'])
+		.where('order_details.order_id = :orderId', {orderId: orderId})
+		.getRawMany();
+		if (!orderDetails || orderDetails.length == 0) {
 			res.status(404).send({
-				message: 'failed to retrieve order details'
+				message: 'an error occured'
+			});
+			return;
+		}
+
+		const address = await getRepository(Address).findOne(orderDetails[0].address_id);
+		if (!address) {
+			res.status(404).send({
+				message: 'an error occured'
 			});
 			return;
 		}
 
 		res.status(200).send({
-			orderDetails: orderDetails
+			orderDetails: orderDetails,
+			address: address
 		});
 	}
 
