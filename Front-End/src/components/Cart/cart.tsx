@@ -3,6 +3,8 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import {
   Button, Col, Container, Row, Spinner,
 } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import CartListing from './cartListing';
 import { IListing } from '../Listings/Listing/listing';
 import { api, server } from '../../server';
@@ -58,72 +60,102 @@ class Cart extends React.Component<IProps, IStates> {
     } = this.props;
 
     return isLoading ? <Spinner animation="border" variant="warning" /> : (
-      <Container>
-        <Row>
-          {/* Cart element */}
-          <Col md={8}>
+      totalItems == 0 ? (
+        <Container>
+          <Row className="align-items-center">
             <Container>
-              {carts.map((cart: ICartItem) => (
-                <CartListing
-                  key={cart.id}
-                  listing={cart.listing}
-                  quantity={cart.quantity}
-                  id={cart.id}
-                  history={history}
-                  location={location}
-                  match={match}
-                />
-              ))}
+              <Row>
+                <Col xs={12}>
+                  <h1 className="text-center">Your Cart is empty!</h1>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12}>
+                  <h5 className="text-center">Start adding listings today!</h5>
+                </Col>
+              </Row>
+              <Row className="align-items-center">
+                <Col xs={12} className="text-center">
+                  <Link to="/listings">
+                    <Button variant="warning" className="styled-button mt-4 w-auto">
+                      <span>
+                    View all our Listings!
+                        <FontAwesomeIcon className="ml-5" icon={faArrowRight} />
+                      </span>
+                    </Button>
+                  </Link>
+                </Col>
+              </Row>
             </Container>
-          </Col>
-          {/* Cart summary */}
-          <Col md={4}>
-            <div className="order-summary">
-              <Row>
-                <Col className="text-center">
-                  <h5>Your Order</h5>
-                  <hr />
-                </Col>
-              </Row>
-              {/* Subtotal */}
-              <Row>
-                <Col xs={6}>
-                  <h5>Subtotal:</h5>
-                </Col>
-                <Col xs={6}>
-                  <h5>
+          </Row>
+        </Container>
+      ) : (
+        <Container>
+          <Row>
+            {/* Cart element */}
+            <Col md={8}>
+              <Container>
+                {carts.map((cart: ICartItem) => (
+                  <CartListing
+                    key={cart.id}
+                    listing={cart.listing}
+                    quantity={cart.quantity}
+                    id={cart.id}
+                    history={history}
+                    location={location}
+                    match={match}
+                  />
+                ))}
+              </Container>
+            </Col>
+            {/* Cart summary */}
+            <Col md={4}>
+              <div className="order-summary">
+                <Row>
+                  <Col className="text-center">
+                    <h5>Your Order</h5>
+                    <hr />
+                  </Col>
+                </Row>
+                {/* Subtotal */}
+                <Row>
+                  <Col xs={6}>
+                    <h5>Subtotal:</h5>
+                  </Col>
+                  <Col xs={6}>
+                    <h5>
                     $
-                    {totalPriceBeforeTax}
-                  </h5>
-                </Col>
-              </Row>
-              {/* Items */}
-              <Row className="text-secondary">
-                <Col xs={6}>
-                  <h5>Items:</h5>
-                </Col>
-                <Col xs={6}>
-                  <h5>
-                    {totalItems}
-                    {' '}
-                  </h5>
-                </Col>
-              </Row>
-              <br />
-              <Link to="/checkout" className="text-decoration-none">
-                <Button
-                  type="submit"
-                  className="btn-block styled-button"
-                >
+                      {totalPriceBeforeTax}
+                    </h5>
+                  </Col>
+                </Row>
+                {/* Items */}
+                <Row className="text-secondary">
+                  <Col xs={6}>
+                    <h5>Items:</h5>
+                  </Col>
+                  <Col xs={6}>
+                    <h5>
+                      {totalItems}
+                      {' '}
+                    </h5>
+                  </Col>
+                </Row>
+                <br />
+                <Link to="/checkout" className="text-decoration-none">
+                  <Button
+                    type="submit"
+                    className="btn-block styled-button"
+                  >
                   Proceed to Checkout
-                </Button>
-              </Link>
-            </div>
-          </Col>
-        </Row>
-        <Container />
-      </Container>
-    );
+                  </Button>
+                </Link>
+              </div>
+            </Col>
+          </Row>
+          <Container />
+        </Container>
+      ));
   }
 }
 
