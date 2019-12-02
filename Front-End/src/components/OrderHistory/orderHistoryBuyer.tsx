@@ -10,25 +10,6 @@ import { server, api } from '../../server';
 import { Button } from 'react-bootstrap';
 
 
-//Test inputs
-const products = [{
-    id: '342432',
-    name: 'arun',
-    price: '100', 
-},
-{
-    id: '911',
-    name: 'arunnots here',
-    price: '1001111',
-},
-{
-    id: '718',
-    name: 'newname',
-    price: '0',
-    date: 'Dec 12, 2019',
-    profit: '79',
-}];
-
 
 interface orderBuyer {
   orderid: number,
@@ -71,12 +52,11 @@ class BuyerOrderHistory extends React.Component {
     this.setState({
       objbuyer: resOrders
     });
-    //console.log(resOrders);
     
   }
 
   orderIdButton(cell: any, row: any) {
-     return<Button onClick={() => console.log('test')}>{row.orderid}</Button>;
+     return <Button onClick={(e:any) => console.log('localhost:3000/orderDetails/',(row.order))}>{row.orderid}</Button>;
   }
 
 
@@ -148,7 +128,7 @@ class SellerOrderHistory extends React.Component{
       <BootstrapTable data={ objseller } trClassName='bootstrap_table'>
         
       <TableHeaderColumn dataField='orderid' isKey filter={ { type: 'TextFilter', delay: 1000 } }>Order ID</TableHeaderColumn>
-      <TableHeaderColumn dataField='' filter={ { type: 'TextFilter', delay: 1000 } }>Purchase Date</TableHeaderColumn>
+      <TableHeaderColumn dataField='date' filter={ { type: 'TextFilter', delay: 1000 } }>Purchase Date</TableHeaderColumn>
       <TableHeaderColumn dataField='price' filter={ { type: 'TextFilter', delay: 1000 } }>Product Price</TableHeaderColumn>
       <TableHeaderColumn dataField='profit' filter={ { type: 'TextFilter', delay: 1000 } }>Profit</TableHeaderColumn> 
        </BootstrapTable>

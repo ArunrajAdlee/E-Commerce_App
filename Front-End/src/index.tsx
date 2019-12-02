@@ -23,6 +23,7 @@ import TextFilter from './components/OrderHistory/orderHistoryBuyer';
 import Checkout from './components/Checkout/checkout';
 import UserDisplay from './components/UserProfile/userDisplay';
 import UserProfileLayout from './layouts/UserProfileLayout/userProfileLayout';
+import OrderDetails from './components/OrderHistory/orderDetails';
 
 const history = createBrowserHistory();
 
@@ -117,7 +118,8 @@ class App extends React.Component<{}, IStates> {
             <SecureRoute path="/listings" pageComponent={ListingsPage} layoutComponent={DefaultLayout} pageTitle="Listings" />
             <SecureRoute path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
             <SecureRoute authenticated path="/createListing" pageComponent={CreateListing} layoutComponent={DefaultLayout} pageTitle="Create Listing" />
-            <SecureRoute path="/orderhistory" pageComponent={TextFilter} layoutComponent={DefaultLayout} pageTitle="Order history" />
+            <SecureRoute path="/orderhistory" pageComponent={TextFilter} layoutComponent={DefaultLayout} pageTitle="Order History" />
+            <SecureRoute path="/orderdetails" pageComponent={OrderDetails} layoutComponent={DefaultLayout} pageTitle="Order Details" />
             <SecureRoute pageComponent={LandingPage} layoutComponent={LandingLayout} />
             
           </Switch>
