@@ -56,8 +56,11 @@ const ReviewSchema = Yup.object().shape({
     .max(400, 'The description is over the character limit (400)')
     .required('Description is required'),
   rating: Yup.number()
-      .typeError('Please add a rating')
-      .required('Please add a rating'),
+    .typeError('Please add a rating')
+    .required('Please add a rating'),
+  listing_id: Yup.number()
+    .typeError('Please select a product')
+    .required('Please select a product'),
 });
 
 class OrderDetails extends React.Component<IProps, IStates> {
@@ -90,25 +93,23 @@ class OrderDetails extends React.Component<IProps, IStates> {
       this.setState({ show: true});}
 
     private handleSubmit = async (values: FormikValues, actions: any) => {
-    const { history } = this.props;
 
-    const formData = new FormData();
+      const { history } = this.props;
+      const formData = new FormData();
+      const {orderDetails} = this.state;
+      const sellerId = `${orderDetails[values.listing_id].order_details_seller_id}`;
 
-    const {order} = this.state;
+      formData.append('title', values.title);
+      formData.append('description', values.description);
+      formData.append('rating', values.rating);
+      formData.append('seller_id', sellerId);
 
+      const resp = await server.post(api.reviews_post, formData);
 
-    formData.append('title', values.title);
-    formData.append('description', values.description);
-    formData.append('rating', values.rating);
-    formData.append('seller_id', order[values.listing_id].order_details_seller_id);
-
-    const resp = await server.post(api.reviews_post, values);
-
-    if (resp.data.reviews){
-      const route = `/listings/${values.listing_id}`;
-      history.push(route);
-      }
-
+      if (resp.data.reviews){
+        const route = `/listings/${orderDetails[values.listing_id].order_details_listing_id}`;
+        history.push(route);
+        }
     }
 
     render() {
@@ -194,60 +195,53 @@ class OrderDetails extends React.Component<IProps, IStates> {
               <h5>Your Order</h5>
               <hr />
               <Row>
-                <Col xs={4}>
+                <Col xs={6}>
             Product
                 </Col>
-                <Col className="text-right" xs={4}>
+                <Col className="text-right" xs={6}>
             Total
-                </Col>
-                <Col className="text-right" xs={4}>
-            Review
                 </Col>
               </Row>
               <div className="order-products-container custom-scrollbar">
                 {orderDetails.map((product, index) => (
                   <Row key={index}>
-                    <Col xs={4}>
+                    <Col xs={6}>
                       {`${product.listings_title} (${product.order_details_quantity})`}
                     </Col>
-                    <Col className="text-right" xs={4}>
+                    <Col className="text-right" xs={6}>
                       {`$${product.order_details_price_before_tax}`}
                     </Col>
-
-
-
                   </Row>
                 ))}
               </div>
               <Row>
-                <Col xs={4}>
+                <Col xs={6}>
             SUBTOTAL
                 </Col>
-                <Col className="text-right" xs={4}>
+                <Col className="text-right" xs={6}>
                   {`$${order[0].order_total_price_before_tax}`}
                 </Col>
               </Row>
               <Row>
-                <Col xs={4}>
+                <Col xs={6}>
             SHIPPING
                 </Col>
-                <Col className="text-right" xs={4}>
+                <Col className="text-right" xs={6}>
             FREE!
                 </Col>
               </Row>
               <Row>
-                <Col xs={4}>
+                <Col xs={6}>
                   <strong>TOTAL</strong>
                 </Col>
-                <Col className="text-right" xs={4}>
+                <Col className="text-right" xs={6}>
                   <strong>
                     {`$${order[0].order_total_price}`}
                   </strong>
                 </Col>
               </Row>
-
-
               <Row>
+
                 <Button variant="primary" onClick={() => this.handleShow()} className="btn styled-button post">
                   Review Seller
                 </Button>
@@ -259,124 +253,123 @@ class OrderDetails extends React.Component<IProps, IStates> {
                 <Modal.Title>Review</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                <Formik
-                initialValues={
-                  {
-                    listing_id: -1,
-                    title: '',
-                    description: '',
-                    rating: -1,
+                  <Formik
+                  initialValues={
+                    {
+                      listing_id: -1,
+                      title: '',
+                      description: '',
+                      rating: -1,
+                    }
                   }
-                }
-                validationSchema={ReviewSchema}
-                onSubmit={(values: FormikValues, actions: any) => {
-                  actions.setSubmitting(true);
-                  this.handleSubmit(values, actions);
-                }}
-                >
-    {({ touched, errors, isSubmitting }) => (
-      <Form>
+                  validationSchema={ReviewSchema}
+                  onSubmit={(values: FormikValues, actions: any) => {
+                    actions.setSubmitting(true);
+                    this.handleSubmit(values, actions);
+                  }}
+                  >
+      {({ touched, errors, isSubmitting }) => (
+        <Form>
 
-      <Row>
-        <Col lg={2}>
-          <label htmlFor="productReview">Which product would you like to review?*</label>
-        </Col>
-        <Col lg={9}>
-          <Field
-          component="select"
-          name = "listing_id"
-          className={`form-control styled-input listing-input ${
-            touched.listing_id && errors.listing_id ? 'is-invalid' : ''
-          }`}>
-          <option value=""> -- select a product -- </option>
-          {order.map((product, index) => <option key = {index} value={index}>{product.listings_title}</option>)}
-          </Field>
-          <ErrorMessage
-            component="div"
-            name="listing_id"
-            className="invalid-feedback"
-          />
-        </Col>
-      </Row>
+        <Row>
+          <Col lg={4}>
+            <label htmlFor="productReview">Which product would you like to review?*</label>
+          </Col>
+          <Col lg={7}>
+            <Field
+              component="select"
+              name = "listing_id"
+              className={`form-control styled-input listing-input ${
+                touched.listing_id && errors.listing_id ? 'is-invalid' : ''
+              }`}>
+              <option value=""> -- select a product -- </option>
+              {orderDetails.map((product, index) => <option key = {index} value={index}>{product.listings_title}</option>)}
+            </Field>
+            <ErrorMessage
+              component="div"
+              name="listing_id"
+              className="invalid-feedback"
+            />
+          </Col>
+        </Row>
+              <Row>
+                <Col lg={4}>
+                  <label htmlFor="title">Review title*</label>
+                </Col>
+                <Col lg={7}>
+                  <Field
+                    name="title"
+                    className={`form-control styled-input listing-input ${
+                      touched.title && errors.title ? 'is-invalid' : ''
+                    }`}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="title"
+                    className="invalid-feedback"
+                  />
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col lg={4}>
+                  <label htmlFor="description">Review text*</label>
+                </Col>
+                <Col lg={7}>
+                  <Field
+                    component="textarea"
+                    style={{ height: '100px' }}
+                    name="description"
+                    className={`form-control styled-input listing-input ${
+                      touched.description && errors.description ? 'is-invalid' : ''
+                    }`}
+                  />
+                  <ErrorMessage
+                    component="div"
+                    name="description"
+                    className="invalid-feedback"
+                  />
+                </Col>
+              </Row>
 
-            <Row>
-              <Col lg={2}>
-                <label htmlFor="title">Review title*</label>
-              </Col>
-              <Col lg={9}>
-                <Field
-                  name="title"
+              <Row>
+                <Col lg={4}>
+                  <label htmlFor="description">Seller rating*</label>
+                </Col>
+                <Col lg={7}>
+                  <Field
+                  component="select"
+                  name = "rating"
                   className={`form-control styled-input listing-input ${
-                    touched.title && errors.title ? 'is-invalid' : ''
-                  }`}
-                />
-                <ErrorMessage
-                  component="div"
-                  name="title"
-                  className="invalid-feedback"
-                />
-              </Col>
-            </Row>
-            <br />
-            <Row>
-              <Col lg={2}>
-                <label htmlFor="description">Review text*</label>
-              </Col>
-              <Col lg={9}>
-                <Field
-                  component="textarea"
-                  style={{ height: '100px' }}
-                  name="description"
-                  className={`form-control styled-input listing-input ${
-                    touched.description && errors.description ? 'is-invalid' : ''
-                  }`}
-                />
-                <ErrorMessage
-                  component="div"
-                  name="description"
-                  className="invalid-feedback"
-                />
-              </Col>
-            </Row>
+                    touched.rating && errors.rating ? 'is-invalid' : ''
+                  }`}>
+                  <option value=""> -- select a rating -- </option>
+                  <option value = "1"> 1 </option>
+                  <option value = "2"> 2 </option>
+                  <option value = "3"> 3 </option>
+                  <option value = "4"> 4 </option>
+                  <option value = "5"> 5 </option>
+                  </Field>
+                  <ErrorMessage
+                    component="div"
+                    name="rating"
+                    className="invalid-feedback"
+                  />
+                </Col>
+              </Row>
+              <br/>
 
-            <Row>
-              <Col lg={2}>
-                <label htmlFor="description">Seller rating*</label>
-              </Col>
-              <Col lg={9}>
-                <Field
-                component="select"
-                name = "rating"
-                className={`form-control styled-input listing-input ${
-                  touched.rating && errors.rating ? 'is-invalid' : ''
-                }`}>
-                <option value=""> -- select a rating -- </option>
-                <option value = "1"> 1 </option>
-                <option value = "2"> 2 </option>
-                <option value = "3"> 3 </option>
-                <option value = "4"> 4 </option>
-                <option value = "5"> 5 </option>
-                </Field>
-                <ErrorMessage
-                  component="div"
-                  name="rating"
-                  className="invalid-feedback"
-                />
-              </Col>
-            </Row>
-            <br/>
-
-            <Button
-              type="submit"
-              className="btn styled-button post"
-              disabled={isSubmitting}
-              variant="warning"
-            >
-              {isSubmitting ? 'Please wait...' : 'Post'}
-            </Button>
-      </Form>
-    )}
-  </Formik>
+              <Button
+                type="submit"
+                className="btn styled-button post"
+                disabled={isSubmitting}
+                variant="warning"
+              >
+                {isSubmitting ? 'Please wait...' : 'Post'}
+              </Button>
+        </Form>
+      )}
+    </Formik>
 </Modal.Body>
 <Modal.Footer>
 <Button variant="secondary" onClick={this.handleClose}>
