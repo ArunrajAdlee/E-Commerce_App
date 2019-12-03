@@ -13,6 +13,7 @@ import {ListingsModel} from '../models/listings.model';
 import {OrderModel} from '../models/order.model';
 import {OrderDetailsModel} from '../models/orderDetails.model';
 import {UserModel} from '../models/user.model';
+import { Address } from '../entity/address.entity';
 
 const {checkAuth} = require('../helpers/check-auth');
 
@@ -142,7 +143,7 @@ export class OrderController {
 					price_after_tax: Math.round(cartItem.listing.price * cartItem.quantity * (1 + this.taxRate) * 100) / 100,
 				};
 				await this.orderDetailsRepository.save(newOrderDetails);
-				total_price_before_tax += cartItem.listing.price; //Compute order's total price before tax
+				total_price_before_tax += cartItem.listing.price * cartItem.quantity; //Compute order's total price before tax
 				total_fee += newOrderDetails.listing_fee //Compute order's total fee
 
 				//Update listing stock and sold
@@ -183,17 +184,64 @@ export class OrderController {
 	}
 
 	async getBuyerOrderDetailsHistory(req: Request, res: Response, next: NextFunction) {
+		const authenticatedUser: AuthModel = checkAuth(req);
+		if (!authenticatedUser) {
+			res.status(404).send('user is not authenticated');
+			return;
+		}
+
 		const orderId: number = parseInt(req.params.id);
-		const orderDetails = await this.orderDetailsRepository.find({order_id: orderId});
-		if (orderDetails && orderDetails.length == 0) {
+		const orderDetails = await this.orderDetailsRepository
+		.createQueryBuilder('order_details')
+		.innerJoin(Listings, 'listings', 'listings.id = order_details.listing_id')
+		.innerJoin(Order, 'order', 'order.id = order_details.order_id')
+		.innerJoin(User, 'user', 'user.id = order.buyer_id')
+		.innerJoin(Address, 'address', 'address.id = user.address_id')
+		.select(['order_details.order_id', 
+		'order_details.listing_id', 
+		'order_details.seller_id',
+		'order_details.purchase_date',
+		'order_details.quantity',
+		'order_details.price_before_tax',
+		'order_details.price_after_tax',
+		'order_details.listing_fee',
+		'listings.title',
+		'address.id',
+		'user.id'])
+		.where('order_details.order_id = :orderId', {orderId: orderId})
+		.getRawMany();
+		if (!orderDetails || orderDetails.length == 0 || orderDetails[0].user_id != authenticatedUser.id) {
 			res.status(404).send({
-				message: 'failed to retrieve order details'
+				message: 'an error occured'
 			});
 			return;
 		}
 
+		const address = await getRepository(Address).findOne(orderDetails[0].address_id);
+		if (!address) {
+			res.status(404).send({
+				message: 'an error occured'
+			});
+			return;
+		}
+
+		
+		const order = await getRepository(Order)
+      	.createQueryBuilder('order')
+      	.select(['order.id', 'order.total_price_before_tax', 'order.total_price'])
+      	.where('order.id = :id', {id: orderDetails[0].order_details_order_id})
+		.getRawMany();
+		if (!order) {
+			res.status(404).send({
+				message: 'an error occured'
+			});
+			return;
+		}  
+
 		res.status(200).send({
-			orderDetails: orderDetails
+			orderDetails: orderDetails,
+			address: address,
+			order: order
 		});
 	}
 

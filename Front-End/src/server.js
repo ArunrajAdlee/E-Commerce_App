@@ -26,6 +26,9 @@ export const api = {
   user_profile: '/users',
   order_summary: '/order/summary',
   order_create: '/order/create',
+  order_history_buyer: '/order/history/buyer',
+  order_history_seller: '/order/history/seller',
   reviews: '/reviews/',
-  reviews_post: '/reviews'
+  reviews_post: '/reviews',
+  order_details: '/order/history/buyer/',
 };
