@@ -9,11 +9,14 @@ export class ReviewsController {
   private reviewsRepository = getRepository(Reviews);
 
   async saveReviews(req: Request, res: Response, next: NextFunction) {
+
     const authenticatedUser: AuthModel = checkAuth(req);
     if (!authenticatedUser) {
       res.status(404).send('user is not authenticated');
       return;
     }
+
+console.log(req.body.listing_id);
 
     const newReview: ReviewsModel = {
       title: req.body.title,
@@ -28,7 +31,7 @@ export class ReviewsController {
       if (savedReviews) {
         res.status(200).send({
           message: 'sucessfully saved review',
-          savedReviews
+          reviews: savedReviews
         });
         return;
       }

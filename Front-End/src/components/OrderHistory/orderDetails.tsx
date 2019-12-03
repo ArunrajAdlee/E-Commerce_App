@@ -1,9 +1,16 @@
 import * as React from 'react';
+import Modal from 'react-bootstrap/Modal';
+import { Button, Spinner } from 'react-bootstrap';
 import { RouteComponentProps } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import moment from 'moment';
 import OrderSummary, { IAddressObj, IOrderData } from '../Checkout/orderSummary';
 import { server, api } from '../../server';
+import { Link, Redirect } from 'react-router-dom';
+import * as Yup from 'yup';
+import {
+  Formik, Field, Form, ErrorMessage, FormikValues,
+} from 'formik';
 
 
 interface IOrderInfo {
@@ -22,15 +29,37 @@ interface IOrderInfo {
 interface IStates{
     order: IOrderInfo[],
     address: IAddressObj;
+    show: boolean,
+}
+
+export interface FormFields {
+  seller_id: number,
+  title: string,
+  description: string,
+  rating: number,
+  listing_id: number,
+
 }
 
 interface IProps extends RouteComponentProps<any> {}
 
+const ReviewSchema = Yup.object().shape({
+  title: Yup.string()
+    .max(50, 'You\'ve reached the character limit')
+    .required('Title is required'),
+  description: Yup.string()
+    .max(400, 'The description is over the character limit (400)')
+    .required('Description is required'),
+  rating: Yup.number()
+      .typeError('Please add a rating')
+      .required('Please add a rating'),
+});
 
 class OrderDetails extends React.Component<IProps, IStates> {
     public readonly state: Readonly<IStates> = {
       order: [],
       address: {} as IAddressObj,
+      show: false,
     };
 
     public async componentDidMount() {
@@ -44,8 +73,26 @@ class OrderDetails extends React.Component<IProps, IStates> {
       }
     }
 
+    public handleClose = () => {
+      this.setState({ show: false });}
+
+    public handleShow = () => {
+      this.setState({ show: true});}
+
+    private handleSubmit = async (values: FormikValues, actions: any) => {
+    const { history } = this.props;
+
+    const resp = await server.post(api.reviews_post, values);
+
+    if (resp.data.reviews){
+      const route = `/listings/${values.listing_id}`;
+      history.push(route);
+      }
+
+    }
+
     render() {
-      const { order, address } = this.state;
+      const { order, address, show } = this.state;
       return (
         order.length > 0 ? (
           <>
@@ -127,54 +174,176 @@ class OrderDetails extends React.Component<IProps, IStates> {
               <h5>Your Order</h5>
               <hr />
               <Row>
-                <Col xs={6}>
+                <Col xs={4}>
             Product
                 </Col>
-                <Col className="text-right" xs={6}>
+                <Col className="text-right" xs={4}>
             Total
+                </Col>
+                <Col className="text-right" xs={4}>
+            Review
                 </Col>
               </Row>
               <div className="order-products-container custom-scrollbar">
                 {order.map((product, index) => (
                   <Row key={index}>
-                    <Col xs={6}>
+                    <Col xs={4}>
                       {`${product.listings_title} (${product.order_details_quantity})`}
                     </Col>
-                    <Col className="text-right" xs={6}>
+                    <Col className="text-right" xs={4}>
                       {`$${product.order_details_price_before_tax}`}
                     </Col>
+
+
+                    <Col className="text-right" xs={4}>
+                      <Button variant="primary" onClick={() => this.handleShow()} className="btn styled-button post">
+                        Review Seller
+                      </Button>
+
+                      <Modal show={show} onHide={this.handleClose} animation={false} size="lg"
+                      aria-labelledby="contained-modal-title-vcenter"
+                      centered>
+                      <Modal.Header closeButton>
+                      <Modal.Title>Review</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                      <Formik
+                      initialValues={
+                        {
+                          seller_id: (product.order_details_seller_id),
+                          listing_id: (product.order_details_listing_id),
+                          title: '',
+                          description: '',
+                          rating: -1,
+                        }
+                      }
+                      validationSchema={ReviewSchema}
+                      onSubmit={(values: FormikValues, actions: any) => {
+                        actions.setSubmitting(true);
+                        this.handleSubmit(values, actions);
+                      }}
+                      >
+          {({ touched, errors, isSubmitting }) => (
+            <Form>
+                  <Row>
+                    <Col lg={2}>
+                      <label htmlFor="title">Review title*</label>
+                    </Col>
+                    <Col lg={9}>
+                      <Field
+                        name="title"
+                        className={`form-control styled-input listing-input ${
+                          touched.title && errors.title ? 'is-invalid' : ''
+                        }`}
+                      />
+                      <ErrorMessage
+                        component="div"
+                        name="title"
+                        className="invalid-feedback"
+                      />
+                    </Col>
+                  </Row>
+                  <br />
+                  <Row>
+                    <Col lg={2}>
+                      <label htmlFor="description">Review text*</label>
+                    </Col>
+                    <Col lg={9}>
+                      <Field
+                        component="textarea"
+                        style={{ height: '100px' }}
+                        name="description"
+                        className={`form-control styled-input listing-input ${
+                          touched.description && errors.description ? 'is-invalid' : ''
+                        }`}
+                      />
+                      <ErrorMessage
+                        component="div"
+                        name="description"
+                        className="invalid-feedback"
+                      />
+                    </Col>
+                  </Row>
+
+                  <Row>
+                    <Col lg={2}>
+                      <label htmlFor="description">Seller rating*</label>
+                    </Col>
+                    <Col lg={9}>
+                      <Field
+                      component="select"
+                      name = "rating"
+                      className={`form-control styled-input listing-input ${
+                        touched.rating && errors.rating ? 'is-invalid' : ''
+                      }`}>
+                      <option value=""> -- select a rating -- </option>
+                      <option value = "1"> 1 </option>
+                      <option value = "2"> 2 </option>
+                      <option value = "3"> 3 </option>
+                      <option value = "4"> 4 </option>
+                      <option value = "5"> 5 </option>
+                      </Field>
+                      <ErrorMessage
+                        component="div"
+                        name="rating"
+                        className="invalid-feedback"
+                      />
+                    </Col>
+                  </Row>
+                  <br/>
+
+                  <Button
+                    type="submit"
+                    className="btn styled-button post"
+                    disabled={isSubmitting}
+                    variant="warning"
+                  >
+                    {isSubmitting ? 'Please wait...' : 'Post'}
+                  </Button>
+            </Form>
+          )}
+        </Formik>
+    </Modal.Body>
+    <Modal.Footer>
+    <Button variant="secondary" onClick={this.handleClose}>
+    Close
+    </Button>
+    </Modal.Footer>
+    </Modal>
+                    </Col>
+
                   </Row>
                 ))}
               </div>
               <Row>
-                <Col xs={6}>
+                <Col xs={4}>
             SUBTOTAL
                 </Col>
-                <Col className="text-right" xs={6}>
+                <Col className="text-right" xs={4}>
               $
                 </Col>
               </Row>
               <Row>
-                <Col xs={6}>
+                <Col xs={4}>
             SHIPPING
                 </Col>
-                <Col className="text-right" xs={6}>
+                <Col className="text-right" xs={4}>
             FREE!
                 </Col>
               </Row>
               <Row>
-                <Col xs={6}>
+                <Col xs={4}>
             TAX
                 </Col>
-                <Col className="text-right" xs={6}>
+                <Col className="text-right" xs={4}>
               $
                 </Col>
               </Row>
               <Row>
-                <Col xs={6}>
+                <Col xs={4}>
                   <strong>TOTAL</strong>
                 </Col>
-                <Col className="text-right" xs={6}>
+                <Col className="text-right" xs={4}>
                   <strong>
                 $
                   </strong>

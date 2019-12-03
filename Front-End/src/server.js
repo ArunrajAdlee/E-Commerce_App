@@ -27,5 +27,7 @@ export const api = {
   order_history_buyer: '/order/history/buyer',
   order_history_seller: '/order/history/seller',
   order_details: '/order/history/buyer/',
+  reviews: '/reviews/',
+  reviews_post: '/reviews'
 
 };
