@@ -1,0 +1,62 @@
+\contentsline {section}{\numberline {1}Introduction}{6}{section.1}% 
+\contentsline {subsection}{\numberline {1.1}Purpose}{6}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.2}Scope}{6}{subsection.1.2}% 
+\contentsline {subsection}{\numberline {1.3}Context}{6}{subsection.1.3}% 
+\contentsline {section}{\numberline {2}Use Cases}{6}{section.2}% 
+\contentsline {subsection}{\numberline {2.1}Selling}{6}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2}Buying}{11}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Login}{14}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {2.4}Admin Panel}{19}{subsection.2.4}% 
+\contentsline {subsection}{\numberline {2.5}Site Browsing}{20}{subsection.2.5}% 
+\contentsline {section}{\numberline {3}Entity Relationship Diagram}{21}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Description Of Each Entity}{21}{subsection.3.1}% 
+\contentsline {subsubsection}{Client}{21}{section*.4}% 
+\contentsline {subsubsection}{Listings}{21}{section*.5}% 
+\contentsline {subsubsection}{Address}{22}{section*.6}% 
+\contentsline {subsubsection}{Order}{22}{section*.7}% 
+\contentsline {subsubsection}{Review}{23}{section*.8}% 
+\contentsline {subsubsection}{Order Details}{23}{section*.9}% 
+\contentsline {subsubsection}{Category}{23}{section*.10}% 
+\contentsline {subsubsection}{Cart}{23}{section*.11}% 
+\contentsline {section}{\numberline {4}Class Diagram}{24}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Description Of Class Diagram}{25}{subsection.4.1}% 
+\contentsline {subsubsection}{Client}{25}{section*.12}% 
+\contentsline {subsubsection}{ClientInfo}{25}{section*.13}% 
+\contentsline {subsubsection}{Listings}{25}{section*.14}% 
+\contentsline {subsubsection}{Address}{25}{section*.15}% 
+\contentsline {subsubsection}{Order}{25}{section*.16}% 
+\contentsline {subsubsection}{Review}{25}{section*.17}% 
+\contentsline {section}{\numberline {5}Sequence Diagrams}{26}{section.5}% 
+\contentsline {subsection}{\numberline {5.1}Add Review to Listing}{26}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {5.2}Cart Operations}{27}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {5.3}Checkout}{28}{subsection.5.3}% 
+\contentsline {subsection}{\numberline {5.4}Edit Client Information}{29}{subsection.5.4}% 
+\contentsline {subsection}{\numberline {5.5}Filter Listings Results}{30}{subsection.5.5}% 
+\contentsline {subsection}{\numberline {5.6}Get Listings Details}{30}{subsection.5.6}% 
+\contentsline {subsection}{\numberline {5.7}Get Lists of Listings}{31}{subsection.5.7}% 
+\contentsline {subsection}{\numberline {5.8}Get Order History}{31}{subsection.5.8}% 
+\contentsline {subsection}{\numberline {5.9}Login}{32}{subsection.5.9}% 
+\contentsline {subsection}{\numberline {5.10}Logout}{32}{subsection.5.10}% 
+\contentsline {subsection}{\numberline {5.11}Register}{33}{subsection.5.11}% 
+\contentsline {subsection}{\numberline {5.12}Purchase by a Registered User}{34}{subsection.5.12}% 
+\contentsline {subsection}{\numberline {5.13}Select Listing Category}{34}{subsection.5.13}% 
+\contentsline {subsection}{\numberline {5.14}Send Confirmation Email}{35}{subsection.5.14}% 
+\contentsline {subsection}{\numberline {5.15}Sort Listings Results}{35}{subsection.5.15}% 
+\contentsline {section}{\numberline {6}External Interface}{36}{section.6}% 
+\contentsline {subsection}{\numberline {6.1}Home Page}{36}{subsection.6.1}% 
+\contentsline {subsection}{\numberline {6.2}Login}{36}{subsection.6.2}% 
+\contentsline {subsection}{\numberline {6.3}Create account}{37}{subsection.6.3}% 
+\contentsline {subsection}{\numberline {6.4}Result of a category}{38}{subsection.6.4}% 
+\contentsline {subsection}{\numberline {6.5}Apply filters}{39}{subsection.6.5}% 
+\contentsline {subsection}{\numberline {6.6}Search for an item}{39}{subsection.6.6}% 
+\contentsline {subsection}{\numberline {6.7}List of listings}{40}{subsection.6.7}% 
+\contentsline {subsection}{\numberline {6.8}Latest listings}{41}{subsection.6.8}% 
+\contentsline {section}{\numberline {7}Architectural Diagram}{42}{section.7}% 
+\contentsline {section}{\numberline {8}Tools and longuages used}{43}{section.8}% 
+\contentsline {subsection}{\numberline {8.1}Front-end}{43}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {8.2}Back-end}{43}{subsection.8.2}% 
+\contentsline {subsection}{\numberline {8.3}Database}{43}{subsection.8.3}% 
+\contentsline {section}{\numberline {9}Conclusion}{43}{section.9}% 
+\contentsline {section}{\numberline {A}Newly Added Requirements}{44}{appendix.A}% 
+\contentsline {section}{\numberline {B}Index}{45}{appendix.B}% 
+\contentsline {section}{\numberline {C}Reference}{45}{appendix.C}% 
