@@ -25,8 +25,10 @@ import Checkout from './components/Checkout/checkout';
 import ResetPassword from './components/Login/ResetPassword/resetPassword';
 import UserDisplay from './components/UserProfile/userDisplay';
 import UserProfileLayout from './layouts/UserProfileLayout/userProfileLayout';
+import OrderDetails from './components/OrderHistory/orderDetails';
 import AdminPanelLayout from './layouts/AdminPanelLayout/adminPanelLayout';
 import SiteActivty from './components/AdminPanel/SiteActivity/siteActivity';
+import OrderHistoryContainer from './components/OrderHistory/orderHistoryContainer';
 
 const history = createBrowserHistory();
 
@@ -112,6 +114,8 @@ class App extends React.Component<{}, IStates> {
         <Router history={history}>
           <ScrollToTop />
           <Switch>
+            <SecureRoute authenticated path="/profile/orderdetails/:id" pageComponent={OrderDetails} layoutComponent={UserProfileLayout} pageTitle="Order Details" />
+            <SecureRoute authenticated path="/profile/orderhistory" pageComponent={OrderHistoryContainer} layoutComponent={UserProfileLayout} pageTitle="Order History" />
             <SecureRoute authenticated path="/profile" pageComponent={UserDisplay} layoutComponent={UserProfileLayout} pageTitle="User Profile" />
             <SecureRoute authenticated path="/checkout" pageComponent={Checkout} layoutComponent={DefaultLayout} pageTitle="Checkout" />
             <SecureRoute admin path="/admin/activity" pageComponent={SiteActivty} layoutComponent={AdminPanelLayout} pageTitle="Site Activity" />
@@ -125,6 +129,7 @@ class App extends React.Component<{}, IStates> {
             <SecureRoute noAuth path="/register" pageComponent={SignUp} layoutComponent={DefaultLayout} pageTitle="Sign Up" />
             <SecureRoute authenticated path="/createListing" pageComponent={CreateListing} layoutComponent={DefaultLayout} pageTitle="Create Listing" />
             <SecureRoute pageComponent={LandingPage} layoutComponent={LandingLayout} />
+
           </Switch>
         </Router>
       </StoreContext.Provider>
