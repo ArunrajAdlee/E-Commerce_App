@@ -143,7 +143,7 @@ export class OrderController {
 					price_after_tax: Math.round(cartItem.listing.price * cartItem.quantity * (1 + this.taxRate) * 100) / 100,
 				};
 				await this.orderDetailsRepository.save(newOrderDetails);
-				total_price_before_tax += cartItem.listing.price; //Compute order's total price before tax
+				total_price_before_tax += cartItem.listing.price * cartItem.quantity; //Compute order's total price before tax
 				total_fee += newOrderDetails.listing_fee //Compute order's total fee
 
 				//Update listing stock and sold
@@ -206,10 +206,11 @@ export class OrderController {
 		'order_details.price_after_tax',
 		'order_details.listing_fee',
 		'listings.title',
-		'address.id'])
+		'address.id',
+		'user.id'])
 		.where('order_details.order_id = :orderId', {orderId: orderId})
 		.getRawMany();
-		if (!orderDetails || orderDetails.length == 0) {
+		if (!orderDetails || orderDetails.length == 0 || orderDetails[0].user_id != authenticatedUser.id) {
 			res.status(404).send({
 				message: 'an error occured'
 			});
