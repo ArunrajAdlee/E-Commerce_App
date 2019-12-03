@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  3 DEC 2019 00:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  3 DEC 2019 00:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -857,15 +857,15 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 876.
  (/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Design Document.ind [46])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 903.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 911.
  [47]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 903.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 911.
  (/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Design Document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 903.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 903.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 911.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 911.
 Package rerunfilecheck Info: File `"Design Document".out' has not changed.
 (rerunfilecheck)             Checksum: 59106DF6F24A7BEF9C5DCEEB0BAC83F1;3813.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 903.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 911.
  ) 
 Here is how much of TeX's memory you used:
  7743 strings out of 492616
@@ -876,7 +876,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  30i,13n,37p,1239b,413s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on "/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Design Document.pdf" (47 pages, 4636852 bytes).
+Output written on "/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Design Document.pdf" (47 pages, 4637143 bytes).
 PDF statistics:
  900 PDF objects out of 1000 (max. 8388607)
  774 compressed objects within 8 object streams
