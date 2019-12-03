@@ -12,8 +12,13 @@ import {
   Formik, Field, Form, ErrorMessage, FormikValues,
 } from 'formik';
 
+interface IOrderTotals {
+  order_id: number,
+  order_total_price: number,
+  order_total_price_before_tax: number,
+}
 
-interface IOrderInfo {
+interface IOrderDetailsInfo {
     address_id: number,
     listings_title: string,
     order_details_listing_fee: number,
@@ -27,7 +32,8 @@ interface IOrderInfo {
 }
 
 interface IStates{
-    order: IOrderInfo[],
+    order: IOrderTotals[],
+    orderDetails: IOrderDetailsInfo[],
     address: IAddressObj;
     show: boolean,
 }
@@ -58,18 +64,23 @@ const ReviewSchema = Yup.object().shape({
 class OrderDetails extends React.Component<IProps, IStates> {
     public readonly state: Readonly<IStates> = {
       order: [],
+      orderDetails: [],
       address: {} as IAddressObj,
       show: false,
     };
 
     public async componentDidMount() {
-      const { match } = this.props;
+      const { match, history } = this.props;
       const { id } = match.params;
-      const resp = await server.get(`${api.order_details}${id}`);
-      if (resp.data) {
-        this.setState({
-          order: resp.data.orderDetails, address: resp.data.address,
-        });
+      try {
+        const resp = await server.get(`${api.order_details}${id}`);
+        if (resp.data) {
+          this.setState({
+            orderDetails: resp.data.orderDetails, address: resp.data.address, order: resp.data.order,
+          });
+        }
+      } catch (e) {
+        history.push('/');
       }
     }
 
@@ -92,7 +103,7 @@ class OrderDetails extends React.Component<IProps, IStates> {
     }
 
     render() {
-      const { order, address, show } = this.state;
+      const { order, address, show, orderDetails } = this.state;
       return (
         order.length > 0 ? (
           <>
@@ -105,7 +116,7 @@ class OrderDetails extends React.Component<IProps, IStates> {
               Order Number
                   </Col>
                   <Col lg={6}>
-                    {order[0].order_details_order_id}
+                    {order[0].order_id}
                   </Col>
                 </Row>
                 <Row>
@@ -113,7 +124,7 @@ class OrderDetails extends React.Component<IProps, IStates> {
               Date
                   </Col>
                   <Col lg={6}>
-                    {moment(order[0].order_details_purchase_date).format('YYYY-MM-DD')}
+                    {moment(orderDetails[0].order_details_purchase_date).format('YYYY-MM-DD')}
                   </Col>
                 </Row>
                 <Row>
@@ -121,7 +132,7 @@ class OrderDetails extends React.Component<IProps, IStates> {
               Total
                   </Col>
                   <Col lg={6}>
-                    {`$${order[0].order_details_price_after_tax}`}
+                    {`$${order[0].order_total_price}`}
                   </Col>
                 </Row>
                 <Row>
@@ -185,7 +196,7 @@ class OrderDetails extends React.Component<IProps, IStates> {
                 </Col>
               </Row>
               <div className="order-products-container custom-scrollbar">
-                {order.map((product, index) => (
+                {orderDetails.map((product, index) => (
                   <Row key={index}>
                     <Col xs={4}>
                       {`${product.listings_title} (${product.order_details_quantity})`}
@@ -320,7 +331,7 @@ class OrderDetails extends React.Component<IProps, IStates> {
             SUBTOTAL
                 </Col>
                 <Col className="text-right" xs={4}>
-              $
+                  {`$${order[0].order_total_price_before_tax}`}
                 </Col>
               </Row>
               <Row>
@@ -333,19 +344,11 @@ class OrderDetails extends React.Component<IProps, IStates> {
               </Row>
               <Row>
                 <Col xs={4}>
-            TAX
-                </Col>
-                <Col className="text-right" xs={4}>
-              $
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={4}>
                   <strong>TOTAL</strong>
                 </Col>
                 <Col className="text-right" xs={4}>
                   <strong>
-                $
+                    {`$${order[0].order_total_price}`}
                   </strong>
                 </Col>
               </Row>
