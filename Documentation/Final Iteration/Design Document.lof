@@ -1,32 +1,32 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces Use Case Diagram 1: 354TheStars - Selling }}{7}{figure.1}% 
-\contentsline {figure}{\numberline {2}{\ignorespaces Use Case Diagram 2: Online Shopping Website - Buying }}{11}{figure.2}% 
-\contentsline {figure}{\numberline {3}{\ignorespaces Use Case Diagram 3: Online Shopping Website - Login }}{14}{figure.3}% 
-\contentsline {figure}{\numberline {4}{\ignorespaces Use Case Diagram 4: 354TheStars - Admin Panel }}{19}{figure.4}% 
-\contentsline {figure}{\numberline {5}{\ignorespaces Use Case Diagram 5: 354TheStars - Browsing }}{20}{figure.5}% 
-\contentsline {figure}{\numberline {6}{\ignorespaces Database schemas}}{21}{figure.6}% 
-\contentsline {figure}{\numberline {7}{\ignorespaces Entity Relationship Diagram}}{22}{figure.7}% 
-\contentsline {figure}{\numberline {8}{\ignorespaces Class Diagram}}{24}{figure.8}% 
-\contentsline {figure}{\numberline {9}{\ignorespaces Sequence Diagram 1: Add Review to Listing}}{26}{figure.9}% 
-\contentsline {figure}{\numberline {10}{\ignorespaces Sequence Diagram 2: Cart Operations}}{27}{figure.10}% 
-\contentsline {figure}{\numberline {11}{\ignorespaces Sequence Diagram 3: Checkout}}{28}{figure.11}% 
-\contentsline {figure}{\numberline {12}{\ignorespaces Sequence Diagram 4: Edit Client Information}}{29}{figure.12}% 
-\contentsline {figure}{\numberline {13}{\ignorespaces Sequence Diagram 5: Filter Listings Results}}{30}{figure.13}% 
-\contentsline {figure}{\numberline {14}{\ignorespaces Sequence Diagram 6: Get Listing Details}}{30}{figure.14}% 
-\contentsline {figure}{\numberline {15}{\ignorespaces Sequence Diagram 7: Get Lists Of Listings}}{31}{figure.15}% 
-\contentsline {figure}{\numberline {16}{\ignorespaces Sequence Diagram 8: Get Order History}}{31}{figure.16}% 
-\contentsline {figure}{\numberline {17}{\ignorespaces Sequence Diagram 9: Login}}{32}{figure.17}% 
-\contentsline {figure}{\numberline {18}{\ignorespaces Sequence Diagram 10: Logout}}{32}{figure.18}% 
-\contentsline {figure}{\numberline {19}{\ignorespaces Sequence Diagram 11: Register}}{33}{figure.19}% 
-\contentsline {figure}{\numberline {20}{\ignorespaces Sequence Diagram 12: Purchase by a Registered User}}{34}{figure.20}% 
-\contentsline {figure}{\numberline {21}{\ignorespaces Sequence Diagram 13: Select Listing Category}}{34}{figure.21}% 
-\contentsline {figure}{\numberline {22}{\ignorespaces Sequence Diagram 14: Send Confirmation Email}}{35}{figure.22}% 
-\contentsline {figure}{\numberline {23}{\ignorespaces Sequence Diagram 15: Sort Listings results}}{35}{figure.23}% 
-\contentsline {figure}{\numberline {24}{\ignorespaces Home Page}}{36}{figure.24}% 
-\contentsline {figure}{\numberline {25}{\ignorespaces Login page}}{36}{figure.25}% 
-\contentsline {figure}{\numberline {26}{\ignorespaces Create Account Page}}{37}{figure.26}% 
-\contentsline {figure}{\numberline {27}{\ignorespaces Result of shoes category}}{38}{figure.27}% 
-\contentsline {figure}{\numberline {28}{\ignorespaces Result of shoes category after applying filters}}{39}{figure.28}% 
-\contentsline {figure}{\numberline {29}{\ignorespaces Search Results for query of "Jordan"}}{39}{figure.29}% 
-\contentsline {figure}{\numberline {30}{\ignorespaces Paginated list of listings}}{40}{figure.30}% 
-\contentsline {figure}{\numberline {31}{\ignorespaces Latest listing on home page}}{41}{figure.31}% 
-\contentsline {figure}{\numberline {32}{\ignorespaces Architectural Diagram}}{42}{figure.32}% 
+\contentsline {figure}{\numberline {1}{\ignorespaces Use Case Diagram 1: 354TheStars - Selling }}{8}{figure.1}% 
+\contentsline {figure}{\numberline {2}{\ignorespaces Use Case Diagram 2: Online Shopping Website - Buying }}{12}{figure.2}% 
+\contentsline {figure}{\numberline {3}{\ignorespaces Use Case Diagram 3: Online Shopping Website - Login }}{15}{figure.3}% 
+\contentsline {figure}{\numberline {4}{\ignorespaces Use Case Diagram 4: 354TheStars - Admin Panel }}{20}{figure.4}% 
+\contentsline {figure}{\numberline {5}{\ignorespaces Use Case Diagram 5: 354TheStars - Browsing }}{21}{figure.5}% 
+\contentsline {figure}{\numberline {6}{\ignorespaces Database schemas}}{22}{figure.6}% 
+\contentsline {figure}{\numberline {7}{\ignorespaces Entity Relationship Diagram}}{23}{figure.7}% 
+\contentsline {figure}{\numberline {8}{\ignorespaces Class Diagram}}{25}{figure.8}% 
+\contentsline {figure}{\numberline {9}{\ignorespaces Sequence Diagram 1: Add Review to Listing}}{27}{figure.9}% 
+\contentsline {figure}{\numberline {10}{\ignorespaces Sequence Diagram 2: Cart Operations}}{28}{figure.10}% 
+\contentsline {figure}{\numberline {11}{\ignorespaces Sequence Diagram 3: Checkout}}{29}{figure.11}% 
+\contentsline {figure}{\numberline {12}{\ignorespaces Sequence Diagram 4: Edit Client Information}}{30}{figure.12}% 
+\contentsline {figure}{\numberline {13}{\ignorespaces Sequence Diagram 5: Filter Listings Results}}{31}{figure.13}% 
+\contentsline {figure}{\numberline {14}{\ignorespaces Sequence Diagram 6: Get Listing Details}}{31}{figure.14}% 
+\contentsline {figure}{\numberline {15}{\ignorespaces Sequence Diagram 7: Get Lists Of Listings}}{32}{figure.15}% 
+\contentsline {figure}{\numberline {16}{\ignorespaces Sequence Diagram 8: Get Order History}}{32}{figure.16}% 
+\contentsline {figure}{\numberline {17}{\ignorespaces Sequence Diagram 9: Login}}{33}{figure.17}% 
+\contentsline {figure}{\numberline {18}{\ignorespaces Sequence Diagram 10: Logout}}{33}{figure.18}% 
+\contentsline {figure}{\numberline {19}{\ignorespaces Sequence Diagram 11: Register}}{34}{figure.19}% 
+\contentsline {figure}{\numberline {20}{\ignorespaces Sequence Diagram 12: Purchase by a Registered User}}{35}{figure.20}% 
+\contentsline {figure}{\numberline {21}{\ignorespaces Sequence Diagram 13: Select Listing Category}}{35}{figure.21}% 
+\contentsline {figure}{\numberline {22}{\ignorespaces Sequence Diagram 14: Send Confirmation Email}}{36}{figure.22}% 
+\contentsline {figure}{\numberline {23}{\ignorespaces Sequence Diagram 15: Sort Listings results}}{36}{figure.23}% 
+\contentsline {figure}{\numberline {24}{\ignorespaces Home Page}}{37}{figure.24}% 
+\contentsline {figure}{\numberline {25}{\ignorespaces Login page}}{37}{figure.25}% 
+\contentsline {figure}{\numberline {26}{\ignorespaces Create Account Page}}{38}{figure.26}% 
+\contentsline {figure}{\numberline {27}{\ignorespaces Result of shoes category}}{39}{figure.27}% 
+\contentsline {figure}{\numberline {28}{\ignorespaces Result of shoes category after applying filters}}{40}{figure.28}% 
+\contentsline {figure}{\numberline {29}{\ignorespaces Search Results for query of "Jordan"}}{40}{figure.29}% 
+\contentsline {figure}{\numberline {30}{\ignorespaces Paginated list of listings}}{41}{figure.30}% 
+\contentsline {figure}{\numberline {31}{\ignorespaces Latest listing on home page}}{42}{figure.31}% 
+\contentsline {figure}{\numberline {32}{\ignorespaces Architectural Diagram}}{43}{figure.32}% 
