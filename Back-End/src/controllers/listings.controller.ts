@@ -31,7 +31,6 @@ export class ListingsController {
       .where('listings.status = :status', { status: true })
       .orderBy('listings.id', 'DESC')
       .getMany();
-
     res.status(200).send({
       listings: activeListings
     });
@@ -73,7 +72,7 @@ export class ListingsController {
           res.status(404).send('error retrieving user');
           return;
         }
-      
+
       const categoryId = req.body.category ? req.body.category : 4;
       let category = await getRepository(Categories).findOne(categoryId);
       if (!category) {
@@ -140,7 +139,7 @@ export class ListingsController {
 
     res.status(200).send({
       message: 'success',
-      listing: listing 
+      listing: listing
     });
   }
 }

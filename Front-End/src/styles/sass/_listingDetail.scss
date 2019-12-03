@@ -40,6 +40,6 @@
   border-color: #e0ebeb;
   border-style: solid;
   border-width: thin;
-  height: 600px;
-  overflow-y: scroll;
+  max-height: 600px;
+  overflow-y: auto;
 }
