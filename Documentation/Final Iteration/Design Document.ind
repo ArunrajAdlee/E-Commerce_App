@@ -1,0 +1,80 @@
+\begin{theindex}
+
+  \item administrator, \hyperpage{9}, \hyperpage{16, 17}, 
+		\hyperpage{45, 46}
+
+  \indexspace
+
+  \item buyer, \hyperpage{10}, \hyperpage{13, 14}, \hyperpage{46}
+
+  \indexspace
+
+  \item Cloudinary, \hyperpage{45}
+
+  \indexspace
+
+  \item data, \hyperpage{9--11}, \hyperpage{13, 14}, \hyperpage{16--19}, 
+		\hyperpage{45}
+
+  \indexspace
+
+  \item Express.js, \hyperpage{45}
+
+  \indexspace
+
+  \item Formik, \hyperpage{45}
+
+  \indexspace
+
+  \item guest user, \hyperpage{14}, \hyperpage{16, 17}, 
+		\hyperpage{45, 46}
+
+  \indexspace
+
+  \item information, \hyperpage{9, 10}, \hyperpage{13, 14}, 
+		\hyperpage{16, 17}, \hyperpage{45, 46}
+
+  \indexspace
+
+  \item MySQL, \hyperpage{45}
+
+  \indexspace
+
+  \item Node.js, \hyperpage{45}
+
+  \indexspace
+
+  \item ORM, \hyperpage{45}
+
+  \indexspace
+
+  \item payment, \hyperpage{10}, \hyperpage{45, 46}
+  \item PayPal, \hyperpage{10}, \hyperpage{13}, \hyperpage{45, 46}
+  \item product, \hyperpage{9}, \hyperpage{13, 14}, \hyperpage{16}, 
+		\hyperpage{45, 46}
+
+  \indexspace
+
+  \item React, \hyperpage{45}
+  \item React Router, \hyperpage{45}
+  \item receipt, \hyperpage{13}
+  \item registered user, \hyperpage{13}, \hyperpage{19}, 
+		\hyperpage{45, 46}
+  \item review, \hyperpage{14}, \hyperpage{46}
+
+  \indexspace
+
+  \item SASS, \hyperpage{45}
+  \item seller, \hyperpage{9--11}, \hyperpage{13}, \hyperpage{19}
+  \item SQL, \hyperpage{45}
+
+  \indexspace
+
+  \item Typeorm, \hyperpage{45}
+  \item Typescript, \hyperpage{45}
+
+  \indexspace
+
+  \item Yup, \hyperpage{45}
+
+\end{theindex}

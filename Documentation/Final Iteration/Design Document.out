@@ -1,0 +1,63 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Purpose}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Scope}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Context}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Use Cases}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Selling}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Buying}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.3}{Login}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.4}{Admin Panel}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.5}{Site Browsing}{section.2}% 10
+\BOOKMARK [1][-]{section.3}{Entity Relationship Diagram}{}% 11
+\BOOKMARK [2][-]{subsection.3.1}{Description Of Each Entity}{section.3}% 12
+\BOOKMARK [3][-]{section*.4}{Client}{subsection.3.1}% 13
+\BOOKMARK [3][-]{section*.5}{Listings}{subsection.3.1}% 14
+\BOOKMARK [3][-]{section*.6}{Address}{subsection.3.1}% 15
+\BOOKMARK [3][-]{section*.7}{Order}{subsection.3.1}% 16
+\BOOKMARK [3][-]{section*.8}{Review}{subsection.3.1}% 17
+\BOOKMARK [3][-]{section*.9}{Order Details}{subsection.3.1}% 18
+\BOOKMARK [3][-]{section*.10}{Category}{subsection.3.1}% 19
+\BOOKMARK [3][-]{section*.11}{Cart}{subsection.3.1}% 20
+\BOOKMARK [1][-]{section.4}{Class Diagram}{}% 21
+\BOOKMARK [2][-]{subsection.4.1}{Description Of Class Diagram}{section.4}% 22
+\BOOKMARK [3][-]{section*.12}{Client}{subsection.4.1}% 23
+\BOOKMARK [3][-]{section*.13}{ClientInfo}{subsection.4.1}% 24
+\BOOKMARK [3][-]{section*.14}{Listings}{subsection.4.1}% 25
+\BOOKMARK [3][-]{section*.15}{Address}{subsection.4.1}% 26
+\BOOKMARK [3][-]{section*.16}{Order}{subsection.4.1}% 27
+\BOOKMARK [3][-]{section*.17}{Review}{subsection.4.1}% 28
+\BOOKMARK [1][-]{section.5}{Sequence Diagrams}{}% 29
+\BOOKMARK [2][-]{subsection.5.1}{Add Review to Listing}{section.5}% 30
+\BOOKMARK [2][-]{subsection.5.2}{Cart Operations}{section.5}% 31
+\BOOKMARK [2][-]{subsection.5.3}{Checkout}{section.5}% 32
+\BOOKMARK [2][-]{subsection.5.4}{Edit Client Information}{section.5}% 33
+\BOOKMARK [2][-]{subsection.5.5}{Filter Listings Results}{section.5}% 34
+\BOOKMARK [2][-]{subsection.5.6}{Get Listings Details}{section.5}% 35
+\BOOKMARK [2][-]{subsection.5.7}{Get Lists of Listings}{section.5}% 36
+\BOOKMARK [2][-]{subsection.5.8}{Get Order History}{section.5}% 37
+\BOOKMARK [2][-]{subsection.5.9}{Login}{section.5}% 38
+\BOOKMARK [2][-]{subsection.5.10}{Logout}{section.5}% 39
+\BOOKMARK [2][-]{subsection.5.11}{Register}{section.5}% 40
+\BOOKMARK [2][-]{subsection.5.12}{Purchase by a Registered User}{section.5}% 41
+\BOOKMARK [2][-]{subsection.5.13}{Select Listing Category}{section.5}% 42
+\BOOKMARK [2][-]{subsection.5.14}{Send Confirmation Email}{section.5}% 43
+\BOOKMARK [2][-]{subsection.5.15}{Sort Listings Results}{section.5}% 44
+\BOOKMARK [1][-]{section.6}{External Interface}{}% 45
+\BOOKMARK [2][-]{subsection.6.1}{Home Page}{section.6}% 46
+\BOOKMARK [2][-]{subsection.6.2}{Login}{section.6}% 47
+\BOOKMARK [2][-]{subsection.6.3}{Create account}{section.6}% 48
+\BOOKMARK [2][-]{subsection.6.4}{Result of a category}{section.6}% 49
+\BOOKMARK [2][-]{subsection.6.5}{Apply filters}{section.6}% 50
+\BOOKMARK [2][-]{subsection.6.6}{Search for an item}{section.6}% 51
+\BOOKMARK [2][-]{subsection.6.7}{List of listings}{section.6}% 52
+\BOOKMARK [2][-]{subsection.6.8}{Latest listings}{section.6}% 53
+\BOOKMARK [1][-]{section.7}{Architectural Diagram}{}% 54
+\BOOKMARK [1][-]{section.8}{Tools and languages used}{}% 55
+\BOOKMARK [2][-]{subsection.8.1}{Front-end}{section.8}% 56
+\BOOKMARK [2][-]{subsection.8.2}{Back-end}{section.8}% 57
+\BOOKMARK [2][-]{subsection.8.3}{Database}{section.8}% 58
+\BOOKMARK [1][-]{section.9}{Glossary of Domain Concepts}{}% 59
+\BOOKMARK [1][-]{section.10}{Conclusion}{}% 60
+\BOOKMARK [1][-]{appendix.A}{Final Requirements}{}% 61
+\BOOKMARK [1][-]{appendix.B}{Index}{}% 62
+\BOOKMARK [1][-]{appendix.C}{Reference}{}% 63
