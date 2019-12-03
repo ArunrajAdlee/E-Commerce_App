@@ -24,10 +24,10 @@ const UserProfileLayout: React.SFC<IProps> = (props) => {
       <div className="default-layout-content-container">
         <Advert {...matchProps} />
         <Row>
-          <Col xl={2}>
+          <Col lg={4} xl={3}>
             <UserProfileSideNav />
           </Col>
-          <Col xl={10}>
+          <Col lg={8} xl={9}>
             <Component {...matchProps} />
           </Col>
         </Row>

@@ -85,10 +85,11 @@ class Checkout extends React.Component<IProps, IStates> {
     }
   }
 
-  private mockPaypalTransaction = (id: number) => {
+  private mockPaypalTransaction = () => {
     const { history } = this.props;
     setTimeout(() => {
-      history.push(`/profile/orderDetails/${id}`);
+      // Reroute to order details page when done
+      history.push('/');
     }, 3000);
   }
 
@@ -118,7 +119,7 @@ class Checkout extends React.Component<IProps, IStates> {
         const submissionResponse = await server.post(api.order_create, { shippingType: shippingType, addressID: addressResponse.data.address.id });
         this.setState({
           payalLoading: true,
-        }, () => this.mockPaypalTransaction(submissionResponse.data.order.id));
+        }, () => this.mockPaypalTransaction());
       }
     } catch {
       this.setState({

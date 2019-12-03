@@ -1,5 +1,4 @@
-import {Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn} from 'typeorm';
-import { Order } from './order.entity';
+import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 @Entity()
 export class OrderDetails {
@@ -34,8 +33,4 @@ export class OrderDetails {
 
     @Column()
     listing_fee: number;
-
-    @OneToOne(type => Order)
-    @JoinColumn([{ name: 'order_id', referencedColumnName: 'id'}])
-    order: Order;
 }
