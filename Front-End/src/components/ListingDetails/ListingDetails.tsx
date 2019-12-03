@@ -7,7 +7,6 @@ import { RouteComponentProps, Link } from 'react-router-dom';
 import { Button, Spinner } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import Rating from 'react-rating';
-import { server, api } from '../../server';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -16,12 +15,13 @@ import {
 import {
   faStar as farFaStar,
 } from '@fortawesome/free-regular-svg-icons';
-library.add(fasFaStar, farFaStar)
+import ErrorAlert from '../Misc/errorAlert';
+import { server, api } from '../../server';
+import { StoreContext } from '../../store';
 
-
+library.add(fasFaStar, farFaStar);
 
 export interface IListingDetails {
-
   id: number,
   description: string,
   image: string,
@@ -55,6 +55,7 @@ interface IStates {
   overallReview: number;
   numReviews: number;
   error: boolean,
+  noStockError: boolean,
 }
 
 class ListingDetails extends React.Component<IProps, IStates> {
@@ -65,6 +66,7 @@ class ListingDetails extends React.Component<IProps, IStates> {
     overallReview: 0,
     numReviews: 0,
     error: false,
+    noStockError: false,
   };
 
   public async componentDidMount() {
@@ -117,21 +119,36 @@ class ListingDetails extends React.Component<IProps, IStates> {
     }
   }
 
-
-  public onAddToCart = () => {
+  public onAddToCart = async () => {
     const { quantity, listing } = this.state;
+    const { history } = this.props;
+    const { isAuth } = this.context;
 
-    // API STUFF FOR ADDING TO THE ITEM TO USER'S CART
-  }
+    if (!isAuth) {
+      history.push('/login');
+    }
+    else {
+      try {
+        if (listing!.stock_count < quantity || quantity <= 0) {
+          throw 'Quantity desired is more than that in stock';
+        }
+        const res = await server.post('/cart', { listing_id: listing!.id, quantity });
+        history.push('/cart');
+      } catch (e) {
+        if (e === 'Quantity desired is more than that in stock') this.setState({ noStockError: true });
+      }
+    }
+  };
 
   public render() {
     const {
-      listing, error, reviews, overallReview, numReviews,
+      listing, error, reviews, overallReview, numReviews, noStockError,
     } = this.state;
     return (
       listing
         ? (
           <div className="listing-details">
+            <ErrorAlert msg="Listing could not be added to your cart. Please select an available quantity." isError={noStockError} onCloseError={() => this.setState({ noStockError: false })} />
             <Media>
               <Container>
                 <Row className="mb-5">
@@ -148,10 +165,10 @@ class ListingDetails extends React.Component<IProps, IStates> {
                           <Link to={`/user/${listing.username}`}>{listing.username}</Link>
                           {' '}
                           <Rating
-                          initialRating = {overallReview}
-                          emptySymbol={<FontAwesomeIcon icon={farFaStar} className="text-warning" />}
-                          readonly = {true}
-                          fullSymbol={<FontAwesomeIcon icon={fasFaStar} className="text-warning" />}
+                            initialRating={overallReview}
+                            emptySymbol={<FontAwesomeIcon icon={farFaStar} className="text-warning" />}
+                            readonly
+                            fullSymbol={<FontAwesomeIcon icon={fasFaStar} className="text-warning" />}
                           />
                           <p className="text-muted">
                             {`${numReviews} reviews `}
@@ -172,34 +189,37 @@ class ListingDetails extends React.Component<IProps, IStates> {
                     </Media.Body>
                   </Col>
                 </Row>
-                <Row className = "review"/>
-                <Row className = "review">
-                  <Col/>
+                <Row className="review" />
+                <Row className="review">
+                  <Col />
                   <Col>
                     <h4> Reviews </h4>
                   </Col>
                 </Row>
-                <Row className = "review"/>
+                <Row className="review" />
                 <Row className="reviewBorder">
-                <ul>
-                  <li>
-                  <br />
-                  </li>
-                  {reviews.map((r, index) => (
-                    <li key = {index}>
-                    <h5>
-                      {`${r.title}  `}
-                    </h5>
-                      <Rating
-                        initialRating = {r.rating}
-                        emptySymbol={<FontAwesomeIcon icon={farFaStar} className="text-warning" size = "sm"/>}
-                        readonly
-                        fullSymbol={<FontAwesomeIcon icon={fasFaStar} className="text-warning" size = 'sm' />}
-                        />
-                      <p/>
-                    <p className = "text-muted"> {r.description}</p>
-                    <br/>
+                  <ul>
+                    <li>
+                      <br />
                     </li>
+                    {reviews.map((r, index) => (
+                      <li key={index}>
+                        <h5>
+                          {`${r.title}  `}
+                        </h5>
+                        <Rating
+                          initialRating={r.rating}
+                          emptySymbol={<FontAwesomeIcon icon={farFaStar} className="text-warning" size="sm" />}
+                          readonly
+                          fullSymbol={<FontAwesomeIcon icon={fasFaStar} className="text-warning" size="sm" />}
+                        />
+                        <p />
+                        <p className="text-muted">
+                          {' '}
+                          {r.description}
+                        </p>
+                        <br />
+                      </li>
                     ))}
                   </ul>
                 </Row>
@@ -211,10 +231,9 @@ class ListingDetails extends React.Component<IProps, IStates> {
         : error
           ? <span>This listing does not exist!</span>
           : <Spinner animation="border" variant="warning" />
-
-
     );
   }
 }
 
+ListingDetails.contextType = StoreContext;
 export default ListingDetails;
