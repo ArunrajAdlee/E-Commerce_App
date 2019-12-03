@@ -1,10 +1,11 @@
 \begin{theindex}
 
-  \item administrator, \hyperpage{8}, \hyperpage{15, 16}
+  \item administrator, \hyperpage{8}, \hyperpage{15, 16}, 
+		\hyperpage{44}
 
   \indexspace
 
-  \item buyer, \hyperpage{9}, \hyperpage{12, 13}
+  \item buyer, \hyperpage{9}, \hyperpage{12, 13}, \hyperpage{44}
 
   \indexspace
 
@@ -12,24 +13,25 @@
 
   \indexspace
 
-  \item guest user, \hyperpage{13}, \hyperpage{15, 16}
+  \item guest user, \hyperpage{13}, \hyperpage{15, 16}, \hyperpage{44}
 
   \indexspace
 
   \item information, \hyperpage{8, 9}, \hyperpage{12, 13}, 
-		\hyperpage{15, 16}
+		\hyperpage{15, 16}, \hyperpage{44}
 
   \indexspace
 
-  \item payment, \hyperpage{9}
-  \item PayPal, \hyperpage{9}, \hyperpage{12}
-  \item product, \hyperpage{8}, \hyperpage{12, 13}, \hyperpage{15}
+  \item payment, \hyperpage{9}, \hyperpage{44}
+  \item PayPal, \hyperpage{9}, \hyperpage{12}, \hyperpage{44}
+  \item product, \hyperpage{8}, \hyperpage{12, 13}, \hyperpage{15}, 
+		\hyperpage{44}
 
   \indexspace
 
   \item receipt, \hyperpage{12}
-  \item registered user, \hyperpage{12}, \hyperpage{18}
-  \item review, \hyperpage{13}
+  \item registered user, \hyperpage{12}, \hyperpage{18}, \hyperpage{44}
+  \item review, \hyperpage{13}, \hyperpage{44}
 
   \indexspace
 
