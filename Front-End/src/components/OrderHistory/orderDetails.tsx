@@ -36,6 +36,7 @@ interface IOrderDetailsInfo {
 interface IStates{
     order: IOrderTotals[],
     orderDetails: IOrderDetailsInfo[],
+    reviewableOrderDetails: IOrderDetailsInfo[],
     address: IAddressObj;
     show: boolean,
 }
@@ -69,6 +70,7 @@ class OrderDetails extends React.Component<IProps, IStates> {
     public readonly state: Readonly<IStates> = {
       order: [],
       orderDetails: [],
+      reviewableOrderDetails:[],
       address: {} as IAddressObj,
       show: false,
     };
@@ -76,16 +78,31 @@ class OrderDetails extends React.Component<IProps, IStates> {
     public async componentDidMount() {
       const { match, history } = this.props;
       const { id } = match.params;
+
       try {
         const resp = await server.get(`${api.order_details}${id}`);
         if (resp.data) {
           this.setState({
             orderDetails: resp.data.orderDetails, address: resp.data.address, order: resp.data.order,
           });
+
+          const {orderDetails} = this.state;
+          let temp = [];
+          const today = new Date();
+          for(let i = 0; i < orderDetails.length-1; i++){
+            const date = new Date(`${orderDetails[i].order_details_purchase_date}`);
+            const diffTime = Math.abs(today.getTime() - date.getTime());
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            if(diffDays > 15){
+            temp.push(orderDetails[i]);}
+          }
+          this.setState({
+            reviewableOrderDetails: temp});
         }
       } catch (e) {
         history.push('/');
       }
+
     }
 
     public handleClose = () => {
@@ -117,7 +134,7 @@ class OrderDetails extends React.Component<IProps, IStates> {
 
     render() {
       const {
-        order, address, show, orderDetails,
+        order, address, show, orderDetails, reviewableOrderDetails
       } = this.state;
       return (
         order.length > 0 ? (
@@ -293,7 +310,7 @@ class OrderDetails extends React.Component<IProps, IStates> {
                                 }`}
                               >
                                 <option value=""> -- select a product -- </option>
-                                {orderDetails.map((product, index) => <option key={index} value={index}>{product.listings_title}</option>)}
+                                {reviewableOrderDetails.map((product, index) => <option key={index} value={index}>{product.listings_title}</option>)}
                               </Field>
                               <ErrorMessage
                                 component="div"
