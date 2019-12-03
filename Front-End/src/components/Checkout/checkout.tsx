@@ -118,7 +118,7 @@ class Checkout extends React.Component<IProps, IStates> {
         const submissionResponse = await server.post(api.order_create, { shippingType: shippingType, addressID: addressResponse.data.address.id });
         this.setState({
           payalLoading: true,
-        }, () => this.mockPaypalTransaction(submissionResponse.data.order_id));
+        }, () => this.mockPaypalTransaction(submissionResponse.data.order.id));
       }
     } catch {
       this.setState({
