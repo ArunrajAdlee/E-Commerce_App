@@ -126,7 +126,8 @@ class ListingDetails extends React.Component<IProps, IStates> {
 
     if (!isAuth) {
       history.push('/login');
-    } else {
+    }
+    else {
       try {
         if (listing!.stock_count < quantity || quantity <= 0) {
           throw 'Quantity desired is more than that in stock';
