@@ -17,16 +17,28 @@ export class CartController {
       return;
     }
 
-    const cartInfo = await getRepository(Cart).createQueryBuilder('cart')
-    .innerJoin(Listings, 'listing', 'listing.id = cart.listing_id')
-    .select(['cart.id', 'cart.user_id', 'cart.quantity', 'cart.listing_id', 'listing.title', 
-    'listing.image', 'listing.thumbnail', 'listing.description', 'listing.price', 'listing.stock_count',
-    'listing.quantity_sold', 'listing.status', 'listing.user_id', 'listing.username', 'listing.category',
-    'listing.category_name'])
-    .where("cart.user_id = :id", { id: authenticatedUser.id })
-    .getRawMany();
+    // Get listings in cart
+    const cartItems = await this.cartRepository.find({
+      where: { user_id: authenticatedUser.id },
+      relations: ["listing"]
+    });
+    if(!cartItems) {
+      res.status(404).send('error retrieving cart');
+      return;
+    }
 
-     return cartInfo;
+    // Compute cart totals
+    let total_price_before_tax = 0;
+    let total_items = 0;
+    for (let cartItem of cartItems) {
+      total_price_before_tax += Math.round(cartItem.listing.price * cartItem.quantity * 100) / 100;
+      total_items += cartItem.quantity;
+    }
+    res.status(200).send({
+      cartItems: cartItems,
+      total_price_before_tax: total_price_before_tax,
+      total_items: total_items,
+    });
   }
 
   async addToCart(req: Request, res: Response, next: NextFunction) {
@@ -44,7 +56,7 @@ export class CartController {
     for (let cartItem of cartItems) {
       if (cartItem.listing_id == req.body.listing_id) {
         try {
-          cartItem.quantity += parseInt(req.body.quantity);
+          cartItem.quantity = parseInt(req.body.quantity);
           const updatedCart = await this.cartRepository.save(cartItem);
 
           res.status(200).send({
@@ -87,11 +99,11 @@ export class CartController {
       res.status(404).send('user is not authenticated');
       return;
     }
-    
+
     const cartToRemove = await this.cartRepository.findOne({
         id: +(req.params.cart_id)
     });
-    
+
     const removedCart = await this.cartRepository.remove(cartToRemove);
     if (!removedCart) {
       res.status(404).send("error");

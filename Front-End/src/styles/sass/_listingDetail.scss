@@ -10,12 +10,12 @@
         }
 
         & .image {
-            width: 100%; 
-            height: 100%; 
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
     }
-    
+
     & .purchase-details {
         padding: 60px 0 0 60px;
 
@@ -30,3 +30,16 @@
 
 }
 
+.review{
+  font-family: $primary-font;
+  background-color: #e0ebeb;
+  height: 25px;
+}
+
+.reviewBorder{
+  border-color: #e0ebeb;
+  border-style: solid;
+  border-width: thin;
+  max-height: 600px;
+  overflow-y: auto;
+}

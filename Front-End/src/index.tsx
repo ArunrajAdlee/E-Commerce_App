@@ -12,6 +12,8 @@ import DefaultLayout from './layouts/DefaultLayout/defualtLayout';
 import CreateListing from './components/CreateListing';
 import LandingLayout from './layouts/LandingPageLayout/landingPageLayout';
 import ListingDetails from './components/ListingDetails/ListingDetails';
+import Cart from './components/Cart/cart';
+
 import SearchPage from './components/Listings/SearchPage/searchPage';
 import CategoryPage from './components/Listings/CategoryPage/categoryPage';
 import ListingsPage from './components/Listings/ListingsPage/listingsPage';
@@ -118,7 +120,7 @@ class App extends React.Component<{}, IStates> {
             <SecureRoute authenticated path="/checkout" pageComponent={Checkout} layoutComponent={DefaultLayout} pageTitle="Checkout" />
             <SecureRoute admin path="/admin/activity" pageComponent={SiteActivty} layoutComponent={AdminPanelLayout} pageTitle="Site Activity" />
             <SecureRoute noAuth path="/auth/reset/:token" pageComponent={ResetPassword} layoutComponent={DefaultLayout} pageTitle="Reset Password" />
-            <SecureRoute path="/cart" pageComponent={LandingPage} layoutComponent={DefaultLayout} pageTitle="Your Shoppping Cart" />
+            <SecureRoute authenticated path="/cart" pageComponent={Cart} layoutComponent={DefaultLayout} pageTitle="Your Shopping Cart" />
             <SecureRoute noAuth path="/login" pageComponent={Login} layoutComponent={DefaultLayout} pageTitle="Login/Register" />
             <SecureRoute path="/listings/category/:categoryId/:categoryName" pageComponent={CategoryPage} layoutComponent={DefaultLayout} pageTitle="Category Listings" />
             <SecureRoute path="/listings/search/:searchQuery" pageComponent={SearchPage} layoutComponent={DefaultLayout} pageTitle="Search Listings" />

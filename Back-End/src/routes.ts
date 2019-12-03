@@ -7,7 +7,7 @@ import { OrderController } from './controllers/order.controller';
 import { AdsController } from './controllers/ads.controller';
 import { AdminController } from './controllers/admin.controller';
 import { ReviewsController } from './controllers/reviews.controller';
-import { CartController } from './controllers/cart.controller'; 
+import { CartController } from './controllers/cart.controller';
 export const Routes = [
   //User
   {
@@ -183,7 +183,7 @@ export const Routes = [
   },
   {
     method: 'post',
-    route: '/ads/:id',
+    route: '/ads',
     controller: AdsController,
     action: 'increaseClickCount'
   },
@@ -210,7 +210,7 @@ export const Routes = [
   },
   {
     method: 'post',
-    route: '/cart', 
+    route: '/cart',
     controller: CartController,
     action: 'addToCart'
   },
@@ -220,5 +220,5 @@ export const Routes = [
     controller: CartController,
     action: 'deleteCart'
   }
-  
+
 ];

@@ -54,12 +54,13 @@ interface IProps {
 
 const OrderSummary = (props: IProps) => {
   const { data } = props;
-
   return (
     Object.values(data).length >= 1 ? (
       <div className="order-summary">
+          <div className="text-center">
         <h5>Your Order</h5>
         <hr />
+          </div>
         <Row>
           <Col xs={6}>
             Product
@@ -75,7 +76,7 @@ const OrderSummary = (props: IProps) => {
                 {`${product.listing.title} (${product.quantity})`}
               </Col>
               <Col className="text-right" xs={6}>
-                {`$${product.listing.price}`}
+                  {`$${product.listing.price*product.quantity}`}
               </Col>
             </Row>
           ))}
