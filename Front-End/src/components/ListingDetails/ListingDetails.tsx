@@ -17,11 +17,11 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 import ErrorAlert from '../Misc/errorAlert';
 import { server, api } from '../../server';
+import { StoreContext } from '../../store';
 
 library.add(fasFaStar, farFaStar);
 
 export interface IListingDetails {
-
   id: number,
   description: string,
   image: string,
@@ -121,15 +121,22 @@ class ListingDetails extends React.Component<IProps, IStates> {
 
   public onAddToCart = async () => {
     const { quantity, listing } = this.state;
+    const { history } = this.props;
+    const { isAuth } = this.context;
 
-    try {
-      if (listing!.stock_count < quantity) {
-        throw 'Quantity desired is more than that in stock';
+    if (!isAuth) {
+      history.push('/login');
+    }
+    else {
+      try {
+        if (listing!.stock_count < quantity || quantity <= 0) {
+          throw 'Quantity desired is more than that in stock';
+        }
+        const res = await server.post('/cart', { listing_id: listing!.id, quantity });
+        history.push('/cart');
+      } catch (e) {
+        if (e === 'Quantity desired is more than that in stock') this.setState({ noStockError: true });
       }
-      const res = await server.post('/cart', { listing_id: listing!.id, quantity });
-      window.location.reload(false);
-    } catch (e) {
-      if (e === 'Quantity desired is more than that in stock') this.setState({ noStockError: true });
     }
   };
 
@@ -228,4 +235,5 @@ class ListingDetails extends React.Component<IProps, IStates> {
   }
 }
 
+ListingDetails.contextType = StoreContext;
 export default ListingDetails;

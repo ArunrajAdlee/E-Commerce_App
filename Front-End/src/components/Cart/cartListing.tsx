@@ -4,12 +4,13 @@ import {
   Button,
   Col, Image, Row, Container,
 } from 'react-bootstrap';
-import { IListing } from '../Listings/Listing/listing';
 import { api, server } from '../../server';
+import { IListingDetails } from '../ListingDetails/ListingDetails';
+import ErrorAlert from '../Misc/errorAlert';
 
 interface IProps {
     quantity: number;
-    listing: IListing;
+    listing: IListingDetails;
     id: number;
     history: any,
     location: any,
@@ -18,6 +19,7 @@ interface IProps {
 
 interface IStates {
   editQuantity: number;
+  isError: boolean;
 }
 
 interface IProps extends RouteComponentProps<any> {}
@@ -25,6 +27,7 @@ interface IProps extends RouteComponentProps<any> {}
 class CartListing extends React.Component<IProps, IStates> {
   public readonly state: Readonly<IStates> = {
     editQuantity: -1,
+    isError: false,
   };
 
   private handleDelete = async () => {
@@ -34,23 +37,25 @@ class CartListing extends React.Component<IProps, IStates> {
       const res = await server.delete(`/cart/${id}`);
       window.location.reload(false);
     } catch (e) {
-      console.log(e);
     }
   };
 
   private handleEdit = async (event: any) => {
     const { listing } = this.props;
     const { editQuantity } = this.state;
-
     try {
       // If there has been a modification
-      if (editQuantity != -1) {
-        if (editQuantity == 0) throw 'Edit quantity is 0';
-        // else if (editQuantity > listing.stockCount) throw 'Quantity desired is more than that in stock';
-        else {
-          const res = await server.post('/cart', { listing_id: listing!.id, quantity: editQuantity });
+      if (editQuantity !== -1) {
+
+        if (editQuantity > listing.stock_count || editQuantity <= 0) {
+          this.setState({ 
+            isError: true,
+          })
         }
-        window.location.reload(false);
+        else {
+          await server.post('/cart', { listing_id: listing!.id, quantity: editQuantity });
+          window.location.reload(false);
+        }
       }
     } catch (e) {
       if (e === 'Edit quantity is 0') return e;
@@ -60,6 +65,7 @@ class CartListing extends React.Component<IProps, IStates> {
 
   public render() {
     const { listing, quantity } = this.props;
+    const { isError } = this.state;
 
     // Placeholder until there is a database with an error image to point to
     let listingImage = 'https://3.bp.blogspot.com/-XB85UD145qE/V5buf22iv2I/AAAAAAAAA1I/8LBmpwNX-rU7ZjzrHOS2b0F_Pj0xqpHIQCLcB/s1600/nia.png';
@@ -79,6 +85,7 @@ class CartListing extends React.Component<IProps, IStates> {
             </Link>
           </Col>
           <Col xs={7}>
+          <ErrorAlert msg={`Please enter a quantity less than the current stock count: ${listing.stock_count}`} isError={isError} onCloseError={() => this.setState({isError: false})} />
             <Row>
               {/* Name */}
               <Col>
@@ -114,7 +121,7 @@ class CartListing extends React.Component<IProps, IStates> {
                   onBlur={async (e: any) => {
                     await this.handleEdit(e);
                   }}
-                  max={listing.stockCount}
+                  max={listing.stock_count}
                   min={1}
                   defaultValue={quantity}
                 />

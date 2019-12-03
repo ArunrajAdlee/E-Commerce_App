@@ -6,8 +6,8 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import CartListing from './cartListing';
-import { IListing } from '../Listings/Listing/listing';
 import { api, server } from '../../server';
+import { IListingDetails } from '../ListingDetails/ListingDetails';
 
 interface IStates {
   isLoading: boolean;
@@ -20,7 +20,7 @@ interface ICartItem {
   id: number,
   user_id: number,
   quantity: number,
-  listing: IListing,
+  listing: IListingDetails,
 }
 
 interface IProps extends RouteComponentProps<any> {}

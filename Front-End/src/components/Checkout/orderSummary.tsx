@@ -61,7 +61,6 @@ class OrderSummary extends React.Component<IProps, IStates> {
 
   public render() {
     const { data } = this.props;
-
     return (
       Object.values(data).length >= 1 ? (
         <div className="order-summary">
@@ -84,7 +83,7 @@ class OrderSummary extends React.Component<IProps, IStates> {
                   {`${product.listing.title} (${product.quantity})`}
                 </Col>
                 <Col className="text-right" xs={6}>
-                  {`$${product.listing.price}`}
+                  {`$${product.listing.price*product.quantity}`}
                 </Col>
               </Row>
             ))}
