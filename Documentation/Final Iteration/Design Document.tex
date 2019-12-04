@@ -6,6 +6,8 @@
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{placeins}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
 \usepackage[pdftex]{graphicx}
 \usepackage{adjustbox}
 \pagestyle{empty}
@@ -29,7 +31,8 @@
 \belowdisplayshortskip=2mm
 \normalbaselineskip=12pt
 \normalbaselines
-
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+\pagestyle{fancy}
 % use case stuff
 \newcounter{use case ID}
 
