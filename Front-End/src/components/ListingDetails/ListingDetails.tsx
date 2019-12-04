@@ -101,7 +101,7 @@ class ListingDetails extends React.Component<IProps, IStates> {
         if (reviewResp.data.reviews) {
           let overallRating = 0;
 
-          for (let i = 0; i < reviewResp.data.reviews.length - 1; i++) {
+          for (let i = 0; i < reviewResp.data.reviews.length; i++) {
             overallRating += reviewResp.data.reviews[i].rating;
           }
 
