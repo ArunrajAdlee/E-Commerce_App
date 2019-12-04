@@ -56,16 +56,17 @@
 \contentsline {subsection}{\numberline {6.11}Search for an item}{43}{subsection.6.11}% 
 \contentsline {subsection}{\numberline {6.12}Create listing}{43}{subsection.6.12}% 
 \contentsline {subsection}{\numberline {6.13}List of listings}{44}{subsection.6.13}% 
-\contentsline {subsection}{\numberline {6.14}Listing details}{45}{subsection.6.14}% 
-\contentsline {subsection}{\numberline {6.15}Cart}{46}{subsection.6.15}% 
-\contentsline {subsection}{\numberline {6.16}Checkout}{46}{subsection.6.16}% 
-\contentsline {section}{\numberline {7}Architectural Diagram}{47}{section.7}% 
-\contentsline {section}{\numberline {8}Tools and languages used}{48}{section.8}% 
-\contentsline {subsection}{\numberline {8.1}Front-end}{48}{subsection.8.1}% 
-\contentsline {subsection}{\numberline {8.2}Back-end}{48}{subsection.8.2}% 
-\contentsline {subsection}{\numberline {8.3}Database}{48}{subsection.8.3}% 
-\contentsline {section}{\numberline {9}Glossary of Domain Concepts}{49}{section.9}% 
-\contentsline {section}{\numberline {10}Conclusion}{49}{section.10}% 
-\contentsline {section}{\numberline {A}Final Requirements}{50}{appendix.A}% 
-\contentsline {section}{\numberline {B}Index}{50}{appendix.B}% 
-\contentsline {section}{\numberline {C}Reference}{51}{appendix.C}% 
+\contentsline {subsection}{\numberline {6.14}Latest listings}{45}{subsection.6.14}% 
+\contentsline {subsection}{\numberline {6.15}Listing details}{46}{subsection.6.15}% 
+\contentsline {subsection}{\numberline {6.16}Cart}{46}{subsection.6.16}% 
+\contentsline {subsection}{\numberline {6.17}Checkout}{47}{subsection.6.17}% 
+\contentsline {section}{\numberline {7}Architectural Diagram}{48}{section.7}% 
+\contentsline {section}{\numberline {8}Tools and languages used}{49}{section.8}% 
+\contentsline {subsection}{\numberline {8.1}Front-end}{49}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {8.2}Back-end}{49}{subsection.8.2}% 
+\contentsline {subsection}{\numberline {8.3}Database}{49}{subsection.8.3}% 
+\contentsline {section}{\numberline {9}Glossary of Domain Concepts}{50}{section.9}% 
+\contentsline {section}{\numberline {10}Conclusion}{50}{section.10}% 
+\contentsline {section}{\numberline {A}Final Requirements}{51}{appendix.A}% 
+\contentsline {section}{\numberline {B}Index}{51}{appendix.B}% 
+\contentsline {section}{\numberline {C}Reference}{52}{appendix.C}% 
