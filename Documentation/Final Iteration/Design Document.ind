@@ -1,80 +1,80 @@
 \begin{theindex}
 
   \item administrator, \hyperpage{9}, \hyperpage{16, 17}, 
-		\hyperpage{45, 46}
+		\hyperpage{49, 50}
 
   \indexspace
 
-  \item buyer, \hyperpage{10}, \hyperpage{13, 14}, \hyperpage{46}
+  \item buyer, \hyperpage{10}, \hyperpage{13, 14}, \hyperpage{50}
 
   \indexspace
 
-  \item Cloudinary, \hyperpage{45}
+  \item Cloudinary, \hyperpage{49}
 
   \indexspace
 
   \item data, \hyperpage{9--11}, \hyperpage{13, 14}, \hyperpage{16--19}, 
-		\hyperpage{45}
+		\hyperpage{49}
 
   \indexspace
 
-  \item Express.js, \hyperpage{45}
+  \item Express.js, \hyperpage{49}
 
   \indexspace
 
-  \item Formik, \hyperpage{45}
+  \item Formik, \hyperpage{49}
 
   \indexspace
 
   \item guest user, \hyperpage{14}, \hyperpage{16, 17}, 
-		\hyperpage{45, 46}
+		\hyperpage{49, 50}
 
   \indexspace
 
   \item information, \hyperpage{9, 10}, \hyperpage{13, 14}, 
-		\hyperpage{16, 17}, \hyperpage{45, 46}
+		\hyperpage{16, 17}, \hyperpage{49, 50}
 
   \indexspace
 
-  \item MySQL, \hyperpage{45}
+  \item MySQL, \hyperpage{49}
 
   \indexspace
 
-  \item Node.js, \hyperpage{45}
+  \item Node.js, \hyperpage{49}
 
   \indexspace
 
-  \item ORM, \hyperpage{45}
+  \item ORM, \hyperpage{49}
 
   \indexspace
 
-  \item payment, \hyperpage{10}, \hyperpage{45, 46}
-  \item PayPal, \hyperpage{10}, \hyperpage{13}, \hyperpage{45, 46}
+  \item payment, \hyperpage{10}, \hyperpage{49, 50}
+  \item PayPal, \hyperpage{10}, \hyperpage{13}, \hyperpage{49, 50}
   \item product, \hyperpage{9}, \hyperpage{13, 14}, \hyperpage{16}, 
-		\hyperpage{45, 46}
+		\hyperpage{49, 50}
 
   \indexspace
 
-  \item React, \hyperpage{45}
-  \item React Router, \hyperpage{45}
+  \item React, \hyperpage{49}
+  \item React Router, \hyperpage{49}
   \item receipt, \hyperpage{13}
   \item registered user, \hyperpage{13}, \hyperpage{19}, 
-		\hyperpage{45, 46}
-  \item review, \hyperpage{14}, \hyperpage{46}
+		\hyperpage{49, 50}
+  \item review, \hyperpage{14}, \hyperpage{50}
 
   \indexspace
 
-  \item SASS, \hyperpage{45}
+  \item SASS, \hyperpage{49}
   \item seller, \hyperpage{9--11}, \hyperpage{13}, \hyperpage{19}
-  \item SQL, \hyperpage{45}
+  \item SQL, \hyperpage{49}
 
   \indexspace
 
-  \item Typeorm, \hyperpage{45}
-  \item Typescript, \hyperpage{45}
+  \item Typeorm, \hyperpage{49}
+  \item Typescript, \hyperpage{49}
 
   \indexspace
 
-  \item Yup, \hyperpage{45}
+  \item Yup, \hyperpage{49}
 
 \end{theindex}

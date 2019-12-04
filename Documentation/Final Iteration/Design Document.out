@@ -46,18 +46,26 @@
 \BOOKMARK [2][-]{subsection.6.1}{Home Page}{section.6}% 46
 \BOOKMARK [2][-]{subsection.6.2}{Login}{section.6}% 47
 \BOOKMARK [2][-]{subsection.6.3}{Create account}{section.6}% 48
-\BOOKMARK [2][-]{subsection.6.4}{Result of a category}{section.6}% 49
-\BOOKMARK [2][-]{subsection.6.5}{Apply filters}{section.6}% 50
-\BOOKMARK [2][-]{subsection.6.6}{Search for an item}{section.6}% 51
-\BOOKMARK [2][-]{subsection.6.7}{List of listings}{section.6}% 52
-\BOOKMARK [2][-]{subsection.6.8}{Latest listings}{section.6}% 53
-\BOOKMARK [1][-]{section.7}{Architectural Diagram}{}% 54
-\BOOKMARK [1][-]{section.8}{Tools and languages used}{}% 55
-\BOOKMARK [2][-]{subsection.8.1}{Front-end}{section.8}% 56
-\BOOKMARK [2][-]{subsection.8.2}{Back-end}{section.8}% 57
-\BOOKMARK [2][-]{subsection.8.3}{Database}{section.8}% 58
-\BOOKMARK [1][-]{section.9}{Glossary of Domain Concepts}{}% 59
-\BOOKMARK [1][-]{section.10}{Conclusion}{}% 60
-\BOOKMARK [1][-]{appendix.A}{Final Requirements}{}% 61
-\BOOKMARK [1][-]{appendix.B}{Index}{}% 62
-\BOOKMARK [1][-]{appendix.C}{Reference}{}% 63
+\BOOKMARK [2][-]{subsection.6.4}{Forgot password}{section.6}% 49
+\BOOKMARK [2][-]{subsection.6.5}{User profile}{section.6}% 50
+\BOOKMARK [2][-]{subsection.6.6}{Order history}{section.6}% 51
+\BOOKMARK [2][-]{subsection.6.7}{Order details}{section.6}% 52
+\BOOKMARK [2][-]{subsection.6.8}{Add review}{section.6}% 53
+\BOOKMARK [2][-]{subsection.6.9}{Result of a category}{section.6}% 54
+\BOOKMARK [2][-]{subsection.6.10}{Apply filters}{section.6}% 55
+\BOOKMARK [2][-]{subsection.6.11}{Search for an item}{section.6}% 56
+\BOOKMARK [2][-]{subsection.6.12}{Create listing}{section.6}% 57
+\BOOKMARK [2][-]{subsection.6.13}{List of listings}{section.6}% 58
+\BOOKMARK [2][-]{subsection.6.14}{Listing details}{section.6}% 59
+\BOOKMARK [2][-]{subsection.6.15}{Cart}{section.6}% 60
+\BOOKMARK [2][-]{subsection.6.16}{Checkout}{section.6}% 61
+\BOOKMARK [1][-]{section.7}{Architectural Diagram}{}% 62
+\BOOKMARK [1][-]{section.8}{Tools and languages used}{}% 63
+\BOOKMARK [2][-]{subsection.8.1}{Front-end}{section.8}% 64
+\BOOKMARK [2][-]{subsection.8.2}{Back-end}{section.8}% 65
+\BOOKMARK [2][-]{subsection.8.3}{Database}{section.8}% 66
+\BOOKMARK [1][-]{section.9}{Glossary of Domain Concepts}{}% 67
+\BOOKMARK [1][-]{section.10}{Conclusion}{}% 68
+\BOOKMARK [1][-]{appendix.A}{Final Requirements}{}% 69
+\BOOKMARK [1][-]{appendix.B}{Index}{}% 70
+\BOOKMARK [1][-]{appendix.C}{Reference}{}% 71

@@ -46,18 +46,26 @@
 \contentsline {subsection}{\numberline {6.1}Home Page}{37}{subsection.6.1}% 
 \contentsline {subsection}{\numberline {6.2}Login}{37}{subsection.6.2}% 
 \contentsline {subsection}{\numberline {6.3}Create account}{38}{subsection.6.3}% 
-\contentsline {subsection}{\numberline {6.4}Result of a category}{39}{subsection.6.4}% 
-\contentsline {subsection}{\numberline {6.5}Apply filters}{40}{subsection.6.5}% 
-\contentsline {subsection}{\numberline {6.6}Search for an item}{40}{subsection.6.6}% 
-\contentsline {subsection}{\numberline {6.7}List of listings}{41}{subsection.6.7}% 
-\contentsline {subsection}{\numberline {6.8}Latest listings}{42}{subsection.6.8}% 
-\contentsline {section}{\numberline {7}Architectural Diagram}{43}{section.7}% 
-\contentsline {section}{\numberline {8}Tools and languages used}{44}{section.8}% 
-\contentsline {subsection}{\numberline {8.1}Front-end}{44}{subsection.8.1}% 
-\contentsline {subsection}{\numberline {8.2}Back-end}{44}{subsection.8.2}% 
-\contentsline {subsection}{\numberline {8.3}Database}{44}{subsection.8.3}% 
-\contentsline {section}{\numberline {9}Glossary of Domain Concepts}{45}{section.9}% 
-\contentsline {section}{\numberline {10}Conclusion}{45}{section.10}% 
-\contentsline {section}{\numberline {A}Final Requirements}{46}{appendix.A}% 
-\contentsline {section}{\numberline {B}Index}{46}{appendix.B}% 
-\contentsline {section}{\numberline {C}Reference}{47}{appendix.C}% 
+\contentsline {subsection}{\numberline {6.4}Forgot password}{39}{subsection.6.4}% 
+\contentsline {subsection}{\numberline {6.5}User profile}{40}{subsection.6.5}% 
+\contentsline {subsection}{\numberline {6.6}Order history}{40}{subsection.6.6}% 
+\contentsline {subsection}{\numberline {6.7}Order details}{41}{subsection.6.7}% 
+\contentsline {subsection}{\numberline {6.8}Add review}{41}{subsection.6.8}% 
+\contentsline {subsection}{\numberline {6.9}Result of a category}{42}{subsection.6.9}% 
+\contentsline {subsection}{\numberline {6.10}Apply filters}{42}{subsection.6.10}% 
+\contentsline {subsection}{\numberline {6.11}Search for an item}{43}{subsection.6.11}% 
+\contentsline {subsection}{\numberline {6.12}Create listing}{43}{subsection.6.12}% 
+\contentsline {subsection}{\numberline {6.13}List of listings}{44}{subsection.6.13}% 
+\contentsline {subsection}{\numberline {6.14}Listing details}{45}{subsection.6.14}% 
+\contentsline {subsection}{\numberline {6.15}Cart}{46}{subsection.6.15}% 
+\contentsline {subsection}{\numberline {6.16}Checkout}{46}{subsection.6.16}% 
+\contentsline {section}{\numberline {7}Architectural Diagram}{47}{section.7}% 
+\contentsline {section}{\numberline {8}Tools and languages used}{48}{section.8}% 
+\contentsline {subsection}{\numberline {8.1}Front-end}{48}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {8.2}Back-end}{48}{subsection.8.2}% 
+\contentsline {subsection}{\numberline {8.3}Database}{48}{subsection.8.3}% 
+\contentsline {section}{\numberline {9}Glossary of Domain Concepts}{49}{section.9}% 
+\contentsline {section}{\numberline {10}Conclusion}{49}{section.10}% 
+\contentsline {section}{\numberline {A}Final Requirements}{50}{appendix.A}% 
+\contentsline {section}{\numberline {B}Index}{50}{appendix.B}% 
+\contentsline {section}{\numberline {C}Reference}{51}{appendix.C}% 
