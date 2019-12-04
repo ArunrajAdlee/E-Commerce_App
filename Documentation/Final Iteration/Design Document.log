@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  3 DEC 2019 19:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  3 DEC 2019 19:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -360,6 +360,9 @@ LaTeX Warning: Label `fig: Latest listings' multiply defined.
 
 LaTeX Warning: Label `fig: Latest listings' multiply defined.
 
+
+LaTeX Warning: Label `fig: Latest listings' multiply defined.
+
 )
 \openout1 = `"Design Document.aux"'.
 
@@ -455,7 +458,7 @@ l.134 \clearpage
  [6
 
 ]
-<Diagrams/Use_Case/ucdselling.png, id=503, 419.5675pt x 489.83pt>
+<Diagrams/Use_Case/ucdselling.png, id=510, 419.5675pt x 489.83pt>
 File: Diagrams/Use_Case/ucdselling.png Graphic file (type png)
 <use Diagrams/Use_Case/ucdselling.png>
 Package pdftex.def Info: Diagrams/Use_Case/ucdselling.png  used on input line 161.
@@ -488,7 +491,7 @@ l.243 \clearpage
                                                   \fi \fi 
 l.243 \clearpage
                 ]
-<Diagrams/Use_Case/ucd2.png, id=552, 378.41376pt x 421.575pt>
+<Diagrams/Use_Case/ucd2.png, id=559, 378.41376pt x 421.575pt>
 File: Diagrams/Use_Case/ucd2.png Graphic file (type png)
 <use Diagrams/Use_Case/ucd2.png>
 Package pdftex.def Info: Diagrams/Use_Case/ucd2.png  used on input line 251.
@@ -516,7 +519,7 @@ l.321 \clearpage
                                                   \fi \fi 
 l.321 \clearpage
                 ]
-<Diagrams/Use_Case/ucd3.png, id=594, 400.49625pt x 415.5525pt>
+<Diagrams/Use_Case/ucd3.png, id=601, 400.49625pt x 415.5525pt>
 File: Diagrams/Use_Case/ucd3.png Graphic file (type png)
 <use Diagrams/Use_Case/ucd3.png>
 Package pdftex.def Info: Diagrams/Use_Case/ucd3.png  used on input line 328.
@@ -554,7 +557,7 @@ l.436 \clearpage
                                                   \fi \fi 
 l.436 \clearpage
                 ]
-<Diagrams/Use_Case/ucdadmin.png, id=644, 355.3275pt x 497.86pt>
+<Diagrams/Use_Case/ucdadmin.png, id=651, 355.3275pt x 497.86pt>
 File: Diagrams/Use_Case/ucdadmin.png Graphic file (type png)
 <use Diagrams/Use_Case/ucdadmin.png>
 Package pdftex.def Info: Diagrams/Use_Case/ucdadmin.png  used on input line 445.
@@ -567,7 +570,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has
                                                   \fi \fi 
 l.450 \clearpage
                  </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/Use_Case/ucdadmin.png>]
-<Diagrams/Use_Case/ucd4.png, id=649, 585.18625pt x 644.4075pt>
+<Diagrams/Use_Case/ucd4.png, id=656, 585.18625pt x 644.4075pt>
 File: Diagrams/Use_Case/ucd4.png Graphic file (type png)
 <use Diagrams/Use_Case/ucd4.png>
 Package pdftex.def Info: Diagrams/Use_Case/ucd4.png  used on input line 457.
@@ -580,12 +583,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has
                                                   \fi \fi 
 l.463 \clearpage
                  </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/Use_Case/ucd4.png>]
-<Diagrams/ER/ER_Diagram_Typed.png, id=655, 1353.055pt x 924.45375pt>
+<Diagrams/ER/ER_Diagram_Typed.png, id=662, 1353.055pt x 924.45375pt>
 File: Diagrams/ER/ER_Diagram_Typed.png Graphic file (type png)
 <use Diagrams/ER/ER_Diagram_Typed.png>
 Package pdftex.def Info: Diagrams/ER/ER_Diagram_Typed.png  used on input line 467.
 (pdftex.def)             Requested size: 435.32419pt x 297.42522pt.
-<Diagrams/ER/ER_Diagram.png, id=656, 1013.7875pt x 735.74875pt>
+<Diagrams/ER/ER_Diagram.png, id=663, 1013.7875pt x 735.74875pt>
 File: Diagrams/ER/ER_Diagram.png Graphic file (type png)
 <use Diagrams/ER/ER_Diagram.png>
 Package pdftex.def Info: Diagrams/ER/ER_Diagram.png  used on input line 474.
@@ -603,7 +606,7 @@ l.489 \subsubsection
                                                   \fi \fi 
 l.497 
        </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/ER/ER_Diagram.png>] [24]
-<Diagrams/Class/class_diagram.png, id=672, 614.295pt x 794.97pt>
+<Diagrams/Class/class_diagram.png, id=679, 614.295pt x 794.97pt>
 File: Diagrams/Class/class_diagram.png Graphic file (type png)
 <use Diagrams/Class/class_diagram.png>
 Package pdftex.def Info: Diagrams/Class/class_diagram.png  used on input line 511.
@@ -616,77 +619,77 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) has
                                                   \fi \fi 
 l.519 
        </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/Class/class_diagram.png>] [26]
-<Diagrams/Sequence/Add_Review.png, id=683, 1535.7375pt x 1009.52156pt>
+<Diagrams/Sequence/Add_Review.png, id=690, 1535.7375pt x 1009.52156pt>
 File: Diagrams/Sequence/Add_Review.png Graphic file (type png)
 <use Diagrams/Sequence/Add_Review.png>
 Package pdftex.def Info: Diagrams/Sequence/Add_Review.png  used on input line 544.
 (pdftex.def)             Requested size: 386.95634pt x 238.48532pt.
-<Diagrams/Sequence/Cart_Operations.jpg, id=684, 1506.62875pt x 2107.875pt>
+<Diagrams/Sequence/Cart_Operations.jpg, id=691, 1506.62875pt x 2107.875pt>
 File: Diagrams/Sequence/Cart_Operations.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Cart_Operations.jpg>
 Package pdftex.def Info: Diagrams/Sequence/Cart_Operations.jpg  used on input line 556.
 (pdftex.def)             Requested size: 314.37831pt x 357.7229pt.
-<Diagrams/Sequence/Checkout.jpg, id=685, 1244.65pt x 642.4pt>
+<Diagrams/Sequence/Checkout.jpg, id=692, 1244.65pt x 642.4pt>
 File: Diagrams/Sequence/Checkout.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Checkout.jpg>
 Package pdftex.def Info: Diagrams/Sequence/Checkout.jpg  used on input line 567.
 (pdftex.def)             Requested size: 290.21378pt x 119.23422pt.
-<Diagrams/Sequence/Edit_Client_Info.jpg, id=686, 1585.925pt x 1545.775pt>
+<Diagrams/Sequence/Edit_Client_Info.jpg, id=693, 1585.925pt x 1545.775pt>
 File: Diagrams/Sequence/Edit_Client_Info.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Edit_Client_Info.jpg>
 Package pdftex.def Info: Diagrams/Sequence/Edit_Client_Info.jpg  used on input line 578.
 (pdftex.def)             Requested size: 314.39647pt x 238.48409pt.
-<Diagrams/Sequence/Filter_Listings.jpg, id=687, 1063.975pt x 643.40375pt>
+<Diagrams/Sequence/Filter_Listings.jpg, id=694, 1063.975pt x 643.40375pt>
 File: Diagrams/Sequence/Filter_Listings.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Filter_Listings.jpg>
 Package pdftex.def Info: Diagrams/Sequence/Filter_Listings.jpg  used on input line 589.
 (pdftex.def)             Requested size: 241.83553pt x 119.234pt.
-<Diagrams/Sequence/Listing_Details.png, id=688, 962.59625pt x 567.11874pt>
+<Diagrams/Sequence/Listing_Details.png, id=695, 962.59625pt x 567.11874pt>
 File: Diagrams/Sequence/Listing_Details.png Graphic file (type png)
 <use Diagrams/Sequence/Listing_Details.png>
 Package pdftex.def Info: Diagrams/Sequence/Listing_Details.png  used on input line 600.
 (pdftex.def)             Requested size: 338.57349pt x 198.73683pt.
-<Diagrams/Sequence/Lists_of_Listings.jpg, id=689, 1164.35pt x 583.17876pt>
+<Diagrams/Sequence/Lists_of_Listings.jpg, id=696, 1164.35pt x 583.17876pt>
 File: Diagrams/Sequence/Lists_of_Listings.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Lists_of_Listings.jpg>
 Package pdftex.def Info: Diagrams/Sequence/Lists_of_Listings.jpg  used on input line 611.
 (pdftex.def)             Requested size: 241.83797pt x 119.24097pt.
-<Diagrams/Sequence/Order_History.png, id=690, 1806.75pt x 923.45pt>
+<Diagrams/Sequence/Order_History.png, id=697, 1806.75pt x 923.45pt>
 File: Diagrams/Sequence/Order_History.png Graphic file (type png)
 <use Diagrams/Sequence/Order_History.png>
 Package pdftex.def Info: Diagrams/Sequence/Order_History.png  used on input line 622.
 (pdftex.def)             Requested size: 314.39401pt x 158.98529pt.
-<Diagrams/Sequence/Login.jpg, id=691, 1445.4pt x 1385.175pt>
+<Diagrams/Sequence/Login.jpg, id=698, 1445.4pt x 1385.175pt>
 File: Diagrams/Sequence/Login.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Login.jpg>
 Package pdftex.def Info: Diagrams/Sequence/Login.jpg  used on input line 633.
 (pdftex.def)             Requested size: 290.22174pt x 238.47795pt.
-<Diagrams/Sequence/Logout.jpg, id=692, 1064.97874pt x 542.025pt>
+<Diagrams/Sequence/Logout.jpg, id=699, 1064.97874pt x 542.025pt>
 File: Diagrams/Sequence/Logout.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Logout.jpg>
 Package pdftex.def Info: Diagrams/Sequence/Logout.jpg  used on input line 644.
 (pdftex.def)             Requested size: 241.83617pt x 119.2376pt.
-<Diagrams/Sequence/Register.jpg, id=693, 1245.65375pt x 1386.17876pt>
+<Diagrams/Sequence/Register.jpg, id=700, 1245.65375pt x 1386.17876pt>
 File: Diagrams/Sequence/Register.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Register.jpg>
 Package pdftex.def Info: Diagrams/Sequence/Register.jpg  used on input line 655.
 (pdftex.def)             Requested size: 290.21973pt x 238.48155pt.
-<Diagrams/Sequence/Registered_User_Purchase.jpg, id=694, 1304.875pt x 1366.10374pt>
+<Diagrams/Sequence/Registered_User_Purchase.jpg, id=701, 1304.875pt x 1366.10374pt>
 File: Diagrams/Sequence/Registered_User_Purchase.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Registered_User_Purchase.jpg>
 Package pdftex.def Info: Diagrams/Sequence/Registered_User_Purchase.jpg  used on input line 666.
 (pdftex.def)             Requested size: 290.21928pt x 238.48807pt.
-<Diagrams/Sequence/Categories.png, id=695, 1525.7pt x 823.075pt>
+<Diagrams/Sequence/Categories.png, id=702, 1525.7pt x 823.075pt>
 File: Diagrams/Sequence/Categories.png Graphic file (type png)
 <use Diagrams/Sequence/Categories.png>
 Package pdftex.def Info: Diagrams/Sequence/Categories.png  used on input line 677.
 (pdftex.def)             Requested size: 314.40015pt x 158.9856pt.
-<Diagrams/Sequence/Confirmation_Email.png, id=696, 1099.10625pt x 557.08125pt>
+<Diagrams/Sequence/Confirmation_Email.png, id=703, 1099.10625pt x 557.08125pt>
 File: Diagrams/Sequence/Confirmation_Email.png Graphic file (type png)
 <use Diagrams/Sequence/Confirmation_Email.png>
 Package pdftex.def Info: Diagrams/Sequence/Confirmation_Email.png  used on input line 688.
 (pdftex.def)             Requested size: 290.22197pt x 119.2346pt.
-<Diagrams/Sequence/Sort_Listings.jpg, id=697, 1063.975pt x 643.40375pt>
+<Diagrams/Sequence/Sort_Listings.jpg, id=704, 1063.975pt x 643.40375pt>
 File: Diagrams/Sequence/Sort_Listings.jpg Graphic file (type jpg)
 <use Diagrams/Sequence/Sort_Listings.jpg>
 Package pdftex.def Info: Diagrams/Sequence/Sort_Listings.jpg  used on input line 699.
@@ -767,17 +770,17 @@ l.706 \clearpage
                                                   \fi \fi 
 l.706 \clearpage
                  </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/Sequence/Confirmation_Email.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/Sequence/Sort_Listings.jpg>]
-<Diagrams/External_Interfaces/Home_Page.png, id=755, 1776.6375pt x 883.3pt>
+<Diagrams/External_Interfaces/Home_Page.png, id=762, 1776.6375pt x 883.3pt>
 File: Diagrams/External_Interfaces/Home_Page.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Home_Page.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Home_Page.png  used on input line 713.
 (pdftex.def)             Requested size: 479.67143pt x 238.48071pt.
-<Diagrams/External_Interfaces/Login.png, id=756, 1637.11626pt x 996.72375pt>
+<Diagrams/External_Interfaces/Login.png, id=763, 1637.11626pt x 996.72375pt>
 File: Diagrams/External_Interfaces/Login.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Login.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Login.png  used on input line 722.
 (pdftex.def)             Requested size: 391.71687pt x 238.48857pt.
-<Diagrams/External_Interfaces/Create_Account.png, id=757, 1580.90625pt x 779.91376pt>
+<Diagrams/External_Interfaces/Create_Account.png, id=764, 1580.90625pt x 779.91376pt>
 File: Diagrams/External_Interfaces/Create_Account.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Create_Account.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Create_Account.png  used on input line 731.
@@ -795,12 +798,12 @@ l.735 \FloatBarrier
                                                   \fi \fi 
 l.735 \FloatBarrier
                     </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Home_Page.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Login.png>]
-<Diagrams/External_Interfaces/Forgot_Password_1.png, id=765, 1201.48875pt x 820.06375pt>
+<Diagrams/External_Interfaces/Forgot_Password_1.png, id=772, 1201.48875pt x 820.06375pt>
 File: Diagrams/External_Interfaces/Forgot_Password_1.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Forgot_Password_1.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Forgot_Password_1.png  used on input line 740.
 (pdftex.def)             Requested size: 349.41281pt x 238.4881pt.
-<Diagrams/External_Interfaces/Forgot_Password_2.png, id=766, 1257.69875pt x 584.1825pt>
+<Diagrams/External_Interfaces/Forgot_Password_2.png, id=773, 1257.69875pt x 584.1825pt>
 File: Diagrams/External_Interfaces/Forgot_Password_2.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Forgot_Password_2.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Forgot_Password_2.png  used on input line 741.
@@ -816,17 +819,17 @@ l.745 \FloatBarrier
                                                   \fi \fi 
 l.745 \FloatBarrier
                     </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Forgot_Password_1.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Forgot_Password_2.png>]
-<Diagrams/External_Interfaces/User_Profile.png, id=778, 1233.60875pt x 711.65875pt>
+<Diagrams/External_Interfaces/User_Profile.png, id=785, 1233.60875pt x 711.65875pt>
 File: Diagrams/External_Interfaces/User_Profile.png Graphic file (type png)
 <use Diagrams/External_Interfaces/User_Profile.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/User_Profile.png  used on input line 750.
 (pdftex.def)             Requested size: 413.39796pt x 238.48589pt.
-<Diagrams/External_Interfaces/Order_History.png, id=779, 1250.6725pt x 690.58pt>
+<Diagrams/External_Interfaces/Order_History.png, id=786, 1250.6725pt x 690.58pt>
 File: Diagrams/External_Interfaces/Order_History.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Order_History.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Order_History.png  used on input line 759.
 (pdftex.def)             Requested size: 431.9214pt x 238.4927pt.
-<Diagrams/External_Interfaces/Order_Details.png, id=780, 1259.70625pt x 850.17625pt>
+<Diagrams/External_Interfaces/Order_Details.png, id=787, 1259.70625pt x 850.17625pt>
 File: Diagrams/External_Interfaces/Order_Details.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Order_Details.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Order_Details.png  used on input line 768.
@@ -844,12 +847,12 @@ l.772 \FloatBarrier
                                                   \fi \fi 
 l.772 \FloatBarrier
                     </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/User_Profile.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Order_History.png>]
-<Diagrams/External_Interfaces/Adding_Review.png, id=787, 1233.60875pt x 867.24pt>
+<Diagrams/External_Interfaces/Adding_Review.png, id=794, 1233.60875pt x 867.24pt>
 File: Diagrams/External_Interfaces/Adding_Review.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Adding_Review.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Adding_Review.png  used on input line 777.
 (pdftex.def)             Requested size: 339.23404pt x 238.48512pt.
-<Diagrams/External_Interfaces/Categories.png, id=788, 1449.415pt x 887.315pt>
+<Diagrams/External_Interfaces/Categories.png, id=795, 1449.415pt x 887.315pt>
 File: Diagrams/External_Interfaces/Categories.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Categories.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Categories.png  used on input line 786.
@@ -865,12 +868,12 @@ l.790 \FloatBarrier
                                                   \fi \fi 
 l.790 \FloatBarrier
                     </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Order_Details.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Adding_Review.png>]
-<Diagrams/External_Interfaces/Categories_filtered.png, id=795, 1533.73pt x 539.01375pt>
+<Diagrams/External_Interfaces/Categories_filtered.png, id=802, 1533.73pt x 539.01375pt>
 File: Diagrams/External_Interfaces/Categories_filtered.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Categories_filtered.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Categories_filtered.png  used on input line 795.
 (pdftex.def)             Requested size: 483.68918pt x 169.98761pt.
-<Diagrams/External_Interfaces/Search_Listing.png, id=796, 1563.8425pt x 982.67125pt>
+<Diagrams/External_Interfaces/Search_Listing.png, id=803, 1563.8425pt x 982.67125pt>
 File: Diagrams/External_Interfaces/Search_Listing.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Search_Listing.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Search_Listing.png  used on input line 804.
@@ -886,17 +889,17 @@ l.808 \FloatBarrier
                                                   \fi \fi 
 l.808 \FloatBarrier
                     </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Categories.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Categories_filtered.png>]
-<Diagrams/External_Interfaces/Create_Listing.png, id=803, 1235.61626pt x 927.465pt>
+<Diagrams/External_Interfaces/Create_Listing.png, id=810, 1235.61626pt x 927.465pt>
 File: Diagrams/External_Interfaces/Create_Listing.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Create_Listing.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Create_Listing.png  used on input line 813.
 (pdftex.def)             Requested size: 317.72696pt x 238.4888pt.
-<Diagrams/External_Interfaces/List_Of_Listings_1.png, id=804, 1425.325pt x 981.6675pt>
+<Diagrams/External_Interfaces/List_Of_Listings_1.png, id=811, 1425.325pt x 981.6675pt>
 File: Diagrams/External_Interfaces/List_Of_Listings_1.png Graphic file (type png)
 <use Diagrams/External_Interfaces/List_Of_Listings_1.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/List_Of_Listings_1.png  used on input line 822.
 (pdftex.def)             Requested size: 346.26074pt x 238.48099pt.
-<Diagrams/External_Interfaces/List_Of_Listings_2.png, id=805, 1427.3325pt x 797.98125pt>
+<Diagrams/External_Interfaces/List_Of_Listings_2.png, id=812, 1427.3325pt x 797.98125pt>
 File: Diagrams/External_Interfaces/List_Of_Listings_2.png Graphic file (type png)
 <use Diagrams/External_Interfaces/List_Of_Listings_2.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/List_Of_Listings_2.png  used on input line 823.
@@ -912,7 +915,7 @@ l.827 \FloatBarrier
                                                   \fi \fi 
 l.827 \FloatBarrier
                     </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Search_Listing.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Create_Listing.png>]
-<Diagrams/External_Interfaces/Latest_Listings.png, id=813, 1364.09625pt x 924.45375pt>
+<Diagrams/External_Interfaces/Latest_Listings.png, id=820, 1364.09625pt x 924.45375pt>
 File: Diagrams/External_Interfaces/Latest_Listings.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Latest_Listings.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Latest_Listings.png  used on input line 832.
@@ -928,17 +931,17 @@ l.836 \FloatBarrier
                                                   \fi \fi 
 l.836 \FloatBarrier
                     </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Latest_Listings.png>]
-<Diagrams/External_Interfaces/Listing_details.png, id=825, 1219.55624pt x 956.57375pt>
+<Diagrams/External_Interfaces/Listing_details.png, id=832, 1219.55624pt x 956.57375pt>
 File: Diagrams/External_Interfaces/Listing_details.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Listing_details.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Listing_details.png  used on input line 841.
 (pdftex.def)             Requested size: 304.0509pt x 238.48602pt.
-<Diagrams/External_Interfaces/Cart.png, id=826, 1226.5825pt x 681.54625pt>
+<Diagrams/External_Interfaces/Cart.png, id=833, 1226.5825pt x 681.54625pt>
 File: Diagrams/External_Interfaces/Cart.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Cart.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Cart.png  used on input line 850.
 (pdftex.def)             Requested size: 429.21672pt x 238.49275pt.
-<Diagrams/External_Interfaces/Checkout.png, id=827, 1236.62pt x 940.51375pt>
+<Diagrams/External_Interfaces/Checkout.png, id=834, 1236.62pt x 940.51375pt>
 File: Diagrams/External_Interfaces/Checkout.png Graphic file (type png)
 <use Diagrams/External_Interfaces/Checkout.png>
 Package pdftex.def Info: Diagrams/External_Interfaces/Checkout.png  used on input line 859.
@@ -949,70 +952,81 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.38}) ha
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.863 \clearpage
-                pdfTeX warning (ext4): destination with the same identifier (name{figure.39}) has been already used, duplicate ignored
+l.863 \FloatBarrier
+                   pdfTeX warning (ext4): destination with the same identifier (name{figure.39}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.863 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Listing_details.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Cart.png>] [47pdfTeX warning (ext4): destination with the same identifier (name{figure.40}) has been already used, duplicate ignored
+l.863 \FloatBarrier
+                    </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Listing_details.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Cart.png>]
+<Diagrams/External_Interfaces/Site_Activity.png, id=842, 1191.45125pt x 945.5325pt>
+File: Diagrams/External_Interfaces/Site_Activity.png Graphic file (type png)
+<use Diagrams/External_Interfaces/Site_Activity.png>
+Package pdftex.def Info: Diagrams/External_Interfaces/Site_Activity.png  used on input line 868.
+(pdftex.def)             Requested size: 300.51637pt x 238.48898pt.
+ [47pdfTeX warning (ext4): destination with the same identifier (name{figure.40}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.863 \clearpage
-                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Checkout.png>]
-<Diagrams/Class/Architectural_diagram.png, id=840, 7649.57875pt x 7649.57875pt>
+l.873 \clearpage
+                pdfTeX warning (ext4): destination with the same identifier (name{figure.41}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.873 \clearpage
+                 </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Checkout.png> </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/External_Interfaces/Site_Activity.png>]
+<Diagrams/Class/Architectural_diagram.png, id=849, 7649.57875pt x 7649.57875pt>
 File: Diagrams/Class/Architectural_diagram.png Graphic file (type png)
 <use Diagrams/Class/Architectural_diagram.png>
-Package pdftex.def Info: Diagrams/Class/Architectural_diagram.png  used on input line 868.
+Package pdftex.def Info: Diagrams/Class/Architectural_diagram.png  used on input line 878.
 (pdftex.def)             Requested size: 483.58348pt x 476.93028pt.
  [48
 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.41}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.42}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.878     \subsection
+l.888     \subsection
                      {Back-end} </Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Diagrams/Class/Architectural_diagram.png>] [49] [50pdfTeX warning (ext4): destination with the same identifier (name{table.12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.948 
+l.958 
       ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 952.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 962.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 952.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 962.
  (/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Design Document.ind [51])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 987.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 997.
  [52]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 987.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 997.
  (/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Design Document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 987.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 987.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 997.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 997.
 Package rerunfilecheck Info: File `"Design Document".out' has not changed.
-(rerunfilecheck)             Checksum: 69FFA5EA6520664E984143724CDD93C3;4375.
+(rerunfilecheck)             Checksum: 153DECE045CE9DC70420A8E605E0ABED;4439.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 987.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 997.
  ) 
 Here is how much of TeX's memory you used:
- 7823 strings out of 492616
- 124268 string characters out of 6129482
- 228272 words of memory out of 5000000
- 11327 multiletter control sequences out of 15000+600000
+ 7831 strings out of 492616
+ 124529 string characters out of 6129482
+ 228295 words of memory out of 5000000
+ 11332 multiletter control sequences out of 15000+600000
  8243 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  30i,13n,37p,1239b,413s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on "/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Design Document.pdf" (52 pages, 6029661 bytes).
+Output written on "/Users/mortezaahmadi/University/Comp 354/Comp354_Project/Documentation/Final Iteration/Design Document.pdf" (52 pages, 6133169 bytes).
 PDF statistics:
- 1010 PDF objects out of 1200 (max. 8388607)
- 858 compressed objects within 9 object streams
- 260 named destinations out of 1000 (max. 500000)
- 792 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1019 PDF objects out of 1200 (max. 8388607)
+ 865 compressed objects within 9 object streams
+ 262 named destinations out of 1000 (max. 500000)
+ 805 words of extra memory for PDF output out of 10000 (max. 10000000)
 
